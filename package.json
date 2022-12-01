@@ -1,8 +1,8 @@
 {
-  "name": "lib-starter",
+  "name": "@tool-pack/basic",
   "version": "0.0.0",
   "packageManager": "pnpm@7.1.0",
-  "description": "一个基于pnpm typescript monorepo/multirepo的lib快速启动仓库模板",
+  "description": "🛠 typescript javascript basic functions / 基本函数",
   "scripts": {
     "pkg:init": "esno scripts/init-pkg.ts",
     "pkg:new": "esno scripts/new-pkg.ts",
@@ -30,18 +30,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mengxinssfd/lib-starter.git"
+    "url": "git+https://github.com/js-tool-pack/basic.git"
   },
   "keywords": [
-    "lib",
-    "starter"
+    "functions"
   ],
   "author": "dyh_a",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mengxinssfd/lib-starter/issues"
+    "url": "https://github.com/js-tool-pack/basic/issues"
   },
-  "homepage": "https://github.com/mengxinssfd/lib-starter#readme",
+  "homepage": "https://github.com/js-tool-pack/basic#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
@@ -90,5 +89,30 @@
     "dist",
     "CHANGELOG.md",
     "LICENSE"
-  ]
+  ],
+  "main": "dist/basic.cjs.js",
+  "module": "dist/basic.esm-bundler.js",
+  "types": "dist/basic.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "node": "./dist/basic.cjs.js",
+        "default": "./dist/basic.esm-bundler.js"
+      },
+      "require": "./dist/basic.cjs.js"
+    }
+  },
+  "buildOptions": {
+    "name": "Basic",
+    "formats": [
+      "esm-bundler",
+      "esm-browser",
+      "cjs",
+      "global"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
