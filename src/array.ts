@@ -2,7 +2,9 @@ import { typeOf, isNaN, isArray, isFunction } from './data-type';
 import { hasOwn } from './object';
 
 /**
- * @description len与end两个都有值时，以小的为准
+ * 创建数组
+ *
+ * len与end两个都有值时，以小的为准
  * @example
  * // returns [0, 1]
  * createArray({end: 2});
@@ -359,6 +361,9 @@ export function binaryFind<T>(
   return arr[index as keyof typeof arr] as T;
 }
 
+/**
+ * insertToArray函数回调参数类型声明
+ */
 export interface InsertToArrayToCBOptions<T = unknown> {
   item: T;
   index: number;
@@ -631,7 +636,7 @@ export function arrayRemoveItemsBy<T>(
 }
 
 /**
- * 去重函数
+ * 数组去重函数
  *
  * @example
  *

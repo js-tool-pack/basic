@@ -1,5 +1,3 @@
-import { includes } from './array';
-
 /**
  * 判断是否内置方法
  *
@@ -454,7 +452,7 @@ export function isEmptyObject(target: object): boolean {
  * isEmpty({ a: function () {}})); // false;
  */
 export function isEmpty(target: any): boolean {
-  if (includes([undefined, null, '', NaN], target)) return true;
+  if ([undefined, null, '', NaN].includes(target)) return true;
   switch (typeOf(target)) {
     case 'array':
       return !target.length;
