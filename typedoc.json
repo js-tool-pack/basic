@@ -18,5 +18,5 @@
   "navigationLinks": {
     "GitHub": "https://github.com/js-tool-pack/basic"
   },
-  "entryPoints": ["src/index.ts"]
+  "entryPoints": ["src/index.typedoc.ts"]
 }
