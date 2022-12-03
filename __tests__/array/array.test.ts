@@ -1,7 +1,7 @@
 import {
   createArray,
   forEach,
-  objForEach,
+  forEachObj,
   isEqual,
   forEachRight,
   findIndex,
@@ -18,7 +18,7 @@ import {
   groupBy,
   someInList,
   castArray,
-} from '../src';
+} from '../../src';
 
 describe('array', function () {
   test('createArray', () => {
@@ -587,7 +587,7 @@ describe('array', function () {
 
     const r = groupBy(list, (item, obj) => {
       let result = '';
-      objForEach(
+      forEachObj(
         obj,
         (_v, k): false | void => {
           if (new RegExp((k as string) + '_.+').test(item.code)) {

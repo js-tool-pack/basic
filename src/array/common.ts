@@ -1,5 +1,5 @@
-import { typeOf, isNaN, isArray, isFunction } from './data-type';
-import { hasOwn } from './object';
+import { typeOf, isNaN, isArray, isFunction } from '../data-type';
+import { hasOwn } from '../object';
 
 /**
  * 创建数组
