@@ -219,4 +219,29 @@ describe('object', function () {
     expect(fn(obj2, 'a')).toBeTruthy();
     expect(fn(obj2, 'b')).toBeFalsy();
   });
+
+  test('swap', () => {
+    const swap = cm.swap;
+
+    // 对象属性交换
+    expect(swap({ a: 1, b: 2 }, 'a', 'b')).toEqual({ b: 1, a: 2 });
+    expect(swap({ a: 1, b: 2 }, 'a', 'c' as any)).toEqual({ c: 1, b: 2, a: undefined });
+
+    // 数组item交换
+    expect(swap([1, 2], 1, 0)).toEqual([2, 1]);
+    expect(swap([1, 2], 1, 2)).toEqual([1, undefined, 2]);
+  });
+
+  test('likeKeys', () => {
+    const likeKeys = cm.likeKeys;
+    expect(likeKeys([1, 2, 3, 4, 5, 6, 7], '0')).toEqual(['0']);
+    expect(likeKeys([1, 2, 3, 4, 5, 6, 7, 1, 1, 1, 1, 1, 1], '0')).toEqual(['0', '10']);
+    expect(likeKeys({ test: 1, test2: 2, test3: 3 }, 'test')).toEqual(['test', 'test2', 'test3']);
+    const map = new Map<string, number | string>([
+      ['aa', 1],
+      ['bb', 2],
+      ['hello', 'world'],
+    ]);
+    expect(likeKeys(map, /a+|b+/)).toEqual(['aa', 'bb']);
+  });
 });

@@ -9,6 +9,9 @@ const {
   minus,
   times,
   divide,
+  numToFixed,
+  forEachNum,
+  forEachNumRight,
 } = Num;
 describe('number', function () {
   test('strip', () => {
@@ -98,5 +101,77 @@ describe('number', function () {
     expect(getSafeNum(50, 1, 100)).toBe(50);
     expect(getSafeNum(101, 1, 100)).toBe(100);
     expect(getSafeNum(101, 1)).toBe(101);
+  });
+  test('numToFixed', () => {
+    expect((0).toFixed(1)).toEqual('0.0');
+    expect(numToFixed(0, 1)).toBe('0.0');
+    expect(numToFixed(0, 1, true)).toBe('0.0');
+    expect((0).toFixed(6)).toEqual('0.000000');
+    expect(numToFixed(0, 6)).toBe('0.000000');
+    expect(numToFixed(0, 6, true)).toBe('0.000000');
+
+    // Number.prototype.toFixed自带四舍五入
+    expect((0.45).toFixed(1)).toBe('0.5');
+    // numToFixed默认使用四舍五入，跟Number.prototype.toFixed保持一致
+    expect(numToFixed(0.45, 1)).toBe('0.5');
+    // 关闭四舍五入
+    expect(numToFixed(0.45, 1, false)).toBe('0.4');
+
+    expect((1.45).toFixed(1)).toBe('1.4');
+    expect(numToFixed(1.45, 1, false)).toBe('1.4');
+    expect(numToFixed(1.45, 1)).toBe('1.5');
+
+    expect((1).toFixed(2)).toBe('1.00');
+    expect(numToFixed(1, 2)).toBe('1.00');
+    expect(numToFixed(1, 2, false)).toBe('1.00');
+
+    expect((1.45).toFixed()).toBe('1');
+    expect(numToFixed(1.45)).toBe('1');
+    expect(numToFixed(1.45, undefined, false)).toBe('1');
+
+    expect(0.5 + 0.07).not.toBe(0.57);
+    expect((0.5 + 0.07).toFixed(2)).toBe('0.57');
+    expect(numToFixed(0.5 + 0.07, 2)).toBe('0.57');
+    expect(numToFixed(0.5 + 0.07, 5)).toBe('0.57000');
+
+    expect(() => {
+      (0.1).toFixed(-1);
+    }).toThrowError();
+    expect(() => {
+      numToFixed(0.1, -1);
+    }).toThrowError();
+    expect(() => {
+      (0.1).toFixed(101);
+    }).toThrowError();
+    expect(() => {
+      numToFixed(0.1, 101);
+    }).toThrowError();
+
+    // const f = fn(0.1, 100);
+    // expect(0.1.toFixed(100)).toBe(f)
+  });
+  test('forEachByLen', () => {
+    const arr: number[] = [];
+    forEachNum(3, (index) => arr.push(index));
+    expect(arr).toEqual([0, 1, 2]);
+    forEachNum(7, (index) => arr.push(index));
+    expect(arr.length).toEqual(10);
+    forEachNum(3, (index): void | false => {
+      arr.push(index);
+      if (index === 1) return false;
+    });
+    expect(arr).toEqual([0, 1, 2, 0, 1, 2, 3, 4, 5, 6, 0, 1]);
+  });
+  test('forEachByLenRight', () => {
+    const arr: number[] = [];
+    forEachNumRight(3, (index) => arr.push(index));
+    expect(arr).toEqual([0, 1, 2].reverse());
+    forEachNumRight(7, (index) => arr.push(index));
+    expect(arr.length).toEqual(10);
+    forEachNumRight(3, (index): void | false => {
+      arr.push(index);
+      if (index === 1) return false;
+    });
+    expect(arr).toEqual([...[0, 1, 2].reverse(), ...[0, 1, 2, 3, 4, 5, 6].reverse(), 2, 1]);
   });
 });

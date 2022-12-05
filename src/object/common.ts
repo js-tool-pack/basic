@@ -472,3 +472,60 @@ export function updateIns<T extends object>(target: T, ...others: object[]): T {
 export function hasOwn<T extends object>(obj: T, key: any): key is keyof T {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
+
+/**
+ * 对象或数组key交换
+ *
+ * @example
+ *
+ * // 对象属性交换
+ * swap({ a: 1, b: 2 }, 'a', 'b'); // { b: 1, a: 2 }
+ * swap({ a: 1, b: 2 }, 'a', 'c' as any); // { c: 1, b: 2, a: undefined }
+ * // 数组item交换
+ * swap([1, 2], 1, 0); // [2, 1]
+ * swap([1, 2], 1, 2); // [1, undefined, 2]
+ */
+export function swap<T extends object, K1 extends keyof T, K2 extends keyof T>(
+  obj: T,
+  k1: K1,
+  k2: K2,
+): T {
+  const temp = obj[k1];
+  obj[k1] = obj[k2] as any;
+  obj[k2] = temp as any;
+  return obj;
+}
+
+/**
+ * 查找对象中与param key类似的key
+ *
+ * @example
+ *
+ * // array
+ * likeKeys([1, 2, 3, 4, 5, 6, 7], '0'); // ['0']
+ * likeKeys([1, 2, 3, 4, 5, 6, 7, 1, 1, 1, 1, 1, 1], '0'); // ['0', '10']
+ *
+ * // object
+ * likeKeys({ test: 1, test2: 2, test3: 3 }, 'test'); // ['test', 'test2', 'test3']
+ *
+ * // map
+ * const map = new Map<string, number | string>([
+ *   ['aa', 1],
+ *   ['bb', 2],
+ *   ['hello', 'world'],
+ * ]);
+ * likeKeys(map, /a+|b+/); // ['aa', 'bb']
+ */
+export function likeKeys(target: object | Map<string, any>, key: string | RegExp): string[] {
+  const reg = new RegExp(key);
+  if ('undefined' !== typeof Map && target instanceof Map) {
+    // keys = [...obj.keys()]; // babel编译成es5会编译成[].concat，无法使用
+    const keys: string[] = [];
+    for (const k of target.keys()) {
+      if (reg.test(k)) keys.push(k);
+    }
+    return keys;
+  }
+
+  return Object.keys(target).filter((key) => reg.test(key));
+}

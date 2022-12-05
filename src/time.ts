@@ -89,7 +89,7 @@ export function msToDateStr(ms: number, format = 'd天hh时mm分ss秒') {
  * @param options.seasonText 季节名数组，默认：['春', '夏', '秋', '冬']
  * @param options.weekText 星期名数组，默认：['日', '一', '二', '三', '四', '五', '六']
  */
-export const formatDate = function (
+export function formatDate(
   date: Date,
   formular = 'yyyy-MM-dd hh:mm:ss',
   options?: {
@@ -133,7 +133,7 @@ export const formatDate = function (
     }
   }
   return formular;
-};
+}
 
 /**
  * 字符串转为date对象

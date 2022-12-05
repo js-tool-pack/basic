@@ -1,9 +1,9 @@
 /**
  * 公共
  */
-export * as Other from './common';
+export * as Common from './common';
 /**
- * 对象属性挑选有关函数
+ * 对象属性挑选相关函数
  */
 export * as Pick from './pick';
 /**
