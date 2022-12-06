@@ -13,12 +13,16 @@ export * as Number from './number';
 /**
  * 数组相关工具函数
  */
-export * as Array from './array/index.typedoc';
+export * as Array from './array';
 
 /**
  * 对象相关工具函数
  */
-export * as Object from './object/index.typedoc';
+export * as Object from './object';
+/**
+ * 未分类工具函数
+ */
+export * as Common from './common';
 /**
  * Promise相关工具函数
  */
@@ -31,3 +35,11 @@ export * as Time from './time';
  * 对象克隆相关的工具函数
  */
 export * as Clone from './clone';
+/**
+ * 计算链工具函数
+ */
+export * as CalcChain from './CalcChain';
+/**
+ * 坐标系相关的工具函数
+ */
+export * as Coordinate from './coordinate';

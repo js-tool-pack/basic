@@ -4,3 +4,6 @@ export * from './array';
 export * from './object';
 export * from './promise';
 export * from './time';
+export * from './common';
+export * from './CalcChain';
+export * from './coordinate';
