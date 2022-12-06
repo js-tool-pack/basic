@@ -18,6 +18,8 @@ import {
   groupBy,
   someInList,
   castArray,
+  sum,
+  avg,
 } from '../../src';
 
 describe('array', function () {
@@ -613,5 +615,13 @@ describe('array', function () {
     expect(
       someInList([{ id: 1 }], list, (item, _i, list) => list.some((s) => s.id === item.id)),
     ).toBe(true);
+  });
+  test('sum', () => {
+    expect(sum([0, 20, 100])).toBe(120);
+    expect(sum([-10, 20, 100])).toBe(110);
+  });
+  test('avg', () => {
+    expect(avg([20, 20, 20])).toBe(20);
+    expect(avg([-10, 20, 20])).toBe(10);
   });
 });
