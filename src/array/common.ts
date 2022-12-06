@@ -891,3 +891,28 @@ export function someInList<T>(
     return cb(item, index, list);
   });
 }
+
+/**
+ * 数组求和
+ *
+ * @example
+ *
+ * sum([0, 20, 100]); // 120
+ * sum([-10, 20, 100]); // 110
+ */
+export function sum(arr: number[]): number {
+  return arr.reduce((res, item) => item + res, 0);
+}
+
+/**
+ * 数组求平均值
+ *
+ * @example
+ *
+ * avg([20, 20, 20]); // 20
+ * avg([-10, 20, 20]); // 10
+ *
+ */
+export function avg(arr: number[]): number {
+  return sum(arr) / arr.length;
+}
