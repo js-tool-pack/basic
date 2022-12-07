@@ -51,3 +51,7 @@ export * as Random from './random';
  * 颜色相关工具函数
  */
 export * as Color from './color';
+/**
+ * RGB相关类
+ */
+export * as RGBS from './RGB';
