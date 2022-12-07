@@ -55,3 +55,7 @@ export * as Color from './color';
  * 装饰器相关工具
  */
 export * as Decorator from './decorator';
+/**
+ * Url相关工具
+ */
+export * as Url from './url';

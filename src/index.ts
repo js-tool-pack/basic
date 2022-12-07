@@ -11,4 +11,4 @@ export * from './coordinate';
 export * from './random';
 export * from './color';
 export * from './decorator';
-export * from './url/url';
+export * from './url';
