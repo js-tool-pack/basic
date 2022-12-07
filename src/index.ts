@@ -10,5 +10,5 @@ export * from './CalcChain';
 export * from './coordinate';
 export * from './random';
 export * from './color';
-export * from './RGB';
 export * from './decorator';
+export * from './url/url';

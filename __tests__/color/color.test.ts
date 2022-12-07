@@ -1,5 +1,5 @@
-import * as color from '../src/color';
-import { randomColor } from '../src/random';
+import * as color from '../../src/color/color';
+import { randomColor } from '../../src/random';
 
 describe('color', function () {
   test('isRGBColor', () => {

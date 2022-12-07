@@ -52,10 +52,6 @@ export * as Random from './random';
  */
 export * as Color from './color';
 /**
- * RGB相关类
- */
-export * as RGBS from './RGB';
-/**
  * 装饰器相关工具
  */
 export * as Decorator from './decorator';
