@@ -43,3 +43,11 @@ export * as CalcChain from './CalcChain';
  * 坐标系相关的工具函数
  */
 export * as Coordinate from './coordinate';
+/**
+ * 随机相关工具函数
+ */
+export * as Random from './random';
+/**
+ * 颜色相关工具函数
+ */
+export * as Color from './color';
