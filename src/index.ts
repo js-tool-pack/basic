@@ -11,3 +11,4 @@ export * from './coordinate';
 export * from './random';
 export * from './color';
 export * from './RGB';
+export * from './decorator';
