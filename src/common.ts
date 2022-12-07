@@ -248,13 +248,17 @@ export function polling(
   let lastTime = Date.now();
   let diff = 0;
   let resolve: () => void;
-
+  const cancel = () => {
+    status = state.stopped;
+    resolve();
+    clearTimeout(timer);
+  };
   const promise = new Promise<void>((res) => {
     resolve = res;
 
     function run() {
       const back = callback(times++);
-      back instanceof Promise ? back.then(timeout) : timeout();
+      back instanceof Promise ? back.then(timeout, cancel) : timeout();
     }
 
     function timeout() {
@@ -275,14 +279,8 @@ export function polling(
       timeout();
     }
   });
-  return {
-    promise,
-    cancel() {
-      status = state.stopped;
-      resolve();
-      clearTimeout(timer);
-    },
-  };
+
+  return { promise, cancel };
 }
 
 /**
