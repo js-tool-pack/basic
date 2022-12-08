@@ -1,6 +1,6 @@
 import * as cm from '../../src/object/common';
 import * as arr from '../../src/array';
-import { forEachByLen } from '../../src/common';
+import { forEachNum } from '../../src';
 
 describe('object', function () {
   test('deepMerge', () => {
@@ -48,7 +48,7 @@ describe('object', function () {
     expect(omit({ c: 'c' }, ['c'])).toEqual({});
 
     const obj: { [k: string]: number } = {};
-    forEachByLen(10000, (index) => (obj[index] = index));
+    forEachNum(10000, (index) => (obj[index] = index));
     const keys = arr.createArray({ len: 500, fill: (v) => String(v) });
     // console.time('run');
     const result = omit(obj, keys);

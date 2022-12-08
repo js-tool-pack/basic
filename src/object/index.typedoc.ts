@@ -1,7 +1,7 @@
 /**
  * 公共
  */
-export * as Common from './common';
+export * as ObjectCommon from './common';
 /**
  * 对象属性挑选相关函数
  */

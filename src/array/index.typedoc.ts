@@ -1,7 +1,7 @@
 /**
  * 普通数组工具函数
  */
-export * as Common from './common';
+export * as ArrayCommon from './common';
 /**
  * 异步数组工具函数
  */
