@@ -120,7 +120,7 @@ describe('array', function () {
     expect(result2).toEqual([{ 19: 19 }, { 18: 18 }, { 17: 17 }, { 16: 16 }, { 15: 15 }]);
 
     let elseCount = 0;
-    const isDone = forEach(
+    const isDone = forEachRight(
       arr,
       () => {},
       () => elseCount++, // 完整遍历以后会执行该方法
