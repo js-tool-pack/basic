@@ -1,6 +1,7 @@
 import * as cm from '../src/common';
 import { sleep } from '../src/promise';
 import { avg } from '../src';
+import { inRange } from '@mxssfd/core';
 
 describe('common', function () {
   test('debounce', async () => {
@@ -72,7 +73,9 @@ describe('common', function () {
     });
     await promise;
     expect(receive).toEqual(s.split(''));
-    expect(diff[0]).toBe(0);
+    // 此处应该是0，但是整体测试的时候总是差那么一两毫秒
+    // expect(diff[0]).toBe(0);
+    expect(inRange(diff[0]!, [0, 2])).toBe(true);
     const _avg = avg(diff.slice(1));
     // 虽然是间隔10秒，但由于js的setTimeout并不精准，所以会有波动
     expect(10 <= _avg && _avg <= 11).toBe(true);
