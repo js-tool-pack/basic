@@ -12,6 +12,7 @@ module.exports = {
     'src/**',
     'packages/**/src/**',
     '!**/packages/**/dist/**',
+    '!**/*.typedoc.ts',
     '!**/packages/**/src/index.ts',
     // "!packages/**/node_modules",
   ],
