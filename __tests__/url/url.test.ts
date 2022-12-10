@@ -5,6 +5,15 @@ describe('url.url', function () {
     expect(u.stringifyUrlQuery({ a: 1, b: 2, c: [3, 33], d: { f: '5', g: '6' } })).toBe(
       'a=1&b=2&c[0]=3&c[1]=33&d[f]=5&d[g]=6',
     );
+    expect(
+      u.stringifyUrlQuery({
+        a: 1,
+        b: 2,
+        c: [3, 33],
+        d: { f: '5', g: '6', h: undefined },
+        e: undefined,
+      }),
+    ).toBe('a=1&b=2&c[0]=3&c[1]=33&d[f]=5&d[g]=6');
   });
   test('updateUrlQuery', () => {
     const updateUrlQuery = u.updateUrlQuery;
