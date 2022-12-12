@@ -282,24 +282,30 @@ describe('time', function () {
     const monday = strToDate('2022-07-11')!;
 
     // 上个星期天
-    const lastSunday = new Date('2022-07-10');
+    const lastSunday = strToDate('2022-07-10')!;
     expect(inSameWeek({ now: monday, date: lastSunday })).toBe(false);
     expect(inSameWeek({ now: monday, date: lastSunday, weekStart: 'Mon' })).toBe(false);
     expect(inSameWeek({ now: monday, date: lastSunday, weekStart: 'Sun' })).toBe(true);
 
     // 星期一到星期六
     for (let i = 0; i < 6; i++) {
-      const time = new Date('2022-07-' + (11 + i));
+      const time = strToDate(('2022-07-' + (11 + i)) as `${number}-${number}-${number}`)!;
       expect(inSameWeek({ now: monday, date: time })).toBe(true);
       expect(inSameWeek({ now: monday, date: time, weekStart: 'Mon' })).toBe(true);
       expect(inSameWeek({ now: monday, date: time, weekStart: 'Sun' })).toBe(true);
     }
 
     // 这个星期天
-    const curSunday = new Date('2022-07-17');
+    const curSunday = strToDate('2022-07-17')!;
     expect(inSameWeek({ now: monday, date: curSunday })).toBe(true);
     expect(inSameWeek({ now: monday, date: curSunday, weekStart: 'Mon' })).toBe(true);
     expect(inSameWeek({ now: monday, date: curSunday, weekStart: 'Sun' })).toBe(false);
+
+    // 星期六
+    const curThu = strToDate('2022-07-16')!;
+    expect(inSameWeek({ now: curSunday, date: curThu })).toBe(true);
+    expect(inSameWeek({ now: curSunday, date: curThu, weekStart: 'Mon' })).toBe(true);
+    expect(inSameWeek({ now: curSunday, date: curThu, weekStart: 'Sun' })).toBe(false);
 
     // 与当天对比
     expect(inSameWeek({ date: new Date() })).toBe(true);
