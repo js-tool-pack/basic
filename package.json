@@ -2,7 +2,7 @@
   "name": "@tool-pack/basic",
   "version": "0.0.1-beta.0",
   "packageManager": "pnpm@7.1.0",
-  "description": "🛠 typescript javascript basic functions / 基本函数",
+  "description": "🛠 typescript javascript basic utils functions / 基础工具函数",
   "scripts": {
     "pkg:init": "esno scripts/init-pkg.ts",
     "pkg:new": "esno scripts/new-pkg.ts",

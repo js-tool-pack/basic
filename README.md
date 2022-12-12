@@ -1,6 +1,6 @@
 # @tool-pack/basic
 
-> 🛠 基础工具类
+> 🛠 typescript javascript basic utils functions / 基础工具函数
 
 该库从[@mxssfd/core](https://github.com/mengxinssfd/ts-utils/tree/981d9d/packages/core)迁移而来
 
