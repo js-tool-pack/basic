@@ -146,7 +146,7 @@ describe('time', function () {
       '05天 00时00分00秒',
     );
     expect(
-      dateDiff(new Date('2020-05-06'), new Date('2020-05-01 3:20:10'), 'd天 hh时mm分ss秒'),
+      dateDiff(strToDate('2020-05-06')!, strToDate('2020-05-01 3:20:10')!, 'd天 hh时mm分ss秒'),
     ).toBe('5天 04时39分50秒');
 
     expect(dateDiff(new Date('2020-05-01'), new Date('2020-05-06'), 'd天 h时m分s秒')).toBe(
@@ -276,7 +276,7 @@ describe('time', function () {
   });
   test('inSameWeek', async () => {
     // 星期一
-    const monday = new Date('2022-07-11');
+    const monday = strToDate('2022-07-11')!;
 
     // 上个星期天
     const lastSunday = new Date('2022-07-10');
