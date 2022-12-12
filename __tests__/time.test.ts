@@ -141,15 +141,18 @@ describe('time', function () {
     expect(timeCountDown()).toBe(0);
   });
   test('dateDiff', () => {
-    expect(dateDiff(new Date('2020-05-01'), new Date('2020-05-06'))).toBe('0年5天00时00分00秒');
-    expect(dateDiff(new Date('2020-05-01'), new Date('2020-05-06'), 'dd天 hh时mm分ss秒')).toBe(
+    expect(dateDiff(strToDate('2020-05-01')!, strToDate('2020-05-06')!)).toBe('0年5天00时00分00秒');
+    expect(dateDiff(strToDate('2020-05-01')!, strToDate('2020-05-06')!, 'dd天 hh时mm分ss秒')).toBe(
       '05天 00时00分00秒',
     );
+
+    expect(new Date('2020-5-6').getHours()).toBe(0);
+
     expect(
       dateDiff(strToDate('2020-05-06')!, strToDate('2020-05-01 3:20:10')!, 'd天 hh时mm分ss秒'),
-    ).toBe('5天 04时39分50秒');
+    ).toBe('4天 20时39分50秒');
 
-    expect(dateDiff(new Date('2020-05-01'), new Date('2020-05-06'), 'd天 h时m分s秒')).toBe(
+    expect(dateDiff(strToDate('2020-05-01')!, strToDate('2020-05-06')!, 'd天 h时m分s秒')).toBe(
       '5天 0时0分0秒',
     );
     // expect(dateDiff(new Date('2020-05-06'), new Date('2020-05-01 3:20:10'), 'd天 h时m分s秒')).toBe(
