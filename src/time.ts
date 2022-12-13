@@ -266,7 +266,7 @@ export function dateDiff(first: Date, second: Date, format: string = "Y年d天 H
 */
 
 /**
- * 创建一个记录了调用时间的计时器
+ * 创建一个记录了调用时间的计时器闭包函数
  *
  * @example
  *
@@ -307,7 +307,7 @@ export function createTimeCountDown(countDown: number): () => number {
 }*/
 
 /**
- * 创建一个倒计时函数
+ * 创建一个倒计时闭包函数
  *
  * @example
  *
@@ -325,7 +325,8 @@ export function createTimeCountDown(countDown: number): () => number {
  * await sleep(350);
  * timeCountDown(); // 0
  *
- * @param timeout 时长(毫秒)
+ * @param timeout 倒计时时长(毫秒)
+ * @returns {()=> number} 返回一个闭包函数，闭包返回的是倒计时，倒计时最小为0，不会是负数
  */
 export function createTimeCountDown(timeout: number): () => number {
   let timeCountUp: (() => number) | null = createTimeCountUp();
@@ -333,7 +334,8 @@ export function createTimeCountDown(timeout: number): () => number {
     if (timeCountUp) {
       const res = timeout - timeCountUp();
       if (res > 0) return res;
-      else timeCountUp = null;
+      // 清理createTimeCountUp闭包
+      timeCountUp = null;
     }
     return 0;
   };
