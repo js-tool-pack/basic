@@ -1,3 +1,9 @@
+## [0.0.1](https://github.com/js-tool-pack/basic/compare/v0.0.1-beta.0...v0.0.1) (2022-12-13)
+
+### Bug Fixes
+
+- **time:** 修复`inSameWeek`边界问题 ([67106da](https://github.com/js-tool-pack/basic/commit/67106daf0b31da746ea1ca0bc78940ba54650a82))
+
 ## 0.0.1-beta.0 (2022-12-12)
 
 ### Features
