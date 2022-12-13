@@ -453,6 +453,8 @@ export function updateIns<T extends object>(target: T, ...others: object[]): T {
  * 因为直接object.hasOwnProperty(key)的话object可能会是null,所以另外封装一个函数使用。
  * 可以用作类型守卫：见example。
  *
+ * TODO 该工具与Object.hasOwn一致，属于polyfill性质，不过Object.hasOwn毕竟是es2022的新api，过几年后可移除该polyfill工具
+ *
  * @example
  *
  * const o = { a: 1 };
@@ -469,8 +471,8 @@ export function updateIns<T extends object>(target: T, ...others: object[]): T {
  * @param obj
  * @param key
  */
-export function hasOwn<T extends object>(obj: T, key: any): key is keyof T {
-  return Object.prototype.hasOwnProperty.call(obj, key);
+export function hasOwn<T extends object>(obj: T, key: PropertyKey): key is keyof T {
+  return Object.prototype.hasOwnProperty.call(obj, key as keyof T);
 }
 
 /**
