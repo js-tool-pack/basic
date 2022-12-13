@@ -206,18 +206,21 @@ describe('object', function () {
   });
 
   test('hasOwn', () => {
-    const fn = cm.hasOwn;
+    const hasOwn = cm.hasOwn;
 
-    const obj = { a: 1, b: 2 } as const;
+    const obj = { a: 1, b: 2, '[object Object]': 1 } as const;
 
-    expect(fn(obj, 'a')).toBeTruthy();
-    expect(fn(obj, 'c')).toBeFalsy();
+    expect(hasOwn(obj, 'a')).toBeTruthy();
+    expect(hasOwn(obj, 'c')).toBeFalsy();
+    expect(hasOwn(obj, '[object Object]')).toBeTruthy();
+    expect(hasOwn(obj, {} as any)).toBeTruthy();
+    expect(Object.hasOwn(obj, {} as any)).toBeTruthy();
 
     const obj2 = Object.create(obj);
     obj2.a = 3;
 
-    expect(fn(obj2, 'a')).toBeTruthy();
-    expect(fn(obj2, 'b')).toBeFalsy();
+    expect(hasOwn(obj2, 'a')).toBeTruthy();
+    expect(hasOwn(obj2, 'b')).toBeFalsy();
   });
 
   test('swap', () => {
