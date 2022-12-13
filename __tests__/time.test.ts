@@ -14,6 +14,7 @@ import {
   getMonthTheNthWeekday,
 } from '../src/time';
 import { sleep } from '../src';
+import { chunk, createArray } from '@mxssfd/core';
 
 describe('time', function () {
   test('msToDates', () => {
@@ -68,7 +69,7 @@ describe('time', function () {
     expect(formatDate(date1, 'yyyy-MM-dd')).toBe('2020-02-02');
     expect(formatDate(date1, 'hh:mm:ss')).toBe('10:10:10');
     expect(formatDate(date1, 'dd-MM-yyyy')).toBe('02-02-2020');
-    expect(formatDate(date1, 'yyyyq季')).toBe('2020春季');
+    expect(formatDate(date1, 'yyyyq季')).toBe('2020冬季');
 
     // week start
     expect(formatDate(new Date('2020-01-12'), '周w')).toBe('周日');
@@ -82,25 +83,31 @@ describe('time', function () {
     // week end
 
     // season start
-    expect(formatDate(new Date('2020-01-12'), 'q')).toBe('春');
-    expect(formatDate(new Date('2020-02-12'), 'q')).toBe('春');
+    expect(formatDate(new Date('2020-01-12'), 'q')).toBe('冬');
+    expect(formatDate(new Date('2020-02-12'), 'q')).toBe('冬');
     expect(formatDate(new Date('2020-03-13'), 'q')).toBe('春');
-    expect(formatDate(new Date('2020-04-14'), 'q')).toBe('夏');
-    expect(formatDate(new Date('2020-05-15'), 'q')).toBe('夏');
+    expect(formatDate(new Date('2020-04-14'), 'q')).toBe('春');
+    expect(formatDate(new Date('2020-05-15'), 'q')).toBe('春');
     expect(formatDate(new Date('2020-06-16'), 'q')).toBe('夏');
-    expect(formatDate(new Date('2020-07-17'), 'q')).toBe('秋');
-    expect(formatDate(new Date('2020-08-18'), 'q')).toBe('秋');
+    expect(formatDate(new Date('2020-07-17'), 'q')).toBe('夏');
+    expect(formatDate(new Date('2020-08-18'), 'q')).toBe('夏');
     expect(formatDate(new Date('2020-09-18'), 'q')).toBe('秋');
-    expect(formatDate(new Date('2020-10-18'), 'q')).toBe('冬');
-    expect(formatDate(new Date('2020-11-18'), 'q')).toBe('冬');
+    expect(formatDate(new Date('2020-10-18'), 'q')).toBe('秋');
+    expect(formatDate(new Date('2020-11-18'), 'q')).toBe('秋');
     expect(formatDate(new Date('2020-12-18'), 'q')).toBe('冬');
 
     // 自定义季节名
-    expect(formatDate(new Date('2020-01-12'), 'q', { seasonText: ['spring'] })).toBe('spring');
+    const seasonNames = ['spring', 'summer', 'autumn', 'winter'];
+    expect(formatDate(new Date('2020-01-12'), 'q', { seasonNames })).toBe('winter');
+
+    // 自定义季节所在月份范围
+    const seasonRanges: number[][] = chunk(createArray({ start: 1, len: 12 }), 3);
+    expect(formatDate(new Date('2020-01-12'), 'q', { seasonNames, seasonRanges })).toBe('spring');
+    expect(formatDate(new Date('2020-12-12'), 'q', { seasonNames, seasonRanges })).toBe('winter');
 
     // 自定义星期名字
-    const weekText = ['sunday', 'monday'];
-    expect(formatDate(new Date('2020-01-12'), 'w', { weekText })).toBe('sunday');
+    const weekNames = ['sunday', 'monday'];
+    expect(formatDate(new Date('2020-01-12'), 'w', { weekNames })).toBe('sunday');
 
     const date2 = strToDate('2019-12-12 10:10:10') as Date;
     expect(formatDate(date2, 'd-M-yy')).toBe('12-12-19');
