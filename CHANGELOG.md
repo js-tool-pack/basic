@@ -1,3 +1,20 @@
+## [0.0.2](https://github.com/js-tool-pack/basic/compare/v0.0.1...v0.0.2) (2022-12-13)
+
+### Code Refactoring
+
+- **time:** `formatDate` ([a14c5c2](https://github.com/js-tool-pack/basic/commit/a14c5c220218a67cc8c8f1f02bfbcd9f37c375e6))
+
+### Tests
+
+- **time:** `formatDate` ([e1d8539](https://github.com/js-tool-pack/basic/commit/e1d85392538e1f97837d76328713125afdc08a0b))
+
+### BREAKING CHANGES
+
+- **time:** 1.seasonText 改为 seasonNames
+  2.weekText 改为 weekNames 3.季节月份范围不再默认为 1-3，4-6...
+- **time:** 1.seasonText 改为 seasonNames
+  2.weekText 改为 weekNames 3.季节月份范围不再默认为 1-3，4-6...
+
 ## [0.0.1](https://github.com/js-tool-pack/basic/compare/v0.0.1-beta.0...v0.0.1) (2022-12-13)
 
 ### Bug Fixes
