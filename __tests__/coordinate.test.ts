@@ -72,9 +72,9 @@ describe('coordinate', function () {
   });
   test('getAngle', () => {
     expect(cd.getAngle([0, 0], [1, 1])).toBe(135);
-    expect(cd.getAngle([0, 0], [1, 1], cd.Direct.bottom)).toBe(315);
-    expect(cd.getAngle([0, 0], [1, 1], cd.Direct.left)).toBe(225);
-    expect(cd.getAngle([0, 0], [1, 1], cd.Direct.right)).toBe(45);
+    expect(cd.getAngle([0, 0], [1, 1], 'bottom')).toBe(315);
+    expect(cd.getAngle([0, 0], [1, 1], 'left')).toBe(225);
+    expect(cd.getAngle([0, 0], [1, 1], 'right')).toBe(45);
   });
   test('getRotatePoint', () => {
     expect(cd.getRotatePoint([0, 0], Math.sqrt(2), 135)).toEqual([1, 1]);
