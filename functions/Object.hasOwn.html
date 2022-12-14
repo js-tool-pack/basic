@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>hasOwn | basic - v0.0.1</title><meta name="description" content="Documentation for basic - v0.0.1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>hasOwn | basic - v0.0.3</title><meta name="description" content="Documentation for basic - v0.0.3"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
   padding: 0 2rem;
 }
 .tsd-page-toolbar {
@@ -93,7 +93,7 @@ code.tsd-tag {
 <div id="tsd-toolbar-links"><a href="https://github.com/js-tool-pack/basic">GitHub</a></div></div>
 <ul class="results">
 <li class="state loading">Preparing search index...</li>
-<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.1</a>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.3</a>
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">Settings <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg></summary>
 <div class="tsd-accordion-details">
@@ -231,17 +231,18 @@ code.tsd-tag {
 <div class="col-content">
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
-<li><a href="../modules.html">basic - v0.0.1</a></li>
+<li><a href="../modules.html">basic - v0.0.3</a></li>
 <li><a href="../modules/Object.html">Object</a></li>
 <li><a href="Object.hasOwn.html">hasOwn</a></li></ul>
 <h1>Function hasOwn</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures tsd-kind-function tsd-parent-kind-namespace">
-<li class="tsd-signature tsd-anchor-link" id="hasOwn">has<wbr/>Own<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">key</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#hasOwn" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="hasOwn">has<wbr/>Own<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PropertyKey</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">key</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#hasOwn" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>判断对象是否包含某个属性。</p>
 <p>因为直接object.hasOwnProperty(key)的话object可能会是null,所以另外封装一个函数使用。
 可以用作类型守卫：见example。</p>
+<p>TODO 该工具与Object.hasOwn一致，属于polyfill性质，不过Object.hasOwn毕竟是es2022的新api，过几年后可移除该polyfill工具</p>
 
 <h3>Example</h3><pre><code class="language-ts"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">o</span><span class="hl-1"> = { </span><span class="hl-3">a:</span><span class="hl-1"> </span><span class="hl-8">1</span><span class="hl-1"> };</span><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">k</span><span class="hl-1"> = </span><span class="hl-7">&#39;a&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">k</span><span class="hl-1"> = </span><span class="hl-7">&#39;c&#39;</span><span class="hl-1">;</span><br/><span class="hl-4">// 报错需要在tsconfig.json设置</span><br/><span class="hl-4">// &quot;suppressImplicitAnyIndexErrors&quot;: false,</span><br/><span class="hl-4">// &quot;noImplicitAny&quot;: true,</span><br/><span class="hl-3">o</span><span class="hl-1">[</span><span class="hl-3">k</span><span class="hl-1">] = </span><span class="hl-8">2</span><span class="hl-1">; </span><span class="hl-4">// 此处没有类型守卫会报错</span><br/><span class="hl-10">if</span><span class="hl-1"> (</span><span class="hl-0">hasOwn</span><span class="hl-1">(</span><span class="hl-3">o</span><span class="hl-1">, </span><span class="hl-3">k</span><span class="hl-1">)) {</span><br/><span class="hl-1">  </span><span class="hl-3">o</span><span class="hl-1">[</span><span class="hl-3">k</span><span class="hl-1">] = </span><span class="hl-8">3</span><span class="hl-1">; </span><span class="hl-4">// 有类型守卫，安全</span><br/><span class="hl-1">}</span>
 </code></pre>
@@ -257,8 +258,8 @@ code.tsd-tag {
 <li>
 <h5>obj: <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h5></li>
 <li>
-<h5>key: <span class="tsd-signature-type">any</span></h5></li></ul></div>
+<h5>key: <span class="tsd-signature-type">PropertyKey</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">key</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/20b95d1/src/object/common.ts#L472">object/common.ts:472</a></li></ul></aside></li></ul></section></div></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/33ff288/src/object/common.ts#L474">object/common.ts:474</a></li></ul></aside></li></ul></section></div></div>
 <div class="overlay"></div><script src="../assets/main.js"></script></body></html>
