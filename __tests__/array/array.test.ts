@@ -465,6 +465,9 @@ describe('array', function () {
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 10)).toEqual([[0, 1, 2, 3, 4, 5, 6]]);
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 1)).toEqual([[0], [1], [2], [3], [4], [5], [6]]);
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 0)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+    // 不支持-1
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     expect(chunk([0, 1, 2, 3, 4, 5, 6], -1)).toEqual([0, 1, 2, 3, 4, 5, 6]);
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 3)).toEqual([[0, 1, 2], [3, 4, 5], [6]]);
     expect(chunk([0, 1, 2, 3, 4, 5], 3)).toEqual([
