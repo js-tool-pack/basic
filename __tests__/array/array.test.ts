@@ -481,6 +481,17 @@ describe('array', function () {
     expect(chunk({} as any, 3)).toEqual([]);
 
     expect(() => chunk(null as any, 3)).toThrow();
+
+    expect(chunk(new Uint8ClampedArray([0, 1, 2, 3, 4, 5]), 2)).toEqual([
+      [0, 1],
+      [2, 3],
+      [4, 5],
+    ]);
+    expect(chunk({ length: 6 }, 2)).toEqual([
+      [undefined, undefined],
+      [undefined, undefined],
+      [undefined, undefined],
+    ]);
   });
 
   test('inRange', () => {
