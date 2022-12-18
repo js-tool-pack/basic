@@ -685,12 +685,12 @@ export function unique<T>(target: T[], isRepeatFn?: (value: T, value2: T) => boo
  * chunk({} as any, 3); // []
  *
  */
-export function chunk(arr: unknown[], chunkLen: number) {
-  if (chunkLen < 1) return arr.slice();
+export function chunk(arr: ArrayLike<unknown>, chunkLen: number) {
+  if (chunkLen < 1) return Array.prototype.slice.call(arr);
   const result: any[] = [];
   let i = 0;
   while (i < arr.length) {
-    result.push(arr.slice(i, (i += chunkLen)));
+    result.push(Array.prototype.slice.call(arr, i, (i += chunkLen)));
   }
   return result;
 }
