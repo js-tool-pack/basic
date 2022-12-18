@@ -1,3 +1,4 @@
+import type { TupleM2N } from '@tool-pack/types';
 import { typeOf, isNaN, isArray, isFunction } from '../data-type';
 import { hasOwn } from '../object';
 
@@ -685,7 +686,7 @@ export function unique<T>(target: T[], isRepeatFn?: (value: T, value2: T) => boo
  * chunk({} as any, 3); // []
  *
  */
-export function chunk(arr: ArrayLike<unknown>, chunkLen: number) {
+export function chunk<T, L extends number>(arr: ArrayLike<T>, chunkLen: L): TupleM2N<T, 0, L>[] {
   if (chunkLen < 1) return Array.prototype.slice.call(arr);
   const result: any[] = [];
   let i = 0;
