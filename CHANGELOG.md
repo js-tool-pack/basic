@@ -1,3 +1,9 @@
+## [0.0.5](https://github.com/js-tool-pack/basic/compare/v0.0.4...v0.0.5) (2022-12-18)
+
+### Features
+
+- **array:** chunk 改为参数改为范型，返回值支持推导 ([99e38f5](https://github.com/js-tool-pack/basic/commit/99e38f541cd77281bf8dd44d1980cdb7a71bae9e))
+
 ## [0.0.4](https://github.com/js-tool-pack/basic/compare/v0.0.3...v0.0.4) (2022-12-18)
 
 ### Features
