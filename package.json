@@ -103,7 +103,7 @@
     }
   },
   "buildOptions": {
-    "name": "Basic",
+    "name": "ToolPackBasic",
     "formats": [
       "esm-bundler",
       "esm-browser",
