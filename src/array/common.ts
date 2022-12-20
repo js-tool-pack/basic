@@ -919,3 +919,70 @@ export function sum(arr: number[]): number {
 export function avg(arr: number[]): number {
   return sum(arr) / arr.length;
 }
+
+/**
+ * 获取num阶杨辉三角
+ *
+ * @example
+ *
+ * getYangHuiTriangleOne(6); // [1, 5, 10, 10, 5, 1]
+ * getYangHuiTriangleOne(10); // [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]
+ *
+ * @param num 阶数
+ */
+export function getYangHuiTriangleOne(num: number): number[] {
+  if (num < 1) return [];
+  if (num === 1) return [1];
+
+  const result: number[] = [];
+  result[0] = result[1] = 1;
+
+  for (let i = 3; i <= num; i++) {
+    const prev = result.slice();
+
+    result[0] = result[i - 1] = 1;
+
+    for (let j = 1; j < i - 1; j++) {
+      result[j] = (prev[j - 1] as number) + (prev[j] as number);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * 获取num阶杨辉三角
+ *
+ * @example
+ *
+ * // [1],
+ * // [1, 1],
+ * // [1, 2, 1],
+ * // [1, 3, 3, 1],
+ * // [1, 4, 6, 4, 1],
+ * // [1, 5, 10, 10, 5, 1]
+ * getYangHuiTriangle(6);
+ *
+ * @param num 阶数
+ */
+export function getYangHuiTriangle(num: number): number[][] {
+  const result: number[][] = [[1]];
+
+  if (num === 1) return result;
+
+  result.push([1, 1]);
+
+  for (let i = 3; i <= num; i++) {
+    const cur: number[] = [];
+    const prev = result[result.length - 1] as number[];
+
+    cur[0] = cur[i - 1] = 1;
+
+    for (let k = 1; k < i - 1; k++) {
+      cur[k] = (prev[k - 1] as number) + (prev[k] as number);
+    }
+    result.push(cur);
+  }
+
+  return result;
+}
