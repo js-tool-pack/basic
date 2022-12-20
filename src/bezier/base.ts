@@ -1,4 +1,5 @@
 import { Tuple } from '@tool-pack/types';
+import { strip } from '../number';
 
 /**
  * 2阶贝塞尔曲线
@@ -9,7 +10,7 @@ import { Tuple } from '@tool-pack/types';
  * @param v2 值2
  */
 export function bezier2(t: number, v1: number, cv: number, v2: number): number {
-  return (1 - t) * (1 - t) * v1 + 2 * t * (1 - t) * cv + t * t * v2;
+  return strip((1 - t) * (1 - t) * v1 + 2 * t * (1 - t) * cv + t * t * v2);
 }
 
 /**
@@ -22,11 +23,11 @@ export function bezier2(t: number, v1: number, cv: number, v2: number): number {
  * @param v2 值2
  */
 export function bezier3(t: number, v1: number, cv1: number, cv2: number, v2: number): number {
-  return (
+  return strip(
     v1 * (1 - t) * (1 - t) * (1 - t) +
-    3 * cv1 * t * (1 - t) * (1 - t) +
-    3 * cv2 * t * t * (1 - t) +
-    v2 * t * t * t
+      3 * cv1 * t * (1 - t) * (1 - t) +
+      3 * cv2 * t * t * (1 - t) +
+      v2 * t * t * t,
   );
 }
 
@@ -50,7 +51,7 @@ export function bezier3withTimingFN(
   v2: number,
   tm: keyof typeof predefined | string = 'ease',
   expendTimingFN: object = {},
-) {
+): number {
   const tfn = Object.assign({}, predefined, expendTimingFN);
   const fn = tfn[tm].split(',').map(Number) as Tuple<number, 4>;
 
