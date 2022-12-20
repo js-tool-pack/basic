@@ -43,6 +43,37 @@ describe('array', function () {
       }),
     ).toEqual(['30', '41']);
     expect(createArray({ start: 3, len: 5, end: 6, fill: 0 })).toEqual([0, 0, 0]);
+
+    // 测试fill参数
+    const fn = jest.fn((a) => a);
+
+    // end为len
+    createArray({ len: 5, fill: fn });
+    expect(fn.mock.calls).toEqual([
+      [0, 0, 5],
+      [1, 1, 5],
+      [2, 2, 5],
+      [3, 3, 5],
+      [4, 4, 5],
+    ]);
+
+    fn.mock.calls.length = 0;
+
+    // end为start+len
+    createArray({ start: 3, len: 5, fill: fn });
+    expect(fn.mock.calls).toEqual([
+      [3, 0, 8],
+      [4, 1, 8],
+      [5, 2, 8],
+      [6, 3, 8],
+      [7, 4, 8],
+    ]);
+
+    fn.mock.calls.length = 0;
+
+    // end为end
+    createArray({ start: 2, end: 3, fill: fn });
+    expect(fn.mock.calls).toEqual([[2, 0, 3]]);
   });
   test('forEach', () => {
     const arr1 = [1, 2, 3];
