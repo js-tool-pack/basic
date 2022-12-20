@@ -1,3 +1,5 @@
+import { Tuple } from '@tool-pack/types';
+
 /**
  * 2阶贝塞尔曲线
  *
@@ -26,4 +28,38 @@ export function bezier3(t: number, v1: number, cv1: number, cv2: number, v2: num
     3 * cv2 * t * t * (1 - t) +
     v2 * t * t * t
   );
+}
+
+const predefined = {
+  ease: '.25,.1,.25,1',
+  linear: '0,0,1,1',
+  'ease-in': '.42,0,1,1',
+  'ease-out': '0,0,.58,1',
+  'ease-in-out': '.42,0,.58,1',
+};
+
+/**
+ * 使用3阶贝塞尔曲线
+ * ---
+ * 从低到高到顺序生成的曲线正确性是可以保证的，否则可能不对
+ *
+ */
+export function bezier3withTimingFN(
+  t: number,
+  v1: number,
+  v2: number,
+  tm: keyof typeof predefined | string = 'ease',
+  expendTimingFN: object = {},
+) {
+  const tfn = Object.assign({}, predefined, expendTimingFN);
+  const fn = tfn[tm].split(',').map(Number) as Tuple<number, 4>;
+
+  const diff = Math.abs(v2 - v1);
+  let cv1 = diff * fn[0];
+  let cv2 = diff * fn[2];
+  if (v2 < v1) {
+    [cv1, cv2] = [cv2, cv1];
+  }
+
+  return bezier3(t, v1, cv1, cv2, v2);
 }
