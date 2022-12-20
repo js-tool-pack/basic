@@ -2,11 +2,11 @@ import { createArray } from '../src';
 import * as Bezier from '../src/bezier';
 
 describe('bezier', function () {
-  test('twoBezier', () => {
+  test('pointBezier2', () => {
     const bezierList = createArray({
       start: 0,
       end: 11,
-      fill: (i) => Bezier.twoBezier(i / 10, [1, 1], [10, 10], [10, 10]),
+      fill: (i) => Bezier.pointBezier2(i / 10, [1, 1], [10, 10], [10, 10]),
     });
 
     // [

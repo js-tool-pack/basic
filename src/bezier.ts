@@ -22,7 +22,7 @@ export function bezier2(t: number, v1: number, cv: number, v2: number): number {
  * const bezierList = createArray({
  *   start: 0,
  *   end: 11,
- *   fill: (i) => twoBezier(i / 10, [1, 1], [10, 10], [10, 10]),
+ *   fill: (i) => pointBezier2(i / 10, [1, 1], [10, 10], [10, 10]),
  * });
  *
  * // [
@@ -42,10 +42,15 @@ export function bezier2(t: number, v1: number, cv: number, v2: number): number {
  *
  * @param t 当前百分比，范围：0-1
  * @param startPos 起点坐标
- * @param endPos 终点坐标
  * @param controlPoint 控制点
+ * @param endPos 终点坐标
  */
-export function twoBezier(t: number, startPos: Point, endPos: Point, controlPoint: Point): Point {
+export function pointBezier2(
+  t: number,
+  startPos: Point,
+  controlPoint: Point,
+  endPos: Point,
+): Point {
   const [x1, y1] = startPos;
   const [cx, cy] = controlPoint;
   const [x2, y2] = endPos;
