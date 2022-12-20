@@ -12,3 +12,4 @@ export * from './random';
 export * from './color';
 export * from './decorator';
 export * from './url';
+export * from './bezier';
