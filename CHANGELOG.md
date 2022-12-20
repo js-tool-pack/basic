@@ -1,3 +1,24 @@
+## [0.0.6](https://github.com/js-tool-pack/basic/compare/v0.0.5...v0.0.6) (2022-12-20)
+
+### Code Refactoring
+
+- **bezier.ts:** twoBezier 重命名为 pointBezier2 ([1a12bdb](https://github.com/js-tool-pack/basic/commit/1a12bdb39114bc6863c955c479c84539541051ea))
+
+### Features
+
+- **array:** createArray fill 回调传入 end 参数 ([e3bc4ae](https://github.com/js-tool-pack/basic/commit/e3bc4ae518a5813355972d4bb8c8477fb9a076f2))
+- **array:** 添加获取杨辉三角 getYangHuiTriangleOne、getYangHuiTriangle ([9eb8ddb](https://github.com/js-tool-pack/basic/commit/9eb8ddbda29415c24b50938aa4826adf68d5976e))
+- **bezier.ts:** 新增 bezier2 ([bc2ff09](https://github.com/js-tool-pack/basic/commit/bc2ff09d3fb9e5336430a63ae8a3b55f127817b2))
+- **bezier/base:** 使用 strip 去除长小数 ([90e4b54](https://github.com/js-tool-pack/basic/commit/90e4b54cc13d0015c9633c00bb513345efea940e))
+- **bezier/point:** pointBezierN n 阶贝塞尔曲线 ([43ed44f](https://github.com/js-tool-pack/basic/commit/43ed44f9868af1bfc28702d6b1c353b9fcdf7521))
+- **bezier:** bezier3 ([8508a69](https://github.com/js-tool-pack/basic/commit/8508a69546b2ff40036889907e27506b3e7f4869))
+- **bezier:** bezier3withTimingFN ([7b67c10](https://github.com/js-tool-pack/basic/commit/7b67c10d00f533994a841441624f4cb6f8500eb0))
+- **bezier:** pointBezier3 ([56b4c49](https://github.com/js-tool-pack/basic/commit/56b4c49bcf7a4143d2594c1da47d86f775e192e9))
+
+### BREAKING CHANGES
+
+- **bezier.ts:** twoBezier 重命名为 pointBezier2，并且第二个参数和第三个参数位置互换
+
 ## [0.0.5](https://github.com/js-tool-pack/basic/compare/v0.0.4...v0.0.5) (2022-12-18)
 
 ### Features
