@@ -4,8 +4,10 @@ import { hasOwn } from '../object';
 
 /**
  * 创建数组
+ * ---
+ * len与end两个都有值时，以小的为准；
+ * 包含start，不包含end
  *
- * len与end两个都有值时，以小的为准
  * @example
  * // returns [0, 1]
  * createArray({end: 2});
@@ -28,20 +30,20 @@ export function createArray<T = number>({
   start?: number;
   end?: number;
   len?: number;
-  fill?: T | ((item: number, index: number) => T);
+  fill?: T | ((item: number, index: number, end: number) => T);
 }): T[] {
-  let e: number = start;
+  let _end: number = start;
   if (len && end) {
-    e = Math.min(start + len, end);
+    _end = Math.min(start + len, end);
   } else {
     if (len !== undefined) {
-      e = start + len;
+      _end = start + len;
     }
     if (end !== undefined) {
-      e = end;
+      _end = end;
     }
   }
-  let callback: (item: number, index: number) => any;
+  let callback: (item: number, index: number, end: number) => any;
   switch (typeOf(fill)) {
     case 'function':
       callback = fill as typeof callback;
@@ -54,8 +56,8 @@ export function createArray<T = number>({
       callback = () => fill;
   }
   const arr: any[] = [];
-  for (let item = start, index = 0; item < e; item++, index++) {
-    arr.push(callback(item, index));
+  for (let item = start, index = 0; item < _end; item++, index++) {
+    arr.push(callback(item, index, _end));
   }
   return arr;
 }
