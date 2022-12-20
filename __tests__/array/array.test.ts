@@ -20,6 +20,8 @@ import {
   castArray,
   sum,
   avg,
+  getYangHuiTriangle,
+  getYangHuiTriangleOne,
 } from '../../src';
 
 describe('array', function () {
@@ -668,5 +670,32 @@ describe('array', function () {
   test('avg', () => {
     expect(avg([20, 20, 20])).toBe(20);
     expect(avg([-10, 20, 20])).toBe(10);
+  });
+  const yh = [
+    [1],
+    [1, 1],
+    [1, 2, 1],
+    [1, 3, 3, 1],
+    [1, 4, 6, 4, 1],
+    [1, 5, 10, 10, 5, 1],
+    [1, 6, 15, 20, 15, 6, 1],
+    [1, 7, 21, 35, 35, 21, 7, 1],
+    [1, 8, 28, 56, 70, 56, 28, 8, 1],
+    [1, 9, 36, 84, 126, 126, 84, 36, 9, 1],
+  ];
+  test('getYangHuiTriangleOneFloor', () => {
+    expect(getYangHuiTriangleOne(1)).toEqual(yh[0]);
+
+    yh.forEach((item, i) => {
+      expect(getYangHuiTriangleOne(i + 1)).toEqual(item);
+    });
+
+    expect(getYangHuiTriangleOne(10)).toEqual(yh[9]);
+    expect(getYangHuiTriangleOne(6)).toEqual([1, 5, 10, 10, 5, 1]);
+    expect(getYangHuiTriangleOne(10)).toEqual([1, 9, 36, 84, 126, 126, 84, 36, 9, 1]);
+  });
+  test('getYangHuiTriangle', () => {
+    expect(getYangHuiTriangle(1)).toEqual(yh.slice(0, 1));
+    expect(getYangHuiTriangle(10)).toEqual(yh.slice());
   });
 });
