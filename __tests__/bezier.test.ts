@@ -18,25 +18,40 @@ describe('bezier', function () {
     }
 
     const len = 20;
-    const paths = createArray({
+    let paths = createArray({
       len: len + 1,
       fill: (i) => bezierTiming(i / len, [0, 600], [600, 0], 'ease-in-out'),
     }).map(([x]) => x);
 
-    const list = createArray({
+    let list = createArray({
       len: len + 1,
       fill: (i) => bezier3withTimingFN(i / len, 0, 600, 'ease-in-out'),
     });
 
     expect(list).toEqual(paths);
 
+    paths = createArray({
+      len: len + 1,
+      fill: (i) => bezierTiming(i / len, [0, 600], [600, 0]),
+    }).map(([x]) => x);
+
+    list = createArray({
+      len: len + 1,
+      fill: (i) => bezier3withTimingFN(i / len, 0, 600),
+    });
+
+    expect(list).toEqual(paths);
+
     // 反向生成，没有太好的方法检验是否准确
-    // const list2 = createArray({
-    //   len: len + 1,
-    //   fill: (i) => bezier3withTimingFN(i / len, 600, 0, 'ease-in-out'),
-    // });
-    //
-    // expect(list2).toEqual(paths);
+    const list2 = createArray({
+      len: len + 1,
+      fill: (i) => bezier3withTimingFN(i / len, 600, 0, 'ease-in-out'),
+    });
+
+    expect(list2).toEqual([
+      600, 563.331, 528.768, 496.077, 465.024, 435.375, 406.896, 379.353, 352.512, 326.139, 300,
+      273.861, 247.488, 220.647, 193.104, 164.625, 134.976, 103.923, 71.232, 36.669, 0,
+    ]);
   });
   const b2Res = [
     [1, 1],
@@ -121,5 +136,7 @@ describe('bezier', function () {
       [9.1441, 9.1441],
       [10, 10],
     ]);
+
+    expect(pointBezierN(0)).toBe(null);
   });
 });
