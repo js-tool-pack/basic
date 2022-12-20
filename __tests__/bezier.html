@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bezier</title>
+    <style>
+      * {
+        margin: 0;
+        font-size: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="200" height="200"></canvas>
+    <canvas width="200" height="200"></canvas>
+    <canvas width="200" height="200"></canvas>
+    <canvas width="200" height="200"></canvas>
+    <canvas width="1000" height="200"></canvas>
+    <script src="../dist/basic.global.js"></script>
+    <script>
+      /**
+       * @type {NodeList<HTMLCanvasElement>}
+       */
+      const canvas = document.querySelectorAll('canvas');
+
+      /**
+       * @param canvas {HTMLCanvasElement}
+       * @param start {[number, number]}
+       * @param end {[number, number]}
+       */
+      function drawBezier(canvas, start, end) {
+        const ctx = canvas.getContext('2d');
+
+        const timingFn = {
+          ease: '.25,.1,.25,1',
+          linear: '0,0,1,1',
+          'ease-in': '.42,0,1,1',
+          'ease-out': '0,0,.58,1',
+          'ease-in-out': '.42,0,.58,1',
+        };
+
+        function bezierTiming(t, p1, p2, tm = 'ease') {
+          const fn = timingFn[tm].split(',').map(Number);
+          const xv = Math.abs(p2[0] - p1[0]);
+          const yv = Math.abs(p2[1] - p1[1]);
+
+          let cp1 = [xv * fn[0], yv - yv * fn[1]];
+          let cp2 = [xv * fn[2], yv - yv * fn[3]];
+
+          if (p2[1] > p1[1]) {
+            [cp1, cp2] = [cp2, cp1];
+            [cp1[0], cp2[0]] = [cp2[0], cp1[0]];
+          }
+
+          return ToolPackBasic.pointBezier3(t, p1, cp1, cp2, p2);
+        }
+
+        const len = 200;
+        const paths = ToolPackBasic.createArray({
+          len: len + 1,
+          fill: (i) => bezierTiming(i / len, start, end, 'ease-in-out'),
+        });
+
+        console.log(paths);
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+
+        ctx.moveTo(paths[0][0], paths[0][1]);
+
+        paths.forEach(([x, y]) => ctx.lineTo(x, y));
+
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.strokeStyle = 'transparent';
+        ctx.arc(paths[0][0], paths[0][1], 6, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'transparent';
+        ctx.arc(paths.at(-1)[0], paths.at(-1)[1], 6, 2, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+      }
+      /**
+       * @param canvas {HTMLCanvasElement}
+       * @param points {...[number, number][]}
+       */
+      function drawBezierN(canvas, ...points) {
+        const ctx = canvas.getContext('2d');
+
+        const len = 200;
+        const paths = ToolPackBasic.createArray({
+          len: len + 1,
+          fill: (i) => ToolPackBasic.pointBezierN(ToolPackBasic.strip(i / len), ...points),
+        });
+
+        console.log(paths);
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 1;
+
+        ctx.moveTo(paths[0][0], paths[0][1]);
+
+        paths.forEach(([x, y]) => ctx.lineTo(x, y));
+
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.strokeStyle = 'transparent';
+        ctx.arc(paths[0][0], paths[0][1], 6, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'transparent';
+        ctx.arc(paths.at(-1)[0], paths.at(-1)[1], 6, 2, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      // 3阶贝塞尔
+      drawBezier(canvas[0], [0, 200], [200, 0]);
+      drawBezier(canvas[1], [200, 200], [0, 0]);
+      drawBezier(canvas[2], [200, 0], [0, 200]);
+      drawBezier(canvas[3], [0, 0], [200, 200]);
+
+      // n阶贝塞尔
+      drawBezierN(
+        canvas[4],
+
+        [0, 200],
+        [200, 0],
+        [200, 200],
+        [300, 0],
+        [500, 100],
+        [800, 500],
+        [800, 0],
+        [1000, 0],
+      );
+    </script>
+  </body>
+</html>
