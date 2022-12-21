@@ -39,26 +39,25 @@
           'ease-in-out': '.42,0,.58,1',
         };
 
-        function bezierTiming(t, p1, p2, tm = 'ease') {
+        function bezierTiming(t, p1, p2, keep, tm = 'ease') {
           const fn = timingFn[tm].split(',').map(Number);
-          const xv = Math.abs(p2[0] - p1[0]);
-          const yv = Math.abs(p2[1] - p1[1]);
+          const w = Math.max(Math.abs(p2[0] - p1[0]), p1[0], p2[0]);
+          const h = Math.max(Math.abs(p2[1] - p1[1]), p1[1], p2[1]);
 
-          let cp1 = [xv * fn[0], yv - yv * fn[1]];
-          let cp2 = [xv * fn[2], yv - yv * fn[3]];
-
-          if (p2[1] > p1[1]) {
-            [cp1, cp2] = [cp2, cp1];
-            [cp1[0], cp2[0]] = [cp2[0], cp1[0]];
-          }
+          let cp1 = ToolPackBasic.rectCoordToScreen([fn[0], fn[1]], [1, 1], [w, h], keep);
+          let cp2 = ToolPackBasic.rectCoordToScreen([fn[2], fn[3]], [1, 1], [w, h], keep);
 
           return ToolPackBasic.pointBezier3(t, p1, cp1, cp2, p2);
         }
 
+        const angle = ToolPackBasic.getAngle(start, end, 'right');
+
+        console.log('aaaaa', angle);
+
         const len = 200;
         const paths = ToolPackBasic.createArray({
           len: len + 1,
-          fill: (i) => bezierTiming(i / len, start, end, 'ease-in-out'),
+          fill: (i) => bezierTiming(i / len, start, end, angle > 180, 'ease-in-out'),
         });
 
         console.log(paths);
