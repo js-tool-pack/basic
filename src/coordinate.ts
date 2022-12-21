@@ -1,5 +1,6 @@
 import { CalcChain } from './CalcChain';
 import { inRange } from './array';
+import { strip } from './number';
 
 /**
  * 坐标点
@@ -80,6 +81,7 @@ export function getDistance(origin: Point, target: Point): number {
  * @param target 目标点
  * @param direct 需要上下左右哪个方向指向目标,默认是'top'
  * @param [direct='top']
+ * @returns 角度， 范围:[0,360)
  */
 export function getAngle(
   origin: Point,
@@ -106,12 +108,14 @@ export function getAngle(
   const angle = Math.atan2(x2 - x1, y2 - y1); //弧度  0.9272952180016122
   const theta = angle * (180 / Math.PI); //角度  53.13010235415598
 
-  return {
-    top: 180 - theta,
-    right: theta,
-    bottom: 360 - theta,
-    left: theta + 180,
-  }[direct];
+  return (
+    {
+      top: 180 - theta,
+      left: 270 - theta,
+      bottom: 360 - theta,
+      right: 450 - theta,
+    }[direct] % 360
+  );
 }
 
 /**
@@ -187,4 +191,192 @@ export function getBorderWidthBySin(a: number, angleA: number, angleB: number) {
   const radB = rad * angleB;
   const resA = a / Math.sin(radA);
   return resA * Math.sin(radB);
+}
+
+/**
+ * 笛卡尔坐标系(平面直角坐标系)转屏幕坐标系
+ * ---
+ * 翻转y轴，保持原图像
+ *
+ * @example
+ *
+ * // 直接转换
+ *
+ * // 3 │*
+ * // 2 │
+ * // 1 │
+ * //   -------------
+ * // 0    1   2   3
+ *
+ * // [0, 3] 转换为 [0, 0]
+ *
+ * // 0    1   2   3
+ * //   -*-----------
+ * // 1 │
+ * // 2 │
+ * // 3 │
+ *
+ * rectCoordToScreen([0, 3], [3, 3]); // [0, 0]
+ *
+ * // 3 │
+ * // 2 │
+ * // 1 │
+ * //   -*------------
+ * // 0    1   2   3
+ *
+ * // [0, 0] 转换为 [0, 3]
+ *
+ * // 0    1   2   3
+ * //   -------------
+ * // 1 │
+ * // 2 │
+ * // 3 │*
+ *
+ * rectCoordToScreen([0, 0], [3, 3]); // [0, 3]
+ *
+ * // 3 │
+ * // 2 │
+ * // 1 │  *
+ * //   --------------
+ * // 0    1   2   3
+ *
+ * // [1, 1] 转换为 [1, 2]
+ *
+ * // 0    1   2   3
+ * //   -------------
+ * // 1 │
+ * // 2 │  *
+ * // 3 │
+ *
+ * rectCoordToScreen([1, 1], [3, 3]); // [1, 2]
+ *
+ * rectCoordToScreen([5, 5], [20, 20]); // [5, 15]
+ *
+ * @param curPos 当前坐标点
+ * @param curView 当前坐标容器宽高
+ *
+ */
+export function rectCoordToScreen(curPos: Point, curView: Point): Point;
+/**
+ * 笛卡尔坐标系(平面直角坐标系)转屏幕坐标系
+ * ---
+ * 按比例转换，图像会翻转
+ *
+ * @example
+ *
+ * // 按比例转换，并翻转图像
+ *
+ *
+ * // 2 │
+ * // 1 │
+ * //   -*--------
+ * // 0    1   2
+ *
+ * // [0, 0] 转换为 [0, 0]
+ *
+ * // 0    1   2   3
+ * //   -*------------
+ * // 1 │
+ * // 2 │
+ * // 3 │
+ * rectCoordToScreen([0, 0], [2, 2], [3, 3]); // [0, 0]
+ *
+ * // 3 │
+ * // 2 │
+ * // 1 │  *
+ * //   -------------
+ * // 0    1   2   3
+ *
+ * // [0, 3] 转换为 [0, 0]
+ *
+ * // 0    1   2   3
+ * //   -------------
+ * // 1 │  *
+ * // 2 │
+ * // 3 │
+ *
+ * rectCoordToScreen([1, 1], [3, 3], [3, 3]); // [1, 1]
+ *
+ * rectCoordToScreen([5, 5], [20, 20], [30, 30]); // [7.5, 7.5]
+ *
+ * @param curPos 当前坐标点
+ * @param curView 当前坐标容器宽高
+ * @param targetView 目标坐标容器宽高
+ * @param keep 是否保持原图像
+ */
+export function rectCoordToScreen(
+  curPos: Point,
+  curView: Point,
+  targetView: Point,
+  keep?: false,
+): Point;
+/**
+ * 笛卡尔坐标系(平面直角坐标系)转屏幕坐标系
+ * ---
+ * 按比例转换，保持原图像 综合以上两种效果：按比例+保持原图像 翻转
+ *
+ * @example
+ *
+ * // 3 │*
+ * // 2 │
+ * // 1 │
+ * //   -------------
+ * // 0    1   2   3
+ *
+ * // [0, 3] 转换为 [0, 0]
+ *
+ * // 0    1   2   3
+ * //   -*-----------
+ * // 1 │
+ * // 2 │
+ * // 3 │
+ * rectCoordToScreen([0, 3], [3, 3], [3, 3], true); // [0, 0]
+ *
+ * // 3 │
+ * // 2 │
+ * // 1 │  *
+ * //   --------------
+ * // 0    1   2   3
+ *
+ * // [1, 1] 转换为 [1, 2]
+ *
+ * // 0    1   2   3
+ * //   -------------
+ * // 1 │
+ * // 2 │  *
+ * // 3 │
+ *
+ * rectCoordToScreen([1, 1], [3, 3], [3, 3], true); // [1, 2]
+ *
+ *
+ * rectCoordToScreen([5, 5], [20, 20], [30, 30], true); // [7.5, 22.5]
+ *
+ * @param curPos 当前坐标点
+ * @param curView 当前坐标容器宽高
+ * @param targetView 目标坐标容器宽高
+ * @param keep 保持为原图像
+ */
+export function rectCoordToScreen(
+  curPos: Point,
+  curView: Point,
+  targetView: Point,
+  keep: true,
+): Point;
+export function rectCoordToScreen(
+  curPos: Point,
+  curView: Point,
+  targetView?: Point,
+  keep = false,
+): Point {
+  const [x, y] = curPos;
+  const [w, h] = curView;
+
+  if (!targetView) return [x, h - y];
+
+  const [tw, ty] = targetView;
+
+  const x1 = (x / w) * tw;
+  const y1 = ((keep ? h - y : y) / h) * ty;
+
+  return [strip(x1), strip(y1)];
 }
