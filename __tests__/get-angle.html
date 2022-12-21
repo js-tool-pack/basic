@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      #anchor {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        width: 1px;
+        height: 100px;
+        background: red;
+        transform-origin: center;
+        transform: translate(-50%, -50%);
+      }
+      #anchor:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 6px solid transparent;
+        border-bottom-color: black;
+        transform: translate(-50%, -50%);
+        content: '';
+      }
+
+      #center {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        background: blue;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="anchor"></div>
+    <div id="center"></div>
+
+    calculate angle from two points js
+    <script src="../dist/basic.global.js"></script>
+    <script>
+      function getAngle([x1, y1], [x2, y2]) {
+        var dy = y2 - y1;
+        var dx = x2 - x1;
+        var theta = Math.atan2(dy, dx); // range (-PI, PI]
+        theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
+        if (theta < 0) theta = 360 + theta; // range [0, 360)
+        return theta + 90;
+      }
+      addEventListener('mousemove', (e) => {
+        const origin = [center.offsetLeft, center.offsetTop];
+        const target = [e.pageX, e.pageY];
+        const angle = ToolPackBasic.getAngle(origin, target);
+        console.log(angle);
+        anchor.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+      });
+    </script>
+  </body>
+</html>
