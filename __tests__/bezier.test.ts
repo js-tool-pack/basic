@@ -1,27 +1,9 @@
-import { createArray, Point } from '../src';
+import { createArray } from '../src';
 import { pointBezier3, useCubicBezier3, pointBezier2, pointBezierN } from '../src/bezier';
 
 describe('bezier', function () {
   test('useCubicBezier3', () => {
-    const timingFn = {
-      ease: '.25,.1,.25,1',
-      linear: '0,0,1,1',
-      'ease-in': '.42,0,1,1',
-      'ease-out': '0,0,.58,1',
-      'ease-in-out': '.42,0,.58,1',
-    };
-    function bezierTiming(t: number, p1: Point, p2: Point, tm = 'ease') {
-      const fn = timingFn[tm].split(',').map(Number);
-      const xv = Math.abs(p2[0] - p1[0]);
-      const yv = Math.abs(p2[1] - p1[1]);
-      return pointBezier3(t, p1, [xv * fn[0], yv - yv * fn[1]], [xv * fn[2], yv - yv * fn[3]], p2);
-    }
-
     const len = 20;
-    let paths = createArray({
-      len: len + 1,
-      fill: (i) => bezierTiming(i / len, [0, 600], [600, 0], 'ease-in-out'),
-    }).map(([x]) => x);
 
     const c1 = useCubicBezier3(0, 600, 'ease-in-out');
     let list = createArray({
@@ -29,12 +11,10 @@ describe('bezier', function () {
       fill: (i) => c1(i / len),
     });
 
-    expect(list).toEqual(paths);
-
-    paths = createArray({
-      len: len + 1,
-      fill: (i) => bezierTiming(i / len, [0, 600], [600, 0]),
-    }).map(([x]) => x);
+    expect(list).toEqual([
+      0, 4.35, 16.8, 36.45, 62.4, 93.75, 129.6, 169.05, 211.2, 255.15, 300, 344.85, 388.8, 430.95,
+      470.4, 506.25, 537.6, 563.55, 583.2, 595.65, 600,
+    ]);
 
     const c2 = useCubicBezier3(0, 600);
     list = createArray({
@@ -42,7 +22,10 @@ describe('bezier', function () {
       fill: (i) => c2(i / len),
     });
 
-    expect(list).toEqual(paths);
+    expect(list).toEqual([
+      0, 64.2, 122.1, 174.15, 220.8, 262.5, 299.7, 332.85, 362.4, 388.8, 412.5, 433.95, 453.6,
+      471.9, 489.3, 506.25, 523.2, 540.6, 558.9, 578.55, 600,
+    ]);
 
     // 反向生成，没有太好的方法检验是否准确
     const c3 = useCubicBezier3(600, 0, 'ease-in-out');
@@ -52,8 +35,8 @@ describe('bezier', function () {
     });
 
     expect(list2).toEqual([
-      600, 563.331, 528.768, 496.077, 465.024, 435.375, 406.896, 379.353, 352.512, 326.139, 300,
-      273.861, 247.488, 220.647, 193.104, 164.625, 134.976, 103.923, 71.232, 36.669, 0,
+      600, 595.65, 583.2, 563.55, 537.6, 506.25, 470.4, 430.95, 388.8, 344.85, 300, 255.15, 211.2,
+      169.05, 129.6, 93.75, 62.4, 36.45, 16.8, 4.35, 0,
     ]);
   });
   const b2Res = [

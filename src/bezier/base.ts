@@ -62,8 +62,14 @@ export function useCubicBezier3(
   }
 
   const abs = Math.abs(v2 - v1);
-  const cv1 = abs * fn[0];
-  const cv2 = abs * fn[2];
+  let cv2 = abs * (1 - fn[0]);
+  let cv1 = abs * (1 - fn[2]);
+
+  // 按理来说是不需要这种打补丁的方式添加的
+  if (tm === 'ease-in-out') {
+    cv2 = abs * (1 - fn[1]);
+    cv1 = abs * (1 - fn[3]);
+  }
 
   return function (t: number) {
     const bz = bezier3(t, v1, cv1, cv2, v2);
