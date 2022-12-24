@@ -1,3 +1,9 @@
+## [0.0.8](https://github.com/js-tool-pack/basic/compare/v0.0.7...v0.0.8) (2022-12-24)
+
+### Features
+
+- **time:** createTimeCountUp 和 createTimeCountDown 支持暂停和继续 ([98286dc](https://github.com/js-tool-pack/basic/commit/98286dcb9ac8227fafada38071fd92da34c6bafe))
+
 ## [0.0.7](https://github.com/js-tool-pack/basic/compare/v0.0.6...v0.0.7) (2022-12-24)
 
 ### Bug Fixes
