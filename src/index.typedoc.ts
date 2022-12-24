@@ -59,3 +59,7 @@ export * as Decorator from './decorator';
  * Url相关工具
  */
 export * as Url from './url';
+/**
+ * 贝塞尔曲线函数相关工具
+ */
+export * as Bezier from './bezier';
