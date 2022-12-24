@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <title>Bezier</title>
     <style>
+      :root {
+        height: 30000px;
+      }
       * {
         margin: 0;
         font-size: 0;
+      }
+      div {
+        font-size: 18px;
       }
     </style>
   </head>
@@ -16,12 +22,60 @@
     <canvas width="200" height="200"></canvas>
     <canvas width="200" height="200"></canvas>
     <canvas width="1000" height="200"></canvas>
+    <div>ease</div>
+    <canvas width="1000" height="20"></canvas>
+    <canvas width="1000" height="20"></canvas>
+    <div>ease-in</div>
+    <canvas width="1000" height="20"></canvas>
+    <canvas width="1000" height="20"></canvas>
+    <div>ease-out</div>
+    <canvas width="1000" height="20"></canvas>
+    <canvas width="1000" height="20"></canvas>
+    <div>ease-in-out</div>
+    <canvas width="1000" height="20"></canvas>
+    <canvas width="1000" height="20"></canvas>
     <script src="../dist/basic.global.js"></script>
     <script>
       /**
        * @type {NodeList<HTMLCanvasElement>}
        */
       const canvas = document.querySelectorAll('canvas');
+
+      const timingFn = {
+        ease: '.25,.1,.25,1',
+        linear: '0,0,1,1',
+        'ease-in': '.42,0,1,1',
+        'ease-out': '0,0,.58,1',
+        'ease-in-out': '.42,0,.58,1',
+      };
+
+      function calcCtrl(p1, p2, tm = 'ease') {
+        const fn = timingFn[tm].split(',').map(Number);
+
+        const fnLineAngle = 45;
+        const lineAngle = ToolPackBasic.getAngle(p1, p2);
+        const angleDiff = lineAngle - fnLineAngle;
+        console.log('ag', lineAngle);
+        const lineLen = ToolPackBasic.getDistance(p1, p2);
+
+        const op = [0, 0];
+        const fnLineLen = ToolPackBasic.getDistance(op, [1, 1]);
+
+        return [
+          [[fn[0], fn[1]], p1],
+          [[fn[2], fn[3]], p1],
+        ].map(([cp, p]) => {
+          const distanceRate = ToolPackBasic.getDistance(op, cp) / fnLineLen;
+          const angle =
+            // 第4和2象限为360
+            ((lineAngle >= 90 && lineAngle <= 180) || (lineAngle >= 270 && lineAngle <= 359)
+              ? 360
+              : 180) - ToolPackBasic.getAngle(op, cp);
+          console.log(angle, distanceRate);
+
+          return ToolPackBasic.getRotatePoint(p, distanceRate * lineLen, angle - angleDiff);
+        });
+      }
 
       /**
        * @param canvas {HTMLCanvasElement}
@@ -31,33 +85,27 @@
       function drawBezier(canvas, start, end) {
         const ctx = canvas.getContext('2d');
 
-        const timingFn = {
-          ease: '.25,.1,.25,1',
-          linear: '0,0,1,1',
-          'ease-in': '.42,0,1,1',
-          'ease-out': '0,0,.58,1',
-          'ease-in-out': '.42,0,.58,1',
-        };
-
-        function bezierTiming(t, p1, p2, keep, tm = 'ease') {
-          const fn = timingFn[tm].split(',').map(Number);
-          const w = Math.max(Math.abs(p2[0] - p1[0]), p1[0], p2[0]);
-          const h = Math.max(Math.abs(p2[1] - p1[1]), p1[1], p2[1]);
-
-          let cp1 = ToolPackBasic.rectCoordToScreen([fn[0], fn[1]], [1, 1], [w, h], keep);
-          let cp2 = ToolPackBasic.rectCoordToScreen([fn[2], fn[3]], [1, 1], [w, h], keep);
-
-          return ToolPackBasic.pointBezier3(t, p1, cp1, cp2, p2);
-        }
-
         const angle = ToolPackBasic.getAngle(start, end, 'right');
 
         console.log('aaaaa', angle);
 
         const len = 200;
+        const cps = calcCtrl(start, end, 'ease');
+
+        ctx.fillStyle = 'lime';
+        ctx.strokeStyle = 'transparent';
+        ctx.beginPath();
+        ctx.arc(cps[0][0], cps[0][1], 6, 2, 3 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cps[1][0], cps[1][1], 6, 2, 3 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
         const paths = ToolPackBasic.createArray({
           len: len + 1,
-          fill: (i) => bezierTiming(i / len, start, end, angle > 180, 'ease-in-out'),
+          fill: (i) => ToolPackBasic.pointBezier3(i / len, start, ...cps, end),
         });
 
         console.log(paths);
@@ -89,6 +137,21 @@
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
+
+        paths
+          .filter((_, i) => i % 2 === 0)
+          .filter((_, i) => i % 2 === 0)
+          .filter((_, i) => i % 2 === 0)
+          .filter((_, i) => i % 2 === 0)
+          .forEach(([x]) => {
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(0,0,0,0.5)';
+            ctx.strokeStyle = 'transparent';
+            ctx.arc(x, 10, 6, 2, 3 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+          });
       }
       /**
        * @param canvas {HTMLCanvasElement}
@@ -153,6 +216,76 @@
         [800, 0],
         [1000, 0],
       );
+
+      // 滚动
+
+      function scrollTo(to, timeout = 10000) {
+        const timeDown = ToolPackBasic.createTimeCountDown(timeout);
+
+        const cubic = ToolPackBasic.useCubicBezier3(
+          document.documentElement.scrollTop,
+          to,
+          'ease-in',
+        );
+        const scroll = () => {
+          const current = timeDown();
+          console.log(current);
+          if (current === 0) {
+            document.documentElement.scrollTop = to;
+            return;
+          }
+          const y = cubic((timeout - current) / timeout);
+          requestAnimationFrame(scroll);
+
+          document.documentElement.scrollTop = y;
+        };
+        scroll();
+      }
+
+      addEventListener('keydown', (e) => {
+        switch (e.code) {
+          case 'KeyA':
+            scrollTo(0);
+            break;
+          case 'KeyS':
+            scrollTo(30000);
+            break;
+        }
+      });
+
+      // 画点
+
+      function drawDot(canvas, start = 0, end = 300, ease = 'ease') {
+        const ctx = canvas.getContext('2d');
+
+        const len = 30;
+        const cubic = ToolPackBasic.useCubicBezier3(start, end, ease);
+        const paths = ToolPackBasic.createArray({
+          len: len + 1,
+          fill: (i) => cubic(ToolPackBasic.strip(i / len)),
+        });
+
+        paths.forEach((x) => {
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(0,0,0,0.5)';
+          ctx.strokeStyle = 'transparent';
+          ctx.arc(x, 10, 6, 2, 3 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.closePath();
+        });
+      }
+      drawDot(canvas[5], 0, 300, 'ease');
+      drawDot(canvas[6], 300, 0, 'ease');
+
+      drawDot(canvas[7], 0, 300, 'ease-in');
+      drawDot(canvas[8], 300, 0, 'ease-in');
+
+      drawDot(canvas[9], 0, 300, 'ease-out');
+      drawDot(canvas[10], 300, 0, 'ease-out');
+
+      drawDot(canvas[11], 0, 300, 'ease-in-out');
+      drawDot(canvas[12], 300, 0, 'ease-in-out');
     </script>
   </body>
 </html>
