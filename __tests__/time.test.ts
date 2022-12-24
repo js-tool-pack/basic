@@ -14,7 +14,7 @@ import {
   getMonthTheNthWeekday,
 } from '../src/time';
 import { sleep } from '../src';
-import { chunk, createArray } from '@mxssfd/core';
+import { chunk, createArray, inRange } from '@mxssfd/core';
 
 describe('time', function () {
   test('msToDates', () => {
@@ -131,6 +131,25 @@ describe('time', function () {
     await sleep(600);
     const t3 = timeCountUp();
     expect(800 <= t3 && t3 <= 900).toBe(true);
+
+    // ---- 暂停与重启 ----
+
+    const tcu = createTimeCountUp();
+    expect(tcu()).toBe(0);
+    await sleep(1);
+    tcu.pause();
+    const pauseValue = tcu();
+    expect(inRange(pauseValue, [0, 3])).toBe(true);
+
+    await sleep(10);
+    expect(tcu()).toBe(pauseValue);
+    await sleep(10);
+    expect(tcu()).toBe(pauseValue);
+
+    tcu.play();
+    await sleep(10);
+    expect(tcu()).not.toBe(pauseValue);
+    expect(inRange(tcu(), [pauseValue - 2, pauseValue + 12])).toBe(true);
   });
   test('createTimeCountDown', async () => {
     const timeout = 500;
@@ -146,6 +165,25 @@ describe('time', function () {
 
     await sleep(350);
     expect(timeCountDown()).toBe(0);
+
+    // ---- 暂停与重启 ----
+
+    const tcd = createTimeCountDown(100);
+    expect(tcd()).toBe(100);
+    await sleep(1);
+    tcd.pause();
+    const pauseValue = tcd();
+    expect(inRange(pauseValue, [98, 100])).toBe(true);
+
+    await sleep(10);
+    expect(tcd()).toBe(pauseValue);
+    await sleep(10);
+    expect(tcd()).toBe(pauseValue);
+
+    tcd.play();
+    await sleep(10);
+    expect(tcd()).not.toBe(pauseValue);
+    expect(inRange(tcd(), [pauseValue - 12, pauseValue])).toBe(true);
   });
   test('dateDiff', () => {
     expect(dateDiff(strToDate('2020-05-01')!, strToDate('2020-05-06')!)).toBe('0年5天00时00分00秒');
