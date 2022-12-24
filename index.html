@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>basic - v0.0.3</title><meta name="description" content="Documentation for basic - v0.0.3"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><style>.container {
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>basic - v0.0.7</title><meta name="description" content="Documentation for basic - v0.0.7"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><style>.container {
   padding: 0 2rem;
 }
 .tsd-page-toolbar {
@@ -93,7 +93,7 @@ code.tsd-tag {
 <div id="tsd-toolbar-links"><a href="https://github.com/js-tool-pack/basic">GitHub</a></div></div>
 <ul class="results">
 <li class="state loading">Preparing search index...</li>
-<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">basic - v0.0.3</a>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">basic - v0.0.7</a>
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">Settings <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg></summary>
 <div class="tsd-accordion-details">
@@ -145,11 +145,13 @@ code.tsd-tag {
 <li class="tsd-kind-namespace"><a href="modules/Decorator.html">
 <div>Decorator</div></a></li>
 <li class="tsd-kind-namespace"><a href="modules/Url.html">
-<div>Url</div></a></li></ul></li></ul></div></details></nav>
+<div>Url</div></a></li>
+<li class="tsd-kind-namespace"><a href="modules/Bezier.html">
+<div>Bezier</div></a></li></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky"></nav></div>
 <div class="col-content">
 <div class="tsd-page-title">
-<h2>basic - v0.0.3</h2></div>
+<h2>basic - v0.0.7</h2></div>
 <div class="tsd-panel tsd-typography">
 <a href="#tool-packbasic" id="tool-packbasic" style="color: inherit; text-decoration: none;">
   <h1>@tool-pack/basic</h1>
@@ -164,5 +166,14 @@ code.tsd-tag {
 <p><strong>工欲善其事必先利其器。</strong></p>
 <p>开发中积累的一些常用基础工具函数，减少开发时的重复编码。</p>
 <p>分为常用工具函数<del>及一些 es5 以上功能的替代函数</del>（不再做 polyfill 的工作，有新 api 直接使用就是，不行就添加 polyfill）。</p>
+<p>可运行环境：</p>
+<ul>
+<li>nodejs</li>
+<li>微信小程序</li>
+<li>现代浏览器（未对 ie 做兼容，最低需要支持 es6；部分浏览器需要对 api 做 polyfill，如微信浏览器不支持 Promise.prototype.finally 等）</li>
+<li>electron</li>
+<li>...</li>
+</ul>
+<p>以上环境亲测可用</p>
 </div></div></div>
 <div class="overlay"></div><script src="assets/main.js"></script></body></html>
