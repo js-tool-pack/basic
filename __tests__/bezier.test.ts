@@ -1,8 +1,8 @@
-import { bezier3withTimingFN, createArray, Point } from '../src';
+import { cubicBezier3, createArray, Point } from '../src';
 import { pointBezier3, pointBezier2, pointBezierN } from '../src/bezier';
 
 describe('bezier', function () {
-  test('bezier3withTimingFN', () => {
+  test('cubicBezier3', () => {
     const timingFn = {
       ease: '.25,.1,.25,1',
       linear: '0,0,1,1',
@@ -25,7 +25,7 @@ describe('bezier', function () {
 
     let list = createArray({
       len: len + 1,
-      fill: (i) => bezier3withTimingFN(i / len, 0, 600, 'ease-in-out'),
+      fill: (i) => cubicBezier3(i / len, 0, 600, 'ease-in-out'),
     });
 
     expect(list).toEqual(paths);
@@ -37,7 +37,7 @@ describe('bezier', function () {
 
     list = createArray({
       len: len + 1,
-      fill: (i) => bezier3withTimingFN(i / len, 0, 600),
+      fill: (i) => cubicBezier3(i / len, 0, 600),
     });
 
     expect(list).toEqual(paths);
@@ -45,7 +45,7 @@ describe('bezier', function () {
     // 反向生成，没有太好的方法检验是否准确
     const list2 = createArray({
       len: len + 1,
-      fill: (i) => bezier3withTimingFN(i / len, 600, 0, 'ease-in-out'),
+      fill: (i) => cubicBezier3(i / len, 600, 0, 'ease-in-out'),
     });
 
     expect(list2).toEqual([
