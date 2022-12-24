@@ -1,3 +1,18 @@
+## [0.0.7](https://github.com/js-tool-pack/basic/compare/v0.0.6...v0.0.7) (2022-12-24)
+
+### Bug Fixes
+
+- **bezier:** useCubicBezier3 ([fa57740](https://github.com/js-tool-pack/basic/commit/fa57740c756104616ab57180ed7ffef17bdfde89))
+- **coordinate:** 修复 getAngle 除 top 外另外 3 个方向角度不准确的问题 ([c3b10f1](https://github.com/js-tool-pack/basic/commit/c3b10f133956dc47a15b3a5ba1bc93329899c58f))
+
+### Code Refactoring
+
+- **bezier:** bezier3withTimingFN 改为 cubicBezier3 ([3c0a0e3](https://github.com/js-tool-pack/basic/commit/3c0a0e36678f4b539c8fa3b66ac8213b2f23aa4f))
+
+### BREAKING CHANGES
+
+- **bezier:** bezier3withTimingFN 改为 cubicBezier3
+
 ## [0.0.6](https://github.com/js-tool-pack/basic/compare/v0.0.5...v0.0.6) (2022-12-20)
 
 ### Code Refactoring
