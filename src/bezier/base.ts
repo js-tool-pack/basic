@@ -45,21 +45,28 @@ const predefined = {
  * 从低到高到顺序生成的曲线正确性是可以保证的，否则可能不对
  *
  */
-export function cubicBezier3(
-  t: number,
+export function useCubicBezier3(
   v1: number,
   v2: number,
   tm: keyof typeof predefined | Tuple<number, 4> = 'ease',
-): number {
+): (t: number) => number {
   const fn =
     typeof tm === 'string' ? (predefined[tm].split(',').map(Number) as Tuple<number, 4>) : tm;
 
-  const diff = Math.abs(v2 - v1);
-  let cv1 = diff * fn[0];
-  let cv2 = diff * fn[2];
-  if (v2 < v1) {
-    [cv1, cv2] = [cv2, cv1];
+  const isReverse = v1 > v2;
+  const max = v1;
+
+  if (isReverse) {
+    v1 = max - v1;
+    v2 = max - v2;
   }
 
-  return bezier3(t, v1, cv1, cv2, v2);
+  const abs = Math.abs(v2 - v1);
+  const cv1 = abs * fn[0];
+  const cv2 = abs * fn[2];
+
+  return function (t: number) {
+    const bz = bezier3(t, v1, cv1, cv2, v2);
+    return isReverse ? strip(max - bz) : bz;
+  };
 }
