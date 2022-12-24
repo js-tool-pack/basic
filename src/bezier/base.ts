@@ -45,15 +45,14 @@ const predefined = {
  * 从低到高到顺序生成的曲线正确性是可以保证的，否则可能不对
  *
  */
-export function bezier3withTimingFN(
+export function cubicBezier3(
   t: number,
   v1: number,
   v2: number,
-  tm: keyof typeof predefined | string = 'ease',
-  expendTimingFN: object = {},
+  tm: keyof typeof predefined | Tuple<number, 4> = 'ease',
 ): number {
-  const tfn = Object.assign({}, predefined, expendTimingFN);
-  const fn = tfn[tm].split(',').map(Number) as Tuple<number, 4>;
+  const fn =
+    typeof tm === 'string' ? (predefined[tm].split(',').map(Number) as Tuple<number, 4>) : tm;
 
   const diff = Math.abs(v2 - v1);
   let cv1 = diff * fn[0];
