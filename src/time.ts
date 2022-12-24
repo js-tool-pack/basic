@@ -301,12 +301,29 @@ export function dateDiff(first: Date, second: Date, format: string = "Y年d天 H
  * const t3 = timeCountUp();
  * 800 <= t3 && t3 <= 900; // true
  *
+ * t3.pause(); // 暂停
+ * t3.play(); // 继续
+ *
  */
-export function createTimeCountUp(): () => number {
+export function createTimeCountUp(): { (): number; pause(): void; play(): void } {
   const startTime = Date.now();
-  return function () {
-    return Date.now() - startTime;
+  const pause = {
+    total: 0,
+    startTime: 0,
   };
+
+  function closure(this: any) {
+    const endTime = pause.startTime ? pause.startTime : Date.now();
+    return endTime - startTime - pause.total;
+  }
+  closure.pause = function () {
+    pause.startTime = Date.now();
+  };
+  closure.play = function () {
+    pause.total += Date.now() - pause.startTime;
+    pause.startTime = 0;
+  };
+  return closure;
 }
 
 /*
@@ -341,20 +358,28 @@ export function createTimeCountDown(countDown: number): () => number {
  * await sleep(350);
  * timeCountDown(); // 0
  *
+ * t1.pause(); // 暂停
+ * t1.play(); // 继续
+ *
  * @param timeout 倒计时时长(毫秒)
  * @returns {()=> number} 返回一个闭包函数，闭包返回的是倒计时，倒计时最小为0，不会是负数
  */
-export function createTimeCountDown(timeout: number): () => number {
-  let timeCountUp: (() => number) | null = createTimeCountUp();
-  return function () {
-    if (timeCountUp) {
-      const res = timeout - timeCountUp();
-      if (res > 0) return res;
-      // 清理createTimeCountUp闭包
-      timeCountUp = null;
-    }
+export function createTimeCountDown(timeout: number): ReturnType<typeof createTimeCountUp> {
+  const timeCountUp = createTimeCountUp();
+
+  const finishedFn = () => 0;
+  let resFn = () => {
+    const res = timeout - timeCountUp();
+    if (res > 0) return res;
+    resFn = finishedFn;
     return 0;
   };
+  function closure(): number {
+    return resFn();
+  }
+  closure.pause = timeCountUp.pause;
+  closure.play = timeCountUp.play;
+  return closure;
 }
 
 /**
