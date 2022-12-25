@@ -285,6 +285,7 @@ export function toCamel<
  * @returns 字符串实际长度
  */
 export function getStringLen(value: string): number {
+  /*
   // https://www.zhihu.com/question/38324041
   // underscore.js toArray
   // const reg = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
@@ -308,4 +309,9 @@ export function getStringLen(value: string): number {
       // 然后匹配普通表情符号
       .replace(new RegExp(symbol, 'g'), '_').length
   );
+  */
+
+  // 使用内置对象Intl.Segmenter按字形分割字符串
+  const segmenter = new Intl.Segmenter('fr', { granularity: 'grapheme' });
+  return Array.from(segmenter.segment(value)).length;
 }
