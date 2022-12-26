@@ -1,5 +1,5 @@
-import { Tuple } from '@tool-pack/types';
 import { strip } from '../number';
+import { Tuple } from '@tool-pack/types';
 
 /**
  * 2阶贝塞尔曲线
@@ -40,10 +40,11 @@ const predefined = {
 };
 
 /**
- * 使用3阶贝塞尔曲线
+ * 使用3阶贝塞尔曲线缓动函数
  * ---
- * 从低到高到顺序生成的曲线正确性是可以保证的，否则可能不对
+ * 相当于使用 css 的 transition-timing-function: cubic-bezier()
  *
+ * 预设有ease ease-in ease-out ease-in-out linear等5个常用的缓动函数
  */
 export function useCubicBezier3(
   v1: number,
@@ -53,26 +54,50 @@ export function useCubicBezier3(
   const fn =
     typeof tm === 'string' ? (predefined[tm].split(',').map(Number) as Tuple<number, 4>) : tm;
 
-  const isReverse = v1 > v2;
-  const max = v1;
+  const [a, b, c, d] = fn;
 
-  if (isReverse) {
-    v1 = max - v1;
-    v2 = max - v2;
-  }
+  // 原文：https://zhuanlan.zhihu.com/p/60193908
+  // https://codepen.io/delbertbeta/pen/VRxxgM/
+  // 可参考：https://github.com/pofulu/sparkar-bezier-easing/blob/master/BezierEasing.ts
 
-  const abs = Math.abs(v2 - v1);
-  let cv2 = abs * (1 - fn[0]);
-  let cv1 = abs * (1 - fn[2]);
+  const px3 = 3 * a;
+  const px2 = 3 * (c - a) - px3;
+  const px1 = 1 - px3 - px2;
+  const py3 = 3 * b;
+  const py2 = 3 * (d - b) - py3;
+  const py1 = 1 - py3 - py2;
+  const epsilon = 1e-7; // 目标精度
 
-  // 按理来说是不需要这种打补丁的方式添加的
-  if (tm === 'ease-in-out') {
-    cv2 = abs * (1 - fn[1]);
-    cv1 = abs * (1 - fn[3]);
-  }
+  const getX = (t: number) => ((px1 * t + px2) * t + px3) * t;
 
-  return function (t: number) {
-    const bz = bezier3(t, v1, cv1, cv2, v2);
-    return isReverse ? strip(max - bz) : bz;
+  const getY = (t: number) => ((py1 * t + py2) * t + py3) * t;
+
+  const solve = function (x: number): number {
+    if (x === 0 || x === 1) {
+      // 对 0 和 1 两个特殊 t 不做计算
+      return getY(x);
+    }
+    let t = x;
+    for (let i = 0; i < 8; i++) {
+      // 进行 8 次迭代
+      const g = getX(t) - x;
+      if (Math.abs(g) < epsilon) {
+        // 检测误差到可以接受的范围
+        return getY(t);
+      }
+      const d = (3 * px1 * t + 2 * px2) * t + px3; // 对 x 求导
+      if (Math.abs(d) < 1e-6) {
+        // 如果梯度过低，说明牛顿迭代法无法达到更高精度
+        break;
+      }
+      t = t - g / d;
+    }
+    return getY(t); // 对得到的近似 t 求 y
   };
+
+  const distance = Math.abs(v2 - v1);
+
+  return v1 > v2
+    ? (t: number): number => strip(distance - solve(t) * distance)
+    : (t: number): number => strip(solve(t) * distance);
 }
