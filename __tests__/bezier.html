@@ -34,6 +34,9 @@
     <div>ease-in-out</div>
     <canvas width="1000" height="20"></canvas>
     <canvas width="1000" height="20"></canvas>
+    <div>linear</div>
+    <canvas width="1000" height="20"></canvas>
+    <canvas width="1000" height="20"></canvas>
     <script src="../dist/basic.global.js"></script>
     <script>
       /**
@@ -90,7 +93,7 @@
         console.log('aaaaa', angle);
 
         const len = 200;
-        const cps = calcCtrl(start, end, 'ease');
+        const cps = calcCtrl(start, end, 'linear');
 
         ctx.fillStyle = 'lime';
         ctx.strokeStyle = 'transparent';
@@ -153,6 +156,13 @@
             ctx.closePath();
           });
       }
+
+      // 3阶贝塞尔
+      drawBezier(canvas[0], [0, 200], [200, 0]);
+      drawBezier(canvas[1], [200, 200], [0, 0]);
+      drawBezier(canvas[2], [200, 0], [0, 200]);
+      drawBezier(canvas[3], [0, 0], [200, 200]);
+
       /**
        * @param canvas {HTMLCanvasElement}
        * @param points {...[number, number][]}
@@ -197,12 +207,6 @@
         ctx.closePath();
       }
 
-      // 3阶贝塞尔
-      drawBezier(canvas[0], [0, 200], [200, 0]);
-      drawBezier(canvas[1], [200, 200], [0, 0]);
-      drawBezier(canvas[2], [200, 0], [0, 200]);
-      drawBezier(canvas[3], [0, 0], [200, 200]);
-
       // n阶贝塞尔
       drawBezierN(
         canvas[4],
@@ -219,13 +223,13 @@
 
       // 滚动
 
-      function scrollTo(to, timeout = 10000) {
+      function scrollTo(to, timeout = 1000) {
         const timeDown = ToolPackBasic.createTimeCountDown(timeout);
 
         const cubic = ToolPackBasic.useCubicBezier3(
           document.documentElement.scrollTop,
           to,
-          'ease-in',
+          'ease-in-out',
         );
         const scroll = () => {
           const current = timeDown();
@@ -286,6 +290,9 @@
 
       drawDot(canvas[11], 0, 300, 'ease-in-out');
       drawDot(canvas[12], 300, 0, 'ease-in-out');
+
+      drawDot(canvas[13], 0, 300, 'linear');
+      drawDot(canvas[14], 300, 0, 'linear');
     </script>
   </body>
 </html>
