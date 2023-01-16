@@ -12,6 +12,7 @@ const {
   numToFixed,
   forEachNum,
   forEachNumRight,
+  numberToChinese,
 } = Num;
 describe('number', function () {
   test('strip', () => {
@@ -173,5 +174,19 @@ describe('number', function () {
       if (index === 1) return false;
     });
     expect(arr).toEqual([...[0, 1, 2].reverse(), ...[0, 1, 2, 3, 4, 5, 6].reverse(), 2, 1]);
+  });
+
+  test('numberToChinese', () => {
+    expect(numberToChinese(123)).toBe('一百二十三');
+    expect(numberToChinese(1)).toBe('一');
+    expect(numberToChinese(11)).toBe('十一');
+    expect(numberToChinese(21)).toBe('二十一');
+    expect(numberToChinese(101)).toBe('一百零一');
+    expect(numberToChinese(111)).toBe('一百一十一');
+    expect(numberToChinese(1001)).toBe('一千零一');
+    expect(numberToChinese(1_2345)).toBe('一万二千三百四十五');
+    expect(numberToChinese(2345_6789)).toBe('二千三百四十五万六千七百八十九');
+    expect(numberToChinese(1_2345_6789)).toBe('一亿二千三百四十五万六千七百八十九');
+    expect(numberToChinese(1_0345_6789)).toBe('一亿零三百四十五万六千七百八十九');
   });
 });
