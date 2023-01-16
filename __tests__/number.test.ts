@@ -1,4 +1,5 @@
 import * as Num from '../src/number';
+import { Tuple } from '@tool-pack/types';
 const {
   strip,
   getNumberLenAfterDot,
@@ -13,6 +14,7 @@ const {
   forEachNum,
   forEachNumRight,
   numberToChinese,
+  chineseToNumber,
 } = Num;
 describe('number', function () {
   test('strip', () => {
@@ -188,5 +190,35 @@ describe('number', function () {
     expect(numberToChinese(2345_6789)).toBe('二千三百四十五万六千七百八十九');
     expect(numberToChinese(1_2345_6789)).toBe('一亿二千三百四十五万六千七百八十九');
     expect(numberToChinese(1_0345_6789)).toBe('一亿零三百四十五万六千七百八十九');
+  });
+
+  test('chineseToNumber', () => {
+    expect(chineseToNumber('一')).toBe(1);
+    expect(chineseToNumber('十一')).toBe(11);
+    expect(chineseToNumber('九十一')).toBe(91);
+    expect(chineseToNumber('一百九十九')).toBe(199);
+    expect(chineseToNumber('五千一百九十九')).toBe(5199);
+    expect(chineseToNumber('一万零一')).toBe(10001);
+    expect(chineseToNumber('一万零一十')).toBe(10010);
+    expect(chineseToNumber('一万零一十三')).toBe(10013);
+    expect(chineseToNumber('一万零一十三')).toBe(10013);
+    expect(chineseToNumber('十万零一十三')).toBe(100013);
+    expect(chineseToNumber('二百一十万零一十三')).toBe(2100013);
+    expect(chineseToNumber('一千二百一十万零一十三')).toBe(12100013);
+    expect(chineseToNumber('一千二百一十万零一')).toBe(12100001);
+    expect(chineseToNumber('一亿零二百一十万零一十三')).toBe(102100013);
+    expect(chineseToNumber('一亿二千三百四十五万六千七百八十九')).toBe(123456789);
+    expect(chineseToNumber('十一亿零二百一十万零一十三')).toBe(1102100013);
+
+    const sbq = ['拾', '佰', '仟'];
+    const units = ['', ...sbq, '萬', ...sbq, '亿'];
+    const numbers: Tuple<string, 10> = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+    // 千和百未定义
+    expect(() =>
+      chineseToNumber('壹亿贰仟叁佰肆拾伍萬陆千柒百捌拾玖', { numbers, units }),
+    ).toThrow();
+    expect(chineseToNumber('壹亿贰仟叁佰肆拾伍萬陆仟柒佰捌拾玖', { numbers, units })).toBe(
+      123456789,
+    );
   });
 });
