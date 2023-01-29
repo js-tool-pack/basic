@@ -41,18 +41,22 @@ export function randomFloat(min: number, max: number, len: number): number[];
 export function randomFloat(min?: number, max?: number, len?: number): number | number[] {
   // randomFloat()
   if (!arguments.length) return Math.random();
+
+  let _min = min as number;
+  let _max = max as number;
+
   // randomFloat(max)
   if (arguments.length === 1) {
-    max = min;
-    min = 0;
+    _max = _min;
+    _min = 0;
   }
 
   // randomFloat(min, max)
   if (len === undefined) {
-    const dif = (max as number) - (min as number);
-    return Math.random() * dif + (min as number);
+    const dif = _max - _min;
+    return Math.random() * dif + _min;
   }
-  return createArray({ len, fill: () => randomFloat(min as number, max as number) });
+  return createArray({ len, fill: () => randomFloat(_min, _max) });
 }
 
 /**
@@ -90,21 +94,23 @@ export function randomInt(min: number, max: number, len: number): number[];
 export function randomInt(min?: number, max?: number, len?: number): number | number[] {
   // randomInt()
   if (!arguments.length) return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+
+  let _min = min as number;
+  let _max = max as number;
   // randomInt(max)
   if (arguments.length === 1) {
-    max = min;
-    min = 0;
+    _max = _min;
+    _min = 0;
   }
 
   if (len === undefined) {
-    const dif = (max as number) - (min as number);
+    const dif = _max - _min;
     // 直接调用randomFloat的话randomInt(-10,10)永远都不会出现-10
     // 用~~做整数转换的时候，数字太大会变为负数: 如1000 * 60 * 60 * 24 * 30
     //  return ~~(Math.random() * dif) + (min as number);
-    return parseInt((Math.random() * dif) as any) + (min as number);
-  } else {
-    return createArray({ len, fill: () => randomInt(min as number, max as number) });
+    return Math.floor(Math.random() * dif) + _min;
   }
+  return createArray({ len, fill: () => randomInt(_min, _max) });
 }
 
 /**
