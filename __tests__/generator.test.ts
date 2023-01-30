@@ -1,6 +1,10 @@
-import { createTimeCountUpGen, idGen } from '../src/generator';
+import { createTimeCountUpGen, idGen, createTimeCountDownGen } from '../src/generator';
 import { sleep } from '../src/promise';
 describe('generator', function () {
+  function expectInRange(value: any, range: [number, number]) {
+    expect(value).toBeGreaterThanOrEqual(range[0]);
+    expect(value).toBeLessThanOrEqual(range[1]);
+  }
   describe('idGen', () => {
     test('什么参数都不传', () => {
       const id = idGen();
@@ -67,10 +71,6 @@ describe('generator', function () {
   });
 
   test('createTimeCountUpGen', async () => {
-    function expectInRange(value: any, range: [number, number]) {
-      expect(value).toBeGreaterThanOrEqual(range[0]);
-      expect(value).toBeLessThanOrEqual(range[1]);
-    }
     const t = createTimeCountUpGen();
 
     expect(t.next().value).toBe(0);
@@ -100,5 +100,38 @@ describe('generator', function () {
     // return 不接收任何参数
     // @ts-expect-error
     t.return(1);
+  });
+
+  test('createTimeCountDownGen', async () => {
+    const t = createTimeCountDownGen(100);
+
+    expectInRange(t.next().value, [95, 100]);
+
+    await sleep(10);
+    expectInRange(t.next().value, [85, 95]);
+
+    await sleep(10);
+    expectInRange(t.next().value, [75, 85]);
+
+    // 暂停
+    const beforePause = t.next(false).value;
+    await sleep(20);
+    expect(t.next().value).toBe(beforePause);
+
+    await sleep(20);
+    expect(t.next().value).toBe(beforePause);
+    expectInRange(t.next().value, [75, 85]);
+
+    // 继续
+    expectInRange(t.next(true).value, [75, 85]);
+    await sleep(10);
+    expectInRange(t.next().value, [65, 75]);
+
+    await sleep(10);
+    expectInRange(t.next().value, [55, 65]);
+
+    // 停止
+    t.return();
+    expect(t.next()).toEqual({ value: undefined, done: true });
   });
 });
