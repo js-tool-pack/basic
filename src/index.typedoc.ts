@@ -63,3 +63,7 @@ export * as Url from './url';
  * 贝塞尔曲线函数相关工具
  */
 export * as Bezier from './bezier';
+/**
+ * 生成器相关工具
+ */
+export * as Generator from './generator';
