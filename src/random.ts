@@ -127,26 +127,6 @@ export function randomItem<T>(arr: T[]): T {
 }
 
 /**
- * 创建一个数组随机item的生成器，直到遍历完为止
- *
- * @example
- *
- * const rand = randomItemsGen([1, 2, 3]);
- * rand.next().value; // 1|2|3
- * rand.next().value; // 1|2|3
- * rand.next().value; // 1|2|3
- * rand.next(); // { done: true, value: undefined }
- *
- */
-export function* randomItemsGen<T>(arr: T[]): Generator<T, any, never> {
-  const list = arr.slice();
-  while (list.length) {
-    const index = randomInt(list.length);
-    yield list.splice(index, 1)[0] as T;
-  }
-}
-
-/**
  * 数组洗牌，不会改变原数组
  *
  * @example
