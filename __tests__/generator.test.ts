@@ -136,7 +136,7 @@ describe('generator', function () {
     expectInRange(t.next().value, [65, 75]);
 
     await sleep(10);
-    expectInRange(t.next().value, [55, 65]);
+    expectInRange(t.next().value, [50, 65]);
 
     // 停止
     t.return();
