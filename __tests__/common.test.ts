@@ -470,5 +470,12 @@ describe('common', function () {
       expect(ids).toEqual([0, 1, 2].reverse());
       expect(gen.next()).toEqual({ done: true, value: undefined });
     });
+    test('转成数组', () => {
+      expect([...idGen(0, 1, 3)]).toEqual([0, 1, 2]);
+      expect([...idGen(0, 2, 3)]).toEqual([0, 2]);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      idGen(0).return(0);
+    });
   });
 });
