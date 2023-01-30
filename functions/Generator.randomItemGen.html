@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>randomItemsGen | basic - v0.0.7</title><meta name="description" content="Documentation for basic - v0.0.7"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>randomItemGen | basic - v0.0.10</title><meta name="description" content="Documentation for basic - v0.0.10"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
   padding: 0 2rem;
 }
 .tsd-page-toolbar {
@@ -93,7 +93,7 @@ code.tsd-tag {
 <div id="tsd-toolbar-links"><a href="https://github.com/js-tool-pack/basic">GitHub</a></div></div>
 <ul class="results">
 <li class="state loading">Preparing search index...</li>
-<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.7</a>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.10</a>
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">Settings <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg></summary>
 <div class="tsd-accordion-details">
@@ -138,7 +138,7 @@ code.tsd-tag {
 <div>Calc<wbr/>Chain</div></a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Coordinate.html">
 <div>Coordinate</div></a></li>
-<li class="current tsd-kind-namespace"><a href="../modules/Random.html">
+<li class="tsd-kind-namespace"><a href="../modules/Random.html">
 <div>Random</div></a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Color.html">
 <div>Color</div></a></li>
@@ -147,50 +147,37 @@ code.tsd-tag {
 <li class="tsd-kind-namespace"><a href="../modules/Url.html">
 <div>Url</div></a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Bezier.html">
-<div>Bezier</div></a></li></ul></li></ul></div></details></nav>
+<div>Bezier</div></a></li>
+<li class="current tsd-kind-namespace"><a href="../modules/Generator.html">
+<div>Generator</div></a></li></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomFloat.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>
-<div>random<wbr/>Float
-<div class="menu-item-desc">min end都不传  return Math.random()</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomInt.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>random<wbr/>Int
-<div class="menu-item-desc">min end都不传 返回范围：0 - Number.MAX_SAFE_INTEGER</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomItem.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>random<wbr/>Item
-<div class="menu-item-desc">随机获取数组中的一个</div></div></a></li>
-<li class="current tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomItemsGen.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>random<wbr/>Items<wbr/>Gen
-<div class="menu-item-desc">创建一个数组随机item的生成器，直到遍历完为止</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.shuffle.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>shuffle
-<div class="menu-item-desc">数组洗牌，不会改变原数组</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomRGB.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>randomRGB
-<div class="menu-item-desc">随机RGB颜色</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomRGBA.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>randomRGBA
-<div class="menu-item-desc">随机RGBA颜色</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomHEX.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>randomHEX
-<div class="menu-item-desc">随机HEX颜色</div></div></a></li>
-<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Random.randomColor.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>random<wbr/>Color
-<div class="menu-item-desc">随机颜色，无参数时默认为HEX格式的颜色</div></div></a></li></ul></nav></div>
+<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Generator.idGen.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>
+<div>id<wbr/>Gen
+<div class="menu-item-desc">创建一个自增id生成器</div></div></a></li>
+<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Generator.createTimeCountUpGen.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>create<wbr/>Time<wbr/>Count<wbr/>Up<wbr/>Gen
+<div class="menu-item-desc">创建一个时间累计生成器</div></div></a></li>
+<li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Generator.createTimeCountDownGen.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>create<wbr/>Time<wbr/>Count<wbr/>Down<wbr/>Gen
+<div class="menu-item-desc">创建一个倒计时生成器</div></div></a></li>
+<li class="current tsd-kind-function tsd-parent-kind-namespace"><a href="Generator.randomItemGen.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>random<wbr/>Item<wbr/>Gen
+<div class="menu-item-desc">数组随机item生成器，直到遍历完为止</div></div></a></li></ul></nav></div>
 <div class="col-content">
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
-<li><a href="../modules.html">basic - v0.0.7</a></li>
-<li><a href="../modules/Random.html">Random</a></li>
-<li><a href="Random.randomItemsGen.html">randomItemsGen</a></li></ul>
-<h1>Function randomItemsGen</h1></div>
+<li><a href="../modules.html">basic - v0.0.10</a></li>
+<li><a href="../modules/Generator.html">Generator</a></li>
+<li><a href="Generator.randomItemGen.html">randomItemGen</a></li></ul>
+<h1>Function randomItemGen</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures tsd-kind-function tsd-parent-kind-namespace">
-<li class="tsd-signature tsd-anchor-link" id="randomItemsGen">random<wbr/>Items<wbr/>Gen<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">&gt;</span><a href="#randomItemsGen" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="randomItemGen">random<wbr/>Item<wbr/>Gen<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">&gt;</span><a href="#randomItemGen" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>创建一个数组随机item的生成器，直到遍历完为止</p>
+<div class="tsd-comment tsd-typography"><p>数组随机item生成器，直到遍历完为止</p>
 
-<h3>Example</h3><pre><code class="language-ts"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">rand</span><span class="hl-1"> = </span><span class="hl-0">randomItemsGen</span><span class="hl-1">([</span><span class="hl-8">1</span><span class="hl-1">, </span><span class="hl-8">2</span><span class="hl-1">, </span><span class="hl-8">3</span><span class="hl-1">]);</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">(); </span><span class="hl-4">// { done: true, value: undefined }</span>
+<h3>Example</h3><pre><code class="language-ts"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">rand</span><span class="hl-1"> = </span><span class="hl-0">randomItemGen</span><span class="hl-1">([</span><span class="hl-8">1</span><span class="hl-1">, </span><span class="hl-8">2</span><span class="hl-1">, </span><span class="hl-8">3</span><span class="hl-1">]);</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">().</span><span class="hl-3">value</span><span class="hl-1">; </span><span class="hl-4">// 1|2|3</span><br/><span class="hl-3">rand</span><span class="hl-1">.</span><span class="hl-0">next</span><span class="hl-1">(); </span><span class="hl-4">// { done: true, value: undefined }</span>
 </code></pre>
 </div>
 <section class="tsd-panel tsd-type-parameters">
@@ -205,5 +192,5 @@ code.tsd-tag {
 <h5>arr: <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/8aaab35/src/random.ts#L135">random.ts:135</a></li></ul></aside></li></ul></section></div></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/1b46f5a/src/generator.ts#L277">generator.ts:277</a></li></ul></aside></li></ul></section></div></div>
 <div class="overlay"></div><script src="../assets/main.js"></script></body></html>

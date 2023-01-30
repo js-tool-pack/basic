@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>useCubicBezier3 | basic - v0.0.7</title><meta name="description" content="Documentation for basic - v0.0.7"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>useCubicBezier3 | basic - v0.0.10</title><meta name="description" content="Documentation for basic - v0.0.10"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><style>.container {
   padding: 0 2rem;
 }
 .tsd-page-toolbar {
@@ -93,7 +93,7 @@ code.tsd-tag {
 <div id="tsd-toolbar-links"><a href="https://github.com/js-tool-pack/basic">GitHub</a></div></div>
 <ul class="results">
 <li class="state loading">Preparing search index...</li>
-<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.7</a>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">basic - v0.0.10</a>
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">Settings <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg></summary>
 <div class="tsd-accordion-details">
@@ -147,7 +147,9 @@ code.tsd-tag {
 <li class="tsd-kind-namespace"><a href="../modules/Url.html">
 <div>Url</div></a></li>
 <li class="current tsd-kind-namespace"><a href="../modules/Bezier.html">
-<div>Bezier</div></a></li></ul></li></ul></div></details></nav>
+<div>Bezier</div></a></li>
+<li class="tsd-kind-namespace"><a href="../modules/Generator.html">
+<div>Generator</div></a></li></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
 <li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Bezier.bezier2.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>
@@ -158,7 +160,7 @@ code.tsd-tag {
 <div class="menu-item-desc">3阶贝塞尔曲线公式</div></div></a></li>
 <li class="current tsd-kind-function tsd-parent-kind-namespace"><a href="Bezier.useCubicBezier3.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>use<wbr/>Cubic<wbr/>Bezier3
-<div class="menu-item-desc">使用3阶贝塞尔曲线</div></div></a></li>
+<div class="menu-item-desc">使用3阶贝塞尔曲线缓动函数</div></div></a></li>
 <li class="tsd-kind-function tsd-parent-kind-namespace"><a href="Bezier.pointBezier2.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>point<wbr/>Bezier2
 <div class="menu-item-desc">生成二阶贝塞尔曲线路径点</div></div></a></li>
@@ -171,7 +173,7 @@ code.tsd-tag {
 <div class="col-content">
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
-<li><a href="../modules.html">basic - v0.0.7</a></li>
+<li><a href="../modules.html">basic - v0.0.10</a></li>
 <li><a href="../modules/Bezier.html">Bezier</a></li>
 <li><a href="Bezier.useCubicBezier3.html">useCubicBezier3</a></li></ul>
 <h1>Function useCubicBezier3</h1></div>
@@ -180,10 +182,11 @@ code.tsd-tag {
 <li class="tsd-signature tsd-anchor-link" id="useCubicBezier3">use<wbr/>Cubic<wbr/>Bezier3<span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, tm<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">&quot;linear&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;ease&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;ease-in&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;ease-out&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;ease-in-out&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><a href="#useCubicBezier3" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography">
-<a href="#使用3阶贝塞尔曲线" id="使用3阶贝塞尔曲线" style="color: inherit; text-decoration: none;">
-  <h2>使用3阶贝塞尔曲线</h2>
+<a href="#使用3阶贝塞尔曲线缓动函数" id="使用3阶贝塞尔曲线缓动函数" style="color: inherit; text-decoration: none;">
+  <h2>使用3阶贝塞尔曲线缓动函数</h2>
 </a>
-<p>从低到高到顺序生成的曲线正确性是可以保证的，否则可能不对</p>
+<p>相当于使用 css 的 transition-timing-function: cubic-bezier()</p>
+<p>预设有ease ease-in ease-out ease-in-out linear等5个常用的缓动函数</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -207,5 +210,5 @@ code.tsd-tag {
 <h5>t: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4></li></ul></li></ul><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/8aaab35/src/bezier/base.ts#L48">bezier/base.ts:48</a></li></ul></aside></li></ul></section></div></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/1b46f5a/src/bezier/base.ts#L49">bezier/base.ts:49</a></li></ul></aside></li></ul></section></div></div>
 <div class="overlay"></div><script src="../assets/main.js"></script></body></html>
