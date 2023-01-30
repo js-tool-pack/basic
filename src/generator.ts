@@ -159,7 +159,8 @@ export function createTimeCountUpGen(): Generator<number, void, boolean | void> 
   };
 
   function pause(): void {
-    pauseState.startTime = Date.now();
+    // 判断是否已经暂停了，避免二次暂停bug
+    if (pauseState.startTime === 0) pauseState.startTime = Date.now();
   }
   function play(): void {
     pauseState.total += Date.now() - pauseState.startTime;

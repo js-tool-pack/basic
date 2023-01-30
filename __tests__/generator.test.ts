@@ -91,6 +91,7 @@ describe('generator', function () {
     t.next(false);
     await sleep(10);
     expect(t.next().value).toBe(beforePause);
+    t.next(false);
     expectInRange(t.next().value, [50, 60]);
 
     // 继续
