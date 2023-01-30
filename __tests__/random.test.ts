@@ -138,21 +138,6 @@ describe('random', function () {
     });
     expect(results.includes(undefined as any)).toBeFalsy();
   });
-  test('randomItemsGen', () => {
-    const list = [1, 2, 3, 4, 5];
-    const g = cm.randomItemsGen(list);
-    const res = list.map(() => g.next().value);
-    expect(g.next()).toEqual({ done: true, value: undefined });
-    expect(list.every((it) => res.includes(it))).toBeTruthy();
-    expect(res).not.toEqual(list);
-    expect(res.sort()).toEqual(list);
-
-    const rand = cm.randomItemsGen([1, 2, 3]);
-    expect(inRange(rand.next().value, [1, 3])).toBe(true); // 1|2|3
-    expect(inRange(rand.next().value, [1, 3])).toBe(true); // 1|2|3
-    expect(inRange(rand.next().value, [1, 3])).toBe(true); // 1|2|3
-    expect(rand.next()).toEqual({ done: true, value: undefined });
-  });
 
   test('randomRGB', () => {
     const fn = cm.randomRGB;

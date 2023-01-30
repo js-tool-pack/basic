@@ -1,4 +1,9 @@
-import { createTimeCountUpGen, idGen, createTimeCountDownGen } from '../src/generator';
+import {
+  createTimeCountUpGen,
+  idGen,
+  createTimeCountDownGen,
+  randomItemGen,
+} from '../src/generator';
 import { sleep } from '../src/promise';
 describe('generator', function () {
   function expectInRange(value: any, range: [number, number]) {
@@ -133,5 +138,21 @@ describe('generator', function () {
     // 停止
     t.return();
     expect(t.next()).toEqual({ value: undefined, done: true });
+  });
+
+  test('randomItemGen', () => {
+    const list = [1, 2, 3, 4, 5];
+    const g = randomItemGen(list);
+    const res = list.map(() => g.next().value);
+    expect(g.next()).toEqual({ done: true, value: undefined });
+    expect(list.every((it) => res.includes(it))).toBeTruthy();
+    expect(res).not.toEqual(list);
+    expect(res.sort()).toEqual(list);
+
+    const rand = randomItemGen([1, 2, 3]);
+    expectInRange(rand.next().value, [1, 3]); // 1|2|3
+    expectInRange(rand.next().value, [1, 3]); // 1|2|3
+    expectInRange(rand.next().value, [1, 3]); // 1|2|3
+    expect(rand.next()).toEqual({ done: true, value: undefined });
   });
 });
