@@ -167,9 +167,9 @@ export function createTimeCountUpGen(): Generator<number, void, boolean | void> 
   function* g(): ReturnType<typeof createTimeCountUpGen> {
     while (true) {
       const endTime = pauseState.startTime ? pauseState.startTime : Date.now();
-      const isPlay = yield endTime - startTime - pauseState.total;
-      if (isPlay === void 0) continue;
-      isPlay ? play() : pause();
+      const nextValue = yield endTime - startTime - pauseState.total;
+      if (nextValue === void 0) continue;
+      nextValue ? play() : pause();
     }
   }
   return g();
@@ -249,9 +249,9 @@ export function createTimeCountDownGen(timeout: number): ReturnType<typeof creat
   function* g(): ReturnType<typeof createTimeCountDownGen> {
     let result: number;
     while ((result = timeout - (timeCountUp.next().value as number)) > 0) {
-      const next = yield result;
-      if (next === void 0) continue;
-      timeCountUp.next(next);
+      const nextValue = yield result;
+      if (nextValue === void 0) continue;
+      timeCountUp.next(nextValue);
     }
   }
   return g();
