@@ -1,8 +1,7 @@
-import * as gen from '../src/generator';
+import { createTimeCountUpGen, idGen } from '../src/generator';
+import { sleep } from '../src/promise';
 describe('generator', function () {
   describe('idGen', () => {
-    const idGen = gen.idGen;
-
     test('什么参数都不传', () => {
       const id = idGen();
       expect(id.next().value).toBe(0);
@@ -62,9 +61,44 @@ describe('generator', function () {
     test('转成数组', () => {
       expect([...idGen(0, 1, 3)]).toEqual([0, 1, 2]);
       expect([...idGen(0, 2, 3)]).toEqual([0, 2]);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       idGen(0).return(0);
     });
+  });
+
+  test('createTimeCountUpGen', async () => {
+    function expectInRange(value: any, range: [number, number]) {
+      expect(value).toBeGreaterThanOrEqual(range[0]);
+      expect(value).toBeLessThanOrEqual(range[1]);
+    }
+    const t = createTimeCountUpGen();
+
+    expect(t.next().value).toBe(0);
+
+    await sleep(20);
+    expectInRange(t.next().value, [20, 30]);
+
+    await sleep(30);
+    const beforePause = t.next().value;
+    expectInRange(beforePause, [50, 60]);
+
+    // 暂停
+    t.next(false);
+    await sleep(10);
+    expect(t.next().value).toBe(beforePause);
+    expectInRange(t.next().value, [50, 60]);
+
+    // 继续
+    t.next(true);
+    await sleep(10);
+    expectInRange(t.next().value, [60, 70]);
+
+    // 停止
+    t.return();
+    expect(t.next()).toEqual({ done: true, value: undefined });
+
+    // return 不接收任何参数
+    // @ts-expect-error
+    t.return(1);
   });
 });
