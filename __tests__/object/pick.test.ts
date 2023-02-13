@@ -35,7 +35,12 @@ describe('object.pick', function () {
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      expect(fn(new TestExtends(), ['a', 'c'])).toEqual({ a: 1 });
+      expect(fn(new TestExtends(), ['a', 'c'])).toEqual({ a: 1, c: 3 });
+
+      const a = { a: 1 };
+      const b = Object.create(a);
+      b.b = 2;
+      expect(fn(b, ['a', 'b'])).toEqual({ a: 1, b: 2 });
     };
   };
 
@@ -69,7 +74,7 @@ describe('object.pick', function () {
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      expect(fn(new TestExtends(), { aa: 'a', cc: 'c' })).toEqual({ aa: 1 });
+      expect(fn(new TestExtends(), { aa: 'a', cc: 'c' })).toEqual({ aa: 1, cc: 3 });
     };
   };
   test('pickRename', () => {

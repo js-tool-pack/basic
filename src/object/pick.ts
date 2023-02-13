@@ -29,7 +29,7 @@ export function pickByKeys<T extends object, K extends keyof T>(
 ): Pick<T, K> {
   const callback = cb || ((v) => v);
   return pickKeys.reduce((res, key) => {
-    if (hasOwn(originObj, key)) res[key] = callback(originObj[key], key, originObj);
+    res[key] = callback(originObj[key], key, originObj);
     return res;
   }, {} as any);
 }
@@ -81,9 +81,7 @@ export function pickRename<T extends object, K extends keyof T, O extends { [k: 
   return reduceObj(
     pickKeyMap,
     (result, pick, rename) => {
-      if (hasOwn(originObj, pick)) {
-        result[rename] = callback(originObj[pick], pick, originObj);
-      }
+      result[rename] = callback(originObj[pick], pick, originObj);
       return result;
     },
     {} as any,
