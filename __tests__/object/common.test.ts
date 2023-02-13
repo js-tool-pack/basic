@@ -2,6 +2,11 @@ import * as cm from '../../src/object/common';
 import * as arr from '../../src/array';
 import { forEachNum } from '../../src';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function expectType<T>(_value: T) {}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function expectError<T>(_value: T) {}
+
 describe('object', function () {
   test('deepMerge', () => {
     const deepMerge = cm.deepMerge;
@@ -246,5 +251,25 @@ describe('object', function () {
       ['hello', 'world'],
     ]);
     expect(likeKeys(map, /a+|b+/)).toEqual(['aa', 'bb']);
+  });
+
+  test('shadowObj', () => {
+    const shadowObj = cm.shadowObj;
+
+    const origin = { a: 1, b: 2 };
+
+    const res = shadowObj(origin, { c: 3 });
+    expect(res).toEqual({ c: 3 });
+    expect(res.a).toBe(origin.a);
+    expect(res.b).toBe(origin.b);
+
+    const er = shadowObj(origin, { a: 1 });
+    expect(er).toEqual({ a: 1 });
+    expectType<typeof er>(origin);
+
+    const er2 = shadowObj(origin, { c: 3 });
+    expect(er2).toEqual({ c: 3 });
+    // @ts-expect-error
+    expectError<typeof er2>(origin);
   });
 });
