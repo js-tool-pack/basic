@@ -1,3 +1,17 @@
+## [0.0.11](https://github.com/js-tool-pack/basic/compare/v0.0.10...v0.0.11) (2023-02-13)
+
+### Bug Fixes
+
+- **object:** 修复 pickByKeys/pickRename 不能获取祖先对象属性的 bug ([1d52326](https://github.com/js-tool-pack/basic/commit/1d523262178d008560d5a973f209a9dfadc80fc7))
+
+### Features
+
+- **object:** shadowObj ([a604d62](https://github.com/js-tool-pack/basic/commit/a604d620f427f322f2ac69b6d6a3f8ff92db6ba7))
+
+### BREAKING CHANGES
+
+- **object:** pickRename/pickByKeys/pick 改为可获取祖先对象属性
+
 ## [0.0.10](https://github.com/js-tool-pack/basic/compare/v0.0.9...v0.0.10) (2023-01-30)
 
 ### Bug Fixes
