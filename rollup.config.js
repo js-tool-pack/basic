@@ -78,6 +78,8 @@ function createConfig(format, output, plugins = []) {
     ` * ${packageOptions.name}(${pkg.name}) v${pkg.version}\n` +
     ` * Author: ${pkg.author}\n` +
     ` * Documentation: ${pkg.homepage}\n` +
+    ` * License: ${pkg.license}\n` +
+    ` * File: ${path.basename(output.file)}\n` +
     ` * Date: ${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}\n` +
     ` */\n`;
 
