@@ -171,4 +171,60 @@ describe('string', function () {
       expect(fn(value)).toBe(3);
     });
   });
+  describe('hideString', () => {
+    const hideString = cm.hideString;
+
+    it('start,end', () => {
+      expect(hideString('helloworld')).toBe('**********');
+      expect(hideString('helloworld', { start: 0, replacement: '*' })).toBe('**********');
+
+      expect(hideString('helloworld', { start: 0, end: 0 })).toBe('helloworld');
+
+      expect(hideString('helloworld', { start: 5, end: 5 })).toBe('helloworld');
+
+      expect(hideString('helloworld', { start: 5 })).toBe('hello*****');
+      expect(hideString('helloworld', { end: 5 })).toBe('*****world');
+
+      expect(hideString('helloworld', { start: 1, end: -1 })).toBe('h********d');
+      expect(hideString('helloworld', { start: 1, end: 9 })).toBe('h********d');
+      expect(hideString('helloworld', { start: -9, end: 9 })).toBe('h********d');
+
+      expect(hideString('helloworld', { start: -1, end: 1 })).toBe('h********d');
+      expect(hideString('helloworld', { start: 9, end: 1 })).toBe('h********d');
+
+      expect(hideString('helloworld', { replacement: '+', start: 2, end: -2 })).toBe('he++++++ld');
+
+      expect(hideString('👨‍👨‍👧‍👦helloworld👨‍👨‍👧‍👦', { start: 1, end: -1 })).toBe('👨‍👨‍👧‍👦**********👨‍👨‍👧‍👦');
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: 1, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: -12, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
+    });
+
+    it('start,len', () => {
+      expect(hideString('helloworld')).toBe('**********');
+      expect(hideString('helloworld', { start: 0, len: 10 })).toBe('**********');
+
+      expect(hideString('helloworld', { start: 1, len: 8 })).toBe('h********d');
+      expect(hideString('helloworld', { start: -9, len: 8 })).toBe('h********d');
+
+      expect(hideString('helloworld', { start: 0, len: 0 })).toBe('helloworld');
+
+      expect(hideString('helloworld', { len: 9 })).toBe('*********d');
+      expect(hideString('helloworld', { start: 0, len: 9 })).toBe('*********d');
+
+      expect(hideString('👨‍👨‍👧‍👦helloworld👨‍👨‍👧‍👦', { start: 1, len: 10 })).toBe('👨‍👨‍👧‍👦**********👨‍👨‍👧‍👦');
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: 1, len: 11 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
+    });
+    it('len,end', () => {
+      expect(hideString('helloworld')).toBe('**********');
+      expect(hideString('helloworld', { len: 10, end: 10, replacement: '*' })).toBe('**********');
+
+      expect(hideString('helloworld', { len: 0, end: 10 })).toBe('helloworld');
+
+      expect(hideString('helloworld', { len: 8, end: -1 })).toBe('h********d');
+      expect(hideString('helloworld', { len: 8, end: 9 })).toBe('h********d');
+
+      expect(hideString('👨‍👨‍👧‍👦helloworld👨‍👨‍👧‍👦', { len: 10, end: -1 })).toBe('👨‍👨‍👧‍👦**********👨‍👨‍👧‍👦');
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { len: 11, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
+    });
+  });
 });
