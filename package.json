@@ -1,6 +1,6 @@
 {
   "name": "@tool-pack/basic",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "packageManager": "pnpm@7.1.0",
   "description": "🛠 typescript javascript basic utils functions / 基础工具函数",
   "scripts": {

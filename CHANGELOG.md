@@ -1,3 +1,9 @@
+## [0.0.12](https://github.com/js-tool-pack/basic/compare/v0.0.11...v0.0.12) (2023-02-17)
+
+### Features
+
+- **string:** hideString ([dd80fc3](https://github.com/js-tool-pack/basic/commit/dd80fc3a4c4ae302874ab3f1396f0d9393fb9224))
+
 ## [0.0.11](https://github.com/js-tool-pack/basic/compare/v0.0.10...v0.0.11) (2023-02-13)
 
 ### Bug Fixes
