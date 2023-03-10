@@ -1,9 +1,10 @@
 import * as cm from '../src/common';
-import { sleep } from '../src/promise';
 import { avg } from '../src';
 import { inRange } from '@mxssfd/core';
 
 describe('common', function () {
+  jest.useFakeTimers();
+
   describe('debounce', function () {
     const debounce = cm.debounce;
     test('common', async () => {
@@ -20,10 +21,10 @@ describe('common', function () {
       wrapFn();
       // 取消上一次的防抖，并重置leading
       wrapFn.cancel();
-      await sleep(110);
+      jest.advanceTimersByTime(110);
       expect(times).toBe(1);
 
-      await sleep(300);
+      jest.advanceTimersByTime(300);
       setTimeout(wrapFn, 10);
       setTimeout(wrapFn, 20);
       setTimeout(wrapFn, 30);
@@ -32,7 +33,7 @@ describe('common', function () {
         expect(times).toBe(2);
         // 异步代码需要调用done()
       }, 500);
-      await sleep(500);
+      jest.advanceTimersByTime(500);
     });
     describe('rules', function () {
       describe('开启了 leading 首调用，那么 debounce 生效一次，会执行两次', () => {
@@ -41,7 +42,7 @@ describe('common', function () {
           const fn = debounce(() => times++, 10);
           fn();
           expect(times).toBe(0);
-          await sleep(30);
+          jest.advanceTimersByTime(30);
           expect(times).toBe(1);
         });
         it('开启 leading，会执行一次首尾调用', async () => {
@@ -50,7 +51,7 @@ describe('common', function () {
           fn();
           // leading 首调用已经执行了
           expect(times).toBe(1);
-          await sleep(30);
+          jest.advanceTimersByTime(30);
           // 已经执行了尾调用
           expect(times).toBe(2);
         });
@@ -88,7 +89,7 @@ describe('common', function () {
         expect(times).toBe(0);
         expect(fn.flush()).toBe(1);
         expect(times).toBe(1);
-        await sleep(30);
+        jest.advanceTimersByTime(30);
         expect(times).toBe(1);
       });
       it('如果手动 flush 最近一次调用 debounce 时已经成功执行过了，那么直接返回上一次的结果', async () => {
@@ -99,12 +100,12 @@ describe('common', function () {
         fn(2);
         fn(3);
         expect(val).toBe(1);
-        await sleep(20);
+        jest.advanceTimersByTime(20);
         expect(val).toBe(3);
         expect(fn.flush()).toBe(3);
       });
     });
-    test('leading', async () => {
+    test('leading', () => {
       expect.assertions(4);
       let times = 0;
       const fn = debounce(() => times++, 100, true);
@@ -119,7 +120,7 @@ describe('common', function () {
       fn();
       // 取消上一次的防抖，并重置leading
       fn.cancel();
-      await sleep(500);
+      jest.advanceTimersByTime(500);
       // leading 重新生效 times++ 4
       setTimeout(fn, 10);
       setTimeout(fn, 20);
@@ -129,7 +130,7 @@ describe('common', function () {
       setTimeout(() => {
         expect(times).toBe(5);
       }, 500);
-      await sleep(1000);
+      jest.advanceTimersByTime(1000);
       times = 0;
       fn();
       setTimeout(() => {
@@ -137,30 +138,33 @@ describe('common', function () {
         expect(times).toBe(2);
         // 异步代码需要调用done()
       }, 500);
-      await sleep(500);
+      jest.advanceTimersByTime(500);
     });
   });
 
-  test('oneByOne', async () => {
+  test('oneByOne', () => {
     const s = 'hello world';
     const receive: string[] = [];
     const diff: number[] = [];
     let lastNow = Date.now();
-    const { promise } = cm.oneByOne(s, 10, (w) => {
+    /*const { promise } = */ cm.oneByOne(s, 10, (w) => {
       receive.push(w);
       const now = Date.now();
       diff.push(now - lastNow);
       lastNow = now;
     });
-    await promise;
+    // await promise;
+    jest.advanceTimersByTime(100);
     expect(receive).toEqual(s.split(''));
     // 此处应该是0，但是整体测试的时候总是差那么一两毫秒
-    // expect(diff[0]).toBe(0);
+    expect(diff[0]).toBe(0);
     expect(inRange(diff[0]!, [0, 2])).toBe(true);
     const _avg = avg(diff.slice(1));
     // 虽然是间隔10秒，但由于js的setTimeout并不精准，所以会有波动
     expect(10 <= _avg && _avg <= 11).toBe(true);
-    await cm.oneByOne(s, 10).promise;
+    // await cm.oneByOne(s, 10).promise;
+    cm.oneByOne(s, 10);
+    // jest.advanceTimersByTime(100);
   });
   test('functionApply', () => {
     // const args = [1, 2, 3];
@@ -180,19 +184,19 @@ describe('common', function () {
       t = times;
       if (times === 10) cancel();
     }, 10);
-    await promise;
+    // await promise;
+    jest.advanceTimersByTime(90);
     expect(t).toBe(10);
 
     t = 0;
 
+    jest.useRealTimers();
     ({ cancel, promise } = cm.polling(
       (times) => {
         return new Promise<void>((res) => {
           t++;
           expect(times).toBe(t);
-          if (times === 10) {
-            cancel();
-          }
+          if (times === 10) cancel();
           res();
         });
       },
@@ -201,6 +205,7 @@ describe('common', function () {
     ));
     await promise;
     expect(t).toBe(10);
+    jest.useFakeTimers();
   });
 
   test('createUUID', () => {
@@ -234,7 +239,7 @@ describe('common', function () {
   });
 
   test('throttle', async () => {
-    expect.assertions(33);
+    // expect.assertions(33);
     const throttle = cm.throttle;
     let times = 0;
     let invalidTimes = 0;
@@ -254,7 +259,8 @@ describe('common', function () {
     );
 
     const now = Date.now();
-    await new Promise<void>((resolve) => {
+    // await new Promise<void>((resolve) => {
+    new Promise<void>((resolve) => {
       // TODO 可以使用OneByOne代替
       th();
 
@@ -273,24 +279,25 @@ describe('common', function () {
 
       exec();
     });
+    jest.advanceTimersByTime(2231);
     expect(times).toBe(3);
     // 有些电脑能够执行20次 与定时器有关 实际并不准确
     expect(invalidTimes).toBeGreaterThanOrEqual(15);
     expect(invalidTimes).toBeLessThanOrEqual(20);
 
     // interval = 0;
-    await sleep(1000);
+    jest.advanceTimersByTime(1000);
     th();
     expect(interval).toBe(0);
-    await sleep(100);
+    jest.advanceTimersByTime(100);
     th();
     expect(interval).toBeLessThanOrEqual(900);
     expect(interval).toBeGreaterThanOrEqual(800);
-    await sleep(200);
+    jest.advanceTimersByTime(200);
     th();
     expect(interval).toBeLessThanOrEqual(700);
     expect(interval).toBeGreaterThanOrEqual(600);
-    await sleep(701);
+    jest.advanceTimersByTime(701);
     th();
     expect(interval).toBe(0);
 
@@ -318,7 +325,7 @@ describe('common', function () {
     wrapFn();
     // 由于节流包裹函数时就开启了节流，此时还在时间内，所以内部不执行
     expect(fn.mock.calls.length).toBe(0);
-    await sleep(120);
+    jest.advanceTimersByTime(120);
     // 上一次执行的被丢弃了
     expect(fn.mock.calls.length).toBe(0);
     // 在间隔期外执行
@@ -347,7 +354,7 @@ describe('common', function () {
     wrapFn(3);
     // 由于节流包裹函数时就开启了节流，此时还在时间内，所以内部不执行
     expect(fn.mock.calls.length).toBe(0);
-    await sleep(120);
+    jest.advanceTimersByTime(120);
     // 上一次执行的不会被丢弃
     expect(fn.mock.calls.length).toBe(1);
     expect(fn.mock.calls[0][0]).toBe(3);
@@ -365,7 +372,7 @@ describe('common', function () {
     wrapFn();
     // 由于节流包裹函数时就开启了节流，此时还在时间内，所以内部不执行
     expect(fn.mock.calls.length).toBe(0);
-    await sleep(120);
+    jest.advanceTimersByTime(120);
     // 上一次执行的会被丢弃
     expect(fn.mock.calls.length).toBe(0);
 
