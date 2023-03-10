@@ -4,8 +4,8 @@ import {
   createTimeCountDownGen,
   randomItemGen,
 } from '../src/generator';
-import { sleep } from '../src/promise';
 describe('generator', function () {
+  jest.useFakeTimers();
   function expectInRange(value: any, range: [number, number]) {
     expect(value).toBeGreaterThanOrEqual(range[0]);
     expect(value).toBeLessThanOrEqual(range[1]);
@@ -75,30 +75,31 @@ describe('generator', function () {
     });
   });
 
-  test('createTimeCountUpGen', async () => {
+  test('createTimeCountUpGen', () => {
     const t = createTimeCountUpGen();
 
     expect(t.next().value).toBe(0);
 
-    await sleep(20);
+    // await sleep(20);
+    jest.advanceTimersByTime(20);
     expectInRange(t.next().value, [20, 30]);
 
-    await sleep(30);
+    jest.advanceTimersByTime(30);
     const beforePause = t.next().value;
     expectInRange(beforePause, [50, 60]);
 
     // 暂停
     t.next(false);
-    await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(t.next().value).toBe(beforePause);
     t.next(false);
     expectInRange(t.next().value, [50, 60]);
 
     // 继续
     t.next(true);
-    await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next(true).value, [60, 70]);
-    await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next(true).value, [70, 80]);
 
     // 停止
@@ -110,32 +111,38 @@ describe('generator', function () {
     t.return(1);
   });
 
-  test('createTimeCountDownGen', async () => {
+  test('createTimeCountDownGen', () => {
     const t = createTimeCountDownGen(100);
 
     expectInRange(t.next().value, [95, 100]);
 
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next().value, [85, 95]);
 
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next().value, [75, 85]);
 
     // 暂停
     const beforePause = t.next(false).value;
-    await sleep(20);
+    // await sleep(20);
+    jest.advanceTimersByTime(20);
     expect(t.next().value).toBe(beforePause);
 
-    await sleep(20);
+    // await sleep(20);
+    jest.advanceTimersByTime(20);
     expect(t.next().value).toBe(beforePause);
     expectInRange(t.next().value, [75, 85]);
 
     // 继续
     expectInRange(t.next(true).value, [75, 85]);
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next().value, [65, 75]);
 
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expectInRange(t.next().value, [50, 65]);
 
     // 停止

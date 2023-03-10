@@ -13,10 +13,11 @@ import {
   getMilliseconds,
   getMonthTheNthWeekday,
 } from '../src/time';
-import { sleep } from '../src';
 import { chunk, createArray, inRange } from '@mxssfd/core';
 
 describe('time', function () {
+  jest.useFakeTimers(); // 启用模拟定时器
+
   test('msToDates', () => {
     expect(msToDateStr(1000, 'd天hh时')).toBe('0天00时');
     expect(msToDateStr(1000)).toBe('0天00时00分01秒');
@@ -116,19 +117,22 @@ describe('time', function () {
       '2021-11-24 18:00:00:0000',
     );
   });
-  test('createTimeCountUp', async () => {
+  test('createTimeCountUp', () => {
     const timeCountUp = createTimeCountUp();
     expect(timeCountUp()).toBe(0);
 
-    await sleep(100);
+    // await sleep(100);
+    jest.advanceTimersByTime(100);
     const t1 = timeCountUp();
     expect(100 <= t1 && t1 <= 200).toBe(true);
 
-    await sleep(100);
+    // await sleep(100);
+    jest.advanceTimersByTime(100);
     const t2 = timeCountUp();
     expect(200 <= t2 && t2 <= 300).toBe(true);
 
-    await sleep(600);
+    // await sleep(600);
+    jest.advanceTimersByTime(600);
     const t3 = timeCountUp();
     expect(800 <= t3 && t3 <= 900).toBe(true);
 
@@ -136,52 +140,63 @@ describe('time', function () {
 
     const tcu = createTimeCountUp();
     expect(tcu()).toBe(0);
-    await sleep(1);
+    // await sleep(1);
+    jest.advanceTimersByTime(1);
     tcu.pause();
     const pauseValue = tcu();
     expect(inRange(pauseValue, [0, 3])).toBe(true);
 
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcu()).toBe(pauseValue);
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcu()).toBe(pauseValue);
 
     tcu.play();
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcu()).not.toBe(pauseValue);
     expect(inRange(tcu(), [pauseValue - 2, pauseValue + 12])).toBe(true);
   });
-  test('createTimeCountDown', async () => {
+  test('createTimeCountDown', () => {
     const timeout = 500;
     const timeCountDown = createTimeCountDown(timeout);
 
-    await sleep(50);
+    // await sleep(50);
+    jest.advanceTimersByTime(50);
     let t1 = timeCountDown();
     expect(timeout - 150 <= t1 && t1 <= timeout - 50).toBe(true);
 
-    await sleep(150);
+    // await sleep(150);
+    jest.advanceTimersByTime(150);
     t1 = timeCountDown();
     expect(timeout - 300 <= t1 && t1 <= timeout - 200).toBe(true);
 
-    await sleep(350);
+    // await sleep(350);
+    jest.advanceTimersByTime(350);
     expect(timeCountDown()).toBe(0);
 
     // ---- 暂停与重启 ----
 
     const tcd = createTimeCountDown(100);
     expect(tcd()).toBe(100);
-    await sleep(1);
+    // await sleep(1);
+    jest.advanceTimersByTime(1);
     tcd.pause();
     const pauseValue = tcd();
     expect(inRange(pauseValue, [98, 100])).toBe(true);
 
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcd()).toBe(pauseValue);
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcd()).toBe(pauseValue);
 
     tcd.play();
-    await sleep(10);
+    // await sleep(10);
+    jest.advanceTimersByTime(10);
     expect(tcd()).not.toBe(pauseValue);
     expect(inRange(tcd(), [pauseValue - 12, pauseValue])).toBe(true);
   });
@@ -363,16 +378,17 @@ describe('time', function () {
     expect(yearDiff(new Date('2022-1-1'), new Date('2022-07-01'))).toBe(-0.5);
     expect(yearDiff(new Date('2022-1-30'), new Date('2022-01-31'))).toBe(-0.002);
   });
-  test('calcRelativeDate', async () => {
+  test('calcRelativeDate', () => {
     const now = new Date();
     const d = calcRelativeDate(now);
 
     expect(d().getTime() === now.getTime()).toBe(true);
 
-    await sleep(100);
+    jest.advanceTimersByTime(100); // 模拟100豪秒的时间流逝
     expect(now.getTime() + 90 <= d().getTime() && d().getTime() <= now.getTime() + 110).toBe(true);
 
-    await sleep(100);
+    jest.advanceTimersByTime(100);
     expect(now.getTime() + 190 <= d().getTime() && d().getTime() <= now.getTime() + 210).toBe(true);
+    jest.runAllTimers();
   });
 });
