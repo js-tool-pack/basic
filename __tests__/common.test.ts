@@ -4,60 +4,141 @@ import { avg } from '../src';
 import { inRange } from '@mxssfd/core';
 
 describe('common', function () {
-  test('debounce', async () => {
-    expect.assertions(4);
+  describe('debounce', function () {
     const debounce = cm.debounce;
+    test('common', async () => {
+      expect.assertions(4);
 
-    let times = 0;
-    const wrapFn = debounce(() => times++, 100);
-    wrapFn();
-    expect(times).toBe(0);
-    // 立即执行上一次的防抖函数
-    wrapFn.flush();
-    expect(times).toBe(1);
-    wrapFn();
-    // 取消上一次的防抖
-    wrapFn.cancel();
-    await sleep(110);
-    expect(times).toBe(1);
-
-    await sleep(300);
-    setTimeout(wrapFn, 10);
-    setTimeout(wrapFn, 20);
-    setTimeout(wrapFn, 30);
-    setTimeout(wrapFn, 40);
-    setTimeout(() => {
-      expect(times).toBe(2);
-      // 异步代码需要调用done()
-    }, 500);
-    await sleep(500);
-  });
-  test('debounce immediate', async () => {
-    expect.assertions(4);
-    let times = 0;
-    const d = cm.debounce(() => times++, 100, true);
-    d();
-    expect(times).toBe(1);
-    d.flush();
-    expect(times).toBe(2);
-    d();
-    d.cancel();
-    await sleep(500);
-    setTimeout(d, 10);
-    setTimeout(d, 20);
-    setTimeout(d, 30);
-    setTimeout(d, 40);
-    setTimeout(() => {
-      expect(times).toBe(3);
-    }, 500);
-    await sleep(1000);
-    times = 0;
-    d();
-    setTimeout(() => {
+      let times = 0;
+      const wrapFn = debounce(() => times++, 100);
+      wrapFn();
+      expect(times).toBe(0);
+      // 立即执行上一次的防抖函数
+      // 此次 flush 执行的是 leading 的尾调用，leading 不会消除定时器
+      wrapFn.flush();
       expect(times).toBe(1);
-      // 异步代码需要调用done()
-    }, 500);
-    await sleep(500);
+      wrapFn();
+      // 取消上一次的防抖，并重置leading
+      wrapFn.cancel();
+      await sleep(110);
+      expect(times).toBe(1);
+
+      await sleep(300);
+      setTimeout(wrapFn, 10);
+      setTimeout(wrapFn, 20);
+      setTimeout(wrapFn, 30);
+      setTimeout(wrapFn, 40);
+      setTimeout(() => {
+        expect(times).toBe(2);
+        // 异步代码需要调用done()
+      }, 500);
+      await sleep(500);
+    });
+    describe('rules', function () {
+      describe('开启了 leading 首调用，那么 debounce 生效一次，会执行两次', () => {
+        it('未开启 leading,只会执行一次尾调用', async () => {
+          let times = 0;
+          const fn = debounce(() => times++, 10);
+          fn();
+          expect(times).toBe(0);
+          await sleep(30);
+          expect(times).toBe(1);
+        });
+        it('开启 leading，会执行一次首尾调用', async () => {
+          let times = 0;
+          const fn = debounce(() => times++, 10, true);
+          fn();
+          // leading 首调用已经执行了
+          expect(times).toBe(1);
+          await sleep(30);
+          // 已经执行了尾调用
+          expect(times).toBe(2);
+        });
+      });
+      describe('如果是多次执行 debounce 函数，在 debounce 生效期间会返回上一次执行的结果', function () {
+        test('leading:false', () => {
+          const fn = debounce((v: number) => 10 + v, 20);
+          expect(fn(1)).toBe(undefined);
+          expect(fn(2)).toBe(undefined);
+          expect(fn(3)).toBe(undefined);
+          fn.cancel();
+        });
+        test('leading:true', () => {
+          const fn = debounce((v: number) => 10 + v, 20, true);
+          expect(fn(1)).toBe(11);
+          expect(fn(2)).toBe(11);
+          expect(fn(3)).toBe(11);
+          fn.cancel();
+        });
+      });
+      it('手动取消成功时，下一次 leading 一定可以执行', async () => {
+        const fn = debounce((v: number) => 100 + v, 20, true);
+
+        expect(fn(1)).toBe(101);
+        expect(fn(2)).toBe(101);
+        expect(fn(3)).toBe(101);
+
+        fn.cancel();
+        expect(fn(11)).toBe(111);
+      });
+      it('手动 flush 时，取消定时器，也就是取消当前的尾调用', async () => {
+        let times = 0;
+        const fn = debounce(() => ++times, 10);
+        fn();
+        expect(times).toBe(0);
+        expect(fn.flush()).toBe(1);
+        expect(times).toBe(1);
+        await sleep(30);
+        expect(times).toBe(1);
+      });
+      it('如果手动 flush 最近一次调用 debounce 时已经成功执行过了，那么直接返回上一次的结果', async () => {
+        let val = 0;
+        const fn = debounce((v: number) => (val = v), 1, true);
+        fn(1);
+        expect(val).toBe(1);
+        fn(2);
+        fn(3);
+        expect(val).toBe(1);
+        await sleep(20);
+        expect(val).toBe(3);
+        expect(fn.flush()).toBe(3);
+      });
+    });
+    test('leading', async () => {
+      expect.assertions(4);
+      let times = 0;
+      const fn = debounce(() => times++, 100, true);
+      // leading 生效 times++ 1
+      fn();
+      expect(times).toBe(1);
+      // 手动 flush，并重置 leading， times++  2
+      // 执行的是 leading 的尾调用
+      fn.flush();
+      expect(times).toBe(2);
+      // leading 重新生效 times++ 3
+      fn();
+      // 取消上一次的防抖，并重置leading
+      fn.cancel();
+      await sleep(500);
+      // leading 重新生效 times++ 4
+      setTimeout(fn, 10);
+      setTimeout(fn, 20);
+      setTimeout(fn, 30);
+      // 尾调用 times++  5
+      setTimeout(fn, 40);
+      setTimeout(() => {
+        expect(times).toBe(5);
+      }, 500);
+      await sleep(1000);
+      times = 0;
+      fn();
+      setTimeout(() => {
+        // 首尾调用 times == 2
+        expect(times).toBe(2);
+        // 异步代码需要调用done()
+      }, 500);
+      await sleep(500);
+    });
   });
 
   test('oneByOne', async () => {
