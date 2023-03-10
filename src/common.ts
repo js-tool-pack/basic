@@ -139,8 +139,8 @@ export function debounce<CB extends (...args: any[]) => any>(
  * @param callback 需要被节流函数包裹的函数
  * @param interval 间隔时间
  * @param options
- * @param options.leading 首调用
- * @param options.trailing 尾调用
+ * @param [options.leading=true] 首调用
+ * @param [options.trailing=false] 尾调用
  * @param options.invalidCB 间隔期间调用throttle返回的函数执行的回调  例如一个按钮5秒点击一次，不可点击时执行该函数
  */
 export function throttle<CB extends (...args: any[]) => void | any>(
