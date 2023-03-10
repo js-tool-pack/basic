@@ -96,6 +96,8 @@ export function debounce<CB extends (...args: any[]) => any>(
 
 /**
  * 节流函数
+ * ---
+ * 节流除非是开启了尾调用否则是立即执行的，也就不需要防抖的cancel与flush
  *
  * @example
  *
@@ -162,17 +164,17 @@ export function debounce<CB extends (...args: any[]) => any>(
  * @param callback 需要被节流函数包裹的函数
  * @param interval 间隔时间
  * @param options
- * @param [options.leading=true] 首调用
+ * @param [options.leading=true] 首调用；未开启时是有个初始倒计时的，为true时关闭初始倒计时，默认true
  * @param [options.trailing=false] 尾调用
  * @param options.invalidCB 间隔期间调用throttle返回的函数执行的回调  例如一个按钮5秒点击一次，不可点击时执行该函数
  */
-export function throttle<CB extends (...args: any[]) => void | any>(
+export function throttle<CB extends (...args: unknown[]) => void | any>(
   callback: CB,
   interval: number,
   options: {
     leading?: boolean;
     trailing?: boolean;
-    invalidCB?: (interval: number) => void;
+    invalidCB?: (timeCountDown: number) => void;
   } = {},
 ): CB {
   const _options: Required<Parameters<typeof throttle>[2]> = {
@@ -184,7 +186,7 @@ export function throttle<CB extends (...args: any[]) => void | any>(
   let getCountDown = _options.leading ? () => 0 : createTimeCountDown(interval);
 
   const db = _options.trailing ? debounce(callback, interval) : null;
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: unknown[]) {
     const countDown = getCountDown();
     if (countDown > 0) {
       _options.invalidCB(countDown);
