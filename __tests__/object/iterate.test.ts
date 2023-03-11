@@ -98,4 +98,21 @@ describe('object.iterate', function () {
     expect(fn(obj)).toEqual({ b: 123 });
     expect(fn(obj, (v) => v !== undefined)).toEqual(omit(obj, ['d']));
   });
+  test('shadowObj', () => {
+    const replaceValues = cm.replaceValues;
+
+    const obj = { a: 1, b: 2 };
+    expect(replaceValues(obj, String)).toEqual({ a: '1', b: '2' });
+    expect(obj).toEqual({ a: '1', b: '2' });
+
+    const arr = [1, 2, 3];
+    expect(replaceValues(arr, String)).toEqual(['1', '2', '3']);
+    expect(arr).toEqual(['1', '2', '3']);
+    expect(
+      replaceValues(arr, (v, k) => {
+        expect(typeof k).toBe('string');
+        return Number(v);
+      }),
+    ).toEqual([1, 2, 3]);
+  });
 });
