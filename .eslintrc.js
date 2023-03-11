@@ -19,6 +19,7 @@ module.exports = {
     'no-var': 'error',
     // 不使用结尾分号
     semi: 'off',
+    eqeqeq: 'error',
     'no-case-declarations': 'off',
     // 优先使用 interface 而不是 type
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
@@ -32,6 +33,7 @@ module.exports = {
     {
       files: ['**/__tests__/**'],
       rules: {
+        eqeqeq: 'off',
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
@@ -40,6 +42,7 @@ module.exports = {
     {
       files: ['**/scripts/**.[jt]s', 'rollup.config.js'],
       rules: {
+        eqeqeq: 'off',
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
