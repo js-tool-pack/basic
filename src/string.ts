@@ -463,3 +463,41 @@ export function hideString(
 
   return before + center + after;
 }
+
+/**
+ * 跟 vue 的条件 className 语法类似
+ *
+ * @example
+ *
+ * ```ts
+ * // string
+ * getClassNames('a', 'b'); // 'a b'
+ *
+ * // object
+ * getClassNames({ a: true, b: false, c: true }); // 'a c'
+ *
+ * // string & object
+ * getClassNames('a', 'b', { a: true, b: false, c: true }); // 'a b c'
+ *
+ * // clean multi space
+ * getClassNames(' ', '    ', { a: true, b: false, c: true }); // 'a c'
+ * ```
+ *
+ * @param classes 支持字符串和对象类型
+ */
+export function getClassNames(
+  ...classes: Array<string | Record<string, boolean | null | undefined | number>>
+): string {
+  const handleObjClasses = (obj: Record<string, boolean | null | undefined | number>): string[] => {
+    return Object.entries(obj).reduce<string[]>((res, [k, v]) => {
+      if (v) res.push(k);
+      return res;
+    }, []);
+  };
+
+  const list: Array<string | string[]> = classes.map((item) =>
+    typeof item === 'object' ? handleObjClasses(item as any) : item,
+  );
+
+  return [...new Set(list.flat())].join(' ').trim().replace(/\s+/g, ' ');
+}
