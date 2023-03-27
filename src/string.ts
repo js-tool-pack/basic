@@ -1,4 +1,5 @@
 import type { StrTemplate, TupleM2N, ToCamelCase } from '@tool-pack/types';
+import { forEachObj } from './object';
 
 /**
  * 数字千位分隔
@@ -488,16 +489,17 @@ export function hideString(
 export function getClassNames(
   ...classes: Array<string | Record<string, boolean | null | undefined | number>>
 ): string {
-  const handleObjClasses = (obj: Record<string, boolean | null | undefined | number>): string[] => {
-    return Object.entries(obj).reduce<string[]>((res, [k, v]) => {
-      if (v) res.push(k);
-      return res;
-    }, []);
+  const classNames: Record<string, boolean> = {};
+
+  const handleObjClasses = (obj: Record<string, boolean | null | undefined | number>): void => {
+    forEachObj(obj, (v, k): void => {
+      if (v) classNames[k] = true;
+    });
   };
 
-  const list: Array<string | string[]> = classes.map((item) =>
-    typeof item === 'object' ? handleObjClasses(item as any) : item,
+  classes.forEach((item) =>
+    typeof item === 'string' ? (classNames[item] = true) : handleObjClasses(item),
   );
 
-  return [...new Set(list.flat())].join(' ').trim().replace(/\s+/g, ' ');
+  return Object.keys(classNames).join(' ').trim().replace(/\s+/g, ' ');
 }
