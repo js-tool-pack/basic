@@ -17,7 +17,7 @@
     "lint-check": "eslint .",
     "prettier-check": "prettier ./ --check",
     "check-all": "run-p ts-check lint-check prettier-check",
-    "typedoc:build": "typedoc --plugin @mxssfd/typedoc-theme --theme my-theme",
+    "typedoc:build": "typedoc",
     "typedoc:deploy": "gh-pages -d docs-html",
     "build": "esno scripts/build.ts -t",
     "release": "esno scripts/release.ts"
@@ -51,7 +51,7 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@microsoft/api-extractor": "^7.34.4",
     "@mxssfd/core": "5.0.1-beta.1",
-    "@mxssfd/typedoc-theme": "^1.0.3",
+    "@mxssfd/typedoc-theme": "^1.0.6",
     "@rollup/plugin-json": "^6.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "^29.4.0",
