@@ -1,3 +1,11 @@
+## [0.0.15](https://github.com/js-tool-pack/basic/compare/v0.0.14...v0.0.15) (2023-03-28)
+
+### Features
+
+- **string:** getClassNames ([f7a0d31](https://github.com/js-tool-pack/basic/commit/f7a0d31c08f9c7ac9935fb61d2e52b855e68f64d))
+- **string:** getClassNames 对象类型参数不再限制值的类型 ([7738d26](https://github.com/js-tool-pack/basic/commit/7738d26e77f157d7d6523b63a900a82615ec1bbd))
+- **string:** hideString 添加 replacementLen 选项，支持替换字符不等于实际字符数量 ([f4ab9ab](https://github.com/js-tool-pack/basic/commit/f4ab9abb271908fa752178ef3c1cf59950147c2a))
+
 ## [0.0.14](https://github.com/js-tool-pack/basic/compare/v0.0.13...v0.0.14) (2023-03-12)
 
 ### Features
