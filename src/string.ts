@@ -497,6 +497,8 @@ export function hideString(
  *
  * // object
  * getClassNames({ a: true, b: false, c: true }); // 'a c'
+ * getClassNames({ a: true, b: '  ', c: '' }); // 'a b'
+ * getClassNames({ a: true, b: 1, c: 0 }); // 'a b'
  *
  * // string & object
  * getClassNames('a', 'b', { a: true, b: false, c: true }); // 'a b c'
@@ -507,12 +509,10 @@ export function hideString(
  *
  * @param classes 支持字符串和对象类型
  */
-export function getClassNames(
-  ...classes: Array<string | Record<string, boolean | null | undefined | number>>
-): string {
+export function getClassNames(...classes: Array<string | Record<string, unknown>>): string {
   const classNames: Record<string, boolean> = {};
 
-  const handleObjClasses = (obj: Record<string, boolean | null | undefined | number>): void => {
+  const handleObjClasses = (obj: Record<string, unknown>): void => {
     forEachObj(obj, (v, k): void => {
       if (v) classNames[k] = true;
     });
