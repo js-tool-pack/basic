@@ -120,6 +120,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@tool-pack/types": "^0.0.1"
+    "@tool-pack/types": "^0.0.2"
   }
 }
