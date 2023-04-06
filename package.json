@@ -20,7 +20,8 @@
     "typedoc:build": "typedoc",
     "typedoc:deploy": "gh-pages -d docs-html",
     "build": "esno scripts/build.ts -t",
-    "release": "esno scripts/release.ts"
+    "release": "esno scripts/release.ts",
+    "yalc:publish": "yalc publish"
   },
   "lint-staged": {
     "*.{json,html,md,yaml}": [
