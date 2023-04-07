@@ -756,7 +756,7 @@ export const getTimePeriodConst = (function () {
  * @param options.now 当前时间；默认为new Date()
  * @param options.defaultFormat def参数${time}插槽的时间格式化模板；默认为'yyyy-MM-dd hh:mm:ss'
  * @param options.def 未匹配到模版时返回的模板，支持${time}插槽；默认为'${time}'
- * @param options.templates 匹配模板，支持${ago}插；当模板字符串为'~~'时会跳过该匹配模板；默认为
+ * @param options.templates 匹配模板，支持${ago}插；当模板字符串为'~~'时会跳过该匹配模板，取自markdown的~~标记；默认为
  * {
  *   year: '${ago}年前',
  *   season: '${ago}季前',
