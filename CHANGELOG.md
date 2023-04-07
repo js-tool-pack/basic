@@ -1,3 +1,10 @@
+## [0.0.16](https://github.com/js-tool-pack/basic/compare/v0.0.15...v0.0.16) (2023-04-07)
+
+### Features
+
+- **time:** getTimePeriodConst 获取时间段常数 ([128cb94](https://github.com/js-tool-pack/basic/commit/128cb9455644776e14e4d8e0daeb1619e25d1a90))
+- **time:** howLongAgo ([cc3bd5b](https://github.com/js-tool-pack/basic/commit/cc3bd5ba365a67e91982b3ffeac75608df8c19b2))
+
 ## [0.0.15](https://github.com/js-tool-pack/basic/compare/v0.0.14...v0.0.15) (2023-03-28)
 
 ### Features
