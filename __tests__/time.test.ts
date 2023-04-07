@@ -404,8 +404,8 @@ describe('time', function () {
       day: 24 * 60 * 60 * 1000,
       week: 7 * 24 * 60 * 60 * 1000,
       month: 30 * 24 * 60 * 60 * 1000,
-      season: 3 * 30 * 24 * 60 * 60 * 1000,
-      year: 12 * 30 * 24 * 60 * 60 * 1000,
+      season: (365 / 4) * 24 * 60 * 60 * 1000,
+      year: 365 * 24 * 60 * 60 * 1000,
     } satisfies typeof timePeriodConst);
   });
 });

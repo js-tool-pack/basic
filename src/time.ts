@@ -653,8 +653,8 @@ export function calcRelativeDate(init: Date) {
  *   day: 24 * 60 * 60 * 1000,
  *   week: 7 * 24 * 60 * 60 * 1000,
  *   month: 30 * 24 * 60 * 60 * 1000,
- *   season: 3 * 30 * 24 * 60 * 60 * 1000,
- *   year: 12 * 30 * 24 * 60 * 60 * 1000,
+ *   season: (365 / 4) * 24 * 60 * 60 * 1000,
+ *   year: 365 * 24 * 60 * 60 * 1000,
  * }
  */
 export const getTimePeriodConst = (function () {
@@ -664,8 +664,8 @@ export const getTimePeriodConst = (function () {
   const hour = minute * 60;
   const day = hour * 24;
   const month = day * 30;
-  const season = month * 3;
-  const year = month * 12;
+  const season = day * (365 / 4);
+  const year = day * 365;
   const week = day * 7;
 
   const timeConst = { millisecond, second, minute, hour, day, week, month, season, year } as const;
