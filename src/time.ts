@@ -781,7 +781,7 @@ export function howLongAgo(
     defaultFormat?: string;
     def?: string;
     filter?: (result: string, diff: number) => string;
-    now: Date;
+    now?: Date;
     templates?: Partial<
       Record<keyof Omit<ReturnType<typeof getTimePeriodConst>, 'millisecond'>, string>
     >;
