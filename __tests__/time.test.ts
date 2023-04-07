@@ -13,6 +13,7 @@ import {
   getMilliseconds,
   getMonthTheNthWeekday,
   getTimePeriodConst,
+  howLongAgo,
 } from '../src/time';
 import { chunk, createArray, inRange } from '@mxssfd/core';
 
@@ -407,5 +408,81 @@ describe('time', function () {
       season: (365 / 4) * 24 * 60 * 60 * 1000,
       year: 365 * 24 * 60 * 60 * 1000,
     } satisfies typeof timePeriodConst);
+  });
+  test('howLongAgo', () => {
+    const date = new Date('2023/4/7 00:00:00');
+    expect(howLongAgo(date, { now: new Date('2023/4/7 00:00:20') })).toBe('20秒前');
+    expect(howLongAgo(date, { now: new Date('2023/4/7 00:10:20') })).toBe('10分钟前');
+    expect(howLongAgo(date, { now: new Date('2023/4/7 08:00:00') })).toBe('8小时前');
+    expect(howLongAgo(date, { now: new Date('2023/4/10 00:00:00') })).toBe('3天前');
+
+    expect(howLongAgo(date, { now: new Date('2023/4/15 00:00:00') })).toBe('1周前');
+    expect(howLongAgo(date, { now: new Date('2023/5/6 00:00:00') })).toBe('4周前');
+
+    expect(howLongAgo(date, { now: new Date('2023/5/7 00:00:00') })).toBe('1月前');
+    // 因为过去多少月是按天数算的，5月有31天，所以到6月6号已经是2月前了
+    expect(howLongAgo(date, { now: new Date('2023/6/6 00:00:00') })).toBe('2月前');
+    expect(howLongAgo(date, { now: new Date('2023/7/7 00:00:00') })).toBe('3月前');
+
+    // 按天数算的，5月有31天，一季按91.25(365/4)天算
+    expect(howLongAgo(date, { now: new Date('2023/7/8 00:00:00') })).toBe('1季前');
+
+    expect(howLongAgo(date, { now: new Date('2024/7/7 00:00:00') })).toBe('1年前');
+
+    // now比date小
+    expect(howLongAgo(date, { now: new Date('2022/7/8 00:00:00') })).toBe('2023-04-07 00:00:00');
+    expect(howLongAgo(date, { now: new Date('2022/7/8 00:00:00'), def: '--' })).toBe('--');
+    expect(howLongAgo(date, { now: new Date('2022/7/8 00:00:00'), defaultFormat: 'yyyy' })).toBe(
+      '2023',
+    );
+
+    // 更换模板
+    const templates: Parameters<typeof howLongAgo>[1]['templates'] = {};
+
+    // 更换秒数模板
+    templates.second = '刚刚';
+    expect(howLongAgo(date, { now: new Date('2023/4/7 00:00:20'), templates })).toBe('刚刚');
+
+    // 更换小时数模板
+    templates.hour = '${ago} hours ago';
+    expect(howLongAgo(date, { now: new Date('2023/4/7 08:00:00'), templates })).toBe('8 hours ago');
+
+    // 更换周数模板
+    templates.week = '${ago}星期前';
+    expect(howLongAgo(date, { now: new Date('2023/4/15 00:00:00'), templates })).toBe('1星期前');
+    expect(howLongAgo(date, { now: new Date('2023/5/6 00:00:00'), templates })).toBe('4星期前');
+
+    // 去掉周数
+    templates.week = '~~';
+    expect(howLongAgo(date, { now: new Date('2023/4/15 00:00:00'), templates })).toBe('8天前');
+    expect(howLongAgo(date, { now: new Date('2023/5/6 00:00:00'), templates })).toBe('29天前');
+
+    // 去掉季节
+    templates.season = '~~';
+    expect(howLongAgo(date, { now: new Date('2023/7/8 00:00:00'), templates })).toBe('3月前');
+
+    // ------- filter -------
+    // 使用filter替换季数
+    expect(
+      howLongAgo(date, {
+        now: new Date('2023/10/8 00:00:00'),
+        filter: (res, diff) =>
+          res.endsWith('季前') ? ~~(diff / getTimePeriodConst().season) + ' seasons ago' : res,
+      }),
+    ).toBe('2 seasons ago');
+
+    // 混合
+    expect(
+      howLongAgo(date, {
+        now: new Date('2023/4/7 02:10:00'),
+        filter: (res, diff) => {
+          if (res.endsWith('小时前')) {
+            const tpc = getTimePeriodConst();
+            return `${~~(diff / tpc.hour)}小时${~~((diff % tpc.hour) / tpc.minute)}分钟前`;
+          }
+          return res;
+        },
+      }),
+    ).toBe('2小时10分钟前');
   });
 });
