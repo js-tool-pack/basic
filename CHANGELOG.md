@@ -1,3 +1,10 @@
+## [0.0.17](https://github.com/js-tool-pack/basic/compare/v0.0.16...v0.0.17) (2023-04-08)
+
+### Features
+
+- **array/forEachAround:** 第三个参数改为 object 选项，支持设置顺逆时针(reverse)、开始下标(startIndexes)，开始方向(startDirect) ([9c014c2](https://github.com/js-tool-pack/basic/commit/9c014c28cf4f0273c0af22e4065bdec0aab7b76f))
+- **array:** forEachAround 环绕式遍历数组 ([b236da9](https://github.com/js-tool-pack/basic/commit/b236da9c65de8ded530bd13b2c8deaabf4c8af8a))
+
 ## [0.0.16](https://github.com/js-tool-pack/basic/compare/v0.0.15...v0.0.16) (2023-04-07)
 
 ### Features
