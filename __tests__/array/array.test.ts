@@ -727,7 +727,7 @@ describe('array', function () {
 
     res.length = 0;
     indexes.length = 0;
-    forEachAround(arr, (v, i) => (res.push(v), indexes.push(i)), true);
+    forEachAround(arr, (v, i) => (res.push(v), indexes.push(i)), { reverse: true });
     expect(res).toEqual([
       1, 6, 11, 16, 21, 22, 23, 24, 25, 20, 15, 10, 5, 4, 3, 2, 7, 12, 17, 18, 19, 14, 9, 8, 13,
     ]);
@@ -762,5 +762,46 @@ describe('array', function () {
       res.push(v);
     });
     expect(res).toEqual([10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6]);
+
+    res.length = 0;
+    // 只遍历最外面一圈,并且跳过第一层（使用startIndexes和startDirect）
+    forEachAround(
+      arr,
+      (v, i): false | void => {
+        res.push(v);
+        if (i[0] === 0 && i[1] === 0) return false;
+      },
+      { startIndexes: [1, 4], startDirect: 'bottom' },
+    );
+    expect(res).toEqual([10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 1]);
+
+    res.length = 0;
+    // 从第一行的第三个开始
+    forEachAround(arr, (v) => res.push(v), { startIndexes: [0, 2] });
+    console.log(res);
+    expect(res).toEqual([
+      3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13,
+    ]);
+
+    res.length = 0;
+    // 从第一行的第三个开始，反向
+    forEachAround(arr, (v) => res.push(v), {
+      startIndexes: [0, 2],
+      startDirect: 'left',
+      reverse: true,
+    });
+    console.log(res);
+    expect(res).toEqual([
+      3, 2, 1, 6, 11, 16, 21, 22, 23, 24, 25, 20, 15, 10, 9, 8, 7, 12, 17, 18, 19, 14, 13,
+    ]);
+
+    res.length = 0;
+    // 下标越界
+    forEachAround(arr, (v) => res.push(v), { startIndexes: [10, 10], startDirect: 'bottom' });
+    expect(JSON.stringify(res)).toBe('[]');
+
+    // 空数组
+    forEachAround([], (v: any) => res.push(v), { startIndexes: [10, 10], startDirect: 'bottom' });
+    expect(JSON.stringify(res)).toBe('[]');
   });
 });
