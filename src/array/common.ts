@@ -987,6 +987,13 @@ export function getYangHuiTriangle(num: number): number[][] {
   return result;
 }
 
+const enum Direct {
+  top = 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
+}
+
 /**
  * 环绕式遍历数组
  *
@@ -1009,7 +1016,7 @@ export function getYangHuiTriangle(num: number): number[][] {
  *
  * res.length = 0;
  * // 逆时针遍历
- * forEachAround(arr, (v) => res.push(v), true);
+ * forEachAround(arr, (v) => res.push(v), {reverse: true});
  * console.log(res); // [1, 6, 11, 16, 21, 22, 23, 24, 25, 20, 15, 10, 5, 4, 3, 2, 7, 12, 17, 18, 19, 14, 9, 8, 13]
  *
  * res.length = 0;
@@ -1034,11 +1041,26 @@ export function getYangHuiTriangle(num: number): number[][] {
  * });
  * console.log(res); // [10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6]
  *
+ * res.length = 0;
+ * // 只遍历最外面一圈,并且跳过第一层（使用startIndexes和startDirect）
+ * forEachAround(
+ *   arr,
+ *   (v, i): false | void => {
+ *     res.push(v);
+ *     if (i[0] === 0 && i[1] === 0) return false;
+ *   },
+ *   { startIndexes: [1, 4], startDirect: 'bottom' },
+ * );
+ * console.log(res); // [10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 1]
+ *
  * ```
  *
  * @param arr 需要遍历的数组
  * @param callbackFn 回调函数
- * @param [reverse=false] 是否逆时针遍历；默认为false，顺时针遍历
+ * @param {{}} options
+ * @param options.reverse 是否逆时针遍历；默认为false，顺时针遍历
+ * @param options.startIndexes 开始时的index，默认[0, 0]
+ * @param options.startDirect 开始时的方向，默认向右('right')，reverse为true时向左('left')
  */
 export function forEachAround<T extends Array<any[]>>(
   arr: T,
@@ -1047,21 +1069,24 @@ export function forEachAround<T extends Array<any[]>>(
     indexes: [col: number, row: number],
     array: T,
   ) => any | false,
-  reverse = false,
+  {
+    reverse = false,
+    startIndexes,
+    startDirect,
+  }: {
+    reverse?: boolean;
+    startIndexes?: [col: number, row: number];
+    startDirect?: 'top' | 'bottom' | 'left' | 'right';
+  } = {},
 ) {
+  let direct = (startDirect as Direct) ?? (reverse ? Direct.bottom : Direct.right);
+  let indexes: [col: number, row: number] = startIndexes ?? [0, 0];
+
   const ranges: [col: [start: number, end: number], row: [start: number, end: number]] = [
     [0, arr.length - 1],
     [0, (arr[0]?.length || 0) - 1],
   ];
 
-  enum Direct {
-    left,
-    right,
-    top,
-    bottom,
-  }
-  let direct = reverse ? Direct.bottom : Direct.right;
-  let indexes: [col: number, row: number] = [0, 0];
   function getNextIndexes(direct: Direct): typeof indexes | null {
     let x = 0;
     let y = 0;
@@ -1104,12 +1129,11 @@ export function forEachAround<T extends Array<any[]>>(
   let whileFlag = true;
   const runCB = () => {
     const [col, row] = indexes;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const item = arr[col]![row]!;
+    const item = arr[col]?.[row];
     if (callbackFn(item, indexes, arr) === false) whileFlag = false;
   };
 
-  if (arr[0]?.length) runCB();
+  if (inRange(indexes[0], ranges[0]) && inRange(indexes[1], ranges[1])) runCB();
 
   while (whileFlag) {
     const nextIndexes = getNextIndexes(direct);
