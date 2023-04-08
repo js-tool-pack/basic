@@ -484,5 +484,10 @@ describe('time', function () {
         },
       }),
     ).toBe('2小时10分钟前');
+
+    // default now
+    const d = new Date();
+    d.setHours(d.getHours() - 8);
+    expect(howLongAgo(d, { templates })).toBe('8 hours ago');
   });
 });
