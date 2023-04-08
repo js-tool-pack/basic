@@ -22,6 +22,7 @@ import {
   avg,
   getYangHuiTriangle,
   getYangHuiTriangleOne,
+  forEachAround,
 } from '../../src';
 
 describe('array', function () {
@@ -697,5 +698,69 @@ describe('array', function () {
   test('getYangHuiTriangle', () => {
     expect(getYangHuiTriangle(1)).toEqual(yh.slice(0, 1));
     expect(getYangHuiTriangle(10)).toEqual(yh.slice());
+  });
+  test('forEachAround', () => {
+    const arr = [
+      [1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10],
+      [11, 12, 13, 14, 15],
+      [16, 17, 18, 19, 20],
+      [21, 22, 23, 24, 25],
+    ];
+
+    const res: number[] = [];
+    const indexes: [number, number][] = [];
+
+    forEachAround(arr, (v, i) => (res.push(v), indexes.push(i)));
+    expect(res).toEqual([
+      1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13,
+    ]);
+    expect(indexes).toEqual(
+      JSON.parse(`[
+      [0, 0], [0, 1], [0, 2], [0, 3], [0, 4],
+      [1, 4], [2, 4], [3, 4], [4, 4], [4, 3],
+      [4, 2], [4, 1], [4, 0], [3, 0], [2, 0],
+      [1, 0], [1, 1], [1, 2], [1, 3], [2, 3],
+      [3, 3], [3, 2], [3, 1], [2, 1], [2, 2]
+    ]`),
+    );
+
+    res.length = 0;
+    indexes.length = 0;
+    forEachAround(arr, (v, i) => (res.push(v), indexes.push(i)), true);
+    expect(res).toEqual([
+      1, 6, 11, 16, 21, 22, 23, 24, 25, 20, 15, 10, 5, 4, 3, 2, 7, 12, 17, 18, 19, 14, 9, 8, 13,
+    ]);
+    expect(indexes).toEqual(
+      JSON.parse(`[
+      [0, 0], [1, 0], [2, 0], [3, 0], [4, 0],
+      [4, 1], [4, 2], [4, 3], [4, 4], [3, 4],
+      [2, 4], [1, 4], [0, 4], [0, 3], [0, 2],
+      [0, 1], [1, 1], [2, 1], [3, 1], [3, 2],
+      [3, 3], [2, 3], [1, 3], [1, 2], [2, 2]
+    ]`),
+    );
+
+    res.length = 0;
+    // 只遍历最外面一圈
+    forEachAround(arr, (v, i): false | void => {
+      if (i[0] === 1 && i[1] === 1) return false;
+      res.push(v);
+    });
+    expect(res).toEqual([1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6]);
+
+    res.length = 0;
+    // 只遍历最外面一圈,并且跳过第一层
+    forEachAround(arr, (v, i): false | void => {
+      if (i[0] === 0 && i[1] === 0) {
+        // 移动到第二行倒数第二列
+        i[0] = 1;
+        i[1] = 3;
+        return;
+      }
+      if (i[0] === 1 && i[1] === 1) return false;
+      res.push(v);
+    });
+    expect(res).toEqual([10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6]);
   });
 });
