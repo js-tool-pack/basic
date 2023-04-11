@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/config-conventional': ^17.4.4
   '@microsoft/api-extractor': ^7.34.4
   '@mxssfd/core': 5.0.1-beta.1
-  '@mxssfd/typedoc-theme': ^1.0.6
+  '@mxssfd/typedoc-theme': ^1.1.1
   '@rollup/plugin-json': ^6.0.0
   '@tool-pack/types': ^0.0.1
   '@types/fs-extra': ^11.0.1
@@ -41,7 +41,7 @@ specifiers:
   semver: ^7.3.8
   ts-jest: ^29.0.5
   tslib: ^2.5.0
-  typedoc: ^0.23.26
+  typedoc: ^0.24.1
   typescript: ^4.9.5
 
 dependencies:
@@ -52,7 +52,7 @@ devDependencies:
   '@commitlint/config-conventional': 17.4.4
   '@microsoft/api-extractor': 7.34.4_@types+node@18.15.0
   '@mxssfd/core': 5.0.1-beta.1
-  '@mxssfd/typedoc-theme': 1.0.6_typedoc@0.23.26
+  '@mxssfd/typedoc-theme': 1.1.1_typedoc@0.24.1
   '@rollup/plugin-json': 6.0.0_rollup@3.19.0
   '@types/fs-extra': 11.0.1
   '@types/jest': 29.4.0
@@ -87,7 +87,7 @@ devDependencies:
   semver: 7.3.8
   ts-jest: 29.0.5_doipufordlnvh5g4adbwayvyvy
   tslib: 2.5.0
-  typedoc: 0.23.26_typescript@4.9.5
+  typedoc: 0.24.1_typescript@4.9.5
   typescript: 4.9.5
 
 packages:
@@ -1052,13 +1052,13 @@ packages:
       '@mxssfd/types': 5.0.1-beta.1
     dev: true
 
-  /@mxssfd/typedoc-theme/1.0.6_typedoc@0.23.26:
-    resolution: {integrity: sha512-GmaVRWWCaL9jIr58uKyXuBS+yn5L4e5BznclGCB+VlDSGHfZEc8GZdVc4ApKFUC3UEtZkS3fWy9S5aJMQttUyQ==}
+  /@mxssfd/typedoc-theme/1.1.1_typedoc@0.24.1:
+    resolution: {integrity: sha512-XhXy2MDoMJFeHgbE0cTxpB3K8AizQMJcm6gvf9lqNwfN6+ZfDnmIZub6lCuDgpL0O0fvckKTq7fGSP6XIU/17Q==}
     engines: {node: '>= 14'}
     peerDependencies:
-      typedoc: ^0.23.21
+      typedoc: ^0.24.1
     dependencies:
-      typedoc: 0.23.26_typescript@4.9.5
+      typedoc: 0.24.1_typescript@4.9.5
     dev: true
 
   /@mxssfd/types/5.0.1-beta.1:
@@ -7062,12 +7062,12 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typedoc/0.23.26_typescript@4.9.5:
-    resolution: {integrity: sha512-5m4KwR5tOLnk0OtMaRn9IdbeRM32uPemN9kur7YK9wFqx8U0CYrvO9aVq6ysdZSV1c824BTm+BuQl2Ze/k1HtA==}
+  /typedoc/0.24.1_typescript@4.9.5:
+    resolution: {integrity: sha512-u4HwjZcSQhQSkkhLjgcs0ooAf6HrFVLDHHrwU2xZW8WxH0KnGZlNkaWxiOcK5Gagj7mxJSgwWx0dv8ACDAOXAQ==}
     engines: {node: '>= 14.14'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x
     dependencies:
       lunr: 2.3.9
       marked: 4.2.12
