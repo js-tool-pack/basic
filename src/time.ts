@@ -706,7 +706,7 @@ export const getTimePeriodConst = (function () {
  * howLongAgo(date, { now: new Date('2022/7/8 00:00:00'), defaultFormat: 'yyyy' }); // '2023'
  *
  * // 更换模板
- * const templates: Parameters<typeof howLongAgo>[1]['templates'] = {};
+ * const templates: Required<Parameters<typeof howLongAgo>>[1]['templates'] = {};
  *
  * // 更换秒数模板
  * templates.second = '刚刚';
@@ -785,7 +785,7 @@ export function howLongAgo(
     templates?: Partial<
       Record<keyof Omit<ReturnType<typeof getTimePeriodConst>, 'millisecond'>, string>
     >;
-  },
+  } = {},
 ): string {
   const searchValue = '${ago}';
   const _templates: Required<typeof templates> = {

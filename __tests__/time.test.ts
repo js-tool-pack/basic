@@ -411,6 +411,7 @@ describe('time', function () {
   });
   test('howLongAgo', () => {
     const date = new Date('2023/4/7 00:00:00');
+    expect(howLongAgo(date, { now: date })).toBe('2023-04-07 00:00:00');
     expect(howLongAgo(date, { now: new Date('2023/4/7 00:00:20') })).toBe('20秒前');
     expect(howLongAgo(date, { now: new Date('2023/4/7 00:10:20') })).toBe('10分钟前');
     expect(howLongAgo(date, { now: new Date('2023/4/7 08:00:00') })).toBe('8小时前');
@@ -437,7 +438,7 @@ describe('time', function () {
     );
 
     // 更换模板
-    const templates: Parameters<typeof howLongAgo>[1]['templates'] = {};
+    const templates: Required<Parameters<typeof howLongAgo>>[1]['templates'] = {};
 
     // 更换秒数模板
     templates.second = '刚刚';
