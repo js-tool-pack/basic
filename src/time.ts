@@ -783,12 +783,13 @@ export function howLongAgo(
     filter?: (result: string, diff: number) => string;
     now?: Date;
     templates?: Partial<
-      Record<keyof Omit<ReturnType<typeof getTimePeriodConst>, 'millisecond'>, string>
+      Record<keyof Omit<ReturnType<typeof getTimePeriodConst>, 'millisecond'> | 'now', string>
     >;
   } = {},
 ): string {
   const searchValue = '${ago}';
   const _templates: Required<typeof templates> = {
+    now: '刚刚',
     year: `${searchValue}年前`,
     season: `${searchValue}季前`,
     month: `${searchValue}月前`,
@@ -812,6 +813,7 @@ export function howLongAgo(
   const found = matches.find(([cond, tpl]) => tpl !== '~~' && diff >= cond);
 
   if (!found) {
+    if (diff >= 0 && diff < 1000) return _filter(_templates.now, diff);
     const res = def.replace('${time}', formatDate(date, defaultFormat));
     return _filter(res, diff);
   }
