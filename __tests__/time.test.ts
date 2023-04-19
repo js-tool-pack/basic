@@ -14,6 +14,7 @@ import {
   getMonthTheNthWeekday,
   getTimePeriodConst,
   howLongAgo,
+  getStartOfDate,
 } from '../src/time';
 import { chunk, createArray, inRange } from '@mxssfd/core';
 
@@ -490,5 +491,8 @@ describe('time', function () {
     const d = new Date();
     d.setHours(d.getHours() - 8);
     expect(howLongAgo(d, { templates })).toBe('8 hours ago');
+  });
+  test('getDateBegin', () => {
+    expect(formatDate(getStartOfDate(new Date('2023/04/19 12:10:50')))).toBe('2023-04-19 00:00:00');
   });
 });
