@@ -1,4 +1,4 @@
-import { inRange } from './array';
+import { inRange } from '../array';
 
 /**
  * 把毫秒值转为天数
