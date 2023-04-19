@@ -65,7 +65,7 @@ export function replaceValues<T extends Record<string, unknown> | Array<unknown>
   replacement: (v: unknown, k: string, target: T) => unknown,
 ) {
   forEachObj(target, (v, k): void => {
-    target[k as string] = replacement(v, k as string, target);
+    (target as any)[k] = replacement(v, k as string, target);
   });
   return target;
 }
