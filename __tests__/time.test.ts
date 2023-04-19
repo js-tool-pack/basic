@@ -15,6 +15,7 @@ import {
   getTimePeriodConst,
   howLongAgo,
   getStartOfDate,
+  getStartOfWeek,
 } from '../src/time';
 import { chunk, createArray, inRange } from '@mxssfd/core';
 
@@ -494,5 +495,24 @@ describe('time', function () {
   });
   test('getDateBegin', () => {
     expect(formatDate(getStartOfDate(new Date('2023/04/19 12:10:50')))).toBe('2023-04-19 00:00:00');
+  });
+  test('getStartOfWeek', () => {
+    expect(formatDate(getStartOfWeek(new Date('2023/04/19')))).toBe('2023-04-17 00:00:00');
+    expect(formatDate(getStartOfWeek(new Date('2023/04/20')))).toBe('2023-04-17 00:00:00');
+    expect(formatDate(getStartOfWeek(new Date('2023/04/16')))).toBe('2023-04-10 00:00:00');
+    expect(formatDate(getStartOfWeek(new Date('2023/04/10')))).toBe('2023-04-10 00:00:00');
+
+    expect(formatDate(getStartOfWeek(new Date('2023/04/19'), 'SunDay'))).toBe(
+      '2023-04-16 00:00:00',
+    );
+    expect(formatDate(getStartOfWeek(new Date('2023/04/16'), 'SunDay'))).toBe(
+      '2023-04-16 00:00:00',
+    );
+    expect(formatDate(getStartOfWeek(new Date('2023/04/09'), 'SunDay'))).toBe(
+      '2023-04-09 00:00:00',
+    );
+    expect(formatDate(getStartOfWeek(new Date('2023/04/10'), 'SunDay'))).toBe(
+      '2023-04-09 00:00:00',
+    );
   });
 });
