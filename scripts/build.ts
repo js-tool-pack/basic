@@ -23,7 +23,7 @@ async function buildAll(targets: string[]) {
 }
 
 async function runParallel(maxConcurrency: number, source: string[], iteratorFn: typeof build) {
-  const ret = [];
+  const ret: Promise<void>[] = [];
   const executing: Promise<void>[] = [];
   for (const item of source) {
     const p = Promise.resolve().then(() => iteratorFn(item));
