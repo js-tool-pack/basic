@@ -239,6 +239,15 @@ describe('time', function () {
     expect(getTheLastDateOfAMonth(new Date('2021-11')).getDate()).toBe(30);
     expect(getTheLastDateOfAMonth(new Date('2021-12')).getDate()).toBe(31);
     expect(getTheLastDateOfAMonth(new Date('2020-2')).getDate()).toBe(29);
+    expect(formatDate(getTheLastDateOfAMonth(new Date('2020/02/10 10:00:00')))).toBe(
+      '2020-02-29 00:00:00',
+    );
+    expect(formatDate(getTheLastDateOfAMonth(new Date('2020/12/10 10:00:00')))).toBe(
+      '2020-12-31 00:00:00',
+    );
+    expect(formatDate(getTheLastDateOfAMonth(new Date('2023/12/10 10:00:00')))).toBe(
+      '2023-12-31 00:00:00',
+    );
   });
   test('getMonthTheNthWeekday', async () => {
     // const fn = t.getMonthTheLastWeekDay;
