@@ -402,9 +402,8 @@ export function createTimeCountDown(timeout: number): ReturnType<typeof createTi
  * getTheLastDateOfAMonth(new Date('2020-2')).getDate(); // 29
  *
  */
-export function getTheLastDateOfAMonth(month: Date): Date {
-  const lastDate = new Date(month.getTime());
-  lastDate.setMonth(month.getMonth() + 1);
+export function getTheLastDateOfAMonth(monthDate: Date): Date {
+  const lastDate = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, monthDate.getDate());
   lastDate.setDate(0);
   return lastDate;
 }
