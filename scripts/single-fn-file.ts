@@ -1,11 +1,6 @@
 import * as Path from 'path';
 import * as FS from 'fs';
-import type {
-  Declaration,
-  ExportNamedDeclaration,
-  FunctionDeclaration,
-  VariableDeclaration,
-} from '@babel/types';
+import type { Declaration, ExportNamedDeclaration } from '@babel/types';
 import { parse } from '@babel/parser';
 import generate from '@babel/generator';
 import { prompt } from 'enquirer';
@@ -48,11 +43,11 @@ function extractFunctionsFromFile(filepath: string): string[] {
   function getFnName(declaration: Declaration): string {
     switch (declaration.type) {
       case 'FunctionDeclaration':
-        return (declaration as FunctionDeclaration).id!.name;
+        return declaration.id!.name;
       case 'VariableDeclaration':
-        return ((declaration as VariableDeclaration).declarations[0]!.id as Identifier).name;
+        return (declaration.declarations[0]!.id as Identifier).name;
       case 'ExportNamedDeclaration':
-        return getFnName((declaration as ExportNamedDeclaration).declaration!);
+        return getFnName(declaration.declaration!);
       default:
         console.error(declaration);
         throw new Error(`未识别的类型：${declaration.type}`);
