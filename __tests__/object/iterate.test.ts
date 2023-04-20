@@ -29,7 +29,7 @@ describe('object.iterate', function () {
     expect(
       forEachObj(
         [1, 2],
-        (i) => (i > 0 ? false : undefined),
+        (i) => ((i as number) > 0 ? false : undefined),
         () => (ec = 1),
       ),
     ).toBeFalsy();
@@ -55,7 +55,7 @@ describe('object.iterate', function () {
 
     expect(feo(obj)).toEqual(
       Object.keys(obj).reduce((res, key) => {
-        res.push([obj[key], key, obj]);
+        res.push([obj[key as keyof typeof obj], key, obj]);
         return res;
       }, [] as any[]),
     );
