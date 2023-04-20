@@ -21,7 +21,8 @@
     "typedoc:deploy": "gh-pages -d docs-html",
     "build": "esno scripts/build.ts -t",
     "release": "esno scripts/release.ts",
-    "yalc:publish": "yalc publish"
+    "yalc:publish": "yalc publish",
+    "split:fn": "esno scripts/single-fn-file.ts"
   },
   "lint-staged": {
     "*.{json,html,md,yaml}": [
@@ -48,12 +49,18 @@
   },
   "homepage": "https://github.com/js-tool-pack/basic#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/generator": "^7.21.4",
+    "@babel/parser": "^7.21.4",
+    "@babel/preset-typescript": "^7.21.4",
+    "@babel/types": "^7.21.4",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
     "@microsoft/api-extractor": "^7.34.4",
     "@mxssfd/core": "5.0.1-beta.1",
     "@mxssfd/typedoc-theme": "^1.1.1",
     "@rollup/plugin-json": "^6.0.0",
+    "@types/babel__generator": "^7.6.4",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "^29.5.1",
     "@types/minimist": "^1.2.2",
