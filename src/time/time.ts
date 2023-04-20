@@ -1,4 +1,5 @@
 import { inRange } from '../array';
+import { getEndOfMonth } from './getEndOfMonth';
 
 /**
  * 把毫秒值转为天数
@@ -383,32 +384,6 @@ export function createTimeCountDown(timeout: number): ReturnType<typeof createTi
 }
 
 /**
- * 获取某月最后一天的date
- *
- * @example
- *
- * getTheLastDateOfAMonth(new Date('2021-1')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-2')).getDate(); // 28
- * getTheLastDateOfAMonth(new Date('2021-3')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-4')).getDate(); // 30
- * getTheLastDateOfAMonth(new Date('2021-5')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-6')).getDate(); // 30
- * getTheLastDateOfAMonth(new Date('2021-7')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-8')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-9')).getDate(); // 30
- * getTheLastDateOfAMonth(new Date('2021-10')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2021-11')).getDate(); // 30
- * getTheLastDateOfAMonth(new Date('2021-12')).getDate(); // 31
- * getTheLastDateOfAMonth(new Date('2020-2')).getDate(); // 29
- *
- */
-export function getTheLastDateOfAMonth(monthDate: Date): Date {
-  const lastDate = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, monthDate.getDate());
-  lastDate.setDate(0);
-  return lastDate;
-}
-
-/**
  * 获取指定某年月份(month)第n(nth)个星期几(weekday)的Date
  *
  * @example
@@ -436,7 +411,7 @@ export function getMonthTheNthWeekday(month: Date, nth: number, weekday = 0) {
   // if (!nth || weekday < 0 || weekday > 7) return null;
   if (!nth || !inRange(weekday, [0, 7])) return null;
   const monthTime = month.getTime();
-  const endDate = getTheLastDateOfAMonth(month);
+  const endDate = getEndOfMonth(month);
 
   let date: Date;
   if (nth > 0) {
@@ -612,7 +587,7 @@ export function yearDiff(a: Date, b: Date): number {
 
   const dates = a.getDate() - b.getDate();
 
-  months += ~~((dates * 100) / (getTheLastDateOfAMonth(a).getDate() - 1)) / 100;
+  months += ~~((dates * 100) / (getEndOfMonth(a).getDate() - 1)) / 100;
 
   return ~~((months * 1000) / 12) / 1000;
 }
