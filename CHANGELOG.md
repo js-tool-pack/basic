@@ -1,3 +1,23 @@
+## [0.0.18](https://github.com/js-tool-pack/basic/compare/v0.0.17...v0.0.18) (2023-04-26)
+
+### Bug Fixes
+
+- **time/getTheLastDateOfAMonth:** 日期时间未归零 ([fecefde](https://github.com/js-tool-pack/basic/commit/fecefdef0cc2fcffba221febd287789de7a21995))
+
+### Features
+
+- **common:** formatBytes 格式化字节数 ([9575474](https://github.com/js-tool-pack/basic/commit/9575474267d1c8e2c4f6b1bb29ee4e665922968e))
+- **time/howLongAgo:** 添加 now template ([53a82a0](https://github.com/js-tool-pack/basic/commit/53a82a01f0c56ce4ee566527aa044efb97104afb))
+- **time/howLongAgo:** 第二个参数改为可选参数 ([c557d8e](https://github.com/js-tool-pack/basic/commit/c557d8ed40497f8760f4d03ea79fb2d69f8d38f4))
+- **time:** getStartOfDate 获取某一天的开始 Date ([edc3729](https://github.com/js-tool-pack/basic/commit/edc37290afc3d2dea46dd57bee3fa0a5141eba23))
+- **time:** getStartOfNextWeek 获取某日下个星期开始的 date ([871f258](https://github.com/js-tool-pack/basic/commit/871f258e65ad96bcec0f4b34727cff8b90c7eca8))
+- **time:** getStartOfWeek 获取某日所在星期开始的 date ([ac01c68](https://github.com/js-tool-pack/basic/commit/ac01c6846f0226eab8359cc9858590545e7cb107))
+- **time:** getTheLastDateOfAMonth 重命名为 getEndOfMonth ([cf57ef7](https://github.com/js-tool-pack/basic/commit/cf57ef78708a33be6623a7233a91f6c05e4cf2ee))
+
+### BREAKING CHANGES
+
+- **time:** getTheLastDateOfAMonth 不能再使用
+
 ## [0.0.17](https://github.com/js-tool-pack/basic/compare/v0.0.16...v0.0.17) (2023-04-08)
 
 ### Features
