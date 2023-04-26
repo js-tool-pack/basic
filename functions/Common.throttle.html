@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>throttle | @tool-pack/basic - v0.0.17</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>throttle | @tool-pack/basic - v0.0.18</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
@@ -6,7 +6,7 @@
 <div id="tsd-toolbar-links"><a href="https://github.com/js-tool-pack/basic">GitHub</a></div></div>
 <ul class="results">
 <li class="state loading">Preparing search index...</li>
-<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">@tool-pack/basic - v0.0.17</a>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">@tool-pack/basic - v0.0.18</a>
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">Settings <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg></summary>
 <div class="tsd-accordion-details">
@@ -29,10 +29,10 @@
 <li><a href="Common.throttle.html">throttle</a></li></ul>
 <h1>Function throttle</h1></div>
 <section class="tsd-panel">
-<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-namespace">
-<li class="tsd-signature tsd-anchor-link" id="throttle">throttle<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">CB</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CB</span>, interval<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span><br/><span>    </span>leading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>trailing<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>invalidCB<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>timeCountDown<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CB</span><a href="#throttle" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="throttle"><span class="tsd-kind-call-signature">throttle</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">CB</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">callback</span>, <span class="tsd-kind-parameter">interval</span>, <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type tsd-kind-type-parameter">CB</span><a href="#throttle" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><a id="$节流函数" class="tsd-anchor"></a><h2><a href="#$节流函数" style="color:inherit;text-decoration:none">节流函数</a></h2><p>节流除非是开启了尾调用否则是立即执行的，也就不需要防抖的cancel与flush</p>
+<div class="tsd-comment tsd-typography"><a id="md:节流函数" class="tsd-anchor"></a><h2><a href="#$节流函数" style="color:inherit;text-decoration:none">节流函数</a></h2><p>节流除非是开启了尾调用否则是立即执行的，也就不需要防抖的cancel与flush</p>
 
 <h3>Example</h3><pre><code class="language-ts"><span class="hl-4">// ----------- 基础用法 -----------</span><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">count</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">elseCount</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">res</span><span class="hl-1"> = </span><span class="hl-7">&#39;&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">wrapFn</span><span class="hl-1"> = </span><span class="hl-0">throttle</span><span class="hl-1">((</span><span class="hl-3">_res</span><span class="hl-1">: </span><span class="hl-2">string</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> (</span><span class="hl-3">count</span><span class="hl-1">++, (</span><span class="hl-3">res</span><span class="hl-1"> = </span><span class="hl-3">_res</span><span class="hl-1">)), </span><span class="hl-8">10</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-0">invalidCB</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-3">elseCount</span><span class="hl-1">++;</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-0">wrapFn</span><span class="hl-1">(</span><span class="hl-7">&#39;0&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">(</span><span class="hl-7">&#39;1&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">(</span><span class="hl-7">&#39;2&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-3">res</span><span class="hl-1">; </span><span class="hl-4">// &#39;0&#39;</span><br/><span class="hl-3">elseCount</span><span class="hl-1">; </span><span class="hl-4">// 2</span><br/><br/><span class="hl-4">// ----------- 首调用 -----------</span><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">times</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">wrapFn</span><span class="hl-1"> = </span><span class="hl-0">throttle</span><span class="hl-1">(() </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-3">times</span><span class="hl-1">++, </span><span class="hl-8">100</span><span class="hl-1">, { </span><span class="hl-3">leading:</span><span class="hl-1"> </span><span class="hl-5">false</span><span class="hl-1"> });</span><br/><span class="hl-4">// 初始时时0次</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-4">// 执行一次</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-4">// 由于节流包裹函数时就开启了节流，此时还在时间内，所以内部不执行</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-10">await</span><span class="hl-1"> </span><span class="hl-0">sleep</span><span class="hl-1">(</span><span class="hl-8">120</span><span class="hl-1">);</span><br/><span class="hl-4">// 上一次执行的被丢弃了</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-4">// 在间隔期外执行</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-4">// 此时成功执行</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 1</span><br/><br/><span class="hl-3">times</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><span class="hl-4">// 立即执行</span><br/><span class="hl-3">wrapFn</span><span class="hl-1"> = </span><span class="hl-0">throttle</span><span class="hl-1">(</span><span class="hl-3">fn</span><span class="hl-1">, </span><span class="hl-8">100</span><span class="hl-1">, { </span><span class="hl-3">leading:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1"> });</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-4">// 由于节流包裹时未开启计时，所以</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 1</span><br/><br/><span class="hl-4">// ----------- 尾调用 -----------</span><br/><br/><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-3">times</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">wrapFn</span><span class="hl-1"> = </span><span class="hl-0">throttle</span><span class="hl-1">(() </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-3">times</span><span class="hl-1">++, </span><span class="hl-8">100</span><span class="hl-1">, { </span><span class="hl-3">leading:</span><span class="hl-1"> </span><span class="hl-5">false</span><span class="hl-1">, </span><span class="hl-3">trailing:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1"> });</span><br/><span class="hl-4">// 初始时时0次</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-4">// 执行一次</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-0">wrapFn</span><span class="hl-1">();</span><br/><span class="hl-4">// 由于节流包裹函数时就开启了节流，此时还在时间内，所以内部不执行</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 0</span><br/><span class="hl-10">await</span><span class="hl-1"> </span><span class="hl-0">sleep</span><span class="hl-1">(</span><span class="hl-8">120</span><span class="hl-1">);</span><br/><span class="hl-4">// 上一次执行的不会被丢弃</span><br/><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 1</span>
 </code></pre>
@@ -41,35 +41,35 @@
 <h4>Type Parameters</h4>
 <ul class="tsd-type-parameters">
 <li>
-<h4>CB<span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span></h4></li></ul></section>
+<h4><span class="tsd-kind-type-parameter">CB</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span></h4></li></ul></section>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>callback: <span class="tsd-signature-type">CB</span></h5>
+<h5><span class="tsd-kind-parameter">callback</span>: <span class="tsd-signature-type tsd-kind-type-parameter">CB</span></h5>
 <div class="tsd-comment tsd-typography"><p>需要被节流函数包裹的函数</p>
 </div></li>
 <li>
-<h5>interval: <span class="tsd-signature-type">number</span></h5>
+<h5><span class="tsd-kind-parameter">interval</span>: <span class="tsd-signature-type">number</span></h5>
 <div class="tsd-comment tsd-typography"><p>间隔时间</p>
 </div></li>
 <li>
-<h5>options: <span class="tsd-signature-symbol">{ </span><br/><span>    </span>leading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>trailing<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>invalidCB<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>timeCountDown<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol"> = {}</span></h5>
+<h5><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">leading</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">trailing</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">invalidCB</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">timeCountDown</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol"> = {}</span></h5>
 <ul class="tsd-parameters">
 <li class="tsd-parameter">
-<h5><code class="tsd-tag ts-flagOptional">Optional</code> leading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">leading</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 <div class="tsd-comment tsd-typography"><p>首调用；未开启时是有个初始倒计时的，为true时关闭初始倒计时，默认true</p>
 </div></li>
 <li class="tsd-parameter">
-<h5><code class="tsd-tag ts-flagOptional">Optional</code> trailing<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">trailing</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 <div class="tsd-comment tsd-typography"><p>尾调用</p>
 </div></li>
 <li class="tsd-parameter">
-<h5><code class="tsd-tag ts-flagOptional">Optional</code> invalidCB<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>timeCountDown<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">invalidCB</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">timeCountDown</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
 <ul class="tsd-parameters">
 <li class="tsd-parameter-signature">
-<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-<li class="tsd-signature"><span class="tsd-signature-symbol">(</span>timeCountDown<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+<ul class="tsd-signatures">
+<li class="tsd-signature"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">timeCountDown</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>间隔期间调用throttle返回的函数执行的回调  例如一个按钮5秒点击一次，不可点击时执行该函数</p>
 </div>
@@ -77,11 +77,11 @@
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>timeCountDown: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">timeCountDown</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></li></ul></li></ul></li></ul></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">CB</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type tsd-kind-type-parameter">CB</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/bc2c33c/src/common.ts#L171">common.ts:171</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/896fa74/src/common/throttle.ts#L78">common/throttle.ts:78</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
@@ -90,678 +90,692 @@
 <ul>
 <li>
 <ul>
-<li><a href="#$节流函数"><span>节流函数</span></a></li></ul></li></ul></div></details></div>
+<li><a href="#md:节流函数"><span>节流函数</span></a></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4-path"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)" id="icon-4-text"></path></svg>
-<div>@tool-<wbr/>pack/basic -<wbr/> v0.0.17</div></a>
+<div>@tool-<wbr/>pack/basic -<wbr/> v0.0.18</div></a>
 <ul class="tsd-small-nested-navigation">
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="DataType"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/DataType.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="DataType"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/DataType.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Data<wbr/>Type
 <div class="menu-item-desc">与数据类型相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="DataType.isNative.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>
+<li><a href="DataType.isNative.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>
 <div>is<wbr/>Native
 <div class="menu-item-desc">判断是否内置方法</div></div></a></li>
-<li><a href="DataType.typeOf.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.typeOf.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>type<wbr/>Of
 <div class="menu-item-desc">获取数据类型</div></div></a></li>
-<li><a href="DataType.isObject.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isObject.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Object
 <div class="menu-item-desc">判断目标是否是对象，不包含Array,Function</div></div></a></li>
-<li><a href="DataType.isObjectLike.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isObjectLike.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Object<wbr/>Like
 <div class="menu-item-desc">判断是否类对象(object like)|广义上的对象, 包含Array,Function</div></div></a></li>
-<li><a href="DataType.isArray.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isArray.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Array
 <div class="menu-item-desc">判断目标是否是数组</div></div></a></li>
-<li><a href="DataType.isArrayLike.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isArrayLike.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Array<wbr/>Like
 <div class="menu-item-desc">类数组对象(包含数组、{0:1,1:2,length:2}、字符串)</div></div></a></li>
-<li><a href="DataType.isString.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isString.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>String
 <div class="menu-item-desc">判断目标是否是字符串</div></div></a></li>
-<li><a href="DataType.isNumber.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isNumber.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Number
 <div class="menu-item-desc">判定目标是否是数字</div></div></a></li>
-<li><a href="DataType.isFunction.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isFunction.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Function
 <div class="menu-item-desc">判断目标是否是函数</div></div></a></li>
-<li><a href="DataType.isBoolean.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isBoolean.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Boolean
 <div class="menu-item-desc">判断目标是否是boolean</div></div></a></li>
-<li><a href="DataType.isUndefined.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isUndefined.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Undefined
 <div class="menu-item-desc">判断目标是否是undefined</div></div></a></li>
-<li><a href="DataType.isNaN.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isNaN.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>NaN
 <div class="menu-item-desc">判断目标是否是 NaN</div></div></a></li>
-<li><a href="DataType.isInteger.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isInteger.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Integer
 <div class="menu-item-desc">判断数字是否整数</div></div></a></li>
-<li><a href="DataType.inTypes.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.inTypes.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>in<wbr/>Types
 <div class="menu-item-desc">用typeIn(&quot;123&quot;, [&quot;string&quot;, &quot;number&quot;]) 代替  typeOf(&quot;123&quot;) === &quot;string&quot; || typeOf(&quot;123&quot;) === &quot;number&quot;</div></div></a></li>
-<li><a href="DataType.isPromiseLike.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isPromiseLike.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Promise<wbr/>Like
 <div class="menu-item-desc">判断目标是否是promise like</div></div></a></li>
-<li><a href="DataType.isEmptyObject.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isEmptyObject.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Empty<wbr/>Object
 <div class="menu-item-desc">判断是否是空object</div></div></a></li>
-<li><a href="DataType.isEmpty.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isEmpty.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Empty
 <div class="menu-item-desc">判断是否是空值 undefined, null, &quot;&quot;, [], {} ,NaN都为true</div></div></a></li>
-<li><a href="DataType.isEqual.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isEqual.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Equal
 <div class="menu-item-desc">判断两个变量是否相等,值比较，如果是对象则递归判断</div></div></a></li>
-<li><a href="DataType.objectIsEqual.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.objectIsEqual.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>object<wbr/>Is<wbr/>Equal
 <div class="menu-item-desc">递归判断两个对象是否相等</div></div></a></li>
-<li><a href="DataType.isSameType.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isSameType.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Same<wbr/>Type
 <div class="menu-item-desc">判断两个数据类型是否相等</div></div></a></li>
-<li><a href="DataType.isIterable.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isIterable.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Iterable
 <div class="menu-item-desc">判断目标是否可迭代</div></div></a></li>
-<li><a href="DataType.isPercent.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isPercent.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Percent
 <div class="menu-item-desc">判断字符串是否是百分比</div></div></a></li>
-<li><a href="DataType.includesChinese.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.includesChinese.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>includes<wbr/>Chinese
 <div class="menu-item-desc">是否包含中文</div></div></a></li>
-<li><a href="DataType.isArrayObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isArrayObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Array<wbr/>Obj
 <div class="menu-item-desc">判断是否是数组对象</div></div></a></li>
-<li><a href="DataType.isBroadlyObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="DataType.isBroadlyObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Broadly<wbr/>Obj</div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="String"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/String.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="String"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/String.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>String
 <div class="menu-item-desc">与字符串相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="String.formatNumber.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.formatNumber.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>format<wbr/>Number
 <div class="menu-item-desc">数字千位分隔</div></div></a></li>
-<li><a href="String.strTemplate.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.strTemplate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>str<wbr/>Template
 <div class="menu-item-desc">模仿c语言的模板字符串</div></div></a></li>
-<li><a href="String.removeStrByNum.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.removeStrByNum.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>remove<wbr/>Str<wbr/>By<wbr/>Num
 <div class="menu-item-desc">从字符串中删除指定字符串(from)中重复的第n(num)个字符串(str)</div></div></a></li>
-<li><a href="String.smartRepeat.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.smartRepeat.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>smart<wbr/>Repeat
 <div class="menu-item-desc">根据模板创建出字符串</div></div></a></li>
-<li><a href="String.capitalize.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.capitalize.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>capitalize
 <div class="menu-item-desc">首字母大写</div></div></a></li>
-<li><a href="String.fromCamel.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.fromCamel.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>from<wbr/>Camel
 <div class="menu-item-desc">从驼峰转其他命名格式</div></div></a></li>
-<li><a href="String.toCamel.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.toCamel.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>to<wbr/>Camel
 <div class="menu-item-desc">其他转驼峰</div></div></a></li>
-<li><a href="String.getStringLen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.getStringLen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>String<wbr/>Len
 <div class="menu-item-desc">获取字符串实际长度</div></div></a></li>
-<li><a href="String.hideString.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.hideString.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>hide<wbr/>String
 <div class="menu-item-desc">字符串遮掩部分或全部</div></div></a></li>
-<li><a href="String.getClassNames.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="String.getClassNames.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Class<wbr/>Names
 <div class="menu-item-desc">跟 vue 的条件 className 语法类似</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Number"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Number.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Number"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Number.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Number
 <div class="menu-item-desc">与Number以及一些数字计算精度相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Number.strip.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.strip.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>strip
 <div class="menu-item-desc">把错误的数据转正  from number-precision</div></div></a></li>
-<li><a href="Number.toNonExponential.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.toNonExponential.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>to<wbr/>Non<wbr/>Exponential
 <div class="menu-item-desc">科学计数法转普通小数</div></div></a></li>
-<li><a href="Number.getNumberLenAfterDot.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.getNumberLenAfterDot.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Number<wbr/>Len<wbr/>After<wbr/>Dot
 <div class="menu-item-desc">获取小数点后面数字的长度,支持科学计数法</div></div></a></li>
-<li><a href="Number.getCommonPow.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.getCommonPow.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Common<wbr/>Pow
 <div class="menu-item-desc">获取两位数乘后都能为整数的数字</div></div></a></li>
-<li><a href="Number.calcArr.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.calcArr.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>calc<wbr/>Arr</div></a></li>
-<li><a href="Number.plus.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.plus.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>plus
 <div class="menu-item-desc">加法计算，直接计算有精度问题</div></div></a></li>
-<li><a href="Number.minus.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.minus.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>minus
 <div class="menu-item-desc">减法计算，直接计算有精度问题</div></div></a></li>
-<li><a href="Number.times.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.times.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>times
 <div class="menu-item-desc">乘法计算，直接计算有精度问题</div></div></a></li>
-<li><a href="Number.divide.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.divide.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>divide
 <div class="menu-item-desc">除法计算，直接计算有精度问题</div></div></a></li>
-<li><a href="Number.getSafeNum.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.getSafeNum.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Safe<wbr/>Num
 <div class="menu-item-desc">安全数字</div></div></a></li>
-<li><a href="Number.numToFixed.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.numToFixed.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>num<wbr/>To<wbr/>Fixed
 <div class="menu-item-desc">number保留小数位，原来的函数四舍五入不准确</div></div></a></li>
-<li><a href="Number.forEachNum.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.forEachNum.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Num
 <div class="menu-item-desc">代替for循环</div></div></a></li>
-<li><a href="Number.forEachNumRight.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.forEachNumRight.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Num<wbr/>Right
 <div class="menu-item-desc">代替for循环</div></div></a></li>
-<li><a href="Number.numberToChinese.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.numberToChinese.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>number<wbr/>To<wbr/>Chinese
 <div class="menu-item-desc">阿拉伯数字转为中文数字</div></div></a></li>
-<li><a href="Number.chineseToNumber.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Number.chineseToNumber.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>chinese<wbr/>To<wbr/>Number
 <div class="menu-item-desc">中文转为阿拉伯数字</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Array"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Array.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Array"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Array.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Array
 <div class="menu-item-desc">数组相关工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../interfaces/Array.InsertToArrayToCBOptions.html" class="tsd-kind-interface tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>
+<li><a href="../interfaces/Array.InsertToArrayToCBOptions.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>
 <div>Insert<wbr/>To<wbr/>Array<wbr/>ToCBOptions
 <div class="menu-item-desc">insertToArray函数回调参数类型声明</div></div></a></li>
-<li><a href="Array.createArray.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.createArray.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Array
 <div class="menu-item-desc">创建数组</div></div></a></li>
-<li><a href="Array.forEach.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.forEach.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each
 <div class="menu-item-desc">遍历数组，并不完全等同 Array.prototype.forEach，该forEach支持中断，支持类似Python的for else功能</div></div></a></li>
-<li><a href="Array.forEachRight.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.forEachRight.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Right
 <div class="menu-item-desc">forEach的反向遍历版本</div></div></a></li>
-<li><a href="Array.castArray.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.castArray.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>cast<wbr/>Array
 <div class="menu-item-desc">判断value是否是数组，如果是数组就返回value否则返回[value]</div></div></a></li>
-<li><a href="Array.findIndex.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.findIndex.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>find<wbr/>Index
 <div class="menu-item-desc">在跟Array.prototype.findIndex基础上添加对ArrayLike支持，且可以跟findIndexRight配套使用</div></div></a></li>
-<li><a href="Array.findIndexRight.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.findIndexRight.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>find<wbr/>Index<wbr/>Right
 <div class="menu-item-desc">findIndex反向遍历版本</div></div></a></li>
-<li><a href="Array.binaryFindIndex.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.binaryFindIndex.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>binary<wbr/>Find<wbr/>Index
 <div class="menu-item-desc">二分查找item index</div></div></a></li>
-<li><a href="Array.binaryFind.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.binaryFind.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>binary<wbr/>Find
 <div class="menu-item-desc">二分查找item</div></div></a></li>
-<li><a href="Array.insertToArray.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.insertToArray.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>insert<wbr/>To<wbr/>Array
 <div class="menu-item-desc">item插入到数组，在原数组中改变</div></div></a></li>
-<li><a href="Array.arrayRemoveItem.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.arrayRemoveItem.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>array<wbr/>Remove<wbr/>Item
 <div class="menu-item-desc">从数组中移除item</div></div></a></li>
-<li><a href="Array.arrayRemoveItemsBy.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.arrayRemoveItemsBy.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>array<wbr/>Remove<wbr/>Items<wbr/>By
 <div class="menu-item-desc">从数组中移除多个item</div></div></a></li>
-<li><a href="Array.unique.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.unique.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>unique
 <div class="menu-item-desc">数组去重函数</div></div></a></li>
-<li><a href="Array.chunk.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.chunk.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>chunk
 <div class="menu-item-desc">数组分片</div></div></a></li>
-<li><a href="Array.inRange.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.inRange.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>in<wbr/>Range
 <div class="menu-item-desc">判断min &lt;= num &lt;= max</div></div></a></li>
-<li><a href="Array.inRanges.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.inRanges.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>in<wbr/>Ranges
 <div class="menu-item-desc">inRange的复数版</div></div></a></li>
-<li><a href="Array.groupBy.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.groupBy.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>group<wbr/>By
 <div class="menu-item-desc">数组分组</div></div></a></li>
-<li><a href="Array.someInList.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.someInList.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>some<wbr/>In<wbr/>List
 <div class="menu-item-desc">查找是否items中任何一个在list中</div></div></a></li>
-<li><a href="Array.sum.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.sum.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>sum
 <div class="menu-item-desc">数组求和</div></div></a></li>
-<li><a href="Array.avg.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.avg.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>avg
 <div class="menu-item-desc">数组求平均值</div></div></a></li>
-<li><a href="Array.getYangHuiTriangleOne.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.getYangHuiTriangleOne.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Yang<wbr/>Hui<wbr/>Triangle<wbr/>One
 <div class="menu-item-desc">获取num阶杨辉三角</div></div></a></li>
-<li><a href="Array.getYangHuiTriangle.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.getYangHuiTriangle.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Yang<wbr/>Hui<wbr/>Triangle
 <div class="menu-item-desc">获取num阶杨辉三角</div></div></a></li>
-<li><a href="Array.forEachAround.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.forEachAround.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Around
 <div class="menu-item-desc">环绕式遍历数组</div></div></a></li>
-<li><a href="Array.forEachAsync.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.forEachAsync.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Async
 <div class="menu-item-desc">跟promiseQueue类似，不过此函数是callback异步，重点在callback</div></div></a></li>
-<li><a href="Array.mapAsync.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.mapAsync.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>map<wbr/>Async</div></a></li>
-<li><a href="Array.reduceAsync.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Array.reduceAsync.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>reduce<wbr/>Async
 <div class="menu-item-desc">reduce promise 跟 promiseQueue差不多，此函数多了callbackFn</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Object"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Object.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Object"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Object.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Object
 <div class="menu-item-desc">对象相关工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Object.deepMerge.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.deepMerge.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>deep<wbr/>Merge
 <div class="menu-item-desc">合并两个object</div></div></a></li>
-<li><a href="Object.getReversedObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getReversedObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Reversed<wbr/>Obj
 <div class="menu-item-desc">object {key:value}翻转成{value:key}</div></div></a></li>
-<li><a href="Object.renameObjKey.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.renameObjKey.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>rename<wbr/>Obj<wbr/>Key
 <div class="menu-item-desc">根据新键值对重命名对象的key，并生成一个新的对象</div></div></a></li>
-<li><a href="Object.omit.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.omit.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>omit
 <div class="menu-item-desc">Omit 类似TS的Omit类型</div></div></a></li>
-<li><a href="Object.defaults.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.defaults.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>defaults
 <div class="menu-item-desc">与lodash defaults一样 只替换origin里面的值为undefined的属性</div></div></a></li>
-<li><a href="Object.updateObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.updateObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>update<wbr/>Obj
 <div class="menu-item-desc">使用其他对象去更新目标对象</div></div></a></li>
-<li><a href="Object.getInsKeys.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getInsKeys.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Ins<wbr/>Keys
 <div class="menu-item-desc">获取class实例的key数组</div></div></a></li>
-<li><a href="Object.updateIns.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.updateIns.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>update<wbr/>Ins
 <div class="menu-item-desc">更新实例对象属性</div></div></a></li>
-<li><a href="Object.hasOwn.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.hasOwn.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>has<wbr/>Own
 <div class="menu-item-desc">判断对象是否包含某个属性。</div></div></a></li>
-<li><a href="Object.swap.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.swap.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>swap
 <div class="menu-item-desc">对象或数组key交换</div></div></a></li>
-<li><a href="Object.likeKeys.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.likeKeys.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>like<wbr/>Keys
 <div class="menu-item-desc">查找对象中与param key类似的key</div></div></a></li>
-<li><a href="Object.shadowObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.shadowObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>shadow<wbr/>Obj
 <div class="menu-item-desc">影子对象</div></div></a></li>
-<li><a href="Object.pickByKeys.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pickByKeys.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick<wbr/>By<wbr/>Keys
 <div class="menu-item-desc">通过key数组挑选出key数组组成的对象</div></div></a></li>
-<li><a href="Object.pickRename.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pickRename.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick<wbr/>Rename
 <div class="menu-item-desc">pick并且重命名</div></div></a></li>
-<li><a href="Object.pick.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pick.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick
 <div class="menu-item-desc">pickByKeys与pickRename的合体函数</div></div></a></li>
-<li><a href="Object.pickDiff.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pickDiff.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick<wbr/>Diff
 <div class="menu-item-desc">从其他对象中挑出与原对象值不一样的或原对象中不存在的键值对所组成的新对象</div></div></a></li>
-<li><a href="Object.pickExternal.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pickExternal.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick<wbr/>External
 <div class="menu-item-desc">从其他对象中挑出与原对象中不存在的键值对所组成的新对象</div></div></a></li>
-<li><a href="Object.pickUpdated.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.pickUpdated.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>pick<wbr/>Updated
 <div class="menu-item-desc">根据与target对比，挑出与target同key不同value的key所组成的object</div></div></a></li>
-<li><a href="Object.translateObjPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.translateObjPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>translate<wbr/>Obj<wbr/>Path
 <div class="menu-item-desc">对象属性路径转换： obj[a] =&gt; obj.a</div></div></a></li>
-<li><a href="Object.getObjValueByPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getObjValueByPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Obj<wbr/>Value<wbr/>By<wbr/>Path
 <div class="menu-item-desc">通过object路径获取值</div></div></a></li>
-<li><a href="Object.setObjValueByPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.setObjValueByPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>set<wbr/>Obj<wbr/>Value<wbr/>By<wbr/>Path
 <div class="menu-item-desc">通过object路径设置值 如果路径中不存在则会自动创建对应的对象</div></div></a></li>
-<li><a href="Object.getObjPathEntries.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getObjPathEntries.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Obj<wbr/>Path<wbr/>Entries
 <div class="menu-item-desc">获取object的路径数组</div></div></a></li>
-<li><a href="Object.revertObjFromPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.revertObjFromPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>revert<wbr/>Obj<wbr/>From<wbr/>Path</div></a></li>
-<li><a href="Object.forEachObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.forEachObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>for<wbr/>Each<wbr/>Obj
 <div class="menu-item-desc">遍历对象属性</div></div></a></li>
-<li><a href="Object.replaceValues.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.replaceValues.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>replace<wbr/>Values
 <div class="menu-item-desc">替换数组或对象的value</div></div></a></li>
-<li><a href="Object.reduceObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.reduceObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>reduce<wbr/>Obj
 <div class="menu-item-desc">代替Object.keys(obj).reduce</div></div></a></li>
-<li><a href="Object.filterObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.filterObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>filter<wbr/>Obj
 <div class="menu-item-desc">过滤对象属性</div></div></a></li>
-<li><a href="Object.getTreeMaxDeep.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getTreeMaxDeep.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Tree<wbr/>Max<wbr/>Deep
 <div class="menu-item-desc">获取object树的最大层数 tree是object的话，tree就是层数1</div></div></a></li>
-<li><a href="Object.getTreeNodeLen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Object.getTreeNodeLen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Tree<wbr/>Node<wbr/>Len
 <div class="menu-item-desc">获取树某层的节点数 0是tree本身</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" open data-key="Common"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Common.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" open data-key="Common"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Common.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Common
 <div class="menu-item-desc">未分类工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Common.debounce.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="../types/Common.BYTE_UNIT.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>
+<div>BYTE_<wbr/>UNIT</div></a></li>
+<li><a href="Common.debounce.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>debounce
 <div class="menu-item-desc">防抖函数</div></div></a></li>
-<li><a href="Common.throttle.html" class="current tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.throttle.html" class="current"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>throttle
 <div class="menu-item-desc">节流函数</div></div></a></li>
-<li><a href="Common.polling.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.polling.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>polling
 <div class="menu-item-desc">轮询函数</div></div></a></li>
-<li><a href="Common.oneByOne.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.oneByOne.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>one<wbr/>By<wbr/>One
 <div class="menu-item-desc">每隔一段事件返回字符串中的一个单词，类似打字机效果</div></div></a></li>
-<li><a href="Common.generateFunctionCode.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.generateFunctionCode.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>generate<wbr/>Function<wbr/>Code
 <div class="menu-item-desc">组合成new Function需要的参数</div></div></a></li>
-<li><a href="Common.functionApply.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.functionApply.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>function<wbr/>Apply
 <div class="menu-item-desc">模拟Function.prototype.apply函数代替扩展运算符，使用数组传值给不定参数的函数传参</div></div></a></li>
-<li><a href="Common.createUUID.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.createUUID.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>createUUID
 <div class="menu-item-desc">生成uuid</div></div></a></li>
-<li><a href="Common.createEnum.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.createEnum.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Enum
 <div class="menu-item-desc">创建一个enum对象，给非ts环境使用</div></div></a></li>
-<li><a href="Common.getRoot.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.getRoot.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Root
 <div class="menu-item-desc">获取全局对象</div></div></a></li>
-<li><a href="Common.parseCmdParams.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Common.parseCmdParams.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Cmd<wbr/>Params
-<div class="menu-item-desc">命令行的参数转为Map</div></div></a></li></ul></div></details></li>
+<div class="menu-item-desc">命令行的参数转为Map</div></div></a></li>
+<li><a href="Common.formatBytes.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>format<wbr/>Bytes
+<div class="menu-item-desc">格式化字节数</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Promise"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Promise.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Promise"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Promise.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Promise
 <div class="menu-item-desc">Promise相关工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Promise.sleep.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.sleep.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>sleep
 <div class="menu-item-desc">等待一段时间后再执行后面的代码</div></div></a></li>
-<li><a href="Promise.lazy.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.lazy.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>lazy
 <div class="menu-item-desc">一种队列，分支wait和do</div></div></a></li>
-<li><a href="Promise.syncPromiseAll.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.syncPromiseAll.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>sync<wbr/>Promise<wbr/>All
 <div class="menu-item-desc">串行版promise.all，执行完一个才会去执行下一个</div></div></a></li>
-<li><a href="Promise.promiseQueue.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.promiseQueue.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>promise<wbr/>Queue
 <div class="menu-item-desc">promise队列</div></div></a></li>
-<li><a href="Promise.debounceAsync.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.debounceAsync.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>debounce<wbr/>Async
 <div class="menu-item-desc">回调支持promise的debounce</div></div></a></li>
-<li><a href="Promise.debounceByPromise.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Promise.debounceByPromise.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>debounce<wbr/>By<wbr/>Promise
 <div class="menu-item-desc">不使用setTimeout，使用promise实现的debounce</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Time"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Time.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Time"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Time.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Time
 <div class="menu-item-desc">时间相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Time.msToDateStr.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.msToDateStr.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>ms<wbr/>To<wbr/>Date<wbr/>Str
 <div class="menu-item-desc">把毫秒值转为天数</div></div></a></li>
-<li><a href="Time.formatDate.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.formatDate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>format<wbr/>Date
 <div class="menu-item-desc">格式化日期</div></div></a></li>
-<li><a href="Time.strToDate.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.strToDate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>str<wbr/>To<wbr/>Date
 <div class="menu-item-desc">字符串转为date对象</div></div></a></li>
-<li><a href="Time.dateDiff.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.dateDiff.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>date<wbr/>Diff
 <div class="menu-item-desc">比较两个日期相差年天时分秒</div></div></a></li>
-<li><a href="Time.createTimeCountUp.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.createTimeCountUp.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Time<wbr/>Count<wbr/>Up
 <div class="menu-item-desc">创建一个记录了调用时间的计时器闭包函数</div></div></a></li>
-<li><a href="Time.createTimeCountDown.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.createTimeCountDown.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Time<wbr/>Count<wbr/>Down
 <div class="menu-item-desc">创建一个倒计时闭包函数</div></div></a></li>
-<li><a href="Time.getTheLastDateOfAMonth.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>get<wbr/>The<wbr/>Last<wbr/>Date<wbr/>OfAMonth
-<div class="menu-item-desc">获取某月最后一天的date</div></div></a></li>
-<li><a href="Time.getMonthTheNthWeekday.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.getMonthTheNthWeekday.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Month<wbr/>The<wbr/>Nth<wbr/>Weekday
 <div class="menu-item-desc">获取指定某年月份(month)第n(nth)个星期几(weekday)的Date</div></div></a></li>
-<li><a href="Time.getMilliseconds.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.getMilliseconds.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Milliseconds
 <div class="menu-item-desc">把天数、小时数，分钟数转换毫秒数</div></div></a></li>
-<li><a href="Time.isSameTime.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.isSameTime.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Same<wbr/>Time
 <div class="menu-item-desc">判断时间是否相同</div></div></a></li>
-<li><a href="Time.inSameWeek.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.inSameWeek.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>in<wbr/>Same<wbr/>Week
 <div class="menu-item-desc">判断两个日期是否在同一个星期内</div></div></a></li>
-<li><a href="Time.yearDiff.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.yearDiff.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>year<wbr/>Diff
 <div class="menu-item-desc">计算两个日期间相差的年数 a - b</div></div></a></li>
-<li><a href="Time.calcRelativeDate.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.calcRelativeDate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>calc<wbr/>Relative<wbr/>Date
 <div class="menu-item-desc">比如根据服务器与本地时间的差值计算实际日期</div></div></a></li>
-<li><a href="Time.howLongAgo.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Time.getTimePeriodConst.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>get<wbr/>Time<wbr/>Period<wbr/>Const
+<div class="menu-item-desc">获取时间段常数</div></div></a></li>
+<li><a href="Time.howLongAgo.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>how<wbr/>Long<wbr/>Ago
 <div class="menu-item-desc">获取过去时间数</div></div></a></li>
-<li><a href="Time.getTimePeriodConst.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
-<div>get<wbr/>Time<wbr/>Period<wbr/>Const
-<div class="menu-item-desc">获取时间段常数</div></div></a></li></ul></div></details></li>
+<li><a href="Time.getEndOfMonth.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>get<wbr/>End<wbr/>Of<wbr/>Month
+<div class="menu-item-desc">获取某月最后一天的date</div></div></a></li>
+<li><a href="Time.getStartOfDate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>get<wbr/>Start<wbr/>Of<wbr/>Date
+<div class="menu-item-desc">获取某一天的开始Date</div></div></a></li>
+<li><a href="Time.getStartOfWeek.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>get<wbr/>Start<wbr/>Of<wbr/>Week
+<div class="menu-item-desc">获取某日所在星期开始的date</div></div></a></li>
+<li><a href="Time.getStartOfNextWeek.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<div>get<wbr/>Start<wbr/>Of<wbr/>Next<wbr/>Week
+<div class="menu-item-desc">获取某日下个星期开始的date</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Clone"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Clone.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Clone"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Clone.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Clone
 <div class="menu-item-desc">对象克隆相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Clone.cloneFunction.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Clone.cloneFunction.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>clone<wbr/>Function
 <div class="menu-item-desc">对函数复制</div></div></a></li>
-<li><a href="Clone.deepClone.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Clone.deepClone.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>deep<wbr/>Clone
 <div class="menu-item-desc">对象深拷贝办法(深度优先)</div></div></a></li>
-<li><a href="Clone.deepCloneBfs.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Clone.deepCloneBfs.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>deep<wbr/>Clone<wbr/>Bfs
 <div class="menu-item-desc">对象深拷贝办法(广度优先)</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="CalcChain"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/CalcChain.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="CalcChain"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/CalcChain.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Calc<wbr/>Chain
 <div class="menu-item-desc">计算链工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../classes/CalcChain.CalcChain.html" class="tsd-kind-class tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>
+<li><a href="../classes/CalcChain.CalcChain.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>
 <div>Calc<wbr/>Chain
 <div class="menu-item-desc">链式计算</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Coordinate"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Coordinate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Coordinate"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Coordinate.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Coordinate
 <div class="menu-item-desc">坐标系相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/Coordinate.Point.html" class="tsd-kind-type-alias tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>
+<li><a href="../types/Coordinate.Point.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>
 <div>Point
 <div class="menu-item-desc">坐标点</div></div></a></li>
-<li><a href="Coordinate.isPointInPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.isPointInPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Point<wbr/>In<wbr/>Path
 <div class="menu-item-desc">判断某个点是否在某个线上</div></div></a></li>
-<li><a href="Coordinate.getDistance.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.getDistance.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Distance
 <div class="menu-item-desc">根据三角函数求两点的距离</div></div></a></li>
-<li><a href="Coordinate.getAngle.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.getAngle.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Angle
 <div class="menu-item-desc">根据目标点获取相对于原点的角度</div></div></a></li>
-<li><a href="Coordinate.getRotatePoint.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.getRotatePoint.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Rotate<wbr/>Point
 <div class="menu-item-desc">根据半径与角度获取对应坐标点</div></div></a></li>
-<li><a href="Coordinate.getBorderWidthByCos.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.getBorderWidthByCos.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Border<wbr/>Width<wbr/>By<wbr/>Cos
 <div class="menu-item-desc">根据余弦定理(c^2 = a^2 + b^2 - 2 * a * b * cosA)获取任意边长</div></div></a></li>
-<li><a href="Coordinate.getBorderWidthBySin.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.getBorderWidthBySin.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>get<wbr/>Border<wbr/>Width<wbr/>By<wbr/>Sin
 <div class="menu-item-desc">根据正弦定理(a/sinA = b/sinB = c/sinC)获取对应边长</div></div></a></li>
-<li><a href="Coordinate.rectCoordToScreen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Coordinate.rectCoordToScreen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>rect<wbr/>Coord<wbr/>To<wbr/>Screen
 <div class="menu-item-desc">笛卡尔坐标系(平面直角坐标系)转屏幕坐标系</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Random"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Random.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Random"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Random.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Random
 <div class="menu-item-desc">随机相关工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Random.randomFloat.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomFloat.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>random<wbr/>Float
 <div class="menu-item-desc">min end都不传  return Math.random()</div></div></a></li>
-<li><a href="Random.randomInt.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomInt.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>random<wbr/>Int
 <div class="menu-item-desc">min end都不传 返回范围：0 - Number.MAX_SAFE_INTEGER</div></div></a></li>
-<li><a href="Random.randomItem.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomItem.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>random<wbr/>Item
 <div class="menu-item-desc">随机获取数组中的一个</div></div></a></li>
-<li><a href="Random.shuffle.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.shuffle.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>shuffle
 <div class="menu-item-desc">数组洗牌，不会改变原数组</div></div></a></li>
-<li><a href="Random.randomRGB.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomRGB.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>randomRGB
 <div class="menu-item-desc">随机RGB颜色</div></div></a></li>
-<li><a href="Random.randomRGBA.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomRGBA.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>randomRGBA
 <div class="menu-item-desc">随机RGBA颜色</div></div></a></li>
-<li><a href="Random.randomHEX.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomHEX.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>randomHEX
 <div class="menu-item-desc">随机HEX颜色</div></div></a></li>
-<li><a href="Random.randomColor.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Random.randomColor.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>random<wbr/>Color
 <div class="menu-item-desc">随机颜色，无参数时默认为HEX格式的颜色</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Color"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Color.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Color"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Color.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Color
 <div class="menu-item-desc">颜色相关工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../classes/Color.RGB.html" class="tsd-kind-class tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
+<li><a href="../classes/Color.RGB.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
 <div>RGB
 <div class="menu-item-desc">RGB类</div></div></a></li>
-<li><a href="../classes/Color.RGBA.html" class="tsd-kind-class tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
+<li><a href="../classes/Color.RGBA.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
 <div>RGBA
 <div class="menu-item-desc">RGBA类</div></div></a></li>
-<li><a href="Color.isRGBColor.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Color.isRGBColor.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>isRGBColor
 <div class="menu-item-desc">判断是否是RGB(包含RGBA)格式的颜色值</div></div></a></li>
-<li><a href="Color.isHEXColor.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Color.isHEXColor.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>isHEXColor
 <div class="menu-item-desc">判断是否是HEX格式的颜色值</div></div></a></li>
-<li><a href="Color.rgbToHex.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Color.rgbToHex.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>rgb<wbr/>To<wbr/>Hex
 <div class="menu-item-desc">RGB转换为HEX</div></div></a></li>
-<li><a href="Color.hslToRgb.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Color.hslToRgb.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>hsl<wbr/>To<wbr/>Rgb
 <div class="menu-item-desc">HSL类型颜色值转换为RGB</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Decorator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Decorator.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Decorator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Decorator.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Decorator
 <div class="menu-item-desc">装饰器相关工具</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Decorator.decoratorfy.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Decorator.decoratorfy.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>decoratorfy
 <div class="menu-item-desc">把一个函数转变为装饰器</div></div></a></li>
-<li><a href="Decorator.Debounce.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Decorator.Debounce.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>Debounce
 <div class="menu-item-desc">防抖装饰器</div></div></a></li>
-<li><a href="Decorator.Throttle.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Decorator.Throttle.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>Throttle
 <div class="menu-item-desc">节流装饰器</div></div></a></li>
-<li><a href="Decorator.Polling.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Decorator.Polling.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>Polling
 <div class="menu-item-desc">轮询装饰器</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Url"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Url.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Url"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Url.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Url
 <div class="menu-item-desc">Url相关工具</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../classes/Url.UrlModel.html" class="tsd-kind-class tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
+<li><a href="../classes/Url.UrlModel.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>
 <div>Url<wbr/>Model
 <div class="menu-item-desc">解析url</div></div></a></li>
-<li><a href="../variables/Url.hostReg.html" class="tsd-kind-variable tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg>
+<li><a href="../variables/Url.hostReg.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg>
 <div>host<wbr/>Reg</div></a></li>
-<li><a href="../variables/Url.UrlRegExp.html" class="tsd-kind-variable tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>
+<li><a href="../variables/Url.UrlRegExp.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>
 <div>Url<wbr/>Reg<wbr/>Exp</div></a></li>
-<li><a href="Url.parseUrlProtocol.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlProtocol.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Protocol
 <div class="menu-item-desc">解析url protocol</div></div></a></li>
-<li><a href="Url.parseUrlHost.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlHost.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Host
 <div class="menu-item-desc">解析url host</div></div></a></li>
-<li><a href="Url.parseUrlPort.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlPort.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Port
 <div class="menu-item-desc">解析url port</div></div></a></li>
-<li><a href="Url.parseUrlPath.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlPath.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Path
 <div class="menu-item-desc">解析url path</div></div></a></li>
-<li><a href="Url.parseUrlHash.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlHash.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Hash
 <div class="menu-item-desc">解析url hash</div></div></a></li>
-<li><a href="Url.parseUrlHashQuery.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlHashQuery.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Hash<wbr/>Query
 <div class="menu-item-desc">获取hash中的param</div></div></a></li>
-<li><a href="Url.parseUrlQuery.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlQuery.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Query
 <div class="menu-item-desc">解析url单个query参数</div></div></a></li>
-<li><a href="Url.parseUrlQueryObj.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.parseUrlQueryObj.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>parse<wbr/>Url<wbr/>Query<wbr/>Obj
 <div class="menu-item-desc">解析url query对象</div></div></a></li>
-<li><a href="Url.stringifyUrlQuery.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.stringifyUrlQuery.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>stringify<wbr/>Url<wbr/>Query
 <div class="menu-item-desc">把对象转成url query</div></div></a></li>
-<li><a href="Url.updateUrlQuery.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.updateUrlQuery.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>update<wbr/>Url<wbr/>Query
 <div class="menu-item-desc">只能修改url已存在的参数，不能新增或删除参数</div></div></a></li>
-<li><a href="Url.setUrlQuery.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.setUrlQuery.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>set<wbr/>Url<wbr/>Query
 <div class="menu-item-desc">设置url参数，可新增或删除参数</div></div></a></li>
-<li><a href="Url.isUrl.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Url.isUrl.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>is<wbr/>Url
 <div class="menu-item-desc">判断字符串是否是url</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Bezier"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Bezier.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Bezier"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Bezier.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Bezier
 <div class="menu-item-desc">贝塞尔曲线函数相关工具</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Bezier.bezier2.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.bezier2.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>bezier2
 <div class="menu-item-desc">2阶贝塞尔曲线</div></div></a></li>
-<li><a href="Bezier.bezier3.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.bezier3.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>bezier3
 <div class="menu-item-desc">3阶贝塞尔曲线公式</div></div></a></li>
-<li><a href="Bezier.useCubicBezier3.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.useCubicBezier3.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>use<wbr/>Cubic<wbr/>Bezier3
 <div class="menu-item-desc">使用3阶贝塞尔曲线缓动函数</div></div></a></li>
-<li><a href="Bezier.pointBezier2.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.pointBezier2.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>point<wbr/>Bezier2
 <div class="menu-item-desc">生成二阶贝塞尔曲线路径点</div></div></a></li>
-<li><a href="Bezier.pointBezier3.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.pointBezier3.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>point<wbr/>Bezier3
 <div class="menu-item-desc">三阶贝塞尔</div></div></a></li>
-<li><a href="Bezier.pointBezierN.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Bezier.pointBezierN.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>point<wbr/>BezierN
 <div class="menu-item-desc">n阶贝塞尔曲线</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion tsd-kind-namespace" data-key="Generator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Generator.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
+<details class="tsd-index-accordion" data-key="Generator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg><a href="../modules/Generator.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4-path"></use><use href="#icon-4-text"></use></svg>
 <div>Generator
 <div class="menu-item-desc">生成器相关工具</div></div></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Generator.idGen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Generator.idGen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>id<wbr/>Gen
 <div class="menu-item-desc">创建一个自增id生成器</div></div></a></li>
-<li><a href="Generator.createTimeCountUpGen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Generator.createTimeCountUpGen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Time<wbr/>Count<wbr/>Up<wbr/>Gen
 <div class="menu-item-desc">创建一个时间累计生成器</div></div></a></li>
-<li><a href="Generator.createTimeCountDownGen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Generator.createTimeCountDownGen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>create<wbr/>Time<wbr/>Count<wbr/>Down<wbr/>Gen
 <div class="menu-item-desc">创建一个倒计时生成器</div></div></a></li>
-<li><a href="Generator.randomItemGen.html" class="tsd-kind-function tsd-parent-kind-namespace"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
+<li><a href="Generator.randomItemGen.html"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>
 <div>random<wbr/>Item<wbr/>Gen
 <div class="menu-item-desc">数组随机item生成器，直到遍历完为止</div></div></a></li></ul></div></details></li></ul></nav></div></div></div>
 <div class="tsd-generator">
