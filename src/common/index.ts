@@ -8,3 +8,4 @@ export * from './createUUID';
 export * from './createEnum';
 export * from './getRoot';
 export * from './parseCmdParams';
+export * from './formatBytes';
