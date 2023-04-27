@@ -14,7 +14,7 @@
  */
 export function msToDateStr(ms: number, format = 'd天hh时mm分ss秒') {
   let result = format;
-  const seconds = ms / 1000;
+  const seconds = ~~(ms / 1000);
   const obj: {
     [k: string]: number;
   } = {
