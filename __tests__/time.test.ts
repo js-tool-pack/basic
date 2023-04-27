@@ -1,5 +1,5 @@
 import {
-  msToDateStr,
+  formatMilliseconds,
   strToDate,
   formatDate,
   createTimeCountUp,
@@ -23,13 +23,13 @@ import { chunk, createArray, inRange } from '@mxssfd/core';
 describe('time', function () {
   jest.useFakeTimers(); // 启用模拟定时器
 
-  test('msToDates', () => {
-    expect(msToDateStr(1000, 'd天hh时')).toBe('0天00时');
-    expect(msToDateStr(1000)).toBe('0天00时00分01秒');
-    expect(msToDateStr(60 * 1000)).toBe('0天00时01分00秒');
-    expect(msToDateStr(60 * 60 * 1000)).toBe('0天01时00分00秒');
-    expect(msToDateStr(60 * 60 * 24 * 1000)).toBe('1天00时00分00秒');
-    expect(msToDateStr(2555, 'mm分ss秒')).toBe('00分02秒');
+  test('formatMilliseconds', () => {
+    expect(formatMilliseconds(1000, 'd天hh时')).toBe('0天00时');
+    expect(formatMilliseconds(1000)).toBe('0天00时00分01秒');
+    expect(formatMilliseconds(60 * 1000)).toBe('0天00时01分00秒');
+    expect(formatMilliseconds(60 * 60 * 1000)).toBe('0天01时00分00秒');
+    expect(formatMilliseconds(60 * 60 * 24 * 1000)).toBe('1天00时00分00秒');
+    expect(formatMilliseconds(2555, 'mm分ss秒')).toBe('00分02秒');
   });
   test('strToDate', () => {
     const t1 = strToDate('2020-02-02 10:10:10')!.getTime();

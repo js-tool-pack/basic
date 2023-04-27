@@ -1,18 +1,18 @@
 /**
- * 把毫秒值转为天数
+ * 格式化毫秒值
  *
  * @example
  *
- * msToDateStr(1000, 'd天hh时'); // '0天00时'
- * msToDateStr(1000); // '0天00时00分01秒'
- * msToDateStr(60 * 1000); // '0天00时01分00秒'
- * msToDateStr(60 * 60 * 1000); // '0天01时00分00秒'
- * msToDateStr(60 * 60 * 24 * 1000); // '1天00时00分00秒'
+ * formatMilliseconds(1000, 'd天hh时'); // '0天00时'
+ * formatMilliseconds(1000); // '0天00时00分01秒'
+ * formatMilliseconds(60 * 1000); // '0天00时01分00秒'
+ * formatMilliseconds(60 * 60 * 1000); // '0天01时00分00秒'
+ * formatMilliseconds(60 * 60 * 24 * 1000); // '1天00时00分00秒'
  *
  * @param ms 毫秒值
  * @param [format=d天hh时mm分ss秒] - 格式化模板，默认'd天hh时mm分ss秒'
  */
-export function msToDateStr(ms: number, format = 'd天hh时mm分ss秒') {
+export function formatMilliseconds(ms: number, format = 'd天hh时mm分ss秒') {
   let result = format;
   const seconds = ~~(ms / 1000);
   const obj: {

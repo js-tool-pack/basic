@@ -1,4 +1,4 @@
-export * from './msToDateStr';
+export * from './formatMilliseconds';
 export * from './formatDate';
 export * from './strToDate';
 export * from './dateDiff';
