@@ -1,3 +1,17 @@
+## [0.0.19](https://github.com/js-tool-pack/basic/compare/v0.0.18...v0.0.19) (2023-04-27)
+
+### Bug Fixes
+
+- **time:** 修复 msToDateStr 对小数秒数出错的 bug ([38f2710](https://github.com/js-tool-pack/basic/commit/38f27109094cef3b6b16983b31cbec0d41c8cde7))
+
+### Features
+
+- **time:** msToDateStr 重命名为 formatMilliseconds ([0f3e030](https://github.com/js-tool-pack/basic/commit/0f3e03067dea295464056ddb4c9d8e0704cd4763))
+
+### BREAKING CHANGES
+
+- **time:** 重命名 msToDateStr 为 formatMilliseconds
+
 ## [0.0.18](https://github.com/js-tool-pack/basic/compare/v0.0.17...v0.0.18) (2023-04-26)
 
 ### Bug Fixes
