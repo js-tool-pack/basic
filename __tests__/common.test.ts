@@ -1,6 +1,6 @@
 import * as cm from '../src/common';
 import { avg } from '../src';
-import { inRange } from '@mxssfd/core';
+import { inRange, sleep } from '@mxssfd/core';
 
 describe('common', function () {
   jest.useFakeTimers();
@@ -526,5 +526,33 @@ describe('common', function () {
     expect(formatBytes(1, { unit: 'GB', fractionDigits: 9 })).toBe('0.000000001GB');
     // 使用科学计数法
     expect(formatBytes(1, { unit: 'GB', fractionDigits: 9, exponential: true })).toBe('1e-9GB');
+  });
+
+  test('loadingElse', async () => {
+    jest.useRealTimers();
+    const loadingElse = cm.loadingElse;
+
+    const fn = jest.fn();
+    const cb = loadingElse(fn);
+
+    cb();
+    cb();
+    cb();
+    cb();
+    cb();
+
+    expect(fn.mock.calls.length).toBe(5);
+
+    fn.mock.calls.length = 0;
+
+    const cb2 = loadingElse(() => sleep(10).then(fn));
+    cb2();
+    cb2();
+    cb2();
+    cb2();
+    cb2();
+
+    await sleep(20);
+    expect(fn.mock.calls.length).toBe(1);
   });
 });
