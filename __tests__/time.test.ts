@@ -240,6 +240,7 @@ describe('time', function () {
     expect(getEndOfMonth(new Date('2021-11')).getDate()).toBe(30);
     expect(getEndOfMonth(new Date('2021-12')).getDate()).toBe(31);
     expect(getEndOfMonth(new Date('2020-2')).getDate()).toBe(29);
+    expect(getEndOfMonth(new Date(2023, 4, 31)).getDate()).toBe(31);
     expect(formatDate(getEndOfMonth(new Date('2020/02/10 10:00:00')))).toBe('2020-02-29 00:00:00');
     expect(formatDate(getEndOfMonth(new Date('2020/12/10 10:00:00')))).toBe('2020-12-31 00:00:00');
     expect(formatDate(getEndOfMonth(new Date('2023/12/10 10:00:00')))).toBe('2023-12-31 00:00:00');
@@ -498,6 +499,12 @@ describe('time', function () {
     const d = new Date();
     d.setHours(d.getHours() - 8);
     expect(howLongAgo(d, { templates })).toBe('8 hours ago');
+  });
+  test('howLongAgo 2', () => {
+    const last = new Date('2023-05-23T15:35:19.000Z');
+    const now = new Date('2023-05-25T13:30:45.904Z');
+    // 虽然计算没错，但不符合常理
+    expect(howLongAgo(last, { now })).toBe('1天前');
   });
   test('getDateBegin', () => {
     expect(formatDate(getStartOfDate(new Date('2023/04/19 12:10:50')))).toBe('2023-04-19 00:00:00');

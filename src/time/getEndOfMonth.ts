@@ -19,7 +19,5 @@
  *
  */
 export function getEndOfMonth(monthDate: Date): Date {
-  const lastDate = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, monthDate.getDate());
-  lastDate.setDate(0);
-  return lastDate;
+  return new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0);
 }
