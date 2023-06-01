@@ -1,5 +1,5 @@
 import { strip } from '../number';
-import { Tuple } from '@tool-pack/types';
+import type { Tuple } from '@tool-pack/types';
 
 /**
  * 2阶贝塞尔曲线

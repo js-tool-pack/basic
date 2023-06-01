@@ -1,6 +1,6 @@
 import { isNumber } from './data-type';
 import { inRange } from './array';
-import { Tuple } from '@tool-pack/types';
+import type { Tuple } from '@tool-pack/types';
 
 /**
  * 把错误的数据转正  from number-precision

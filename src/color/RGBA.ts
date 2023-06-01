@@ -1,4 +1,4 @@
-import { Tuple } from '@tool-pack/types';
+import type { Tuple } from '@tool-pack/types';
 import { randomInt } from '../random';
 import { RGBSuper } from './RGBSuper';
 import { RGB } from './RGB';
