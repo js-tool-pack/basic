@@ -1,3 +1,9 @@
+## [0.0.21](https://github.com/js-tool-pack/basic/compare/v0.0.20...v0.0.21) (2023-06-17)
+
+### Features
+
+- **string:** getClassNames 类型支持 null 和 undefined ([010f395](https://github.com/js-tool-pack/basic/commit/010f3959550fae102700029b26a5509fcae990cb))
+
 ## [0.0.20](https://github.com/js-tool-pack/basic/compare/v0.0.19...v0.0.20) (2023-05-30)
 
 ### Bug Fixes
