@@ -503,7 +503,7 @@ export function hideString(
  * getClassNames({ a: true, b: 1, c: 0 }); // 'a b'
  *
  * // string & object
- * getClassNames('a', 'b', { a: true, b: false, c: true }); // 'a b c'
+ * getClassNames('a', 'b', { a: true, b: false, c: true }); // 'a c'
  *
  * // clean multi space
  * getClassNames(' ', '    ', { a: true, b: false, c: true }); // 'a c'
@@ -519,6 +519,7 @@ export function getClassNames(
   const handleObjClasses = (obj: Record<string, unknown>): void => {
     forEachObj(obj, (v, k): void => {
       if (v) classNames[k] = true;
+      else delete classNames[k];
     });
   };
 
