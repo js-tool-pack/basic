@@ -492,8 +492,10 @@ export function hideString(
  * @example
  *
  * ```ts
- * // string
+ * // string | undefined | null
  * getClassNames('a', 'b'); // 'a b'
+ * getClassNames('a', 'b', undefined); // 'a b'
+ * getClassNames('a', 'b', null); // 'a b'
  *
  * // object
  * getClassNames({ a: true, b: false, c: true }); // 'a c'
@@ -509,7 +511,9 @@ export function hideString(
  *
  * @param classes 支持字符串和对象类型
  */
-export function getClassNames(...classes: Array<string | Record<string, unknown>>): string {
+export function getClassNames(
+  ...classes: Array<string | undefined | null | Record<string, unknown>>
+): string {
   const classNames: Record<string, boolean> = {};
 
   const handleObjClasses = (obj: Record<string, unknown>): void => {
@@ -518,8 +522,9 @@ export function getClassNames(...classes: Array<string | Record<string, unknown>
     });
   };
 
-  classes.forEach((item) =>
-    typeof item === 'string' ? (classNames[item] = true) : handleObjClasses(item),
+  classes.forEach(
+    (item) =>
+      item && (typeof item === 'string' ? (classNames[item] = true) : handleObjClasses(item)),
   );
 
   return Object.keys(classNames).join(' ').trim().replace(/\s+/g, ' ');
