@@ -1,3 +1,9 @@
+## [0.0.22](https://github.com/js-tool-pack/basic/compare/v0.0.21...v0.0.22) (2023-06-17)
+
+### Features
+
+- **string:** getClassNames 当有重复的 className 时，后面的条件需要覆盖前面的条件 ([cca042d](https://github.com/js-tool-pack/basic/commit/cca042d0c6680d17e904e063ac37888dc90aed1a))
+
 ## [0.0.21](https://github.com/js-tool-pack/basic/compare/v0.0.20...v0.0.21) (2023-06-17)
 
 ### Features
