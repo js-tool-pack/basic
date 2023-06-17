@@ -245,11 +245,13 @@ describe('string', function () {
     expect(getClassNames('a', 'b', null)).toBe('a b');
     expect(getClassNames('a', 'b')).toBe('a b');
     expect(getClassNames({ a: true, b: false, c: true })).toBe('a c');
-    expect(getClassNames('a', 'b', { a: true, b: false, c: true })).toBe('a b c');
+    expect(getClassNames('a', 'b', { a: true, b: false, c: true })).toBe('a c');
     expect(getClassNames('  ', 'a', '   ', 'b', '     ', 'c', { a: true, b: '', c: true })).toBe(
-      'a b c',
+      'a c',
     );
     expect(getClassNames({ a: true, b: '  ', c: '' })).toBe('a b');
     expect(getClassNames({ a: true, b: 1, c: 0 })).toBe('a b');
+
+    expect(getClassNames({ a: true, b: 1 }, { b: 0 })).toBe('a');
   });
 });
