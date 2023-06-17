@@ -241,6 +241,9 @@ describe('string', function () {
     const getClassNames = cm.getClassNames;
 
     expect(getClassNames('a', 'b')).toBe('a b');
+    expect(getClassNames('a', 'b', undefined)).toBe('a b');
+    expect(getClassNames('a', 'b', null)).toBe('a b');
+    expect(getClassNames('a', 'b')).toBe('a b');
     expect(getClassNames({ a: true, b: false, c: true })).toBe('a c');
     expect(getClassNames('a', 'b', { a: true, b: false, c: true })).toBe('a b c');
     expect(getClassNames('  ', 'a', '   ', 'b', '     ', 'c', { a: true, b: '', c: true })).toBe(
