@@ -71,7 +71,7 @@ function extractFunctionsFromFile(filepath: string): string[] {
     const isAlias = node.declaration?.type === 'TSTypeAliasDeclaration';
 
     // 获取函数名
-    const filename = getFnName(node.declaration!) + (isAlias ? '.d' : '');
+    const filename = getFnName(node.declaration!);
 
     const filepath = Path.resolve(dirname, filename + '.ts');
     if (FS.existsSync(filepath)) {
