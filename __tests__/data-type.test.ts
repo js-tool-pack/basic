@@ -121,6 +121,16 @@ describe('data-type', function () {
 
     expect(Array.isArray(document.getElementsByClassName('test'))).toBe(false);
     expect(isArray(document.getElementsByClassName('test'))).toBe(false);
+
+    const arr: any = [1, 2];
+    if (isArray<string>(arr)) {
+      // @ts-expect-error
+      arr.push(3);
+    }
+
+    if (isArray<number>(arr)) {
+      arr.push(3);
+    }
   });
   test('isArrayLike', () => {
     expect(isArrayLike([1, 2, 3])).toBe(true);
