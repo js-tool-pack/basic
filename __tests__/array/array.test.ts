@@ -23,6 +23,7 @@ import {
   getYangHuiTriangle,
   getYangHuiTriangleOne,
   forEachAround,
+  joinArray,
 } from '../../src';
 
 describe('array', function () {
@@ -802,5 +803,15 @@ describe('array', function () {
     // 空数组
     forEachAround([], (v: any) => res.push(v), { startIndexes: [10, 10], startDirect: 'bottom' });
     expect(JSON.stringify(res)).toBe('[]');
+  });
+
+  test('joinArray', () => {
+    expect(joinArray([1, 2, 3], 0)).toEqual([1, 0, 2, 0, 3]);
+    expect(joinArray([1], 0)).toEqual([1]);
+    expect(joinArray([1, 2], 0)).toEqual([1, 0, 2]);
+    expect(joinArray<number | string>([1, 2, 3], 'a')).toEqual([1, 'a', 2, 'a', 3]);
+
+    // edge
+    expect(joinArray([], 0)).toEqual([]);
   });
 });
