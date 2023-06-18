@@ -810,6 +810,8 @@ describe('array', function () {
     expect(joinArray([1], 0)).toEqual([1]);
     expect(joinArray([1, 2], 0)).toEqual([1, 0, 2]);
     expect(joinArray<number | string>([1, 2, 3], 'a')).toEqual([1, 'a', 2, 'a', 3]);
+    expect(joinArray([1, 2, 3], 0, (it) => it + 10)).toEqual([11, 0, 12, 0, 13]);
+    expect(joinArray([1, 2, 3], 0, (it, i) => it + i)).toEqual([1, 0, 4, 0, 7]);
 
     // fn
     expect(joinArray([1, 2, 3], (i) => i + 10)).toEqual([1, 11, 2, 13, 3]);
@@ -818,6 +820,20 @@ describe('array', function () {
       joinArray([1, 2, 3], (i) => i + '10'),
     ).toEqual([1, '110', 2, '310', 3]);
     expect(joinArray<string | number>([1, 2, 3], (i) => i + '10')).toEqual([1, '110', 2, '310', 3]);
+    expect(
+      joinArray(
+        [1, 2, 3],
+        (i) => i + 10,
+        (it) => it + 100,
+      ),
+    ).toEqual([101, 11, 102, 13, 103]);
+    expect(
+      joinArray(
+        [1, 2, 3],
+        (it) => it + 10,
+        (it, i) => it + i,
+      ),
+    ).toEqual([1, 11, 4, 13, 7]);
 
     // edge
     expect(joinArray([], 0)).toEqual([]);
