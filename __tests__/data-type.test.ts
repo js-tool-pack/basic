@@ -23,6 +23,7 @@ import {
   isNaN,
   isEmpty,
   isObjectLike,
+  isUnavailable,
 } from '../src';
 const cm = { polling: {} };
 
@@ -379,5 +380,14 @@ describe('data-type', function () {
     expect(isArrayObj({ 0: 1, 1: 2, length: 2, a: 1, b: 2 })).toBe(false);
     expect(isArrayObj(document.querySelectorAll('.test'))).toBe(false);
     expect(isArrayObj(document.getElementsByClassName('test'))).toBe(false);
+  });
+  test('isUnavailable', function () {
+    expect(isUnavailable(null)).toBe(true);
+    expect(isUnavailable(undefined)).toBe(true);
+    expect(isUnavailable(NaN)).toBe(true);
+    expect(isUnavailable(1)).toBe(false);
+    expect(isUnavailable(0)).toBe(false);
+    expect(isUnavailable(false)).toBe(false);
+    expect(isUnavailable('')).toBe(false);
   });
 });
