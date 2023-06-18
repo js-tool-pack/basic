@@ -45,6 +45,6 @@ import { typeOf } from './typeOf';
  * Array.isArray(document.getElementsByClassName('test')); // false
  * isArray(document.getElementsByClassName('test')); // false
  */
-export function isArray(target: unknown): target is Array<unknown> {
+export function isArray<T = unknown>(target: unknown): target is Array<T> {
   return typeOf(target) === 'array';
 }
