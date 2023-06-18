@@ -21,3 +21,4 @@ export * from './getYangHuiTriangleOne';
 export * from './getYangHuiTriangle';
 export * from './forEachAround';
 export type * from './types';
+export * from './joinArray';
