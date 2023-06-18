@@ -1,9 +1,9 @@
-import { forEachObj } from '../../src/object/iterate';
 import * as cm from '../../src/object';
-import { omit } from '@mxssfd/core';
+import { omit } from '../../src';
 
 describe('object.iterate', function () {
   test('forEachObj', () => {
+    const forEachObj = cm.forEachObj;
     const testFn = (obj: object) => {
       let times = 0;
       forEachObj(obj, (v, k) => {

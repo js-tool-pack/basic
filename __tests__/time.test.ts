@@ -18,7 +18,7 @@ import {
   getStartOfWeek,
   getStartOfNextWeek,
 } from '../src/time';
-import { chunk, createArray, inRange } from '@mxssfd/core';
+import { chunk, createArray, inRange } from '../src';
 
 describe('time', function () {
   jest.useFakeTimers(); // 启用模拟定时器

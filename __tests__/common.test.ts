@@ -1,6 +1,5 @@
 import * as cm from '../src/common';
-import { avg } from '../src';
-import { inRange, sleep } from '@mxssfd/core';
+import { avg, inRange, sleep } from '../src';
 
 describe('common', function () {
   jest.useFakeTimers();

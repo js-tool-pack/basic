@@ -1,5 +1,5 @@
 import * as cd from '../src/coordinate';
-import { Point } from '@mxssfd/core';
+import type { Point } from '@tool-pack/types';
 
 describe('coordinate', function () {
   test('isPointInPath', () => {
@@ -119,7 +119,7 @@ describe('coordinate', function () {
   test('getRotatePoint', () => {
     expect(cd.getRotatePoint([0, 0], Math.sqrt(2), 135)).toEqual([1, 1]);
 
-    const center: cd.Point = [1, 1];
+    const center: Point = [1, 1];
     const radius = 10;
     expect(cd.getRotatePoint(center, radius, 0)).toEqual([center[0], center[1] - radius]);
     expect(cd.getRotatePoint(center, radius, 90)).toEqual([center[0] + radius, center[1]]);
