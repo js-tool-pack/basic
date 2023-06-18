@@ -48,7 +48,9 @@ function extractFunctionsFromFile(filepath: string): string[] {
         return (declaration.declarations[0]!.id as Identifier).name;
       case 'ExportNamedDeclaration':
         return getFnName(declaration.declaration!);
-      case 'TSDeclareFunction':
+      case 'TSDeclareFunction': // 函数重载
+        return declaration.id.name;
+      case 'TSTypeAliasDeclaration': // 类型别名
         return declaration.id.name;
       default:
         console.error(declaration);
@@ -66,8 +68,10 @@ function extractFunctionsFromFile(filepath: string): string[] {
       trailingComments: [],
     }).code;
 
+    const isAlias = node.declaration.type === 'TSTypeAliasDeclaration';
+
     // 获取函数名
-    const filename = getFnName(node.declaration!);
+    const filename = getFnName(node.declaration!) + (isAlias ? '.d' : '');
 
     const filepath = Path.resolve(dirname, filename + '.ts');
     if (FS.existsSync(filepath)) {
@@ -80,7 +84,7 @@ function extractFunctionsFromFile(filepath: string): string[] {
 
     // 写入流 index.ts导出
     if (!['TSDeclareFunction'].includes(node.declaration.type))
-      indexStream.write(`export * from './${filename}';\n`);
+      indexStream.write(`export${isAlias ? ' type' : ''} * from './${filename}';\n`);
   });
   // 关闭流
   indexStream.end();
