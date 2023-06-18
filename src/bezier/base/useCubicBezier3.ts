@@ -1,43 +1,5 @@
-import { strip } from '../number';
 import type { Tuple } from '@tool-pack/types';
-
-/**
- * 2阶贝塞尔曲线
- *
- * @param t 百分比 [0, 1]
- * @param v1 值1
- * @param cv 控制值
- * @param v2 值2
- */
-export function bezier2(t: number, v1: number, cv: number, v2: number): number {
-  return strip((1 - t) * (1 - t) * v1 + 2 * t * (1 - t) * cv + t * t * v2);
-}
-
-/**
- * 3阶贝塞尔曲线公式
- *
- * @param t 百分比 [0, 1]
- * @param v1 值1
- * @param cv1 控制值1
- * @param cv2 控制值2
- * @param v2 值2
- */
-export function bezier3(t: number, v1: number, cv1: number, cv2: number, v2: number): number {
-  return strip(
-    v1 * (1 - t) * (1 - t) * (1 - t) +
-      3 * cv1 * t * (1 - t) * (1 - t) +
-      3 * cv2 * t * t * (1 - t) +
-      v2 * t * t * t,
-  );
-}
-
-const predefined = {
-  ease: '.25,.1,.25,1',
-  linear: '0,0,1,1',
-  'ease-in': '.42,0,1,1',
-  'ease-out': '0,0,.58,1',
-  'ease-in-out': '.42,0,.58,1',
-};
+import { strip } from '../../number';
 
 /**
  * 使用3阶贝塞尔曲线缓动函数
@@ -53,7 +15,6 @@ export function useCubicBezier3(
 ): (t: number) => number {
   const fn =
     typeof tm === 'string' ? (predefined[tm].split(',').map(Number) as Tuple<number, 4>) : tm;
-
   const [a, b, c, d] = fn;
 
   // 原文：https://zhuanlan.zhihu.com/p/60193908
@@ -69,9 +30,7 @@ export function useCubicBezier3(
   const epsilon = 1e-7; // 目标精度
 
   const getX = (t: number) => ((px1 * t + px2) * t + px3) * t;
-
   const getY = (t: number) => ((py1 * t + py2) * t + py3) * t;
-
   const solve = function (x: number): number {
     if (x === 0 || x === 1) {
       // 对 0 和 1 两个特殊 t 不做计算
@@ -96,8 +55,15 @@ export function useCubicBezier3(
   };
 
   const distance = Math.abs(v2 - v1);
-
   return v1 > v2
     ? (t: number): number => strip(distance - solve(t) * distance)
     : (t: number): number => strip(solve(t) * distance);
 }
+
+const predefined = {
+  ease: '.25,.1,.25,1',
+  linear: '0,0,1,1',
+  'ease-in': '.42,0,1,1',
+  'ease-out': '0,0,.58,1',
+  'ease-in-out': '.42,0,.58,1',
+};
