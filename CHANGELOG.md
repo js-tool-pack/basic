@@ -1,3 +1,9 @@
+## [0.0.25](https://github.com/js-tool-pack/basic/compare/v0.0.24...v0.0.25) (2023-06-18)
+
+### Features
+
+- **array:** joinArray 添加 callbackFn 回调，可对数组遍历进行操作 ([f9f1b17](https://github.com/js-tool-pack/basic/commit/f9f1b172caa693d864d09c9bd5b3a80039099cc8))
+
 ## [0.0.24](https://github.com/js-tool-pack/basic/compare/v0.0.23...v0.0.24) (2023-06-18)
 
 ### Features
