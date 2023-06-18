@@ -811,6 +811,14 @@ describe('array', function () {
     expect(joinArray([1, 2], 0)).toEqual([1, 0, 2]);
     expect(joinArray<number | string>([1, 2, 3], 'a')).toEqual([1, 'a', 2, 'a', 3]);
 
+    // fn
+    expect(joinArray([1, 2, 3], (i) => i + 10)).toEqual([1, 11, 2, 13, 3]);
+    expect(
+      // @ts-expect-error
+      joinArray([1, 2, 3], (i) => i + '10'),
+    ).toEqual([1, '110', 2, '310', 3]);
+    expect(joinArray<string | number>([1, 2, 3], (i) => i + '10')).toEqual([1, '110', 2, '310', 3]);
+
     // edge
     expect(joinArray([], 0)).toEqual([]);
   });
