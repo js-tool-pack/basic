@@ -1,5 +1,5 @@
 import { RGBA } from '../../src/color/RGBA';
-import { isRGBColor, isHEXColor } from '../../src/color/color';
+import { isRGBColor, isHEXColor } from '../../src/color/base';
 import { createArray, unique } from '../../src/array';
 
 describe('RGBA', function () {

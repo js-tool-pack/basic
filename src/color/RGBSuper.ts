@@ -1,4 +1,4 @@
-import { isRGBColor } from './color';
+import { isRGBColor } from './base';
 import { getSafeNum } from '../number';
 
 function getLimitValue(value: number) {

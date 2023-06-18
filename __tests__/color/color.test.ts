@@ -1,4 +1,4 @@
-import * as color from '../../src/color/color';
+import * as color from '../../src/color/base';
 import { randomColor } from '../../src/random';
 
 describe('color', function () {

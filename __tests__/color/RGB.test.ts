@@ -1,5 +1,5 @@
 import { RGB } from '../../src/color/RGB';
-import { isRGBColor, isHEXColor } from '../../src/color/color';
+import { isRGBColor, isHEXColor } from '../../src/color/base';
 import { createArray, unique } from '../../src/array';
 
 describe('RGB', function () {
