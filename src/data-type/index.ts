@@ -23,3 +23,4 @@ export * from './isIterable';
 export * from './isPercent';
 export * from './includesChinese';
 export * from './isArrayObj';
+export * from './isUnavailable';
