@@ -48,6 +48,8 @@ function extractFunctionsFromFile(filepath: string): string[] {
         return (declaration.declarations[0]!.id as Identifier).name;
       case 'ExportNamedDeclaration':
         return getFnName(declaration.declaration!);
+      case 'TSDeclareFunction':
+        return declaration.id.name;
       default:
         console.error(declaration);
         throw new Error(`未识别的类型：${declaration.type}`);
@@ -67,17 +69,24 @@ function extractFunctionsFromFile(filepath: string): string[] {
     // 获取函数名
     const filename = getFnName(node.declaration!);
 
-    // 生成单独的函数文件
-    FS.writeFileSync(Path.resolve(dirname, filename + '.ts'), functionFileContent + '\n');
+    const filepath = Path.resolve(dirname, filename + '.ts');
+    if (FS.existsSync(filepath)) {
+      // 如果文件存在，则拼接进去
+      FS.appendFileSync(filepath, functionFileContent + '\n', 'utf-8');
+    } else {
+      // 生成单独的函数文件
+      FS.writeFileSync(Path.resolve(dirname, filename + '.ts'), functionFileContent + '\n', 'utf8');
+    }
 
     // 写入流 index.ts导出
-    indexStream.write(`export * from './${filename}';\n`);
+    if (!['TSDeclareFunction'].includes(node.declaration.type))
+      indexStream.write(`export * from './${filename}';\n`);
   });
   // 关闭流
   indexStream.end();
 
   // 返回函数名列表
-  return nodes.map(getFnName);
+  return Array.from(new Set(nodes.map(getFnName)));
 }
 
 const ignoreList = [
