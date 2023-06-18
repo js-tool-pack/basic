@@ -24,6 +24,7 @@ import {
   isEmpty,
   isObjectLike,
   isUnavailable,
+  isNullish,
 } from '../src';
 const cm = { polling: {} };
 
@@ -389,5 +390,15 @@ describe('data-type', function () {
     expect(isUnavailable(0)).toBe(false);
     expect(isUnavailable(false)).toBe(false);
     expect(isUnavailable('')).toBe(false);
+  });
+  test('isNullish', function () {
+    expect(isNullish(null)).toBe(true);
+    expect(isNullish(undefined)).toBe(true);
+    expect(isNullish(NaN)).toBe(false);
+    expect(isNullish(1)).toBe(false);
+    expect(isNullish(0)).toBe(false);
+    expect(isNullish(false)).toBe(false);
+    expect(isNullish('')).toBe(false);
+    expect(isNullish({})).toBe(false);
   });
 });
