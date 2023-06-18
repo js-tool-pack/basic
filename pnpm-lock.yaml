@@ -12,7 +12,7 @@ specifiers:
   '@mxssfd/core': 5.0.1-beta.1
   '@mxssfd/typedoc-theme': ^1.1.1
   '@rollup/plugin-json': ^6.0.0
-  '@tool-pack/types': ^0.0.2
+  '@tool-pack/types': ^0.0.3
   '@types/babel__generator': ^7.6.4
   '@types/fs-extra': ^11.0.1
   '@types/jest': ^29.5.1
@@ -51,7 +51,7 @@ specifiers:
   typescript: ^5.0.4
 
 dependencies:
-  '@tool-pack/types': 0.0.2
+  '@tool-pack/types': 0.0.3
 
 devDependencies:
   '@babel/core': 7.21.4
@@ -1601,8 +1601,8 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tool-pack/types/0.0.2:
-    resolution: {integrity: sha512-cbhzF9gkLZ4Xe9YmBqx8szLlFSQznELcWrAEe1mFA4D/lW7c7K78FH2v60K1Zib0tRMZ1cZfJMd4lJlh12/G9A==}
+  /@tool-pack/types/0.0.3:
+    resolution: {integrity: sha512-wBZk4467CzstOxgEYsJcddW36jks/B/lSWZo0F9/Z4oxM/pyy4bnlyXaU+GxFSIWvHxsAfP2Z/3PX0AVgCjqAA==}
     dev: false
 
   /@tootallnate/once/2.0.0:
