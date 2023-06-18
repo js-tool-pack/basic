@@ -1,4 +1,4 @@
-import { Point } from '../coordinate';
+import type { Point } from '@tool-pack/types';
 import { bezier2, bezier3 } from './base';
 import { getYangHuiTriangleOne } from '../array';
 import { strip } from '../number';

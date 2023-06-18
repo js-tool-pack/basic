@@ -1,4 +1,4 @@
-import type { Point } from './Point';
+import type { Point } from '@tool-pack/types';
 
 /**
  * 根据目标点获取相对于原点的角度

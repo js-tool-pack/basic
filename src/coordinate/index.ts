@@ -1,4 +1,3 @@
-export type * from './Point.d';
 export * from './isPointInPath';
 export * from './getDistance';
 export * from './getAngle';

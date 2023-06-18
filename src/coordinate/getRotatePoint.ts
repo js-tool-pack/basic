@@ -1,4 +1,4 @@
-import type { Point } from './Point';
+import type { Point } from '@tool-pack/types';
 import { CalcChain } from '../CalcChain';
 
 /**

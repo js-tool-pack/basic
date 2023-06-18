@@ -1,4 +1,4 @@
-import type { Point } from './Point';
+import type { Point } from '@tool-pack/types';
 
 /**
  * 根据三角函数求两点的距离

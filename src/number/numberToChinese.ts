@@ -1,4 +1,4 @@
-import { Tuple } from '@tool-pack/types';
+import type { Tuple } from '@tool-pack/types';
 
 /**
  * 阿拉伯数字转为中文数字
