@@ -10,6 +10,6 @@ import { typeOf } from './typeOf';
  * isFunction(() => {}); // true
  * isFunction(function () {}); // true
  */
-export function isFunction(target: unknown): target is Function {
+export function isFunction<T extends Function = Function>(target: unknown): target is T {
   return typeOf(target) === 'function';
 }
