@@ -1,3 +1,13 @@
+## [0.0.24](https://github.com/js-tool-pack/basic/compare/v0.0.23...v0.0.24) (2023-06-18)
+
+### Features
+
+- **array:** joinArray separator 参数支持回调函数类型 ([d404e72](https://github.com/js-tool-pack/basic/commit/d404e72b994c431c8f472adb4a8d96635a94aa8c))
+- **data-type:** isArray 支持范型 ([6af6267](https://github.com/js-tool-pack/basic/commit/6af6267913734ab27a555e3e221d4d6390c781f1))
+- **data-type:** isFunction 支持范型 ([d1b9d4f](https://github.com/js-tool-pack/basic/commit/d1b9d4f47295b16d0c780b2ef584135066415095))
+- **data-type:** isNullish ([0443871](https://github.com/js-tool-pack/basic/commit/0443871be1402874dbdf2ecbe71d8508050bd09d))
+- **data-type:** isUnavailable ([5980edd](https://github.com/js-tool-pack/basic/commit/5980edd44b01da97e4d1347f6679e8c30daf11d9))
+
 ## [0.0.23](https://github.com/js-tool-pack/basic/compare/v0.0.22...v0.0.23) (2023-06-18)
 
 ### Features
