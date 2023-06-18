@@ -169,6 +169,30 @@ describe('data-type', function () {
     expect(isFunction('')).toBe(false);
     expect(isFunction(() => {})).toBe(true);
     expect(isFunction(function () {})).toBe(true);
+
+    const f: any = (a: number) => a;
+
+    if (isFunction<(a: string) => string>(f)) {
+      // @ts-expect-error
+      f();
+      // @ts-expect-error
+      f(1);
+      f('123');
+    }
+    if (isFunction<(a: number) => string>(f)) {
+      // @ts-expect-error
+      f();
+      f(1);
+      // @ts-expect-error
+      f('123');
+    }
+
+    if (
+      // @ts-expect-error
+      !isFunction<string>(f)
+    ) {
+      console.log(f);
+    }
   });
 
   test('isBoolean', () => {
