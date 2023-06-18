@@ -1,3 +1,9 @@
+## [0.0.23](https://github.com/js-tool-pack/basic/compare/v0.0.22...v0.0.23) (2023-06-18)
+
+### Features
+
+- **array:** joinArray ([d39d888](https://github.com/js-tool-pack/basic/commit/d39d8885a36474beb12d7ca387839b8f1e4686a7))
+
 ## [0.0.22](https://github.com/js-tool-pack/basic/compare/v0.0.21...v0.0.22) (2023-06-17)
 
 ### Features
