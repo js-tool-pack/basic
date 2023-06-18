@@ -1,4 +1,4 @@
-import { UrlModel } from '../../src/url/model';
+import { UrlModel } from '../../src/url/UrlModel';
 
 describe('url.model', function () {
   const url =

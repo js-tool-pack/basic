@@ -1,5 +1,5 @@
 import * as P from './parse';
-import { stringifyUrlQuery } from './url';
+import { stringifyUrlQuery } from './common';
 
 /**
  * 解析url

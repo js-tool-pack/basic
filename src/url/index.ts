@@ -1,3 +1,4 @@
 export * from './parse';
-export * from './url';
-export * from './model';
+export * from './common';
+export * from './UrlModel';
+export * from './regs';

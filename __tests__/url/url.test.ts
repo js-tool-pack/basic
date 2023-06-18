@@ -1,4 +1,4 @@
-import * as u from '../../src/url/url';
+import * as u from '../../src/url';
 
 describe('url.url', function () {
   test('stringifyUrlQuery', () => {
