@@ -95,6 +95,17 @@ describe('data-type', function () {
     expect(isObjectLike(null)).toBe(false);
     expect(isObjectLike({})).toBe(true);
     expect(isObjectLike(() => {})).toBe(true);
+
+    const o: any = { a: 1 };
+    if (isObjectLike(o)) {
+      // @ts-expect-error
+      o.a = 1;
+    }
+    if (isObjectLike<{ a: string }>(o)) {
+      // @ts-expect-error
+      o.a = 1;
+      o.a = '';
+    }
   });
   test('isArray', () => {
     expect(Array.isArray(0.12345667)).toBe(false);
