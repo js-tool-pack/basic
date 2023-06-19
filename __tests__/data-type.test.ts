@@ -73,6 +73,17 @@ describe('data-type', function () {
     expect(typeof f === 'object').toBe(false);
     expect(isObject(f)).toBe(false);
     expect(isObject(function () {})).toBe(false);
+
+    const o: any = { a: 1 };
+    if (isObject(o)) {
+      // @ts-expect-error
+      o.a = 1;
+    }
+    if (isObject<{ a: string }>(o)) {
+      // @ts-expect-error
+      o.a = 1;
+      o.a = '';
+    }
   });
   test('isObjectLike', () => {
     expect(isObjectLike([1, 2, 3])).toBe(true);
