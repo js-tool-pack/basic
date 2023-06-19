@@ -157,6 +157,20 @@ describe('data-type', function () {
     expect(isArrayLike(null)).toBe(false);
     expect(isArrayLike({})).toBe(false);
     expect(isArrayLike(() => {})).toBe(false);
+
+    const obj = { num: 1, str: '' };
+    const a: unknown = 1;
+    if (isArrayLike<string>(a)) {
+      // @ts-expect-error
+      obj.num = a[0]!;
+      obj.str = a[0]!;
+    }
+
+    if (isArrayLike<number>(a)) {
+      obj.num = a[0]!;
+      // @ts-expect-error
+      obj.str = a[0]!;
+    }
   });
   test('isString', () => {
     expect(isString(123123)).toBe(false);
