@@ -15,7 +15,7 @@
  * isIterable(new Map()); // true
  * isIterable(new Set()); // true
  */
-export function isIterable(target: any): target is Iterable<any> {
+export function isIterable<T = unknown>(target: any): target is Iterable<T> {
   try {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const _ of target) {
