@@ -25,6 +25,6 @@ import { typeOf } from './typeOf';
  * isObject(function () {}); // false
  *
  */
-export function isObject(target: unknown): target is object {
+export function isObject<T extends object = object>(target: unknown): target is T {
   return typeOf(target) === 'object';
 }
