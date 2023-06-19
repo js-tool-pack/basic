@@ -21,7 +21,7 @@ import { isNumber } from './isNumber';
  * isArrayLike(document.getElementsByClassName('test')); // true
  * isArrayLike(document.querySelectorAll('.test')); // true
  */
-export function isArrayLike(target: any): target is ArrayLike<any> {
+export function isArrayLike<T>(target: any): target is ArrayLike<T> {
   // 检测target的类型
   const type = typeOf(target);
   // string也是ArrayLike，但"length" in target会报错
