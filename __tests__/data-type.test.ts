@@ -374,6 +374,18 @@ describe('data-type', function () {
     expect(isIterable([0, 1])).toBe(true);
     expect(isIterable(new Map())).toBe(true);
     expect(isIterable(new Set())).toBe(true);
+
+    // 类型守卫
+    const a = { num: 1, str: '' };
+    const set: unknown = 1;
+    if (isIterable<number>(set)) {
+      // 1不可能是迭代器，所以该条件内的不会执行
+      for (const v of set) {
+        a.num = v;
+        // @ts-expect-error
+        a.str = v;
+      }
+    }
   });
 
   test('isPercent', function () {
