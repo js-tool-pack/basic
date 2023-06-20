@@ -1,3 +1,12 @@
+## [0.0.26](https://github.com/js-tool-pack/basic/compare/v0.0.25...v0.0.26) (2023-06-20)
+
+### Features
+
+- **data-type:** isArrayLike 支持范型 ([a3cf26f](https://github.com/js-tool-pack/basic/commit/a3cf26f39d027e72a05739485cdfe124da83c82e))
+- **data-type:** isIterable 支持范型 ([3ddfc2c](https://github.com/js-tool-pack/basic/commit/3ddfc2c179669638ebf80c81e7d5dc8c0535cdc2))
+- **data-type:** isObjectLike 支持范型 ([e5a6e33](https://github.com/js-tool-pack/basic/commit/e5a6e33fb29bb83ad2008e72f042b88f934752f8))
+- **data-type:** isObject 支持范型 ([c3bb8a5](https://github.com/js-tool-pack/basic/commit/c3bb8a5e43c43c84e6c278a08a6d70b7b8424961))
+
 ## [0.0.25](https://github.com/js-tool-pack/basic/compare/v0.0.24...v0.0.25) (2023-06-18)
 
 ### Features
