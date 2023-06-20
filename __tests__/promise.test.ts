@@ -283,4 +283,16 @@ describe('promise', function () {
       expect(mock.mock.calls.map((i) => i[0])).toEqual(['hello world foo bar', undefined]);
     });
   });
+  test('nextTick', async () => {
+    const nextTick = cm.nextTick;
+    const fn = jest.fn();
+
+    expect(fn.mock.calls.length).toBe(0);
+    await nextTick().then(fn);
+    expect(fn.mock.calls.length).toBe(1);
+
+    nextTick(fn);
+    await sleep(0);
+    expect(fn.mock.calls.length).toBe(2);
+  });
 });
