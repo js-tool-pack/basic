@@ -1,3 +1,9 @@
+## [0.0.27](https://github.com/js-tool-pack/basic/compare/v0.0.26...v0.0.27) (2023-06-20)
+
+### Features
+
+- **promise:** nextTick ([a5202b0](https://github.com/js-tool-pack/basic/commit/a5202b0d0e0e15cee725832df2be12368650daef))
+
 ## [0.0.26](https://github.com/js-tool-pack/basic/compare/v0.0.25...v0.0.26) (2023-06-20)
 
 ### Features
