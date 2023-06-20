@@ -4,3 +4,4 @@ export * from './syncPromiseAll';
 export * from './promiseQueue';
 export * from './debounceAsync';
 export * from './debounceByPromise';
+export * from './nextTick';
