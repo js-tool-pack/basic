@@ -60,6 +60,7 @@ describe('string', function () {
     expect(capitalize('ab')).toBe('Ab');
     expect(capitalize('Ab')).toBe('Ab');
     expect(capitalize('aa')).toBe('Aa');
+    expect(capitalize('AAA')).toBe('Aaa');
     // edge
     expect(capitalize('')).toBe('');
   });
@@ -82,34 +83,32 @@ describe('string', function () {
   });
 
   test('camelCase', () => {
-    // cases
-    expect(camelCase('A')).toBe('a');
-    // 转大驼峰
-    expect(camelCase('A', undefined, true)).toBe('A');
-
     expect(camelCase('a')).toBe('a');
-    // 转大驼峰
-    expect(camelCase('a', undefined, true)).toBe('A');
+    expect(camelCase('A')).toBe('a');
+    expect(camelCase('helloWorld')).toBe('helloWorld');
+    expect(camelCase('HELLO-WORLD')).toBe('helloWorld');
+    expect(camelCase('hello-World')).toBe('helloWorld');
+    expect(camelCase('hello World')).toBe('helloWorld');
+    expect(camelCase('hello world')).toBe('helloWorld');
+    expect(camelCase('Hello world')).toBe('helloWorld');
+    expect(camelCase('Hello   world')).toBe('helloWorld');
+    expect(camelCase('Hello___world')).toBe('helloWorld');
 
-    expect(camelCase('1')).toBe('1');
+    expect(camelCase('aBBcde-f__g h')).toBe('aBbcdeFGH');
+    expect(camelCase('abc0Abc0')).toBe('abc0Abc0');
 
-    expect(camelCase('ab')).toBe('ab');
-    // 转大驼峰
-    expect(camelCase('ab', undefined, true)).toBe('Ab');
+    expect(camelCase('Auv')).toBe('auv');
+    expect(camelCase('a-u-v')).toBe('aUV');
+    expect(camelCase('Auv')).toBe('auv');
+    expect(camelCase(' Auv')).toBe('auv');
+    expect(camelCase(' auv')).toBe('auv');
+    expect(camelCase('-Auv')).toBe('auv');
+    expect(camelCase('_Auv')).toBe('auv');
 
-    // 默认选项
-    expect(camelCase('aa_bb')).toBe('aaBb');
-    expect(camelCase('test_camel_string')).toBe('testCamelString');
-    expect(camelCase('test__camel_string')).toBe('testCamelString');
-
-    // 默认分隔符，转大驼峰
-    expect(camelCase('test_camel_string', undefined, true)).toBe('TestCamelString');
-
-    // 正则匹配分隔符
-    expect(camelCase('test-camel_string', /[-_]/)).toBe('testCamelString');
-
-    // edge
-    expect(camelCase('', '')).toBe('');
+    expect(camelCase('无hello')).toBe('无hello');
+    expect(camelCase('无 hello')).toBe('无Hello');
+    expect(camelCase('无Hello')).toBe('无Hello');
+    expect(camelCase('&^%%$Hello')).toBe('hello');
   });
   describe('getStringLen', function () {
     const fn = cm.getStringLen;
@@ -308,7 +307,7 @@ describe('string', function () {
     expect(pascalCase('无Hello')).toBe('无Hello');
     expect(pascalCase('&^%%$Hello')).toBe('Hello');
   });
-  test('kebabCase', () => {
+  test('snakeCase', () => {
     const snakeCase = cm.snakeCase;
 
     expect(snakeCase('a')).toBe('a');
