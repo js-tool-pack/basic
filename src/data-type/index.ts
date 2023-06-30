@@ -25,3 +25,4 @@ export * from './includesChinese';
 export * from './isArrayObj';
 export * from './isUnavailable';
 export * from './isNullish';
+export * from './isASCIIPunctuationSymbol';
