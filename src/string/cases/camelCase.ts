@@ -1,44 +1,44 @@
 import type { ToCamelCase } from '@tool-pack/types';
-import { capitalize } from './capitalize';
+import { capitalize } from '../capitalize';
 
 /**
  * 其他转驼峰
  *
  * @example
  *
- * expect(toCamel('A')).toBe('a');
+ * camelCase('A'); // 'a'
  * // 转大驼峰
- * toCamel('A', undefined, true); // 'A'
+ * camelCase('A', undefined, true); // 'A'
  *
- * toCamel('a'); // 'a'
+ * camelCase('a'); // 'a'
  * // 转大驼峰
- * toCamel('a', undefined, true); // 'A'
+ * camelCase('a', undefined, true); // 'A'
  *
- * toCamel('1'); // '1'
+ * camelCase('1'); // '1'
  *
- * toCamel('ab'); // 'ab'
+ * camelCase('ab'); // 'ab'
  * // 转大驼峰
- * toCamel('ab', undefined, true); // 'Ab'
+ * camelCase('ab', undefined, true); // 'Ab'
  *
  * // 默认选项
- * toCamel('aa_bb'); // 'aaBb'
- * toCamel('test_camel_string'); // 'testCamelString'
- * toCamel('test__camel_string'); // 'testCamelString'
+ * camelCase('aa_bb'); // 'aaBb'
+ * camelCase('test_camel_string'); // 'testCamelString'
+ * camelCase('test__camel_string'); // 'testCamelString'
  *
  * // 默认分隔符，转大驼峰
- * toCamel('test_camel_string', undefined, true); // 'TestCamelString'
+ * camelCase('test_camel_string', undefined, true); // 'TestCamelString'
  *
  * // 正则匹配分隔符
- * toCamel('test-camel_string', /[-_]/); // 'testCamelString'
+ * camelCase('test-camel_string', /[-_]/); // 'testCamelString'
  *
  * // edge
- * toCamel('', ''); // ''
+ * camelCase('', ''); // ''
  *
  * @param {string} value
  * @param {string | RegExp} delimiter
  * @param {boolean} toUpperCamelCase
  */
-export function toCamel<
+export function camelCase<
   S extends string,
   D extends string | RegExp = '_',
   U extends boolean = false,

@@ -1,5 +1,5 @@
 import * as cm from '../src/string';
-const { formatNumber, strTemplate, removeStrByNum, smartRepeat, capitalize, fromCamel, toCamel } =
+const { formatNumber, strTemplate, removeStrByNum, smartRepeat, capitalize, fromCamel, camelCase } =
   cm;
 
 describe('string', function () {
@@ -81,34 +81,35 @@ describe('string', function () {
     expect(fromCamel('TestCamelSTring', '-', true)).toBe('TEST-CAMEL-STRING');
   });
 
-  test('toCamel', () => {
-    expect(toCamel('A')).toBe('a');
+  test('camelCase', () => {
+    // cases
+    expect(camelCase('A')).toBe('a');
     // 转大驼峰
-    expect(toCamel('A', undefined, true)).toBe('A');
+    expect(camelCase('A', undefined, true)).toBe('A');
 
-    expect(toCamel('a')).toBe('a');
+    expect(camelCase('a')).toBe('a');
     // 转大驼峰
-    expect(toCamel('a', undefined, true)).toBe('A');
+    expect(camelCase('a', undefined, true)).toBe('A');
 
-    expect(toCamel('1')).toBe('1');
+    expect(camelCase('1')).toBe('1');
 
-    expect(toCamel('ab')).toBe('ab');
+    expect(camelCase('ab')).toBe('ab');
     // 转大驼峰
-    expect(toCamel('ab', undefined, true)).toBe('Ab');
+    expect(camelCase('ab', undefined, true)).toBe('Ab');
 
     // 默认选项
-    expect(toCamel('aa_bb')).toBe('aaBb');
-    expect(toCamel('test_camel_string')).toBe('testCamelString');
-    expect(toCamel('test__camel_string')).toBe('testCamelString');
+    expect(camelCase('aa_bb')).toBe('aaBb');
+    expect(camelCase('test_camel_string')).toBe('testCamelString');
+    expect(camelCase('test__camel_string')).toBe('testCamelString');
 
     // 默认分隔符，转大驼峰
-    expect(toCamel('test_camel_string', undefined, true)).toBe('TestCamelString');
+    expect(camelCase('test_camel_string', undefined, true)).toBe('TestCamelString');
 
     // 正则匹配分隔符
-    expect(toCamel('test-camel_string', /[-_]/)).toBe('testCamelString');
+    expect(camelCase('test-camel_string', /[-_]/)).toBe('testCamelString');
 
     // edge
-    expect(toCamel('', '')).toBe('');
+    expect(camelCase('', '')).toBe('');
   });
   describe('getStringLen', function () {
     const fn = cm.getStringLen;
