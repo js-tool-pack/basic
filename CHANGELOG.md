@@ -1,3 +1,25 @@
+# [0.1.0](https://github.com/js-tool-pack/basic/compare/v0.0.27...v0.1.0) (2023-06-30)
+
+### Bug Fixes
+
+- **array:** inRange 类型不正确 ([ac907a4](https://github.com/js-tool-pack/basic/commit/ac907a4bfb879d5235677dbd5259022b93c5ee66))
+
+### Features
+
+- **data-type:** 新增 isASCIIPunctuationSymbol，判断字符串内是否全部都是 ascii 标点符号 ([00ab5ad](https://github.com/js-tool-pack/basic/commit/00ab5ad80320e6d39e45d57c54898eccc90b33b8))
+- **string:** 新增 camelCase，其他变量命名风格转小驼峰 ([95cb370](https://github.com/js-tool-pack/basic/commit/95cb37097320685cf324f8d86eab66a952a6cb01))
+- **string:** 新增 CaseSplitRegExp 正则，用于切割各种命名法的字符串 ([6eb5c43](https://github.com/js-tool-pack/basic/commit/6eb5c43169be013c98f8a5f6aa8faeef5fe8ee67))
+- **string:** 新增 kebabCase，其他变量命名风格转小写加中划线 ([0c0a1f1](https://github.com/js-tool-pack/basic/commit/0c0a1f1efdb27cdab413a8f42c3c75152869164f))
+- **string:** 新增 pascalCase，其他变量命名风格转大驼峰 ([f9f77ce](https://github.com/js-tool-pack/basic/commit/f9f77ce0fd4c82329b2a6771bfbea450310ae038))
+- **string:** 新增 snakeCase，其他变量命名风格转蛇形 ([9d59b3d](https://github.com/js-tool-pack/basic/commit/9d59b3d2c67239e6413bc7fd03875bd52c8ac5d2))
+- **string:** 移除 fromCamel ([d272e84](https://github.com/js-tool-pack/basic/commit/d272e84e0f7d6a0385040dd6a513be3667184ddf))
+- **string:** 移除 toCamel ([beddc8a](https://github.com/js-tool-pack/basic/commit/beddc8ac5e36d5fdba6ffd9358f99b0f6b438a3e))
+
+### BREAKING CHANGES
+
+- **string:** 移除 fromCamel，可以使用 kebabCase、pascalCase、snakeCase 代替
+- **string:** 移除 toCamel，可以使用 camelCase 或 pascalCase 作为代替
+
 ## [0.0.27](https://github.com/js-tool-pack/basic/compare/v0.0.26...v0.0.27) (2023-06-20)
 
 ### Features
