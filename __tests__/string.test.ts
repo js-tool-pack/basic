@@ -258,6 +258,8 @@ describe('string', function () {
   test('kebabCase', () => {
     const kebabCase = cm.kebabCase;
 
+    expect(kebabCase('a')).toBe('a');
+    expect(kebabCase('A')).toBe('a');
     expect(kebabCase('aBBcde-fFF__g   h')).toBe('a-bbcde-f-ff-g-h');
     expect(kebabCase('APPStyle')).toBe('appstyle');
     expect(kebabCase('APP_Style')).toBe('app-style');
@@ -274,5 +276,36 @@ describe('string', function () {
     expect(kebabCase('无 hello')).toBe('无-hello');
     expect(kebabCase('无Hello')).toBe('无-hello');
     expect(kebabCase('&^%%$Hello')).toBe('hello');
+  });
+
+  test('pascalCase', () => {
+    const pascalCase = cm.pascalCase;
+
+    expect(pascalCase('a')).toBe('A');
+    expect(pascalCase('A')).toBe('A');
+    expect(pascalCase('helloWorld')).toBe('HelloWorld');
+    expect(pascalCase('hello-World')).toBe('HelloWorld');
+    expect(pascalCase('hello-World')).toBe('HelloWorld');
+    expect(pascalCase('hello World')).toBe('HelloWorld');
+    expect(pascalCase('hello world')).toBe('HelloWorld');
+    expect(pascalCase('Hello world')).toBe('HelloWorld');
+    expect(pascalCase('Hello   world')).toBe('HelloWorld');
+    expect(pascalCase('Hello___world')).toBe('HelloWorld');
+
+    expect(pascalCase('aBBcde-f__g h')).toBe('ABbcdeFGH');
+    expect(pascalCase('abc0Abc0')).toBe('Abc0Abc0');
+
+    expect(pascalCase('Auv')).toBe('Auv');
+    expect(pascalCase('a-u-v')).toBe('AUV');
+    expect(pascalCase('Auv')).toBe('Auv');
+    expect(pascalCase(' Auv')).toBe('Auv');
+    expect(pascalCase(' auv')).toBe('Auv');
+    expect(pascalCase('-Auv')).toBe('Auv');
+    expect(pascalCase('_Auv')).toBe('Auv');
+
+    expect(pascalCase('无hello')).toBe('无hello');
+    expect(pascalCase('无 hello')).toBe('无Hello');
+    expect(pascalCase('无Hello')).toBe('无Hello');
+    expect(pascalCase('&^%%$Hello')).toBe('Hello');
   });
 });
