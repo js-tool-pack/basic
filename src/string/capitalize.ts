@@ -8,6 +8,7 @@
  * capitalize('ab'); // 'Ab'
  * capitalize('Ab'); // 'Ab'
  * capitalize('aa'); // 'Aa'
+ * capitalize('AAA')); // 'Aaa';
  * capitalize(''); // ''
  *
  */
