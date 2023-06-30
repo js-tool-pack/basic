@@ -17,7 +17,7 @@ export function pascalCase(value: string): string {
   if (!value) return value;
   return value
     .split(CaseSplitRegExp)
-    .map((w) => capitalize(w.toLowerCase()))
     .filter(Boolean)
+    .map((w) => capitalize(w))
     .join('');
 }
