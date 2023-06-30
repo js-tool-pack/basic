@@ -14,7 +14,7 @@
  */
 export function inRange(
   value: number,
-  [min = -Infinity, max = Infinity]: [number?, number?],
+  [min = -Infinity, max = Infinity]: readonly [number?, number?],
 ): boolean {
   return min <= value && value <= max;
 }
