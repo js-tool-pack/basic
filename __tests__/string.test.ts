@@ -308,4 +308,26 @@ describe('string', function () {
     expect(pascalCase('无Hello')).toBe('无Hello');
     expect(pascalCase('&^%%$Hello')).toBe('Hello');
   });
+  test('kebabCase', () => {
+    const snakeCase = cm.snakeCase;
+
+    expect(snakeCase('a')).toBe('a');
+    expect(snakeCase('A')).toBe('a');
+    expect(snakeCase('aBBcde-fFF__g   h')).toBe('a_bbcde_f_ff_g_h');
+    expect(snakeCase('APPStyle')).toBe('appstyle');
+    expect(snakeCase('APP_Style')).toBe('app_style');
+    expect(snakeCase('abc0Abc0')).toBe('abc0_abc0');
+
+    expect(snakeCase('AUV')).toBe('auv');
+    expect(snakeCase('AUV_AUV')).toBe('auv_auv');
+    expect(snakeCase('Auv')).toBe('auv');
+    expect(snakeCase(' Auv')).toBe('auv');
+    expect(snakeCase('-Auv')).toBe('auv');
+    expect(snakeCase('_Auv')).toBe('auv');
+
+    expect(snakeCase('无hello')).toBe('无hello');
+    expect(snakeCase('无 hello')).toBe('无_hello');
+    expect(snakeCase('无Hello')).toBe('无_hello');
+    expect(snakeCase('&^%%$Hello')).toBe('hello');
+  });
 });
