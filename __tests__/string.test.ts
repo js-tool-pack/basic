@@ -65,6 +65,7 @@ describe('string', function () {
   });
 
   test('camelCase', () => {
+    expect(camelCase('')).toBe('');
     expect(camelCase('a')).toBe('a');
     expect(camelCase('A')).toBe('a');
     expect(camelCase('helloWorld')).toBe('helloWorld');
@@ -239,6 +240,7 @@ describe('string', function () {
   test('kebabCase', () => {
     const kebabCase = cm.kebabCase;
 
+    expect(kebabCase('')).toBe('');
     expect(kebabCase('a')).toBe('a');
     expect(kebabCase('A')).toBe('a');
     expect(kebabCase('aBBcde-fFF__g   h')).toBe('a-bbcde-f-ff-g-h');
@@ -262,6 +264,7 @@ describe('string', function () {
   test('pascalCase', () => {
     const pascalCase = cm.pascalCase;
 
+    expect(pascalCase('')).toBe('');
     expect(pascalCase('a')).toBe('A');
     expect(pascalCase('A')).toBe('A');
     expect(pascalCase('helloWorld')).toBe('HelloWorld');
@@ -292,6 +295,7 @@ describe('string', function () {
   test('snakeCase', () => {
     const snakeCase = cm.snakeCase;
 
+    expect(snakeCase('')).toBe('');
     expect(snakeCase('a')).toBe('a');
     expect(snakeCase('A')).toBe('a');
     expect(snakeCase('aBBcde-fFF__g   h')).toBe('a_bbcde_f_ff_g_h');
