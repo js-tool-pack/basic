@@ -25,7 +25,9 @@ import {
   isObjectLike,
   isUnavailable,
   isNullish,
+  isASCIIPunctuationSymbol,
 } from '../src';
+import { createArray } from '@mxssfd/core';
 const cm = { polling: {} };
 
 describe('data-type', function () {
@@ -482,5 +484,39 @@ describe('data-type', function () {
     expect(isNullish(false)).toBe(false);
     expect(isNullish('')).toBe(false);
     expect(isNullish({})).toBe(false);
+  });
+  test('isASCIIPunctuationSymbol', function () {
+    expect.assertions(108);
+
+    const createCharList = (start: string, end: string): string[] => {
+      return createArray({
+        start: start.charCodeAt(0),
+        end: end.charCodeAt(0) + 1,
+        fill: (c) => String.fromCharCode(c),
+      });
+    };
+
+    expect(isASCIIPunctuationSymbol('')).toBe(false);
+    expect(isASCIIPunctuationSymbol('嘿')).toBe(false);
+    expect(isASCIIPunctuationSymbol('（')).toBe(false);
+    expect(isASCIIPunctuationSymbol('&&&&*%$#')).toBe(true);
+    expect(isASCIIPunctuationSymbol('87sdfs$#')).toBe(false);
+
+    // 空格加上字符是95个字符
+    const list = [
+      [[' '], ' ', false],
+      [createCharList('a', 'z'), 'abcdefghijklmnopqrstuvwxyz', false],
+      [createCharList('A', 'Z'), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', false],
+      [createCharList('0', '9'), '0123456789', false],
+      [createCharList('!', '/'), '!"#$%&\'()*+,-./', true],
+      [createCharList(':', '@'), ':;<=>?@', true],
+      [createCharList('[', '`'), '[\\]^_`', true],
+      [createCharList('{', '~'), '{|}~', true],
+    ] as const;
+
+    list.forEach(([arr, join, value]) => {
+      expect(arr.join('')).toBe(join);
+      arr.forEach((v) => expect(isASCIIPunctuationSymbol(v)).toBe(value));
+    });
   });
 });
