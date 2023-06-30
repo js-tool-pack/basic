@@ -1,6 +1,5 @@
 import * as cm from '../src/string';
-const { formatNumber, strTemplate, removeStrByNum, smartRepeat, capitalize, fromCamel, camelCase } =
-  cm;
+const { formatNumber, strTemplate, removeStrByNum, smartRepeat, capitalize, camelCase } = cm;
 
 describe('string', function () {
   test('formatNumber', () => {
@@ -63,23 +62,6 @@ describe('string', function () {
     expect(capitalize('AAA')).toBe('Aaa');
     // edge
     expect(capitalize('')).toBe('');
-  });
-
-  test('fromCamel', () => {
-    // 默认下划线分割
-    expect(fromCamel('a')).toBe('a');
-    expect(fromCamel('A')).toBe('a');
-    expect(fromCamel('Test')).toBe('test');
-    expect(fromCamel('TEST')).toBe('test');
-    expect(fromCamel('testCamel')).toBe('test_camel');
-    expect(fromCamel('TestCamelString')).toBe('test_camel_string');
-    expect(fromCamel('TestCamelSTring')).toBe('test_camel_string');
-
-    // 自定义分割字符
-    expect(fromCamel('TestCamelSTring', '-')).toBe('test-camel-string');
-
-    // 转大写
-    expect(fromCamel('TestCamelSTring', '-', true)).toBe('TEST-CAMEL-STRING');
   });
 
   test('camelCase', () => {
