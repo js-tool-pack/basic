@@ -255,4 +255,24 @@ describe('string', function () {
 
     expect(getClassNames({ a: true, b: 1 }, { b: 0 })).toBe('a');
   });
+  test('kebabCase', () => {
+    const kebabCase = cm.kebabCase;
+
+    expect(kebabCase('aBBcde-fFF__g   h')).toBe('a-bbcde-f-ff-g-h');
+    expect(kebabCase('APPStyle')).toBe('appstyle');
+    expect(kebabCase('APP_Style')).toBe('app-style');
+    expect(kebabCase('abc0Abc0')).toBe('abc0-abc0');
+
+    expect(kebabCase('AUV')).toBe('auv');
+    expect(kebabCase('AUV_AUV')).toBe('auv-auv');
+    expect(kebabCase('Auv')).toBe('auv');
+    expect(kebabCase(' Auv')).toBe('auv');
+    expect(kebabCase('-Auv')).toBe('auv');
+    expect(kebabCase('_Auv')).toBe('auv');
+
+    expect(kebabCase('无hello')).toBe('无hello');
+    expect(kebabCase('无 hello')).toBe('无-hello');
+    expect(kebabCase('无Hello')).toBe('无-hello');
+    expect(kebabCase('&^%%$Hello')).toBe('hello');
+  });
 });

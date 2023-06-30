@@ -537,6 +537,7 @@ describe('array', function () {
     expect(inRange(0, [0])).toBe(true);
     expect(inRange(0, [1])).toBe(false);
     expect(inRange(0, [1, 2])).toBe(false);
+    expect(inRange(NaN, [0])).toBe(false);
   });
   test('inRanges', () => {
     expect(inRanges(0, [undefined as any, 100])).toBe(true);
