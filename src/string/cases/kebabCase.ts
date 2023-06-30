@@ -1,5 +1,6 @@
 // import { isASCIIPunctuationSymbol } from '../../data-type';
 // import { inRange } from '../../array';
+import { CaseSplitRegExp } from './regexp';
 
 /**
  * 其他变量命名风格转小写加中划线
@@ -19,7 +20,7 @@ export function kebabCase(value: string): string {
 
   // --- 正则写法 ---
   return value
-    .split(/[\s!-/:-@[-`{-~]+|(?<![A-Z])(?=[A-Z])/g)
+    .split(CaseSplitRegExp)
     .map((w) => w.toLowerCase())
     .filter(Boolean)
     .join('-');
