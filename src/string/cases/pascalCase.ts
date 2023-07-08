@@ -1,5 +1,5 @@
 import { capitalize } from '../capitalize';
-import { CaseSplitRegExp } from './regexp';
+import { splitByCases } from './splitByCases';
 
 /**
  * 其他变量命名风格转大驼峰
@@ -15,9 +15,7 @@ import { CaseSplitRegExp } from './regexp';
  */
 export function pascalCase(value: string): string {
   if (!value) return value;
-  return value
-    .split(CaseSplitRegExp)
-    .filter(Boolean)
+  return splitByCases(value)
     .map((w) => capitalize(w))
     .join('');
 }

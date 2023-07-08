@@ -1,5 +1,5 @@
 import { capitalize } from '../capitalize';
-import { CaseSplitRegExp } from './regexp';
+import { splitByCases } from './splitByCases';
 
 /**
  * 其他变量命名风格转小驼峰
@@ -15,6 +15,6 @@ import { CaseSplitRegExp } from './regexp';
  */
 export function camelCase(value: string): string {
   if (!value) return value;
-  const [first, ...rest] = value.split(CaseSplitRegExp).filter(Boolean);
+  const [first, ...rest] = splitByCases(value);
   return (first as string).toLowerCase() + rest.map(capitalize).join('');
 }

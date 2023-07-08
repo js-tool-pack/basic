@@ -1,4 +1,4 @@
-import { CaseSplitRegExp } from './regexp';
+import { splitByCases } from './splitByCases';
 
 /**
  * 其他变量命名风格转蛇形
@@ -17,9 +17,7 @@ import { CaseSplitRegExp } from './regexp';
  */
 export function snakeCase(value: string): string {
   if (!value) return value;
-  return value
-    .split(CaseSplitRegExp)
+  return splitByCases(value)
     .map((w) => w.toLowerCase())
-    .filter(Boolean)
     .join('_');
 }
