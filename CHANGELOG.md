@@ -1,3 +1,17 @@
+## [0.1.1-beta.1](https://github.com/js-tool-pack/basic/compare/v0.1.0...v0.1.1-beta.1) (2023-07-08)
+
+### Code Refactoring
+
+- **string/cases:** 使用 splitByCases 代替 CaseSplitRegExp ([0082080](https://github.com/js-tool-pack/basic/commit/0082080971bd29516b7297e9d6266098f8bf0468)), closes [#12](https://github.com/js-tool-pack/basic/issues/12)
+
+### Features
+
+- **string:** 新增 splitByCases，把各种变量风格的字符串分割成字符串数组;用于代替 CaseSplitRegExp ([0b6ff2b](https://github.com/js-tool-pack/basic/commit/0b6ff2bb3dce92dfc3f38b607d32c4cdf6a38f56))
+
+### BREAKING CHANGES
+
+- **string/cases:** 移除 CaseSplitRegExp
+
 # [0.1.0](https://github.com/js-tool-pack/basic/compare/v0.0.27...v0.1.0) (2023-06-30)
 
 ### Bug Fixes
