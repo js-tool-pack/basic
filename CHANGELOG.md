@@ -1,3 +1,5 @@
+## [0.1.1](https://github.com/js-tool-pack/basic/compare/v0.1.1-beta.1...v0.1.1) (2023-07-08)
+
 ## [0.1.1-beta.1](https://github.com/js-tool-pack/basic/compare/v0.1.0...v0.1.1-beta.1) (2023-07-08)
 
 ### Code Refactoring
