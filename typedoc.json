@@ -7,7 +7,7 @@
   "customCss": "./typedoc.theme.css",
   "sort": ["static-first", "kind", "enum-value-ascending"],
   "categoryOrder": ["file"],
-  "out": "./docs-html",
+  "out": "./docs-dist",
   "categorizeByGroup": true,
   "searchCategoryBoosts": {
     "Component": 2,
