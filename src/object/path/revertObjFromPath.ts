@@ -22,31 +22,34 @@ export function revertObjFromPath(pathArr: string[]): object {
       innerKey,
     };
   }
-  return pathArr.reduce((result, path) => {
-    const { key, value, innerKey } = getKV(path);
-    const resultValue = result[key];
+  return pathArr.reduce(
+    (result, path) => {
+      const { key, value, innerKey } = getKV(path);
+      const resultValue = result[key];
 
-    // no-fallthrough
-    switch (typeOf(resultValue)) {
-      case 'undefined':
-        if (!innerKey) {
-          result[key] = value;
-        } else {
-          const arr: any[] = [];
-          arr[innerKey as any] = value;
-          result[key] = arr;
-        }
-        break;
-      case 'string':
-        result[key] = [resultValue];
-      // eslint-disable-next-line no-fallthrough
-      case 'array':
-        if (!innerKey) {
-          result[key].push(value);
-        } else {
-          result[key][innerKey] = value;
-        }
-    }
-    return result;
-  }, {} as Record<string, any>);
+      // no-fallthrough
+      switch (typeOf(resultValue)) {
+        case 'undefined':
+          if (!innerKey) {
+            result[key] = value;
+          } else {
+            const arr: any[] = [];
+            arr[innerKey as any] = value;
+            result[key] = arr;
+          }
+          break;
+        case 'string':
+          result[key] = [resultValue];
+        // eslint-disable-next-line no-fallthrough
+        case 'array':
+          if (!innerKey) {
+            result[key].push(value);
+          } else {
+            result[key][innerKey] = value;
+          }
+      }
+      return result;
+    },
+    {} as Record<string, any>,
+  );
 }

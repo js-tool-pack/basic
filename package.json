@@ -14,7 +14,7 @@
     "husky-msg-init": "husky add .husky/pre-commit \"npx lint-staged --allow-empty \"$1\"\"&husky add .husky/commit-msg \"npx commitlint --edit \"$1\"\"",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "ts-check": "tsc --noEmit && tsc -p ./tsconfig.node.json --noEmit",
-    "lint-check": "eslint .",
+    "lint-check": "eslint \"**/*.ts\"",
     "prettier-check": "prettier ./ --check",
     "check-all": "run-p ts-check lint-check prettier-check",
     "typedoc:build": "typedoc",

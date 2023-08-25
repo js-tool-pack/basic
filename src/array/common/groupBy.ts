@@ -125,13 +125,16 @@ export function groupBy<
 >(arr: T[], by: (it: T, result: any) => string | void, defaultKey?: number | string): R;
 export function groupBy(arr: any[], key: string | Function, defaultKey: number | string = '*') {
   const cb = isFunction(key) ? key : (item: Record<string, any>) => item[key];
-  return arr.reduce((result, item) => {
-    const k = cb(item, result) ?? defaultKey;
-    if (!hasOwn(result, k)) {
-      result[k] = [item];
-    } else {
-      result[k].push(item);
-    }
-    return result;
-  }, {} as Record<string, any>);
+  return arr.reduce(
+    (result, item) => {
+      const k = cb(item, result) ?? defaultKey;
+      if (!hasOwn(result, k)) {
+        result[k] = [item];
+      } else {
+        result[k].push(item);
+      }
+      return result;
+    },
+    {} as Record<string, any>,
+  );
 }
