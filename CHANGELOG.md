@@ -1,3 +1,13 @@
+## [0.1.2](https://github.com/js-tool-pack/basic/compare/v0.1.1...v0.1.2) (2023-08-25)
+
+### Bug Fixes
+
+- **common:** 修复 createTimeCountUp 后马上调用 play 时间不对的问题 ([bcbba11](https://github.com/js-tool-pack/basic/commit/bcbba1148b1284cef2c9c4c1b8d2e594ef2b6f97))
+
+### Features
+
+- **common:** emptyFn 空函数 ([82924f7](https://github.com/js-tool-pack/basic/commit/82924f72d9c7f0ab333ff6e87829f8adac0b4b2b))
+
 ## [0.1.1](https://github.com/js-tool-pack/basic/compare/v0.1.1-beta.1...v0.1.1) (2023-07-08)
 
 ## [0.1.1-beta.1](https://github.com/js-tool-pack/basic/compare/v0.1.0...v0.1.1-beta.1) (2023-07-08)
