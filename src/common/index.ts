@@ -10,3 +10,4 @@ export * from './getRoot';
 export * from './parseCmdParams';
 export * from './formatBytes';
 export * from './loadingElse';
+export * from './emptyFn';
