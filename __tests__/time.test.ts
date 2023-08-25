@@ -145,6 +145,7 @@ describe('time', function () {
     // ---- 暂停与重启 ----
 
     const tcu = createTimeCountUp();
+    tcu.play();
     expect(tcu()).toBe(0);
     // await sleep(1);
     jest.advanceTimersByTime(1);
@@ -186,6 +187,7 @@ describe('time', function () {
     // ---- 暂停与重启 ----
 
     const tcd = createTimeCountDown(100);
+    tcd.play();
     expect(tcd()).toBe(100);
     // await sleep(1);
     jest.advanceTimersByTime(1);

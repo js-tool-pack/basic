@@ -40,6 +40,7 @@ export function createTimeCountUp(): {
     pause.startTime = Date.now();
   };
   closure.play = function () {
+    if (pause.startTime === 0) return;
     pause.total += Date.now() - pause.startTime;
     pause.startTime = 0;
   };
