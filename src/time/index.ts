@@ -18,3 +18,4 @@ export * from './getStartOfWeek';
 export * from './getStartOfNextWeek';
 export * from './getEndOfPrevMonth';
 export * from './getEndOfWeek';
+export * from './dateAdd';
