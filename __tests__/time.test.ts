@@ -19,6 +19,7 @@ import {
   getStartOfNextWeek,
   getEndOfPrevMonth,
   getEndOfWeek,
+  dateAdd,
 } from '../src/time';
 import { chunk, createArray, inRange } from '../src';
 
@@ -228,6 +229,29 @@ describe('time', function () {
     // expect(dateDiff(new Date('2020-05-06'), new Date('2020-05-01 3:20:10'), 'd天 h时m分s秒')).toBe(
     //   '-5天 -4时-39分-50秒',
     // );
+  });
+
+  test('dateAdd', () => {
+    // 2023-12-16
+    const date = new Date(2023, 11, 16);
+
+    expect(formatDate(dateAdd(date, 1, 'year'))).toBe('2024-12-16 00:00:00');
+    expect(formatDate(dateAdd(date, -1, 'year'))).toBe('2022-12-16 00:00:00');
+    expect(formatDate(dateAdd(date, 1, 'month'))).toBe('2024-01-16 00:00:00');
+    expect(formatDate(dateAdd(date, -1, 'month'))).toBe('2023-11-16 00:00:00');
+    expect(formatDate(dateAdd(date, 1, 'week'))).toBe('2023-12-23 00:00:00');
+    expect(formatDate(dateAdd(date, -1, 'week'))).toBe('2023-12-09 00:00:00');
+    expect(formatDate(dateAdd(date, 1, 'date'))).toBe('2023-12-17 00:00:00');
+    expect(formatDate(dateAdd(date, -1, 'date'))).toBe('2023-12-15 00:00:00');
+    expect(formatDate(dateAdd(date, 1))).toBe('2023-12-17 00:00:00');
+    expect(formatDate(dateAdd(date, 1, 'hours'))).toBe('2023-12-16 01:00:00');
+    expect(formatDate(dateAdd(date, -1, 'hours'))).toBe('2023-12-15 23:00:00');
+    expect(formatDate(dateAdd(date, 1, 'minutes'))).toBe('2023-12-16 00:01:00');
+    expect(formatDate(dateAdd(date, -1, 'minutes'))).toBe('2023-12-15 23:59:00');
+    expect(formatDate(dateAdd(date, 1, 'seconds'))).toBe('2023-12-16 00:00:01');
+    expect(formatDate(dateAdd(date, -1, 'seconds'))).toBe('2023-12-15 23:59:59');
+    expect(formatDate(dateAdd(date, 1000, 'milliseconds'))).toBe('2023-12-16 00:00:01');
+    expect(formatDate(dateAdd(date, -1000, 'milliseconds'))).toBe('2023-12-15 23:59:59');
   });
 
   test('getEndOfMonth', async () => {
