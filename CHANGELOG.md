@@ -1,3 +1,11 @@
+## [0.1.3](https://github.com/js-tool-pack/basic/compare/v0.1.2...v0.1.3) (2023-12-16)
+
+### Features
+
+- **time:** dateAdd ([084819c](https://github.com/js-tool-pack/basic/commit/084819cd62f2af224bf0004fe72ee11c608871ea))
+- **time:** getEndOfPrevMonth ([8c4b6a1](https://github.com/js-tool-pack/basic/commit/8c4b6a1827aba275a2207b6a9f997155ec63e2f7))
+- **time:** getEndOfWeek ([47e9eb9](https://github.com/js-tool-pack/basic/commit/47e9eb92c754974d47f21348ffa4fcd16c056289))
+
 ## [0.1.2](https://github.com/js-tool-pack/basic/compare/v0.1.1...v0.1.2) (2023-08-25)
 
 ### Bug Fixes
