@@ -1,4 +1,5 @@
 import { getStartOfNextWeek } from './getStartOfNextWeek';
+import { dateAdd } from './dateAdd';
 
 /**
  * 获取某日所在星期结束的date
@@ -21,7 +22,5 @@ import { getStartOfNextWeek } from './getStartOfNextWeek';
  * @param [weekBegin='MonDay'] 每个星期开始，可选'SunDay'|'MonDay' 周一 周日，默认周一
  */
 export function getEndOfWeek(date: Date, weekBegin: 'SunDay' | 'MonDay' = 'MonDay'): Date {
-  const d = getStartOfNextWeek(date, weekBegin);
-  d.setDate(d.getDate() - 1);
-  return d;
+  return dateAdd(getStartOfNextWeek(date, weekBegin), -1, 'date');
 }
