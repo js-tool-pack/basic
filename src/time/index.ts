@@ -16,3 +16,4 @@ export * from './getEndOfMonth';
 export * from './getStartOfDate';
 export * from './getStartOfWeek';
 export * from './getStartOfNextWeek';
+export * from './getEndOfPrevMonth';
