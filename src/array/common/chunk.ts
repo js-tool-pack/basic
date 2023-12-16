@@ -19,11 +19,13 @@ import type { TupleM2N } from '@tool-pack/types';
  *
  */
 export function chunk<T, L extends number>(arr: ArrayLike<T>, chunkLen: L): TupleM2N<T, 0, L>[] {
-  if (chunkLen < 1) return Array.prototype.slice.call(arr);
+  const slice = Array.prototype.slice;
+  if (chunkLen < 1) return slice.call(arr);
+
   const result: any[] = [];
   let i = 0;
-  while (i < arr.length) {
-    result.push(Array.prototype.slice.call(arr, i, (i += chunkLen)));
-  }
+  const len = arr.length;
+  while (i < len) result.push(slice.call(arr, i, (i += chunkLen)));
+
   return result;
 }
