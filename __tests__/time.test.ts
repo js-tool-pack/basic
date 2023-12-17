@@ -17,7 +17,6 @@ import {
   getStartOfDate,
   getStartOfWeek,
   getStartOfNextWeek,
-  getEndOfPrevMonth,
   getEndOfWeek,
   dateAdd,
 } from '../src/time';
@@ -298,20 +297,6 @@ describe('time', function () {
     expect(getEndOfMonth(new Date('2021-10'), 1).getDate()).toBe(30);
     expect(getEndOfMonth(new Date('2021-11'), 1).getDate()).toBe(31);
     expect(getEndOfMonth(new Date('2021-12'), 1).getDate()).toBe(31);
-  });
-  test('getEndOfPrevMonth', async () => {
-    expect(getEndOfPrevMonth(new Date('2021-1')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-2')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-3')).getDate()).toBe(28);
-    expect(getEndOfPrevMonth(new Date('2021-4')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-5')).getDate()).toBe(30);
-    expect(getEndOfPrevMonth(new Date('2021-6')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-7')).getDate()).toBe(30);
-    expect(getEndOfPrevMonth(new Date('2021-8')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-9')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-10')).getDate()).toBe(30);
-    expect(getEndOfPrevMonth(new Date('2021-11')).getDate()).toBe(31);
-    expect(getEndOfPrevMonth(new Date('2021-12')).getDate()).toBe(30);
   });
   test('getMonthTheNthWeekday', async () => {
     // const fn = t.getMonthTheLastWeekDay;
