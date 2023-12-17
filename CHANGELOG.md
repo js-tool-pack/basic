@@ -1,3 +1,18 @@
+# [0.2.0](https://github.com/js-tool-pack/basic/compare/v0.1.3...v0.2.0) (2023-12-17)
+
+### Features
+
+- **time:** getEndOfMonth 函数添加 monthOffset 参数，可获取前 n 个或后 n 个月的结束日期 ([1b3b97c](https://github.com/js-tool-pack/basic/commit/1b3b97c68a6cd82a69ce99989b58d0a2947ba777))
+- **time:** 移除 getEndOfPrevMonth ([dc033f1](https://github.com/js-tool-pack/basic/commit/dc033f14fdfbc2361fbd8aff444c6d5a79159812))
+
+### Performance Improvements
+
+- **array:** 优化 chunk 函数 ([c64c544](https://github.com/js-tool-pack/basic/commit/c64c5443c639a45e8a54055d9b567172597cb663))
+
+### BREAKING CHANGES
+
+- **time:** 移除 getEndOfPrevMonth，可通过 getEndOfMonth 添加偏移量代替该函数
+
 ## [0.1.3](https://github.com/js-tool-pack/basic/compare/v0.1.2...v0.1.3) (2023-12-16)
 
 ### Features
