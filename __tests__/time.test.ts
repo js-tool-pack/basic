@@ -272,6 +272,32 @@ describe('time', function () {
     expect(formatDate(getEndOfMonth(new Date('2020/02/10 10:00:00')))).toBe('2020-02-29 00:00:00');
     expect(formatDate(getEndOfMonth(new Date('2020/12/10 10:00:00')))).toBe('2020-12-31 00:00:00');
     expect(formatDate(getEndOfMonth(new Date('2023/12/10 10:00:00')))).toBe('2023-12-31 00:00:00');
+
+    expect(getEndOfMonth(new Date('2021-1'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-2'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-3'), -1).getDate()).toBe(28);
+    expect(getEndOfMonth(new Date('2021-4'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-5'), -1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-6'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-7'), -1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-8'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-9'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-10'), -1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-11'), -1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-12'), -1).getDate()).toBe(30);
+
+    expect(getEndOfMonth(new Date('2021-1'), 1).getDate()).toBe(28);
+    expect(getEndOfMonth(new Date('2021-2'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-3'), 1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-4'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-5'), 1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-6'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-7'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-8'), 1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-9'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-10'), 1).getDate()).toBe(30);
+    expect(getEndOfMonth(new Date('2021-11'), 1).getDate()).toBe(31);
+    expect(getEndOfMonth(new Date('2021-12'), 1).getDate()).toBe(31);
   });
   test('getEndOfPrevMonth', async () => {
     expect(getEndOfPrevMonth(new Date('2021-1')).getDate()).toBe(31);

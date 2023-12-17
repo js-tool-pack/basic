@@ -17,7 +17,12 @@
  * getEndOfMonth(new Date('2021-12')).getDate(); // 31
  * getEndOfMonth(new Date('2020-2')).getDate(); // 29
  *
+ * getEndOfMonth(new Date('2021-3'), -1).getDate(); // 28
+ * getEndOfMonth(new Date('2021-2'), 1).getDate(); // 31
+ *
+ * @param monthDate 日期
+ * @param monthOffset 月份偏移量 1 代表下一个月，-1 代表上一个月
  */
-export function getEndOfMonth(monthDate: Date): Date {
-  return new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0);
+export function getEndOfMonth(monthDate: Date, monthOffset = 0): Date {
+  return new Date(monthDate.getFullYear(), monthDate.getMonth() + 1 + monthOffset, 0);
 }
