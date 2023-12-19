@@ -1,3 +1,9 @@
+## [0.3.1](https://github.com/js-tool-pack/basic/compare/v0.3.0...v0.3.1) (2023-12-19)
+
+### Bug Fixes
+
+- **time:** 修复 getStartOfWeek 部分日期不准确的问题 ([0b643fd](https://github.com/js-tool-pack/basic/commit/0b643fd8b274f5bdcb59e347c1308112e5e37b2b))
+
 # [0.3.0](https://github.com/js-tool-pack/basic/compare/v0.2.0...v0.3.0) (2023-12-19)
 
 ### Features
