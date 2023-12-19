@@ -1,28 +1,44 @@
 import { getStartOfDate } from './getStartOfDate';
+import type { WEEK_DAYS } from './time.type';
+import { dateAdd } from './dateAdd';
 
 /**
  * 获取某日所在星期开始的date
  *
  * @example
  *
- * ```typescript
- * formatDate(getStartOfWeek(new Date('2023/04/19'))); // '2023-04-17 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/20'))); // '2023-04-17 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/16'))); // '2023-04-10 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/10'))); // '2023-04-10 00:00:00'
+ * const getStart = (date: string, options?: Parameters<typeof getStartOfWeek>[1]) => formatDate(getStartOfWeek(new Date(date), options));
  *
- * formatDate(getStartOfWeek(new Date('2023/04/19'), 'SunDay')); // '2023-04-16 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/16'), 'SunDay')); // '2023-04-16 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/09'), 'SunDay')); // '2023-04-09 00:00:00'
- * formatDate(getStartOfWeek(new Date('2023/04/10'), 'SunDay')); // '2023-04-09 00:00:00'
- * ```
+ * // ----- 当前星期 -----
+ * // firstDay 为星期一
+ * getStart('2023/04/19', { firstDay: 1 }); // '2023-04-17 00:00:00'
+ * // firstDay 为星期日
+ * getStart('2023/04/19', { firstDay: 0 }); // '2023-04-16 00:00:00'
+ * // firstDay 为星期三
+ * getStart('2023/04/16', { firstDay: 3 }); // '2023-04-12 00:00:00'
  *
- * @param date
- * @param [weekBegin='monday'] 每个星期开始，可选'SunDay'|'MonDay' 周一 周日，默认周一
+ * // ----- 上个星期 -----
+ * // firstDay 为星期一
+ * getStart('2023/04/19', { firstDay: 1, weekOffset: -1 }); // '2023-04-10 00:00:00'
+ * // firstDay 为星期日
+ * getStart('2023/04/19', { firstDay: 0, weekOffset: -1 }); // '2023-04-09 00:00:00'
+ *
+ * // ----- 下个星期 -----
+ * // firstDay 为星期一
+ * getStart('2023/04/19', { firstDay: 1, weekOffset: 1 }); // '2023-04-24 00:00:00'
+ * // firstDay 为星期日
+ * getStart('2023/04/19', { firstDay: 0, weekOffset: 1 }); // '2023-04-23 00:00:00'
+ *
+ *
+ * @param date 日期
+ * @param [firstDay=0] 每个星期的开始，可选0-7.默认0周日
+ * @param [weekOffset=0] 星期的偏移量，当值为 1 时是下个星期，为-1 时是上个星期以此类推.默认为 0
  */
-export function getStartOfWeek(date: Date, weekBegin: 'SunDay' | 'MonDay' = 'MonDay'): Date {
-  const d = new Date(date);
-  const [begin, offset] = weekBegin === 'MonDay' ? [7, -1] : [0, 0];
-  d.setDate(d.getDate() - ((d.getDay() || begin) + offset));
+export function getStartOfWeek(
+  date: Date,
+  { firstDay = 0, weekOffset = 0 }: { firstDay?: WEEK_DAYS; weekOffset?: number } = {},
+): Date {
+  const d = dateAdd(date, weekOffset, 'week');
+  d.setDate(d.getDate() - (d.getDay() || (firstDay && 7)) + firstDay);
   return getStartOfDate(d);
 }

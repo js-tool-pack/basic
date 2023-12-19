@@ -22,5 +22,5 @@ import { dateAdd } from './dateAdd';
  * @param [weekBegin='monday'] 每个星期开始，可选'SunDay'|'MonDay' 周一 周日，默认周一
  */
 export function getStartOfNextWeek(date: Date, weekBegin: 'SunDay' | 'MonDay' = 'MonDay'): Date {
-  return dateAdd(getStartOfWeek(date, weekBegin), 1, 'week');
+  return dateAdd(getStartOfWeek(date, { firstDay: weekBegin === 'SunDay' ? 0 : 1 }), 1, 'week');
 }
