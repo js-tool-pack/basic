@@ -15,7 +15,6 @@ export * from './howLongAgo';
 export * from './getEndOfMonth';
 export * from './getStartOfDate';
 export * from './getStartOfWeek';
-export * from './getStartOfNextWeek';
 export * from './getEndOfWeek';
 export * from './dateAdd';
 export * from './time.type';

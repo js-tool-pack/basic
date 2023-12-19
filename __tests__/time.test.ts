@@ -16,7 +16,6 @@ import {
   howLongAgo,
   getStartOfDate,
   getStartOfWeek,
-  getStartOfNextWeek,
   getEndOfWeek,
   dateAdd,
 } from '../src/time';
@@ -613,24 +612,5 @@ describe('time', function () {
     expect(formatDate(getEndOfWeek(new Date('2023/04/16'), 'SunDay'))).toBe('2023-04-22 00:00:00');
     expect(formatDate(getEndOfWeek(new Date('2023/04/09'), 'SunDay'))).toBe('2023-04-15 00:00:00');
     expect(formatDate(getEndOfWeek(new Date('2023/04/10'), 'SunDay'))).toBe('2023-04-15 00:00:00');
-  });
-  test('getStartOfNextWeek', () => {
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/19')))).toBe('2023-04-24 00:00:00');
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/20')))).toBe('2023-04-24 00:00:00');
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/16')))).toBe('2023-04-17 00:00:00');
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/10')))).toBe('2023-04-17 00:00:00');
-
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/19'), 'SunDay'))).toBe(
-      '2023-04-23 00:00:00',
-    );
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/16'), 'SunDay'))).toBe(
-      '2023-04-23 00:00:00',
-    );
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/09'), 'SunDay'))).toBe(
-      '2023-04-16 00:00:00',
-    );
-    expect(formatDate(getStartOfNextWeek(new Date('2023/04/10'), 'SunDay'))).toBe(
-      '2023-04-16 00:00:00',
-    );
   });
 });
