@@ -1,3 +1,17 @@
+# [0.3.0](https://github.com/js-tool-pack/basic/compare/v0.2.0...v0.3.0) (2023-12-19)
+
+### Features
+
+- **time:** getEndOfWeek 可选择星期的任意一天作为开始，不再局限于周一和周日 ([ea1862c](https://github.com/js-tool-pack/basic/commit/ea1862cb9f9ee9455f666ac78a876e4de7874574))
+- **time:** getStartOfWeek 可选择星期的任意一天作为开始，不再局限于周一和周日 ([ee7d868](https://github.com/js-tool-pack/basic/commit/ee7d86866d17b29489e873ea9831997b84e73a06))
+- **time:** 移除 getStartOfNextWeek ([265b7bb](https://github.com/js-tool-pack/basic/commit/265b7bb066ca710996770eb6d379da581a3fc703))
+
+### BREAKING CHANGES
+
+- **time:** 移除 weekBegin 选项
+- **time:** 移除 getStartOfNextWeek，可通过 getStartOfWeek 添加偏移量代替该函数
+- **time:** 移除 weekBegin 选项
+
 # [0.2.0](https://github.com/js-tool-pack/basic/compare/v0.1.3...v0.2.0) (2023-12-17)
 
 ### Features
