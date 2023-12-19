@@ -38,7 +38,9 @@ export function getStartOfWeek(
   date: Date,
   { firstDay = 0, weekOffset = 0 }: { firstDay?: WEEK_DAYS; weekOffset?: number } = {},
 ): Date {
-  const d = dateAdd(date, weekOffset, 'week');
-  d.setDate(d.getDate() - (d.getDay() || (firstDay && 7)) + firstDay);
-  return getStartOfDate(d);
+  const _date = dateAdd(date, weekOffset, 'week');
+  const day = _date.getDay();
+  const offset = day >= firstDay ? day - firstDay : day + (7 - firstDay);
+  _date.setDate(_date.getDate() - offset);
+  return getStartOfDate(_date);
 }

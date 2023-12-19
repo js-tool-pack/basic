@@ -565,6 +565,7 @@ describe('time', function () {
     const getStart = (date: string, options?: Parameters<typeof getStartOfWeek>[1]) =>
       formatDate(getStartOfWeek(new Date(date), options));
 
+    expect(getStart('2023/12/05', { firstDay: 3 })).toBe('2023-11-29 00:00:00');
     /* 当前星期 */
     // firstDay 为星期一
     expect(getStart('2023/04/19', { firstDay: 1 })).toBe('2023-04-17 00:00:00');
@@ -581,6 +582,13 @@ describe('time', function () {
     // firstDay 为星期三
     expect(getStart('2023/04/16', { firstDay: 3 })).toBe('2023-04-12 00:00:00');
     expect(getStart('2023/04/12', { firstDay: 3 })).toBe('2023-04-12 00:00:00');
+    expect(getStart('2023/12/05', { firstDay: 3 })).toBe('2023-11-29 00:00:00');
+    expect(getStart('2023/12/27', { firstDay: 3 })).toBe('2023-12-27 00:00:00');
+
+    expect(getStart('2023/12/05', { firstDay: 4 })).toBe('2023-11-30 00:00:00');
+    expect(getStart('2023/12/05', { firstDay: 5 })).toBe('2023-12-01 00:00:00');
+    expect(getStart('2023/12/01', { firstDay: 6 })).toBe('2023-11-25 00:00:00');
+    expect(getStart('2023/12/08', { firstDay: 6 })).toBe('2023-12-02 00:00:00');
 
     /* 上个星期 */
     // firstDay 为星期一
