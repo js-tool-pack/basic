@@ -603,14 +603,20 @@ describe('time', function () {
     expect(getStart('2023/04/10', { firstDay: 0, weekOffset: 1 })).toBe('2023-04-16 00:00:00');
   });
   test('getEndOfWeek', () => {
-    expect(formatDate(getEndOfWeek(new Date('2023/04/19')))).toBe('2023-04-23 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/20')))).toBe('2023-04-23 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/16')))).toBe('2023-04-16 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/10')))).toBe('2023-04-16 00:00:00');
+    const getEnd = (date: string, options?: Parameters<typeof getEndOfWeek>[1]) =>
+      formatDate(getEndOfWeek(new Date(date), options));
 
-    expect(formatDate(getEndOfWeek(new Date('2023/04/19'), 'SunDay'))).toBe('2023-04-22 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/16'), 'SunDay'))).toBe('2023-04-22 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/09'), 'SunDay'))).toBe('2023-04-15 00:00:00');
-    expect(formatDate(getEndOfWeek(new Date('2023/04/10'), 'SunDay'))).toBe('2023-04-15 00:00:00');
+    // 星期一为星期第一天
+    expect(getEnd('2023/04/19', { firstDay: 1 })).toBe('2023-04-23 00:00:00');
+    expect(getEnd('2023/04/20', { firstDay: 1 })).toBe('2023-04-23 00:00:00');
+    expect(getEnd('2023/04/16', { firstDay: 1 })).toBe('2023-04-16 00:00:00');
+    expect(getEnd('2023/04/10', { firstDay: 1 })).toBe('2023-04-16 00:00:00');
+
+    expect(getEnd('2023/04/10', { firstDay: 1, weekOffset: 2 })).toBe('2023-04-30 00:00:00');
+
+    // 星期天为星期第一天
+    expect(getEnd('2023/04/19')).toBe('2023-04-22 00:00:00');
+    expect(getEnd('2023/04/16')).toBe('2023-04-22 00:00:00');
+    expect(getEnd('2023/04/09')).toBe('2023-04-15 00:00:00');
   });
 });
