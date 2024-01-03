@@ -1,3 +1,13 @@
+# [0.4.0](https://github.com/js-tool-pack/basic/compare/v0.3.1...v0.4.0) (2024-01-03)
+
+### Bug Fixes
+
+- **time:** 修复 WeekDays 类型问题 ([5ba15a4](https://github.com/js-tool-pack/basic/commit/5ba15a479f3ebd395e5b0161ac43c9df0c9a6d19))
+
+### Features
+
+- **time:** parseFormattedDate ([1f504d5](https://github.com/js-tool-pack/basic/commit/1f504d5df943a8bf96f81a5b1361e3469b2ca61d))
+
 ## [0.3.1](https://github.com/js-tool-pack/basic/compare/v0.3.0...v0.3.1) (2023-12-19)
 
 ### Bug Fixes
