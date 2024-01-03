@@ -18,6 +18,7 @@ import {
   getStartOfWeek,
   getEndOfWeek,
   dateAdd,
+  parseFormattedDate,
 } from '../src/time';
 import { chunk, createArray, inRange } from '../src';
 
@@ -123,6 +124,15 @@ describe('time', function () {
     expect(formatDate(new Date(2021, 10, 24, 18, 0, 0, 0), 'yyyy-MM-dd hh:mm:ss:SSSS')).toBe(
       '2021-11-24 18:00:00:0000',
     );
+  });
+  test('parseFormattedDate', () => {
+    const parse = (...args: Parameters<typeof parseFormattedDate>): string =>
+      formatDate(parseFormattedDate(...args));
+
+    expect(parse('2019-12-12 10:10:10')).toBe('2019-12-12 10:10:10');
+    expect(parse('2019-12-12')).toBe('2019-12-12 00:00:00');
+    expect(parse('2019年12月12日', 'yyyy年MM月dd日')).toBe('2019-12-12 00:00:00');
+    expect(parse('12月12日', 'yyyy年MM月dd日')).toBe('0120-11-30 00:00:00');
   });
   test('createTimeCountUp', () => {
     const timeCountUp = createTimeCountUp();
