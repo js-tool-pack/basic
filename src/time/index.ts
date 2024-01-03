@@ -18,3 +18,4 @@ export * from './getStartOfWeek';
 export * from './getEndOfWeek';
 export * from './dateAdd';
 export * from './time.type';
+export * from './parseFormattedDate';
