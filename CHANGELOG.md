@@ -1,3 +1,9 @@
+## [0.5.2](https://github.com/js-tool-pack/basic/compare/v0.5.1...v0.5.2) (2024-01-11)
+
+### Bug Fixes
+
+- **time:** 修复 parseFormattedDate 漏掉 date 会变成前一个月的问题 ([335eb6d](https://github.com/js-tool-pack/basic/commit/335eb6da1a54a9648e0f24d925502730d821e16a))
+
 ## [0.5.1](https://github.com/js-tool-pack/basic/compare/v0.5.0...v0.5.1) (2024-01-11)
 
 ### Features
