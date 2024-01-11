@@ -19,6 +19,7 @@ import {
   getEndOfWeek,
   dateAdd,
   parseFormattedDate,
+  getStartOfMonth,
 } from '../src/time';
 import { chunk, createArray, inRange } from '../src';
 
@@ -306,6 +307,12 @@ describe('time', function () {
     expect(getEndOfMonth(new Date('2021-10'), 1).getDate()).toBe(30);
     expect(getEndOfMonth(new Date('2021-11'), 1).getDate()).toBe(31);
     expect(getEndOfMonth(new Date('2021-12'), 1).getDate()).toBe(31);
+  });
+  test('getStartOfMonth', async () => {
+    const getStart = (date: string) => formatDate(getStartOfMonth(parseFormattedDate(date)));
+    expect(getStart('2023-01-11 19:25:00')).toBe('2023-01-01 00:00:00');
+    expect(getStart('2023-10-01 12:25:00')).toBe('2023-10-01 00:00:00');
+    expect(getStart('2023-12-30 02:25:00')).toBe('2023-12-01 00:00:00');
   });
   test('getMonthTheNthWeekday', async () => {
     // const fn = t.getMonthTheLastWeekDay;
