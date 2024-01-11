@@ -309,10 +309,13 @@ describe('time', function () {
     expect(getEndOfMonth(new Date('2021-12'), 1).getDate()).toBe(31);
   });
   test('getStartOfMonth', async () => {
-    const getStart = (date: string) => formatDate(getStartOfMonth(parseFormattedDate(date)));
+    const getStart = (date: string, offset = 0) =>
+      formatDate(getStartOfMonth(parseFormattedDate(date), offset));
     expect(getStart('2023-01-11 19:25:00')).toBe('2023-01-01 00:00:00');
     expect(getStart('2023-10-01 12:25:00')).toBe('2023-10-01 00:00:00');
     expect(getStart('2023-12-30 02:25:00')).toBe('2023-12-01 00:00:00');
+    expect(getStart('2023-12-30 02:25:00', 1)).toBe('2024-01-01 00:00:00');
+    expect(getStart('2023-12-30 02:25:00', -1)).toBe('2023-11-01 00:00:00');
   });
   test('getMonthTheNthWeekday', async () => {
     // const fn = t.getMonthTheLastWeekDay;
