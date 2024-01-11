@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/js-tool-pack/basic/compare/v0.5.0...v0.5.1) (2024-01-11)
+
+### Features
+
+- **time:** 为 getStartOfMonth 添加 offset 参数 ([6bdbca7](https://github.com/js-tool-pack/basic/commit/6bdbca71816b6d549cebadee2b9ec957e78d2fce))
+
 # [0.5.0](https://github.com/js-tool-pack/basic/compare/v0.4.0...v0.5.0) (2024-01-11)
 
 ### Features
