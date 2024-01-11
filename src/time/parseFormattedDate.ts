@@ -10,7 +10,9 @@
  * parse('2019年12月12日', 'yyyy年MM月dd日'); // '2019-12-12 00:00:00'
  *
  * // 注意日期一定要跟格式一一对应，否则会出现以下不符合规范的日期
- * parse('12月12日', 'yyyy年MM月dd日'); // '0120-11-30 00:00:00'
+ * parse('12月12日', 'yyyy年MM月dd日'); // '0120-12-01 00:00:00'
+ *
+ * parse('2023-12'); // '2023-12-01 00:00:00'
  *
  * @param date 日期字符串
  * @param formular 格式
@@ -35,7 +37,7 @@ export function parseFormattedDate(
   return new Date(
     Number(obj.y || '0'),
     Number(obj.M || '0') - 1,
-    Number(obj.d || '0'),
+    Number(obj.d || '1'),
     Number(obj.h || '0'),
     Number(obj.m || '0'),
     Number(obj.s || '0'),

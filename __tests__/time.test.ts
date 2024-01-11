@@ -133,7 +133,9 @@ describe('time', function () {
     expect(parse('2019-12-12 10:10:10')).toBe('2019-12-12 10:10:10');
     expect(parse('2019-12-12')).toBe('2019-12-12 00:00:00');
     expect(parse('2019年12月12日', 'yyyy年MM月dd日')).toBe('2019-12-12 00:00:00');
-    expect(parse('12月12日', 'yyyy年MM月dd日')).toBe('0120-11-30 00:00:00');
+    expect(parse('12月12日', 'yyyy年MM月dd日')).toBe('0120-12-01 00:00:00');
+
+    expect(parse('2023-12')).toBe('2023-12-01 00:00:00');
   });
   test('createTimeCountUp', () => {
     const timeCountUp = createTimeCountUp();
