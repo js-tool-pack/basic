@@ -1,3 +1,9 @@
+# [0.5.0](https://github.com/js-tool-pack/basic/compare/v0.4.0...v0.5.0) (2024-01-11)
+
+### Features
+
+- **time:** getStartOfMonth ([e17bb6c](https://github.com/js-tool-pack/basic/commit/e17bb6cefd3d3f4769e9c191459d8c6ce173792e))
+
 # [0.4.0](https://github.com/js-tool-pack/basic/compare/v0.3.1...v0.4.0) (2024-01-03)
 
 ### Bug Fixes
