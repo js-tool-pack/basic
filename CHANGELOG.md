@@ -1,3 +1,9 @@
+# [0.6.0](https://github.com/js-tool-pack/basic/compare/v0.5.2...v0.6.0) (2024-01-12)
+
+### Features
+
+- **time:** isNextMonth 判断日期是否是下个月 ([16f933e](https://github.com/js-tool-pack/basic/commit/16f933eeac224da4c5ea38f329ca8d85dd66eec9))
+
 ## [0.5.2](https://github.com/js-tool-pack/basic/compare/v0.5.1...v0.5.2) (2024-01-11)
 
 ### Bug Fixes
