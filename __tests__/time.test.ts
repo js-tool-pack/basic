@@ -20,6 +20,7 @@ import {
   dateAdd,
   parseFormattedDate,
   getStartOfMonth,
+  isNextMonth,
 } from '../src/time';
 import { chunk, createArray, inRange } from '../src';
 
@@ -648,5 +649,15 @@ describe('time', function () {
     expect(getEnd('2023/04/19')).toBe('2023-04-22 00:00:00');
     expect(getEnd('2023/04/16')).toBe('2023-04-22 00:00:00');
     expect(getEnd('2023/04/09')).toBe('2023-04-15 00:00:00');
+  });
+  test('isNextMonth', () => {
+    const isNext = (date: string, base: string) =>
+      isNextMonth(parseFormattedDate(date), parseFormattedDate(base));
+
+    expect(isNext('2024-02', '2024-01')).toBe(true);
+    expect(isNext('2024-01', '2023-12')).toBe(true);
+    expect(isNext('2024-03', '2024-02')).toBe(true);
+
+    expect(isNext('2024-01', '2024-12')).toBe(false);
   });
 });
