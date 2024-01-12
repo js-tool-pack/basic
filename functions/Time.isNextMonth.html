@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Polling | @tool-pack/basic - v0.6.0</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>isNextMonth | @tool-pack/basic - v0.6.0</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
@@ -26,44 +26,35 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">@tool-pack/basic</a></li>
-<li><a href="../modules/Decorator.html">Decorator</a></li>
-<li><a href="Decorator.Polling.html">Polling</a></li></ul>
-<h1>Function Polling</h1></div>
+<li><a href="../modules/Time.html">Time</a></li>
+<li><a href="Time.isNextMonth.html">isNextMonth</a></li></ul>
+<h1>Function isNextMonth</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="Polling"><span class="tsd-kind-call-signature">Polling</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">target</span>, <span class="tsd-kind-parameter">_propertyKey</span>, <span class="tsd-kind-parameter">descriptor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><a href="#Polling" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="isNextMonth"><span class="tsd-kind-call-signature">is<wbr/>Next<wbr/>Month</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">date</span>, <span class="tsd-kind-parameter">relative</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#isNextMonth" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>轮询装饰器</p>
+<div class="tsd-comment tsd-typography"><p>判断是否是下个月</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><code class="tsd-tag ts-flagRest">Rest</code> <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span>: <span class="tsd-signature-symbol">[</span>interval<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span>immediate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">]</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">target</span>, <span class="tsd-kind-parameter">_propertyKey</span>, <span class="tsd-kind-parameter">descriptor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h4>
-<ul class="tsd-parameters">
-<li class="tsd-parameter-signature">
-<ul class="tsd-signatures">
-<li class="tsd-signature" id="Polling.__type.__type-1"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">target</span>, <span class="tsd-kind-parameter">_propertyKey</span>, <span class="tsd-kind-parameter">descriptor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-<li class="tsd-description">
-<div class="tsd-parameters">
-<h4 class="tsd-parameters-title">Parameters</h4>
-<ul class="tsd-parameter-list">
+<h5><span class="tsd-kind-parameter">date</span>: <span class="tsd-signature-type ">Date</span></h5>
+<div class="tsd-comment tsd-typography"><p>要判断的日期</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">target</span>: <span class="tsd-signature-type">any</span></h5></li>
-<li>
-<h5><span class="tsd-kind-parameter">_propertyKey</span>: <span class="tsd-signature-type">string</span></h5></li>
-<li>
-<h5><span class="tsd-kind-parameter">descriptor</span>: <span class="tsd-signature-type ">PropertyDescriptor</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></li></ul></li></ul>
+<h5><span class="tsd-kind-parameter">relative</span>: <span class="tsd-signature-type ">Date</span><span class="tsd-signature-symbol"> = ...</span></h5>
+<div class="tsd-comment tsd-typography"><p>相对日期;默认为当前时间; 与 date 互换过来就是判断是否是上个月</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography">
-<h4>See</h4><p>polling</p>
-
-<h4>Example</h4><pre><code class="language-ts"><span class="hl-5">class</span><span class="hl-1"> </span><span class="hl-2">Test</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">times</span><span class="hl-1"> = </span><span class="hl-8">0</span><span class="hl-1">;</span><br/><br/><span class="hl-1">  @</span><span class="hl-0">Polling</span><span class="hl-1">(</span><span class="hl-8">10</span><span class="hl-1">, </span><span class="hl-5">true</span><span class="hl-1">)</span><br/><span class="hl-1">  </span><span class="hl-0">test</span><span class="hl-1">(</span><span class="hl-3">times</span><span class="hl-1">?: </span><span class="hl-2">number</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-5">this</span><span class="hl-1">.</span><span class="hl-3">times</span><span class="hl-1"> = </span><span class="hl-3">times</span><span class="hl-1"> </span><span class="hl-10">as</span><span class="hl-1"> </span><span class="hl-2">number</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-10">if</span><span class="hl-1"> ((</span><span class="hl-3">times</span><span class="hl-1"> </span><span class="hl-10">as</span><span class="hl-1"> </span><span class="hl-2">number</span><span class="hl-1">) &gt;= </span><span class="hl-8">5</span><span class="hl-1">) {</span><br/><span class="hl-1">      </span><span class="hl-10">return</span><span class="hl-1"> </span><span class="hl-2">Promise</span><span class="hl-1">.</span><span class="hl-0">reject</span><span class="hl-1">();</span><br/><span class="hl-1">    } </span><span class="hl-10">else</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-4">// console.log(times);</span><br/><span class="hl-1">      </span><span class="hl-10">return</span><span class="hl-1"> </span><span class="hl-2">Promise</span><span class="hl-1">.</span><span class="hl-0">resolve</span><span class="hl-1">();</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">}</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">t</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">Test</span><span class="hl-1">();</span><br/><br/><span class="hl-10">await</span><span class="hl-1"> </span><span class="hl-3">t</span><span class="hl-1">.</span><span class="hl-0">test</span><span class="hl-1">();</span><br/><br/><span class="hl-3">t</span><span class="hl-1">.</span><span class="hl-3">times</span><span class="hl-1">; </span><span class="hl-4">// 5</span>
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-0">isNext</span><span class="hl-1"> = (</span><span class="hl-3">date</span><span class="hl-1">: </span><span class="hl-2">string</span><span class="hl-1">, </span><span class="hl-3">base</span><span class="hl-1">: </span><span class="hl-2">string</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-0">isNextMonth</span><span class="hl-1">(</span><span class="hl-0">parseFormattedDate</span><span class="hl-1">(</span><span class="hl-3">date</span><span class="hl-1">), </span><span class="hl-0">parseFormattedDate</span><span class="hl-1">(</span><span class="hl-3">base</span><span class="hl-1">));</span><br/><br/><span class="hl-0">isNext</span><span class="hl-1">(</span><span class="hl-7">&#39;2024-02&#39;</span><span class="hl-1">, </span><span class="hl-7">&#39;2024-01&#39;</span><span class="hl-1">); </span><span class="hl-4">// true</span><br/><span class="hl-0">isNext</span><span class="hl-1">(</span><span class="hl-7">&#39;2024-01&#39;</span><span class="hl-1">, </span><span class="hl-7">&#39;2023-12&#39;</span><span class="hl-1">); </span><span class="hl-4">// true</span><br/><span class="hl-0">isNext</span><span class="hl-1">(</span><span class="hl-7">&#39;2024-03&#39;</span><span class="hl-1">, </span><span class="hl-7">&#39;2024-02&#39;</span><span class="hl-1">); </span><span class="hl-4">// true</span><br/><span class="hl-0">isNext</span><span class="hl-1">(</span><span class="hl-7">&#39;2024-01&#39;</span><span class="hl-1">, </span><span class="hl-7">&#39;2024-12&#39;</span><span class="hl-1">); </span><span class="hl-4">// false</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/8fb2132/src/decorator/Polling.ts#L96">decorator/Polling.ts:96</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/8fb2132/src/time/isNextMonth.ts#L18">time/isNextMonth.ts:18</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu"></div>
 <div class="site-menu">
@@ -508,7 +499,7 @@
 <div>next<wbr/>Tick
 <div class="menu-item-desc">使用promise实现的nextTick</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion" data-key="Time"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/Time.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>
+<details class="tsd-index-accordion" open data-key="Time"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/Time.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>
 <div>Time
 <div class="menu-item-desc">时间相关的工具函数</div></div></a></summary>
 <div class="tsd-accordion-details">
@@ -579,7 +570,7 @@
 <li><a href="Time.getStartOfMonth.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>get<wbr/>Start<wbr/>Of<wbr/>Month
 <div class="menu-item-desc">获取某日所属月的 1 号</div></div></a></li>
-<li><a href="Time.isNextMonth.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
+<li><a href="Time.isNextMonth.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>is<wbr/>Next<wbr/>Month
 <div class="menu-item-desc">判断是否是下个月</div></div></a></li></ul></div></details></li>
 <li>
@@ -688,7 +679,7 @@
 <div>hsl<wbr/>To<wbr/>Rgb
 <div class="menu-item-desc">HSL类型颜色值转换为RGB</div></div></a></li></ul></div></details></li>
 <li>
-<details class="tsd-index-accordion" open data-key="Decorator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/Decorator.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>
+<details class="tsd-index-accordion" data-key="Decorator"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/Decorator.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg>
 <div>Decorator
 <div class="menu-item-desc">装饰器相关工具</div></div></a></summary>
 <div class="tsd-accordion-details">
@@ -702,7 +693,7 @@
 <li><a href="Decorator.Throttle.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>Throttle
 <div class="menu-item-desc">节流装饰器</div></div></a></li>
-<li><a href="Decorator.Polling.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
+<li><a href="Decorator.Polling.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>Polling
 <div class="menu-item-desc">轮询装饰器</div></div></a></li></ul></div></details></li>
 <li>
