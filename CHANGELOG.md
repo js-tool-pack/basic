@@ -1,3 +1,9 @@
+# [0.7.0](https://github.com/js-tool-pack/basic/compare/v0.6.0...v0.7.0) (2024-01-16)
+
+### Features
+
+- **time:** isSameDate 判断两个日期是否是同一天 ([c63d36e](https://github.com/js-tool-pack/basic/commit/c63d36e0343ac5b5c3d4683b35aaf4bef8e21481))
+
 # [0.6.0](https://github.com/js-tool-pack/basic/compare/v0.5.2...v0.6.0) (2024-01-12)
 
 ### Features
