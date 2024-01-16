@@ -21,6 +21,7 @@ import {
   parseFormattedDate,
   getStartOfMonth,
   isNextMonth,
+  isSameDate,
 } from '../src/time';
 import { chunk, createArray, inRange } from '../src';
 
@@ -659,5 +660,15 @@ describe('time', function () {
     expect(isNext('2024-03', '2024-02')).toBe(true);
 
     expect(isNext('2024-01', '2024-12')).toBe(false);
+  });
+  test('isSameDate', () => {
+    const isSame = (date1: string, date2?: string) =>
+      isSameDate(parseFormattedDate(date1), date2 ? parseFormattedDate(date2) : undefined);
+
+    expect(isSame('2024-01-17', '2024-01-17')).toBe(true);
+    expect(isSame('2024-01-17 00:00:00', '2024-01-17 12:00:00')).toBe(true);
+    expect(isSame('2024-01-17', '2024-02-17')).toBe(false);
+    expect(isSame('2024-01-17', '2023-12-17')).toBe(false);
+    expect(isSame('2024-01-17')).toBe(false);
   });
 });
