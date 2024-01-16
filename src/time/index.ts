@@ -21,3 +21,4 @@ export * from './time.type';
 export * from './parseFormattedDate';
 export * from './getStartOfMonth';
 export * from './isNextMonth';
+export * from './isSameDate';
