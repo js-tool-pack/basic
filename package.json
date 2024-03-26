@@ -104,14 +104,18 @@
   ],
   "main": "dist/basic.cjs.js",
   "module": "dist/basic.esm-bundler.js",
-  "types": "dist/basic.d.ts",
+  "types": "./dist/basic.d.ts",
   "exports": {
     ".": {
       "import": {
         "node": "./dist/basic.cjs.js",
-        "default": "./dist/basic.esm-bundler.js"
+        "default": "./dist/basic.esm-bundler.js",
+        "types": "./dist/basic.d.ts"
       },
-      "require": "./dist/basic.cjs.js"
+      "require": {
+        "default": "./dist/basic.cjs.js",
+        "types": "./dist/basic.d.ts"
+      }
     }
   },
   "buildOptions": {
@@ -128,6 +132,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@tool-pack/types": "^0.0.6"
+    "@tool-pack/types": "^0.2.0"
   }
 }
