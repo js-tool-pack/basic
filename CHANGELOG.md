@@ -1,3 +1,9 @@
+## [0.7.3](https://github.com/js-tool-pack/basic/compare/v0.7.2...v0.7.3) (2024-04-04)
+
+### Features
+
+- **number:** 新增 shortenNumber 缩短数字 ([04f3bcd](https://github.com/js-tool-pack/basic/commit/04f3bcd46ab4f1293b5c85335e46daddd9874697))
+
 ## [0.7.2](https://github.com/js-tool-pack/basic/compare/v0.7.1...v0.7.2) (2024-04-04)
 
 ### Features
