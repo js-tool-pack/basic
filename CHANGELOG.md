@@ -1,3 +1,9 @@
+## [0.7.2](https://github.com/js-tool-pack/basic/compare/v0.7.1...v0.7.2) (2024-04-04)
+
+### Features
+
+- **time/dateAdd:** 第二个参数可为对象，增加复数类型数值 ([d6c9fad](https://github.com/js-tool-pack/basic/commit/d6c9fad6e92f7e3651b24d57f5f446e62d1acbd8))
+
 ## [0.7.1](https://github.com/js-tool-pack/basic/compare/v0.7.0...v0.7.1) (2024-03-26)
 
 # [0.7.0](https://github.com/js-tool-pack/basic/compare/v0.6.0...v0.7.0) (2024-01-16)
