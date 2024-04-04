@@ -42,8 +42,10 @@ describe('object', function () {
   test('getReversedObj', async () => {
     const fn = cm.getReversedObj;
 
-    const obj = { a: 'aa', b: 'bb' };
-    expect(fn(obj)).toEqual({ aa: 'a', bb: 'b' });
+    const revObj = fn({ a: 'aa', b: 'bb' });
+    const newObj: typeof revObj = { aa: 'a', bb: 'b' };
+    expect(revObj).toEqual({ aa: 'a', bb: 'b' });
+    expect(newObj).toEqual({ aa: 'a', bb: 'b' });
   });
 
   test('omit', () => {

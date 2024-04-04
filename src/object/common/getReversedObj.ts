@@ -1,3 +1,4 @@
+import type { ReverseObject } from '@tool-pack/types';
 import { reduceObj } from '../iterate';
 
 /**
@@ -8,9 +9,7 @@ import { reduceObj } from '../iterate';
  * fn(obj); // { aa: 'a', bb: 'b' }
  *
  */
-export function getReversedObj(obj: { [k: string]: string }): {
-  [k: string]: string;
-} {
+export function getReversedObj<const T extends object>(obj: T): ReverseObject<T> {
   return reduceObj(
     obj,
     (res, v, k) => {
