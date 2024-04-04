@@ -499,34 +499,6 @@ describe('common', function () {
     });
   });
 
-  test('formatBytes', () => {
-    const formatBytes = cm.formatBytes;
-
-    expect(formatBytes(0)).toBe('0B');
-    expect(formatBytes(1)).toBe('1B');
-    expect(formatBytes(-1)).toBe('-1B');
-
-    expect(formatBytes(1024)).toBe('1KB');
-    expect(formatBytes(1024 * 1024)).toBe('1MB');
-    expect(formatBytes(1024 * 1024 * 1024)).toBe('1GB');
-    expect(formatBytes(1024 * 1024 * 1024 * 1024)).toBe('1TB');
-    expect(formatBytes(1024 * 1024 * 1024 * 1024 * 1024)).toBe('1PB');
-    expect(formatBytes(1024 ** 6)).toBe('1EB');
-    expect(formatBytes(1024 ** 7)).toBe('1ZB');
-    expect(formatBytes(1024 ** 8)).toBe('1YB');
-
-    expect(formatBytes(1024 * 512 + 1000)).toBe('512.98KB');
-
-    // 指定单位
-    expect(formatBytes(1024 * 512, { unit: 'MB' })).toBe('0.5MB');
-    expect(formatBytes(1024 * 512, { unit: 'GB' })).toBe('0GB');
-    // 指定小数位
-    expect(formatBytes(1024 * 512, { unit: 'GB', fractionDigits: 5 })).toBe('0.00049GB');
-    expect(formatBytes(1, { unit: 'GB', fractionDigits: 9 })).toBe('0.000000001GB');
-    // 使用科学计数法
-    expect(formatBytes(1, { unit: 'GB', fractionDigits: 9, exponential: true })).toBe('1e-9GB');
-  });
-
   test('loadingElse', async () => {
     jest.useRealTimers();
     const loadingElse = cm.loadingElse;

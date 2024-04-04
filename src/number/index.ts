@@ -13,3 +13,4 @@ export * from './forEachNum';
 export * from './forEachNumRight';
 export * from './numberToChinese';
 export * from './chineseToNumber';
+export * from './formatBytes';
