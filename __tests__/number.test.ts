@@ -249,4 +249,66 @@ describe('number', function () {
     // 使用科学计数法
     expect(formatBytes(1, { unit: 'GB', fractionDigits: 9, exponential: true })).toBe('1e-9GB');
   });
+  test('shortenNumber', () => {
+    const fn = Num.shortenNumber;
+    const k = 1000;
+    expect(fn(0)).toBe('0');
+    expect(fn(1)).toBe('1');
+    expect(fn(-1)).toBe('-1');
+
+    expect(fn(k)).toBe('1K');
+    expect(fn(k * k)).toBe('1M');
+    expect(fn(k * k * k)).toBe('1G');
+    expect(fn(k * k * k * k)).toBe('1T');
+    expect(fn(k * k * k * k * k)).toBe('1P');
+    expect(fn(k ** 6)).toBe('1E');
+    expect(fn(k ** 7)).toBe('1Z');
+    expect(fn(-(k ** 7))).toBe('-1Z');
+    expect(fn(k ** 8)).toBe('1Y');
+
+    expect(fn(k * 512 + k * 0.98)).toBe('512.98K');
+
+    // 指定单位
+    expect(fn(k * 0.5 * k, { unit: 'M' })).toBe('0.5M');
+    expect(fn(k * 0.5 * k, { unit: 'G' })).toBe('0G');
+    // 指定小数位
+    expect(fn(k * 0.49 * k, { unit: 'G', fractionDigits: 5 })).toBe('0.00049G');
+    expect(fn(1, { unit: 'G', fractionDigits: 9 })).toBe('0.000000001G');
+    // 使用科学计数法
+    expect(fn(1, { unit: 'G', fractionDigits: 9, exponential: true })).toBe('1e-9G');
+
+    // 超过 5 位才进位
+    expect(fn(-1, { maxLength: 5 })).toBe('-1');
+    expect(fn(100, { maxLength: 5 })).toBe('100');
+    expect(fn(100_00, { maxLength: 5 })).toBe('10000');
+    expect(fn(100_000, { maxLength: 5 })).toBe('100K');
+    expect(fn(1_000_000, { maxLength: 5 })).toBe('1000K');
+    expect(fn(10_000_000, { maxLength: 5 })).toBe('10M');
+    expect(fn(100_000_000, { maxLength: 5 })).toBe('100M');
+    expect(fn(1_000_000_000, { maxLength: 5 })).toBe('1000M');
+    expect(fn(10_000_000_000, { maxLength: 5 })).toBe('10G');
+    expect(fn(1_000_000_000_000, { maxLength: 5 })).toBe('1000G');
+    expect(fn(10_000_000_000_000, { maxLength: 5 })).toBe('10T');
+    expect(fn(100_000_000_000_000, { maxLength: 5 })).toBe('100T');
+    expect(fn(1_000_000_000_000_000, { maxLength: 5 })).toBe('1000T');
+    expect(fn(100_000_000_000_000_000, { maxLength: 5 })).toBe('100P');
+    expect(fn(1_000_000_000_000_000_000_000, { maxLength: 5 })).toBe('1000E');
+    expect(fn(1_000_000_000_000_000_000_000_000, { maxLength: 5 })).toBe('1000Z');
+    expect(fn(1_000_000_000_000_000_000_000_000_000, { maxLength: 5 })).toBe('1000Y');
+    // 最大单位为 Y
+    expect(fn(1_000_000_000_000_000_000_000_000_000_000, { maxLength: 5, exponential: true })).toBe(
+      '1e+6Y',
+    );
+
+    expect(fn(100_000, { maxLength: 6 })).toBe('100000');
+    expect(fn(1_000_000, { maxLength: 6 })).toBe('1000K');
+    expect(fn(90_000_000, { maxLength: 6 })).toBe('90000K');
+    expect(fn(800_000_000, { maxLength: 6 })).toBe('800M');
+
+    // 指定1k=1024
+    const kb = 1024;
+    expect(fn(kb * 0.5 * kb, { kSize: kb })).toBe('512K');
+    expect(fn(kb * 0.5 * kb, { kSize: kb, unit: 'M' })).toBe('0.5M');
+    expect(fn(kb * 50 * kb, { kSize: kb, unit: 'K' })).toBe('51200K');
+  });
 });
