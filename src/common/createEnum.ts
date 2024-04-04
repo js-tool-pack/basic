@@ -1,3 +1,4 @@
+import type { ReverseObject, Mix } from '@tool-pack/types';
 import { getReversedObj } from '../object';
 
 /**
@@ -13,13 +14,7 @@ import { getReversedObj } from '../object';
  * createEnum(['a', 'b']); // { a: '0', b: '1', 0: 'a', 1: 'b' }
  *
  */
-export function createEnum<T extends object, K extends keyof T>(
-  obj: T,
-): Readonly<
-  T & {
-    [k: string]: K;
-  }
-> {
+export function createEnum<const T extends object>(obj: T): Mix<T, ReverseObject<T>> {
   /* const res: any = {};
      for (let k in obj) {
          if (res.hasOwnProperty(k)) throw new Error("key multiple");
@@ -28,5 +23,5 @@ export function createEnum<T extends object, K extends keyof T>(
       Object.freeze(res); // freeze值不可变
      // Object.seal(result); // seal值可以变
      return res;*/
-  return Object.freeze(Object.assign({}, obj, getReversedObj(obj as any))) as any;
+  return Object.freeze(Object.assign({}, obj, getReversedObj(obj)));
 }
