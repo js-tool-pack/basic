@@ -1,4 +1,4 @@
-import { toNonExponential } from '../number';
+import { shortenNumber } from '../number';
 
 export type BYTE_UNIT = 'YB' | 'ZB' | 'EB' | 'PB' | 'TB' | 'GB' | 'MB' | 'KB' | 'B';
 
@@ -55,35 +55,12 @@ export function formatBytes(
   // ZettaByte	ZB	  270       	1021       	1,180,591,620,717,411,303,424	     1,024 EB
   // YottaByte	YB	  280       	1024       	1,208,925,819,614,629,174,706,176	 1,024 ZB
 
-  const kb = 1024;
-  const mb = kb ** 2;
-  const gb = kb ** 3;
-  const tb = kb ** 4;
-  const pb = kb ** 5;
-  const eb = kb ** 6;
-  const zb = kb ** 7;
-  const yb = kb ** 8;
-  const match: [number, BYTE_UNIT][] = [
-    [yb, 'YB'],
-    [zb, 'ZB'],
-    [eb, 'EB'],
-    [pb, 'PB'],
-    [tb, 'TB'],
-    [gb, 'GB'],
-    [mb, 'MB'],
-    [kb, 'KB'],
-    [0, 'B'],
-  ];
-
-  const handler: (item: [number, BYTE_UNIT]) => boolean = unit
-    ? ([, u]) => u === unit
-    : (
-        (absByte: number) =>
-        ([range]) =>
-          absByte >= range
-      )(Math.abs(bytes));
-
-  const [range, _unit] = match.find(handler)!;
-  const result = Number((bytes / (range || 1)).toFixed(fractionDigits));
-  return (exponential ? result : toNonExponential(result)) + _unit;
+  return (
+    shortenNumber(bytes, {
+      unit: unit ? (unit.replace('B', '') as any) : undefined,
+      kSize: 1024,
+      fractionDigits,
+      exponential,
+    }) + 'B'
+  );
 }
