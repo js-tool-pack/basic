@@ -1,9 +1,23 @@
+import { forEachObj } from '../object';
+import { isObject } from '../data-type';
+
+type AddType =
+  | 'date'
+  | 'month'
+  | 'year'
+  | 'week'
+  | 'hours'
+  | 'minutes'
+  | 'seconds'
+  | 'milliseconds';
+
 /**
  * @example
  *
  * // 2023-12-16
  * const date = new Date(2023, 11, 16);
  *
+ * // 第二个参数为 number，添加单项
  * formatDate(dateAdd(date, 1, 'year')); // '2024-12-16 00:00:00'
  * formatDate(dateAdd(date, -1, 'year')); // '2022-12-16 00:00:00'
  * formatDate(dateAdd(date, 1, 'month')); // '2024-01-16 00:00:00'
@@ -12,6 +26,7 @@
  * formatDate(dateAdd(date, -1, 'week')); // '2023-12-09 00:00:00'
  * formatDate(dateAdd(date, 1, 'date')); // '2023-12-17 00:00:00'
  * formatDate(dateAdd(date, -1, 'date')); // '2023-12-15 00:00:00'
+ * // type 默认为 'date'
  * formatDate(dateAdd(date, 1)); // '2023-12-17 00:00:00'
  * formatDate(dateAdd(date, 1, 'hours')); // '2023-12-16 01:00:00'
  * formatDate(dateAdd(date, -1, 'hours')); // '2023-12-15 23:00:00'
@@ -22,36 +37,48 @@
  * formatDate(dateAdd(date, 1000, 'milliseconds')); // '2023-12-16 00:00:01'
  * formatDate(dateAdd(date, -1000, 'milliseconds')); // '2023-12-15 23:59:59'
  *
- * @param date
- * @param addValue
- * @param [type='date']
+ * // 第二个参数为 object，添加多项
+ * formatDate(dateAdd(date, { year: 1 })); // '2024-12-16 00:00:00'
+ * const add = {
+ *   year: 1,
+ *   month: 1,
+ *   week: 1,
+ *   date: 1,
+ *   hours: -1,
+ *   minutes: 1,
+ *   seconds: 1,
+ *   milliseconds: -1000,
+ * };
+ * formatDate(dateAdd(date, add)); // '2025-01-23 23:01:00'
+ *
  */
+export function dateAdd(date: Date, addValue: number, type?: AddType): Date;
+export function dateAdd(date: Date, add: Partial<Record<AddType, number>>): Date;
 export function dateAdd(
   date: Date,
-  addValue: number,
-  type:
-    | 'date'
-    | 'month'
-    | 'year'
-    | 'week'
-    | 'hours'
-    | 'minutes'
-    | 'seconds'
-    | 'milliseconds' = 'date',
+  add: Partial<Record<AddType, number>> | number,
+  type: AddType = 'date',
 ): Date {
   const result = new Date(date);
 
-  const map: Record<typeof type, () => void> = {
-    year: () => result.setFullYear(result.getFullYear() + addValue),
-    month: () => result.setMonth(result.getMonth() + addValue),
-    week: () => result.setDate(result.getDate() + addValue * 7),
-    date: () => result.setDate(result.getDate() + addValue),
-    hours: () => result.setHours(result.getHours() + addValue),
-    minutes: () => result.setMinutes(result.getMinutes() + addValue),
-    seconds: () => result.setSeconds(result.getSeconds() + addValue),
-    milliseconds: () => result.setMilliseconds(result.getMilliseconds() + addValue),
+  const map: Record<AddType, (addValue: number) => void> = {
+    year: (addValue) => result.setFullYear(result.getFullYear() + addValue),
+    month: (addValue) => result.setMonth(result.getMonth() + addValue),
+    week: (addValue) => result.setDate(result.getDate() + addValue * 7),
+    date: (addValue) => result.setDate(result.getDate() + addValue),
+    hours: (addValue) => result.setHours(result.getHours() + addValue),
+    minutes: (addValue) => result.setMinutes(result.getMinutes() + addValue),
+    seconds: (addValue) => result.setSeconds(result.getSeconds() + addValue),
+    milliseconds: (addValue) => result.setMilliseconds(result.getMilliseconds() + addValue),
   };
-  map[type]();
+
+  if (isObject(add)) {
+    forEachObj(add, (v, k) => {
+      map[k]?.(v as number);
+    });
+  } else {
+    map[type]?.(add);
+  }
 
   return result;
 }

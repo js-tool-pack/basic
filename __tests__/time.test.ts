@@ -265,6 +265,35 @@ describe('time', function () {
     expect(formatDate(dateAdd(date, -1, 'seconds'))).toBe('2023-12-15 23:59:59');
     expect(formatDate(dateAdd(date, 1000, 'milliseconds'))).toBe('2023-12-16 00:00:01');
     expect(formatDate(dateAdd(date, -1000, 'milliseconds'))).toBe('2023-12-15 23:59:59');
+
+    expect(formatDate(dateAdd(date, { year: 1 }))).toBe('2024-12-16 00:00:00');
+    expect(formatDate(dateAdd(date, { year: -1 }))).toBe('2022-12-16 00:00:00');
+    expect(formatDate(dateAdd(date, { month: 1 }))).toBe('2024-01-16 00:00:00');
+    expect(formatDate(dateAdd(date, { month: -1 }))).toBe('2023-11-16 00:00:00');
+    expect(formatDate(dateAdd(date, { week: 1 }))).toBe('2023-12-23 00:00:00');
+    expect(formatDate(dateAdd(date, { week: -1 }))).toBe('2023-12-09 00:00:00');
+    expect(formatDate(dateAdd(date, { date: 1 }))).toBe('2023-12-17 00:00:00');
+    expect(formatDate(dateAdd(date, { date: -1 }))).toBe('2023-12-15 00:00:00');
+    expect(formatDate(dateAdd(date, { hours: 1 }))).toBe('2023-12-16 01:00:00');
+    expect(formatDate(dateAdd(date, { hours: -1 }))).toBe('2023-12-15 23:00:00');
+    expect(formatDate(dateAdd(date, { minutes: 1 }))).toBe('2023-12-16 00:01:00');
+    expect(formatDate(dateAdd(date, { minutes: -1 }))).toBe('2023-12-15 23:59:00');
+    expect(formatDate(dateAdd(date, { seconds: 1 }))).toBe('2023-12-16 00:00:01');
+    expect(formatDate(dateAdd(date, { seconds: -1 }))).toBe('2023-12-15 23:59:59');
+    expect(formatDate(dateAdd(date, { milliseconds: 1000 }))).toBe('2023-12-16 00:00:01');
+    expect(formatDate(dateAdd(date, { milliseconds: -1000 }))).toBe('2023-12-15 23:59:59');
+
+    const add = {
+      year: 1,
+      month: 1,
+      week: 1,
+      date: 1,
+      hours: -1,
+      minutes: 1,
+      seconds: 1,
+      milliseconds: -1000,
+    };
+    expect(formatDate(dateAdd(date, add))).toBe('2025-01-23 23:01:00');
   });
 
   test('getEndOfMonth', async () => {
