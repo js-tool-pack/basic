@@ -1,3 +1,10 @@
+## [0.7.4](https://github.com/js-tool-pack/basic/compare/v0.7.3...v0.7.4) (2024-04-09)
+
+### Features
+
+- **common/createEnum:** 添加类型体操 ([67863b5](https://github.com/js-tool-pack/basic/commit/67863b5ab70898b7dd1c2b6e6de385db2326a74d))
+- **object/getReversedObj:** 添加类型体操 ([6c55b41](https://github.com/js-tool-pack/basic/commit/6c55b419002de6cd13017c2bcf4e89d4307b126c))
+
 ## [0.7.3](https://github.com/js-tool-pack/basic/compare/v0.7.2...v0.7.3) (2024-04-04)
 
 ### Features
