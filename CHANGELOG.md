@@ -1,3 +1,9 @@
+## [0.7.5](https://github.com/js-tool-pack/basic/compare/v0.7.4...v0.7.5) (2024-04-09)
+
+### Performance Improvements
+
+- **array:** 优化 groupBy ([6a6ce83](https://github.com/js-tool-pack/basic/commit/6a6ce8376c2fa7f9dd5c1420b0f74bfc5d65220a))
+
 ## [0.7.4](https://github.com/js-tool-pack/basic/compare/v0.7.3...v0.7.4) (2024-04-09)
 
 ### Features
