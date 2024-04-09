@@ -1,3 +1,9 @@
+## [0.7.6](https://github.com/js-tool-pack/basic/compare/v0.7.5...v0.7.6) (2024-04-09)
+
+### Performance Improvements
+
+- **array/groupBy:** 提供更精准的返回值类型 ([2ba7382](https://github.com/js-tool-pack/basic/commit/2ba738226838fee0d9e611c42e14ce23217a1c4a))
+
 ## [0.7.5](https://github.com/js-tool-pack/basic/compare/v0.7.4...v0.7.5) (2024-04-09)
 
 ### Performance Improvements
