@@ -560,6 +560,10 @@ describe('array', function () {
       1: [{ type: 1 }],
       2: [{ type: 2 }],
     });
+    expect(groupBy({ 0: { type: 1 }, 1: { type: 2 }, length: 2 }, 'type')).toEqual({
+      1: [{ type: 1 }],
+      2: [{ type: 2 }],
+    });
     expect(
       groupBy(
         [
@@ -628,6 +632,32 @@ describe('array', function () {
         { name: 'a', score: 50 },
         { name: 'd', score: 10 },
       ],
+    });
+
+    expect(
+      groupBy([50, 90, 70, 10, 100], (score) => {
+        if (score >= 90) return 'A';
+        if (score >= 60) return 'B';
+        return 'C';
+      }),
+    ).toEqual({
+      A: [90, 100],
+      B: [70],
+      C: [50, 10],
+    });
+    expect(
+      groupBy(
+        [50, 90, 70, 10, 100],
+        (score): string | void => {
+          if (score >= 90) return 'A';
+          if (score >= 60) return 'B';
+        },
+        'C',
+      ),
+    ).toEqual({
+      A: [90, 100],
+      B: [70],
+      C: [50, 10],
     });
 
     const list = [

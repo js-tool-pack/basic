@@ -1,8 +1,10 @@
-import { hasOwn } from '../../object';
 import { isFunction } from '../../data-type';
 
 /**
  * 数组分组
+ *
+ * 注意：该重载默认查找 item 对象的 key 而不是 item
+ *
  * @example
  * groupBy([{type: 1}, {type: 2}], "type") // returns {1: [{type: 1}], 2: [{type: 2}]}
  * // 找不到对应key的分到'*'组
@@ -45,18 +47,15 @@ import { isFunction } from '../../data-type';
  *
  *
  * @param arr 数组
- * @param key 如果item中不存在该key，那么该item会归类到undefined
- * @param defaultKey 如果item中不存在该key，那么该item会归类到defaultKey
+ * @param key 如果 item 中不存在该 key，那么该 item 会归类到 defaultKey
+ * @param [defaultKey='*'] 所有未归类的 item 都会归类到 defaultKey
  */
-export function groupBy<
-  T extends {
-    [k: string]: any;
-  },
-  K extends keyof T,
-  R extends {
-    [k: string]: T[];
-  },
->(arr: T[], key: K, defaultKey?: number | string): R;
+export function groupBy<T extends Record<string, any>, K extends keyof T>(
+  arr: ArrayLike<T>,
+  key: K,
+  defaultKey?: number | string,
+): Record<string, T[]>;
+
 /**
  * 数组分组
  *
@@ -84,57 +83,46 @@ export function groupBy<
  * //  C: [{ name: 'a', score: 50 }, { name: 'd', score: 10 }],
  * // }
  *
- * const list = [
- *   { code: 'a' },
- *   { code: 'a_a' },
- *   { code: 'a_b' },
- *   { code: 'a_c' },
- *   { code: 'b' },
- *   { code: 'b_a' },
- *   { code: 'b_b' },
- * ];
- *
- * const r = groupBy(list, (item, obj) => {
- *   let result = '';
- *   objForEach(
- *     obj,
- *     (_v, k): false | void => {
- *       if (new RegExp((k as string) + '_.+').test(item.code)) {
- *         result = k as string;
- *         return false;
- *       }
- *     },
- *     () => (result = item.code),
- *   );
- *   return result;
- * });
- *
- * r; // {a: [{ code: 'a' }, { code: 'a_a' }, { code: 'a_b' }, { code: 'a_c' }],b: [{ code: 'b' }, { code: 'b_a' }, { code: 'b_b' }]}
+ * groupBy([50, 90, 70, 10, 100], (score) => {
+ *   if (score >= 90) return 'A';
+ *   if (score >= 60) return 'B';
+ *   return 'C';
+ * });  // {A:[90, 100], B:[70], C:[50, 10]};
+ * // 约等于
+ * groupBy(
+ *   [50, 90, 70, 10, 100],
+ *   (score): string | void => {
+ *     if (score >= 90) return 'A';
+ *     if (score >= 60) return 'B';
+ *   },
+ *   'C',
+ * ),;  // {A:[90, 100], B:[70], C:[50, 10]};
  *
  * @param arr 数组
- * @param by 归类回调
- * @param defaultKey 如果item中不存在该key，那么该item会归类到defaultKey
+ * @param by 归类回调；如果返回值为空则会归类到 defaultKey
+ * @param [defaultKey='*'] 所有未归类的 item 都会归类到 defaultKey
  */
-export function groupBy<
-  T extends {
-    [k: string]: any;
-  },
-  R extends {
-    [k: string]: T[];
-  },
->(arr: T[], by: (it: T, result: any) => string | void, defaultKey?: number | string): R;
-export function groupBy(arr: any[], key: string | Function, defaultKey: number | string = '*') {
-  const cb = isFunction(key) ? key : (item: Record<string, any>) => item[key];
-  return arr.reduce(
-    (result, item) => {
-      const k = cb(item, result) ?? defaultKey;
-      if (!hasOwn(result, k)) {
-        result[k] = [item];
-      } else {
-        result[k].push(item);
-      }
-      return result;
-    },
-    {} as Record<string, any>,
-  );
+export function groupBy<T>(
+  arr: ArrayLike<T>,
+  by: (it: T, result: Record<string, T[]>) => string | void,
+  defaultKey?: number | string,
+): Record<string, T[]>;
+
+export function groupBy(
+  arr: ArrayLike<unknown>,
+  key: string | Function,
+  defaultKey: number | string = '*',
+): Record<string, unknown[]> {
+  const getItemKey = isFunction(key) ? key : (item: Record<string, any>) => item[key];
+  const result: Record<string, unknown[]> = {};
+
+  for (let i = 0, len = arr.length; i < len; i++) {
+    const item = arr[i];
+    const k = getItemKey(item, result) ?? defaultKey;
+    const v = result[k];
+    if (v) v.push(item);
+    else result[k] = [item];
+  }
+
+  return result;
 }
