@@ -604,6 +604,18 @@ describe('array', function () {
       other: [{ value: 2 }],
       1: [{ type: 1 }],
     });
+    const a = groupBy([{ a: 50 }, { a: 90 }, { a: 70 }], 'a');
+    expect([a['*'], a['50'], a['70'], a['90']]).toEqual([
+      undefined,
+      [{ a: 50 }],
+      [{ a: 70 }],
+      [{ a: 90 }],
+    ]);
+    // 测试体操获取属性是否报错
+    // @ts-expect-error
+    expect(a['**']).toBe(undefined);
+    // @ts-expect-error
+    expect(a['1']).toBe(undefined);
 
     // cb
     expect(
@@ -633,6 +645,26 @@ describe('array', function () {
         { name: 'd', score: 10 },
       ],
     });
+
+    const b = groupBy([50, 90, 70, 10, 100], (score) => {
+      if (score >= 90) return 'A';
+      if (score >= 60) return 'B';
+      return 'C';
+    });
+    expect([b['*'], b.A, b.B, b.C]).toEqual([undefined, [90, 100], [70], [50, 10]]);
+
+    const c = groupBy(
+      [50, 90, 70, 10, 100],
+      (score): 'A' | 'B' | void => {
+        if (score >= 90) return 'A';
+        if (score >= 60) return 'B';
+      },
+      'C',
+    );
+    expect([c.A, c.B, c.C]).toEqual([[90, 100], [70], [50, 10]]);
+    // C 替代了 *
+    // @ts-expect-error
+    expect(c['*']).toBe(undefined);
 
     expect(
       groupBy([50, 90, 70, 10, 100], (score) => {

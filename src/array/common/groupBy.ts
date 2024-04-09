@@ -50,11 +50,11 @@ import { isFunction } from '../../data-type';
  * @param key 如果 item 中不存在该 key，那么该 item 会归类到 defaultKey
  * @param [defaultKey='*'] 所有未归类的 item 都会归类到 defaultKey
  */
-export function groupBy<T extends Record<string, any>, K extends keyof T>(
-  arr: ArrayLike<T>,
-  key: K,
-  defaultKey?: number | string,
-): Record<string, T[]>;
+export function groupBy<
+  const T extends Record<string, any>,
+  K extends keyof T,
+  D extends string = '*',
+>(arr: ArrayLike<T>, key: K, defaultKey?: D): Partial<Record<D | T[K], T[]>>;
 
 /**
  * 数组分组
@@ -102,11 +102,11 @@ export function groupBy<T extends Record<string, any>, K extends keyof T>(
  * @param by 归类回调；如果返回值为空则会归类到 defaultKey
  * @param [defaultKey='*'] 所有未归类的 item 都会归类到 defaultKey
  */
-export function groupBy<T>(
-  arr: ArrayLike<T>,
-  by: (it: T, result: Record<string, T[]>) => string | void,
-  defaultKey?: number | string,
-): Record<string, T[]>;
+export function groupBy<
+  T,
+  B extends (it: T, result: Partial<Record<string, T[]>>) => string | void,
+  D extends string = '*',
+>(arr: ArrayLike<T>, by: B, defaultKey?: D): Partial<Record<Exclude<ReturnType<B>, void> | D, T[]>>;
 
 export function groupBy(
   arr: ArrayLike<unknown>,
