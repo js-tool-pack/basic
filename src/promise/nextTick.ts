@@ -18,7 +18,7 @@ export function nextTick(): Promise<void>;
 /**
  * 使用promise实现的nextTick
  *
- * @override ## 传入回调，返回空
+ * @override ## 传入回调，返回中断闭包函数
  *
  * @example
  *
@@ -26,9 +26,14 @@ export function nextTick(): Promise<void>;
  *   // do something
  * });
  */
-export function nextTick(then: () => unknown): void;
-export function nextTick(then?: () => unknown): void | Promise<void> {
+export function nextTick(then: () => unknown): () => void;
+export function nextTick(then?: () => unknown): (() => void) | Promise<void> {
   const p = Promise.resolve();
-  if (then) p.then(then);
-  else return p;
+  if (!then) return p;
+
+  let aborted = false;
+  p.then(() => !aborted && then());
+  return () => {
+    aborted = true;
+  };
 }

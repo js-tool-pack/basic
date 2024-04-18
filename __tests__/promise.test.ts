@@ -294,5 +294,11 @@ describe('promise', function () {
     nextTick(fn);
     await sleep(0);
     expect(fn.mock.calls.length).toBe(2);
+
+    // 中断
+    const abort = nextTick(fn);
+    abort();
+    await sleep(0);
+    expect(fn.mock.calls.length).toBe(2);
   });
 });
