@@ -22,9 +22,10 @@ export function nextTick(): Promise<void>;
  *
  * @example
  *
- * nextTick(() => {
+ * const abort = nextTick(() => {
  *   // do something
  * });
+ * abort(); // abort
  */
 export function nextTick(then: () => unknown): () => void;
 export function nextTick(then?: () => unknown): (() => void) | Promise<void> {
