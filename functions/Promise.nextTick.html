@@ -41,11 +41,11 @@
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/98291e6/src/promise/nextTick.ts#L17">promise/nextTick.ts:17</a></li></ul></aside></li>
-<li class="tsd-signature tsd-anchor-link" id="nextTick-1"><span class="tsd-kind-call-signature">next<wbr/>Tick</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">then</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#nextTick-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/d546707/src/promise/nextTick.ts#L17">promise/nextTick.ts:17</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="nextTick-1"><span class="tsd-kind-call-signature">next<wbr/>Tick</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">then</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><a href="#nextTick-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>使用promise实现的nextTick</p>
-<a id="md:传入回调，返回空" class="tsd-anchor"></a><h2><a href="#md:传入回调，返回空">传入回调，返回空</a></h2></div>
+<a id="md:传入回调，返回中断闭包函数" class="tsd-anchor"></a><h2><a href="#md:传入回调，返回中断闭包函数">传入回调，返回中断闭包函数</a></h2></div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
@@ -57,13 +57,19 @@
 <li class="tsd-signature"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4></li></ul></li></ul></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-signature">
+<ul class="tsd-signatures">
+<li class="tsd-signature" id="nextTick-1.__type.__type-1"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></li></ul></li></ul>
 <div class="tsd-comment tsd-typography">
 <h4>Example</h4><pre><code class="language-ts"><span class="hl-0">nextTick</span><span class="hl-1">(() </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">// do something</span><br/><span class="hl-1">});</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/98291e6/src/promise/nextTick.ts#L29">promise/nextTick.ts:29</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/d546707/src/promise/nextTick.ts#L29">promise/nextTick.ts:29</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
@@ -75,7 +81,7 @@
 <li><a href="#md:返回promise"><span>返回<wbr/>Promise</span></a></li>
 <li>
 <ul>
-<li><a href="#md:传入回调，返回空"><span>传入回调，返回空</span></a></li></ul></li></ul></li></ul></div></details></div>
+<li><a href="#md:传入回调，返回中断闭包函数"><span>传入回调，返回中断闭包函数</span></a></li></ul></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg>
 <div>@tool-<wbr/>pack/basic -<wbr/> v0.7.6</div></a>
