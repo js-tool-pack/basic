@@ -14,3 +14,4 @@ export * from './decorator';
 export * from './url';
 export * from './bezier';
 export * from './generator';
+export * from './array-buffer';
