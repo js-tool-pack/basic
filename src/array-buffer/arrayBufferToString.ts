@@ -3,12 +3,12 @@
  *
  * @see stringToArrayBuffer
  */
-export function arrayBufferToString(ab: ArrayBuffer): string {
-  const u16a = new Uint16Array(ab);
-  const len = u16a.length;
+export function arrayBufferToString(ab: ArrayBuffer, uint: 8 | 16 = 16): string {
+  const ua = new (uint === 16 ? Uint16Array : Uint8Array)(ab);
+  const len = ua.length;
   let result = '';
   for (let i = 0; i < len; i++) {
-    result += String.fromCharCode(u16a[i]!);
+    result += String.fromCharCode(ua[i]!);
   }
   return result;
 }
