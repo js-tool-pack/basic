@@ -67,3 +67,7 @@ export * as Bezier from './bezier';
  * 生成器相关工具
  */
 export * as Generator from './generator';
+/**
+ * ArrayBuffer 相关
+ */
+export * as ArrayBufferUtils from './array-buffer';
