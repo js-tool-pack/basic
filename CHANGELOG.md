@@ -1,3 +1,11 @@
+## [0.7.7](https://github.com/js-tool-pack/basic/compare/v0.7.6...v0.7.7) (2024-05-13)
+
+### Features
+
+- **array-buffer:** 新增 arrayBufferToString 和 stringToArrayBuffer ([6bfc336](https://github.com/js-tool-pack/basic/commit/6bfc3362c96a3923b0136e4466cd1b9a066feaba))
+- **array-buffer:** 新增 encodeObjectToArrayBuffer 和 decodeArrayBufferToObject ([0a0874e](https://github.com/js-tool-pack/basic/commit/0a0874e1f875d876180231053910eb1c70a8a3c0))
+- **promise/nextTick:** 当传入参数时返回值改为中断闭包函数 ([d546707](https://github.com/js-tool-pack/basic/commit/d546707baf8a1773b8af7d7c432906fd8d44b015))
+
 ## [0.7.6](https://github.com/js-tool-pack/basic/compare/v0.7.5...v0.7.6) (2024-04-09)
 
 ### Performance Improvements
