@@ -11,4 +11,8 @@ describe('ArrayBuffer', function () {
     const v = AB.stringToArrayBuffer('123');
     expect(AB.arrayBufferToString(v)).toBe('123');
   });
+  test('encodeObjectToArrayBuffer & decodeArrayBufferToObject', () => {
+    const v = AB.encodeObjectToArrayBuffer({ a: 1, b: 2 });
+    expect(AB.decodeArrayBufferToObject(v)).toEqual({ a: 1, b: 2 });
+  });
 });
