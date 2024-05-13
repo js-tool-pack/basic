@@ -1,3 +1,9 @@
+## [0.8.1](https://github.com/js-tool-pack/basic/compare/v0.8.0...v0.8.1) (2024-05-13)
+
+### Features
+
+- **array-buffer:** 为 stringToArrayBuffer 和 arrayBufferToString 添加可选择 Uint16Array 还是 Uint8Array 的功能 ([e764e4e](https://github.com/js-tool-pack/basic/commit/e764e4e5c2266f2081dc471a7bc20fee21cade65))
+
 # [0.8.0](https://github.com/js-tool-pack/basic/compare/v0.7.7...v0.8.0) (2024-05-13)
 
 ### Bug Fixes
