@@ -1,3 +1,9 @@
+# [0.8.0](https://github.com/js-tool-pack/basic/compare/v0.7.7...v0.8.0) (2024-05-13)
+
+### Bug Fixes
+
+- **array-buffer:** 修复 stringToArrayBuffer 和 arrayBufferToString 中文乱码的问题 ([0f95bbc](https://github.com/js-tool-pack/basic/commit/0f95bbcafc762afeb666c9c882d2537acf8456e6))
+
 ## [0.7.7](https://github.com/js-tool-pack/basic/compare/v0.7.6...v0.7.7) (2024-05-13)
 
 ### Features
