@@ -10,6 +10,8 @@ describe('ArrayBuffer', function () {
   test('stringToArrayBuffer & arrayBufferToString', () => {
     const v = AB.stringToArrayBuffer('123');
     expect(AB.arrayBufferToString(v)).toBe('123');
+    expect(AB.arrayBufferToString(v).length).toBe('123'.length);
+    expect(AB.arrayBufferToString(AB.stringToArrayBuffer('中文'))).toBe('中文');
   });
   test('encodeObjectToArrayBuffer & decodeArrayBufferToObject', () => {
     const v = AB.encodeObjectToArrayBuffer({ a: 1, b: 2 });

@@ -4,11 +4,11 @@
  * @see stringToArrayBuffer
  */
 export function arrayBufferToString(ab: ArrayBuffer): string {
-  const u8a = new Uint8Array(ab);
-  const len = u8a.byteLength;
+  const u16a = new Uint16Array(ab);
+  const len = u16a.length;
   let result = '';
   for (let i = 0; i < len; i++) {
-    result += String.fromCharCode(u8a[i]!);
+    result += String.fromCharCode(u16a[i]!);
   }
   return result;
 }

@@ -5,9 +5,9 @@
  */
 export function stringToArrayBuffer(value: string): ArrayBuffer {
   const len = value.length;
-  const result = new Uint8Array(value.length);
+  const result = new Uint16Array(value.length);
   for (let i = 0; i < len; i++) {
-    result[i] = value.charCodeAt(i) & 0xff;
+    result[i] = value.charCodeAt(i);
   }
   return result.buffer;
 }
