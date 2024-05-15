@@ -71,3 +71,7 @@ export * as Generator from './generator';
  * ArrayBuffer 相关
  */
 export * as ArrayBufferUtils from './array-buffer';
+/**
+ * Base64 相关
+ */
+export * as Base64 from './base64';

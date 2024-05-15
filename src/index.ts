@@ -15,3 +15,4 @@ export * from './url';
 export * from './bezier';
 export * from './generator';
 export * from './array-buffer';
+export * from './base64';
