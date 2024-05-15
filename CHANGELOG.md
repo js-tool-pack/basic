@@ -1,3 +1,9 @@
+## [0.8.3](https://github.com/js-tool-pack/basic/compare/v0.8.2...v0.8.3) (2024-05-15)
+
+### Features
+
+- **base64:** 新增 parseBase64、arrayBufferToBase64、base64ToArrayBuffer ([8eafa04](https://github.com/js-tool-pack/basic/commit/8eafa04aa3c8bd7ce3877e9e0399b41101f08595))
+
 ## [0.8.2](https://github.com/js-tool-pack/basic/compare/v0.8.1...v0.8.2) (2024-05-15)
 
 ### Bug Fixes
