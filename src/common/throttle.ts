@@ -75,7 +75,7 @@ import { debounce } from './debounce';
  * @param [options.trailing=false] 尾调用
  * @param options.invalidCB 间隔期间调用throttle返回的函数执行的回调  例如一个按钮5秒点击一次，不可点击时执行该函数
  */
-export function throttle<CB extends (...args: unknown[]) => void | any>(
+export function throttle<CB extends (...args: any[]) => any>(
   callback: CB,
   interval: number,
   options: {

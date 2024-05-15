@@ -240,6 +240,13 @@ describe('common', function () {
   test('throttle', async () => {
     // expect.assertions(33);
     const throttle = cm.throttle;
+
+    const fn = jest.fn();
+    const cb = throttle((value: number) => fn(value), 1, { leading: true });
+    cb(1);
+    expect(fn).toHaveBeenCalled();
+    expect(fn.mock.calls).toEqual([[1]]);
+
     let times = 0;
     let invalidTimes = 0;
     let interval = 0;
