@@ -1,3 +1,9 @@
+## [0.8.2](https://github.com/js-tool-pack/basic/compare/v0.8.1...v0.8.2) (2024-05-15)
+
+### Bug Fixes
+
+- **common:** 修复 throttle 对有参数的函数会类型报错的问题 ([7687330](https://github.com/js-tool-pack/basic/commit/768733046acc8a32a105ebc9ed58b88b3913b3e7))
+
 ## [0.8.1](https://github.com/js-tool-pack/basic/compare/v0.8.0...v0.8.1) (2024-05-13)
 
 ### Features
