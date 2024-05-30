@@ -108,13 +108,13 @@
   "exports": {
     ".": {
       "import": {
+        "types": "./dist/basic.d.ts",
         "node": "./dist/basic.cjs.js",
-        "default": "./dist/basic.esm-bundler.js",
-        "types": "./dist/basic.d.ts"
+        "default": "./dist/basic.esm-bundler.js"
       },
       "require": {
-        "default": "./dist/basic.cjs.js",
-        "types": "./dist/basic.d.ts"
+        "types": "./dist/basic.d.ts",
+        "default": "./dist/basic.cjs.js"
       }
     }
   },
