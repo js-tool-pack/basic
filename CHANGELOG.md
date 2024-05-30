@@ -1,3 +1,9 @@
+# [0.9.0](https://github.com/js-tool-pack/basic/compare/v0.8.3...v0.9.0) (2024-05-30)
+
+### Bug Fixes
+
+- 修复 exports 顺序在某些打包工具中default 不在最后会报错的问题 ([a3f9f97](https://github.com/js-tool-pack/basic/commit/a3f9f972b327d18de85591f0010d5dd5e17a216d))
+
 ## [0.8.3](https://github.com/js-tool-pack/basic/compare/v0.8.2...v0.8.3) (2024-05-15)
 
 ### Features
