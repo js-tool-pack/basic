@@ -1,3 +1,9 @@
+## [0.9.1](https://github.com/js-tool-pack/basic/compare/v0.9.0...v0.9.1) (2024-06-03)
+
+### Features
+
+- **common:** 新增 createEventBus ([7e62276](https://github.com/js-tool-pack/basic/commit/7e62276b32b64492e27ee6e15c69b4bcf9555986))
+
 # [0.9.0](https://github.com/js-tool-pack/basic/compare/v0.8.3...v0.9.0) (2024-05-30)
 
 ### Bug Fixes
