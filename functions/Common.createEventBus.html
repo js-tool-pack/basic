@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>parseCmdParams | @tool-pack/basic - v0.9.1</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>createEventBus | @tool-pack/basic - v0.9.1</title><meta name="description" content="Documentation for @tool-pack/basic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/my-theme.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="search-script"></script></head><body><script>console.log(`Loaded ${location.href}`)</script><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
@@ -27,41 +27,74 @@
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">@tool-pack/basic</a></li>
 <li><a href="../modules/Common.html">Common</a></li>
-<li><a href="Common.parseCmdParams.html">parseCmdParams</a></li></ul>
-<h1>Function parseCmdParams</h1></div>
+<li><a href="Common.createEventBus.html">createEventBus</a></li></ul>
+<h1>Function createEventBus</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="parseCmdParams"><span class="tsd-kind-call-signature">parse<wbr/>Cmd<wbr/>Params</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">arr</span>, <span class="tsd-kind-parameter">prefix</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">defaultKey</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><a href="#parseCmdParams" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="createEventBus"><span class="tsd-kind-call-signature">create<wbr/>Event<wbr/>Bus</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-call-signature">on</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">listener</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type ">Off</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-call-signature">emit</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-call-signature">clear</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><a href="#createEventBus" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>命令行的参数转为Map</p>
+<div class="tsd-comment tsd-typography"><p>创建一个 event bus</p>
+<p>基于事件发布订阅的 event bus.
+该方式区别于传统的 event bus 可以监听多个事件，该方式是点对点事件监听的。
+比传统的 EventBus 解决了类型安全以及隐式依赖的问题。
+其实更好的方式是用 RxJS 的各种 Subject 作为 EventBus，但是仅仅只是用于 EventBus 的话有点杀鸡焉用牛刀，所以该方式可以作为下位替代。</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li>
+<h4><span class="tsd-kind-type-parameter">T</span> = <span class="tsd-signature-type">never</span></h4></li></ul></section>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-call-signature">on</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">listener</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type ">Off</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-call-signature">emit</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-call-signature">clear</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-method">on</span><span class="tsd-signature-symbol">:</span>function</h5>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="createEventBus.__type.on.on-1"><span class="tsd-kind-call-signature">on</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">listener</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Off</span><a href="#createEventBus.__type.on.on-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>添加事件监听，接收数据</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">arr</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-<div class="tsd-comment tsd-typography"><p>命令行参数数组</p>
+<h5><span class="tsd-kind-parameter">listener</span>: <span class="tsd-signature-type ">Listener</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Off</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/9fbbc1b/src/common/createEventBus.ts#L32">common/createEventBus.ts:32</a></li></ul></aside></li></ul></li>
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-method">emit</span><span class="tsd-signature-symbol">:</span>function</h5>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="createEventBus.__type.emit.emit-1"><span class="tsd-kind-call-signature">emit</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#createEventBus.__type.emit.emit-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>触发事件，传递数据</p>
 </div>
-<div class="tsd-comment tsd-typography"></div></li>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">prefix</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#39;-&#39;</span></h5>
-<div class="tsd-comment tsd-typography"><p>前缀 --d --f 前缀是&quot;--&quot;</p>
+<h5><span class="tsd-kind-parameter">payload</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/9fbbc1b/src/common/createEventBus.ts#L39">common/createEventBus.ts:39</a></li></ul></aside></li></ul></li>
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-method">clear</span><span class="tsd-signature-symbol">:</span>function</h5>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="createEventBus.__type.clear.clear-1"><span class="tsd-kind-call-signature">clear</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#createEventBus.__type.clear.clear-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>清理所有事件监听</p>
 </div>
-<div class="tsd-comment tsd-typography"></div></li>
-<li>
-<h5><span class="tsd-kind-parameter">defaultKey</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#39;default&#39;</span></h5>
-<div class="tsd-comment tsd-typography"><p>如果前面没有变量名那么使用默认</p>
-</div>
-<div class="tsd-comment tsd-typography"></div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/9fbbc1b/src/common/createEventBus.ts#L50">common/createEventBus.ts:50</a></li></ul></aside></li></ul></li></ul>
 <div class="tsd-comment tsd-typography">
-<h4>Notice</h4><p>部分命令行工具中&quot;--&quot;是全写，&quot;-&quot;是缩写 这里未分</p>
-
-<h4>Example</h4><pre><code class="language-ts"><span class="hl-5">function</span><span class="hl-1"> </span><span class="hl-0">pcp</span><span class="hl-1">(</span><span class="hl-3">value</span><span class="hl-1">: </span><span class="hl-2">string</span><span class="hl-1">, </span><span class="hl-3">prefix</span><span class="hl-1">?: </span><span class="hl-2">string</span><span class="hl-1">, </span><span class="hl-3">df</span><span class="hl-1">?: </span><span class="hl-2">string</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-10">return</span><span class="hl-1"> </span><span class="hl-3">Object</span><span class="hl-1">.</span><span class="hl-0">fromEntries</span><span class="hl-1">(</span><span class="hl-0">parseCmdParams</span><span class="hl-1">(</span><span class="hl-3">value</span><span class="hl-1">.</span><span class="hl-0">split</span><span class="hl-1">(</span><span class="hl-7">&#39; &#39;</span><span class="hl-1">).</span><span class="hl-0">slice</span><span class="hl-1">(</span><span class="hl-8">2</span><span class="hl-1">), </span><span class="hl-3">prefix</span><span class="hl-1">, </span><span class="hl-3">df</span><span class="hl-1">));</span><br/><span class="hl-1">}</span><br/><br/><span class="hl-0">pcp</span><span class="hl-1">(</span><span class="hl-7">&#39;node test.js test.js -a -b -c&#39;</span><span class="hl-1">); </span><span class="hl-4">// { default: &#39;test.js&#39;, a: true, b: true, c: true, }</span><br/><br/><span class="hl-0">pcp</span><span class="hl-1">(</span><span class="hl-7">&#39;node test.js test.js -a=123&#39;</span><span class="hl-1">); </span><span class="hl-4">// { default: &#39;test.js&#39;, a: &#39;123&#39; }</span><br/><br/><span class="hl-0">pcp</span><span class="hl-1">(</span><span class="hl-7">&#39;node test.js test.js -a=123 333 555 -b 666 888 -c=1 -b=999&#39;</span><span class="hl-1">); </span><span class="hl-4">// { default: &#39;test.js&#39;, a: [&#39;123&#39;, &#39;333&#39;, &#39;555&#39;], b: [&#39;666&#39;, &#39;888&#39;, &#39;999&#39;], c: &#39;1&#39;, }</span>
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-4">// 创建事件，预先声明事件</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">event</span><span class="hl-1"> = </span><span class="hl-0">createEventBus</span><span class="hl-1">&lt;{ </span><span class="hl-3">a</span><span class="hl-1">: </span><span class="hl-2">number</span><span class="hl-1">; </span><span class="hl-3">b</span><span class="hl-1">: </span><span class="hl-2">number</span><span class="hl-1"> }&gt;();</span><br/><span class="hl-4">// 事件监听</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">off</span><span class="hl-1"> = </span><span class="hl-3">event</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">((</span><span class="hl-3">v</span><span class="hl-1">, </span><span class="hl-3">off</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-3">v</span><span class="hl-1">.</span><span class="hl-3">a</span><span class="hl-1">, </span><span class="hl-3">v</span><span class="hl-1">.</span><span class="hl-3">b</span><span class="hl-1">);</span><br/><span class="hl-1">  </span><span class="hl-0">off</span><span class="hl-1">(); </span><span class="hl-4">// 移除事件监听，相当于一次性事件；跟外面 on 返回的 off 是一样的</span><br/><span class="hl-1">});</span><br/><span class="hl-4">// 触发事件</span><br/><span class="hl-3">event</span><span class="hl-1">.</span><span class="hl-0">emit</span><span class="hl-1">({ </span><span class="hl-3">a:</span><span class="hl-1"> </span><span class="hl-8">1</span><span class="hl-1">, </span><span class="hl-3">b:</span><span class="hl-1"> </span><span class="hl-8">2</span><span class="hl-1"> });</span><br/><span class="hl-4">// 清理事件监听</span><br/><span class="hl-0">off</span><span class="hl-1">();</span><br/><span class="hl-4">// 清理所有事件监听</span><br/><span class="hl-3">event</span><span class="hl-1">.</span><span class="hl-0">clear</span><span class="hl-1">();</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/9fbbc1b/src/common/parseCmdParams.ts#L23">common/parseCmdParams.ts:23</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/js-tool-pack/basic/blob/9fbbc1b/src/common/createEventBus.ts#L24">common/createEventBus.ts:24</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu"></div>
 <div class="site-menu">
@@ -474,7 +507,7 @@
 <li><a href="Common.getRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>get<wbr/>Root
 <div class="menu-item-desc">获取全局对象</div></div></a></li>
-<li><a href="Common.parseCmdParams.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
+<li><a href="Common.parseCmdParams.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>parse<wbr/>Cmd<wbr/>Params
 <div class="menu-item-desc">命令行的参数转为Map</div></div></a></li>
 <li><a href="Common.loadingElse.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
@@ -483,7 +516,7 @@
 <li><a href="Common.emptyFn.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>empty<wbr/>Fn
 <div class="menu-item-desc">空函数，常用于用于默认值</div></div></a></li>
-<li><a href="Common.createEventBus.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
+<li><a href="Common.createEventBus.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>
 <div>create<wbr/>Event<wbr/>Bus
 <div class="menu-item-desc">创建一个 event bus</div></div></a></li></ul></div></details></li>
 <li>
