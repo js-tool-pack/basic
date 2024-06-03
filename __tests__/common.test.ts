@@ -533,4 +533,87 @@ describe('common', function () {
     await sleep(20);
     expect(fn.mock.calls.length).toBe(1);
   });
+  describe('createEventBus', () => {
+    test('base', () => {
+      const eventBus = cm.createEventBus<number>();
+      const listener = jest.fn();
+      eventBus.on(listener);
+
+      expect(listener).not.toBeCalled();
+
+      eventBus.emit(1);
+      expect(listener).toBeCalled();
+      expect(listener.mock.calls[0].length).toBe(2);
+      expect(listener.mock.calls[0][0]).toBe(1);
+      expect(typeof listener.mock.calls[0][1]).toBe('function');
+    });
+    test('off', () => {
+      const eventBus = cm.createEventBus<number>();
+      const listener = jest.fn();
+      const listener2 = jest.fn((_, off) => off()) as typeof listener;
+      const off = eventBus.on(listener);
+      eventBus.on(listener2);
+
+      expect(listener).not.toBeCalled();
+      expect(listener2).not.toBeCalled();
+
+      eventBus.emit(1);
+      expect(listener.mock.calls[0][0]).toBe(1);
+      expect(listener2.mock.calls[0][0]).toBe(1);
+
+      listener.mockClear();
+      listener2.mockClear();
+      eventBus.emit(2);
+      expect(listener.mock.calls[0][0]).toBe(2);
+      expect(listener2).not.toBeCalled();
+
+      listener.mockClear();
+      listener2.mockClear();
+      off();
+      eventBus.emit(3);
+      expect(listener).not.toBeCalled();
+      expect(listener2).not.toBeCalled();
+    });
+    test('foreach off', () => {
+      const eventBus = cm.createEventBus<number>();
+      const listeners = Array(10)
+        .fill(1)
+        .map(() => jest.fn((_, off) => off()) as jest.Mock);
+      listeners.forEach((l) => eventBus.on(l));
+
+      eventBus.emit(1);
+      expect(listeners.map((l) => l.mock.calls.length)).toEqual(Array(10).fill(1));
+      expect(listeners.map((l) => l.mock.calls[0][0])).toEqual(Array(10).fill(1));
+
+      listeners.forEach((l) => l.mockClear());
+      eventBus.emit(2);
+      expect(listeners.map((l) => l.mock.calls.length)).toEqual(Array(10).fill(0));
+    });
+    test('off next', () => {
+      const eventBus = cm.createEventBus<number>();
+      const listener = jest.fn(() => off());
+      eventBus.on(listener);
+      const listener2 = jest.fn();
+      const off = eventBus.on(listener2);
+
+      eventBus.emit(1);
+      expect(listener).toBeCalled();
+      expect(listener2).not.toBeCalled();
+    });
+    test('clear', () => {
+      const eventBus = cm.createEventBus<number>();
+      const listener = jest.fn();
+      eventBus.on(listener);
+
+      expect(listener).not.toBeCalled();
+      eventBus.emit(1);
+      expect(listener).toBeCalled();
+
+      listener.mockClear();
+      expect(listener).not.toBeCalled();
+      eventBus.clear();
+      eventBus.emit(2);
+      expect(listener).not.toBeCalled();
+    });
+  });
 });
