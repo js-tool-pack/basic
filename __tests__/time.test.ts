@@ -1,29 +1,29 @@
 import {
-  formatMilliseconds,
-  strToDate,
-  formatDate,
-  createTimeCountUp,
+  getMonthTheNthWeekday,
   createTimeCountDown,
-  getEndOfMonth,
-  dateDiff,
-  isSameTime,
-  inSameWeek,
-  yearDiff,
+  formatMilliseconds,
+  getTimePeriodConst,
+  parseFormattedDate,
+  createTimeCountUp,
   calcRelativeDate,
   getMilliseconds,
-  getMonthTheNthWeekday,
-  getTimePeriodConst,
-  howLongAgo,
+  getStartOfMonth,
   getStartOfDate,
   getStartOfWeek,
+  getEndOfMonth,
   getEndOfWeek,
-  dateAdd,
-  parseFormattedDate,
-  getStartOfMonth,
   isNextMonth,
+  formatDate,
+  isSameTime,
+  inSameWeek,
+  howLongAgo,
   isSameDate,
+  strToDate,
+  dateDiff,
+  yearDiff,
+  dateAdd,
 } from '../src/time';
-import { chunk, createArray, inRange } from '../src';
+import { createArray, inRange, chunk } from '../src';
 
 describe('time', function () {
   jest.useFakeTimers(); // 启用模拟定时器
@@ -114,8 +114,8 @@ describe('time', function () {
 
     // 自定义季节所在月份范围
     const seasonRanges: number[][] = chunk(createArray({ start: 1, len: 12 }), 3);
-    expect(formatDate(new Date('2020-01-12'), 'q', { seasonNames, seasonRanges })).toBe('spring');
-    expect(formatDate(new Date('2020-12-12'), 'q', { seasonNames, seasonRanges })).toBe('winter');
+    expect(formatDate(new Date('2020-01-12'), 'q', { seasonRanges, seasonNames })).toBe('spring');
+    expect(formatDate(new Date('2020-12-12'), 'q', { seasonRanges, seasonNames })).toBe('winter');
 
     // 自定义星期名字
     const weekNames = ['sunday', 'monday'];
@@ -284,14 +284,14 @@ describe('time', function () {
     expect(formatDate(dateAdd(date, { milliseconds: -1000 }))).toBe('2023-12-15 23:59:59');
 
     const add = {
-      year: 1,
-      month: 1,
-      week: 1,
-      date: 1,
-      hours: -1,
+      milliseconds: -1000,
       minutes: 1,
       seconds: 1,
-      milliseconds: -1000,
+      hours: -1,
+      month: 1,
+      year: 1,
+      week: 1,
+      date: 1,
     };
     expect(formatDate(dateAdd(date, add))).toBe('2025-01-23 23:01:00');
   });
@@ -433,10 +433,10 @@ describe('time', function () {
     expect(fn({ hours: 1 })).toBe(fn({ minutes: 60 }));
     expect(fn({ days: 1 })).toBe(fn({ hours: 24 }));
     expect(fn({ days: 1.5 })).toBe(fn({ hours: 36 }));
-    expect(fn({ days: 1, hours: 1, seconds: 10 })).toBe(
+    expect(fn({ seconds: 10, hours: 1, days: 1 })).toBe(
       10 * 1000 + 1000 * 60 * 60 + 1000 * 60 * 60 * 24,
     );
-    expect(fn({ days: 1, hours: 1, seconds: 10 })).toBe(
+    expect(fn({ seconds: 10, hours: 1, days: 1 })).toBe(
       fn({ days: 1 }) + fn({ hours: 1 }) + fn({ seconds: 10 }),
     );
     expect(fn({ days: 2 })).toBe(fn({ days: 1 }) * 2);
@@ -458,29 +458,29 @@ describe('time', function () {
 
     // 上个星期天
     const lastSunday = strToDate('2022-07-10')!;
-    expect(inSameWeek({ now: monday, date: lastSunday })).toBe(false);
-    expect(inSameWeek({ now: monday, date: lastSunday, weekStart: 'Mon' })).toBe(false);
-    expect(inSameWeek({ now: monday, date: lastSunday, weekStart: 'Sun' })).toBe(true);
+    expect(inSameWeek({ date: lastSunday, now: monday })).toBe(false);
+    expect(inSameWeek({ date: lastSunday, weekStart: 'Mon', now: monday })).toBe(false);
+    expect(inSameWeek({ date: lastSunday, weekStart: 'Sun', now: monday })).toBe(true);
 
     // 星期一到星期六
     for (let i = 0; i < 6; i++) {
       const time = strToDate(('2022-07-' + (11 + i)) as `${number}-${number}-${number}`)!;
       expect(inSameWeek({ now: monday, date: time })).toBe(true);
-      expect(inSameWeek({ now: monday, date: time, weekStart: 'Mon' })).toBe(true);
-      expect(inSameWeek({ now: monday, date: time, weekStart: 'Sun' })).toBe(true);
+      expect(inSameWeek({ weekStart: 'Mon', now: monday, date: time })).toBe(true);
+      expect(inSameWeek({ weekStart: 'Sun', now: monday, date: time })).toBe(true);
     }
 
     // 这个星期天
     const curSunday = strToDate('2022-07-17')!;
-    expect(inSameWeek({ now: monday, date: curSunday })).toBe(true);
-    expect(inSameWeek({ now: monday, date: curSunday, weekStart: 'Mon' })).toBe(true);
-    expect(inSameWeek({ now: monday, date: curSunday, weekStart: 'Sun' })).toBe(false);
+    expect(inSameWeek({ date: curSunday, now: monday })).toBe(true);
+    expect(inSameWeek({ weekStart: 'Mon', date: curSunday, now: monday })).toBe(true);
+    expect(inSameWeek({ weekStart: 'Sun', date: curSunday, now: monday })).toBe(false);
 
     // 星期六
     const curThu = strToDate('2022-07-16')!;
     expect(inSameWeek({ now: curSunday, date: curThu })).toBe(true);
-    expect(inSameWeek({ now: curSunday, date: curThu, weekStart: 'Mon' })).toBe(true);
-    expect(inSameWeek({ now: curSunday, date: curThu, weekStart: 'Sun' })).toBe(false);
+    expect(inSameWeek({ weekStart: 'Mon', now: curSunday, date: curThu })).toBe(true);
+    expect(inSameWeek({ weekStart: 'Sun', now: curSunday, date: curThu })).toBe(false);
 
     // 与当天对比
     expect(inSameWeek({ date: new Date() })).toBe(true);
@@ -511,15 +511,15 @@ describe('time', function () {
     const timePeriodConst = getTimePeriodConst();
 
     expect(timePeriodConst).toEqual({
+      season: (365 / 4) * 24 * 60 * 60 * 1000,
+      month: 30 * 24 * 60 * 60 * 1000,
+      year: 365 * 24 * 60 * 60 * 1000,
+      week: 7 * 24 * 60 * 60 * 1000,
+      day: 24 * 60 * 60 * 1000,
+      hour: 60 * 60 * 1000,
+      minute: 60 * 1000,
       millisecond: 1,
       second: 1000,
-      minute: 60 * 1000,
-      hour: 60 * 60 * 1000,
-      day: 24 * 60 * 60 * 1000,
-      week: 7 * 24 * 60 * 60 * 1000,
-      month: 30 * 24 * 60 * 60 * 1000,
-      season: (365 / 4) * 24 * 60 * 60 * 1000,
-      year: 365 * 24 * 60 * 60 * 1000,
     } satisfies typeof timePeriodConst);
   });
   test('howLongAgo', () => {
@@ -580,16 +580,15 @@ describe('time', function () {
     // 使用filter替换季数
     expect(
       howLongAgo(date, {
-        now: new Date('2023/10/8 00:00:00'),
         filter: (res, diff) =>
           res.endsWith('季前') ? ~~(diff / getTimePeriodConst().season) + ' seasons ago' : res,
+        now: new Date('2023/10/8 00:00:00'),
       }),
     ).toBe('2 seasons ago');
 
     // 混合
     expect(
       howLongAgo(date, {
-        now: new Date('2023/4/7 02:10:00'),
         filter: (res, diff) => {
           if (res.endsWith('小时前')) {
             const tpc = getTimePeriodConst();
@@ -597,6 +596,7 @@ describe('time', function () {
           }
           return res;
         },
+        now: new Date('2023/4/7 02:10:00'),
       }),
     ).toBe('2小时10分钟前');
 
@@ -645,23 +645,23 @@ describe('time', function () {
 
     /* 上个星期 */
     // firstDay 为星期一
-    expect(getStart('2023/04/19', { firstDay: 1, weekOffset: -1 })).toBe('2023-04-10 00:00:00');
-    expect(getStart('2023/04/16', { firstDay: 1, weekOffset: -1 })).toBe('2023-04-03 00:00:00');
+    expect(getStart('2023/04/19', { weekOffset: -1, firstDay: 1 })).toBe('2023-04-10 00:00:00');
+    expect(getStart('2023/04/16', { weekOffset: -1, firstDay: 1 })).toBe('2023-04-03 00:00:00');
     // firstDay 为星期日
-    expect(getStart('2023/04/19', { firstDay: 0, weekOffset: -1 })).toBe('2023-04-09 00:00:00');
-    expect(getStart('2023/04/02', { firstDay: 0, weekOffset: -1 })).toBe('2023-03-26 00:00:00');
+    expect(getStart('2023/04/19', { weekOffset: -1, firstDay: 0 })).toBe('2023-04-09 00:00:00');
+    expect(getStart('2023/04/02', { weekOffset: -1, firstDay: 0 })).toBe('2023-03-26 00:00:00');
 
     /* 下个星期 */
     // firstDay 为星期一
-    expect(getStart('2023/04/19', { firstDay: 1, weekOffset: 1 })).toBe('2023-04-24 00:00:00');
-    expect(getStart('2023/04/20', { firstDay: 1, weekOffset: 1 })).toBe('2023-04-24 00:00:00');
-    expect(getStart('2023/04/16', { firstDay: 1, weekOffset: 1 })).toBe('2023-04-17 00:00:00');
-    expect(getStart('2023/04/10', { firstDay: 1, weekOffset: 1 })).toBe('2023-04-17 00:00:00');
+    expect(getStart('2023/04/19', { weekOffset: 1, firstDay: 1 })).toBe('2023-04-24 00:00:00');
+    expect(getStart('2023/04/20', { weekOffset: 1, firstDay: 1 })).toBe('2023-04-24 00:00:00');
+    expect(getStart('2023/04/16', { weekOffset: 1, firstDay: 1 })).toBe('2023-04-17 00:00:00');
+    expect(getStart('2023/04/10', { weekOffset: 1, firstDay: 1 })).toBe('2023-04-17 00:00:00');
     // firstDay 为星期日
-    expect(getStart('2023/04/19', { firstDay: 0, weekOffset: 1 })).toBe('2023-04-23 00:00:00');
-    expect(getStart('2023/04/16', { firstDay: 0, weekOffset: 1 })).toBe('2023-04-23 00:00:00');
-    expect(getStart('2023/04/09', { firstDay: 0, weekOffset: 1 })).toBe('2023-04-16 00:00:00');
-    expect(getStart('2023/04/10', { firstDay: 0, weekOffset: 1 })).toBe('2023-04-16 00:00:00');
+    expect(getStart('2023/04/19', { weekOffset: 1, firstDay: 0 })).toBe('2023-04-23 00:00:00');
+    expect(getStart('2023/04/16', { weekOffset: 1, firstDay: 0 })).toBe('2023-04-23 00:00:00');
+    expect(getStart('2023/04/09', { weekOffset: 1, firstDay: 0 })).toBe('2023-04-16 00:00:00');
+    expect(getStart('2023/04/10', { weekOffset: 1, firstDay: 0 })).toBe('2023-04-16 00:00:00');
   });
   test('getEndOfWeek', () => {
     const getEnd = (date: string, options?: Parameters<typeof getEndOfWeek>[1]) =>
@@ -673,7 +673,7 @@ describe('time', function () {
     expect(getEnd('2023/04/16', { firstDay: 1 })).toBe('2023-04-16 00:00:00');
     expect(getEnd('2023/04/10', { firstDay: 1 })).toBe('2023-04-16 00:00:00');
 
-    expect(getEnd('2023/04/10', { firstDay: 1, weekOffset: 2 })).toBe('2023-04-30 00:00:00');
+    expect(getEnd('2023/04/10', { weekOffset: 2, firstDay: 1 })).toBe('2023-04-30 00:00:00');
 
     // 星期天为星期第一天
     expect(getEnd('2023/04/19')).toBe('2023-04-22 00:00:00');

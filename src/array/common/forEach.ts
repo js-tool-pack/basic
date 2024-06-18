@@ -63,7 +63,7 @@
  */
 export function forEach<T>(
   arr: ArrayLike<T>,
-  callbackFn: (value: T, index: number, array: ArrayLike<T>) => any | false,
+  callbackFn: (value: T, index: number, array: ArrayLike<T>) => false | any,
   elseCB?: () => void,
 ): boolean {
   // 不能直接把arr.length放进循环，否则在循环里新增的话length会变长,原生的不会变长

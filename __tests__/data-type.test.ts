@@ -1,31 +1,31 @@
 import {
-  isNative,
-  typeOf,
-  inTypes,
-  isArray,
-  isArrayLike,
-  isArrayObj,
-  isBoolean,
-  isEmptyObject,
-  isEqual,
-  isFunction,
+  isASCIIPunctuationSymbol,
   includesChinese,
-  isInteger,
+  isEmptyObject,
+  isPromiseLike,
+  objectIsEqual,
+  isUnavailable,
+  isObjectLike,
+  isArrayLike,
+  isUndefined,
+  isArrayObj,
+  isFunction,
   isIterable,
+  isSameType,
+  isBoolean,
+  isInteger,
+  isPercent,
+  isNullish,
+  isNative,
   isNumber,
   isObject,
-  isPercent,
-  isPromiseLike,
-  isSameType,
   isString,
-  isUndefined,
-  objectIsEqual,
-  isNaN,
+  inTypes,
+  isArray,
+  isEqual,
   isEmpty,
-  isObjectLike,
-  isUnavailable,
-  isNullish,
-  isASCIIPunctuationSymbol,
+  typeOf,
+  isNaN,
 } from '../src';
 import { createArray } from '@mxssfd/core';
 const cm = { polling: {} };
@@ -119,8 +119,8 @@ describe('data-type', function () {
     expect(Array.isArray({})).toBe(false);
     expect(isArray({})).toBe(false);
 
-    expect(Array.isArray({ 0: 1, 1: 2, length: 2 })).toBe(false);
-    expect(isArray({ 0: 1, 1: 2, length: 2 })).toBe(false);
+    expect(Array.isArray({ length: 2, 0: 1, 1: 2 })).toBe(false);
+    expect(isArray({ length: 2, 0: 1, 1: 2 })).toBe(false);
 
     expect(Array.isArray(() => {})).toBe(false);
     expect(isArray(() => {})).toBe(false);
@@ -171,7 +171,7 @@ describe('data-type', function () {
     expect(isArrayLike({})).toBe(false);
     expect(isArrayLike(() => {})).toBe(false);
 
-    const obj = { num: 1, str: '' };
+    const obj = { str: '', num: 1 };
     const a: unknown = 1;
     if (isArrayLike<string>(a)) {
       // @ts-expect-error
@@ -193,7 +193,7 @@ describe('data-type', function () {
   test('isNumber', () => {
     expect(isNumber('')).toBe(false);
     expect(isNumber({})).toBe(false);
-    expect(isNumber({ 0: 1, 1: 2, length: 2 })).toBe(false);
+    expect(isNumber({ length: 2, 0: 1, 1: 2 })).toBe(false);
     expect(isNumber(() => {})).toBe(false);
     expect(isNumber(true)).toBe(false);
     expect(isNumber(undefined)).toBe(false);
@@ -252,12 +252,11 @@ describe('data-type', function () {
     let a;
     expect(isUndefined(a)).toBe(true);
     expect(() => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error
       expect(isUndefined(b)).toBe(true);
     }).toThrow();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+
+    // @ts-expect-error
     expect(typeof b).toBe('undefined');
   });
   test('isNaN', () => {
@@ -358,7 +357,7 @@ describe('data-type', function () {
     expect(isEqual(false, undefined)).toBe(false);
     expect(isEqual(false, null)).toBe(false);
     expect(isEqual(false, true)).toBe(false);
-    expect(isEqual([1, 2], { 0: 1, 1: 2, length: 2 })).toBe(false);
+    expect(isEqual([1, 2], { length: 2, 0: 1, 1: 2 })).toBe(false);
     expect(
       isEqual(
         () => {},
@@ -403,7 +402,7 @@ describe('data-type', function () {
     expect(isIterable(new Set())).toBe(true);
 
     // 类型守卫
-    const a = { num: 1, str: '' };
+    const a = { str: '', num: 1 };
     const set: unknown = 1;
     if (isIterable<number>(set)) {
       // 1不可能是迭代器，所以该条件内的不会执行
@@ -462,7 +461,7 @@ describe('data-type', function () {
   test('isArrayObj', function () {
     expect(isArrayObj(Object.assign([1, 2], { b: '1', c: '2' }))).toBe(true);
     expect(isArrayObj([])).toBe(false);
-    expect(isArrayObj({ 0: 1, 1: 2, length: 2, a: 1, b: 2 })).toBe(false);
+    expect(isArrayObj({ length: 2, 0: 1, 1: 2, a: 1, b: 2 })).toBe(false);
     expect(isArrayObj(document.querySelectorAll('.test'))).toBe(false);
     expect(isArrayObj(document.getElementsByClassName('test'))).toBe(false);
   });
@@ -490,9 +489,9 @@ describe('data-type', function () {
 
     const createCharList = (start: string, end: string): string[] => {
       return createArray({
+        fill: (c) => String.fromCharCode(c),
         start: start.charCodeAt(0),
         end: end.charCodeAt(0) + 1,
-        fill: (c) => String.fromCharCode(c),
       });
     };
 

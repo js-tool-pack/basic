@@ -1,29 +1,29 @@
 import {
-  createArray,
-  forEach,
-  forEachObj,
-  isEqual,
-  forEachRight,
-  findIndex,
-  findIndexRight,
-  binaryFind,
-  binaryFindIndex,
-  insertToArray,
-  arrayRemoveItem,
+  getYangHuiTriangleOne,
   arrayRemoveItemsBy,
+  getYangHuiTriangle,
+  binaryFindIndex,
+  arrayRemoveItem,
+  findIndexRight,
+  insertToArray,
+  forEachAround,
+  forEachRight,
+  createArray,
+  forEachObj,
+  binaryFind,
+  someInList,
+  findIndex,
+  castArray,
+  joinArray,
+  inRanges,
+  forEach,
+  isEqual,
+  inRange,
+  groupBy,
   unique,
   chunk,
-  inRange,
-  inRanges,
-  groupBy,
-  someInList,
-  castArray,
   sum,
   avg,
-  getYangHuiTriangle,
-  getYangHuiTriangleOne,
-  forEachAround,
-  joinArray,
 } from '../../src';
 
 describe('array', function () {
@@ -38,21 +38,21 @@ describe('array', function () {
     expect(createArray({ start: 3, len: 1, end: 5 })).toEqual([3]);
     expect(
       createArray({
-        start: 3,
-        len: 5,
-        end: 5,
         fill(item, index) {
           return item + '' + index;
         },
+        start: 3,
+        len: 5,
+        end: 5,
       }),
     ).toEqual(['30', '41']);
-    expect(createArray({ start: 3, len: 5, end: 6, fill: 0 })).toEqual([0, 0, 0]);
+    expect(createArray({ start: 3, fill: 0, len: 5, end: 6 })).toEqual([0, 0, 0]);
 
     // 测试fill参数
     const fn = jest.fn((a) => a);
 
     // end为len
-    createArray({ len: 5, fill: fn });
+    createArray({ fill: fn, len: 5 });
     expect(fn.mock.calls).toEqual([
       [0, 0, 5],
       [1, 1, 5],
@@ -64,7 +64,7 @@ describe('array', function () {
     fn.mock.calls.length = 0;
 
     // end为start+len
-    createArray({ start: 3, len: 5, fill: fn });
+    createArray({ start: 3, fill: fn, len: 5 });
     expect(fn.mock.calls).toEqual([
       [3, 0, 8],
       [4, 1, 8],
@@ -76,7 +76,7 @@ describe('array', function () {
     fn.mock.calls.length = 0;
 
     // end为end
-    createArray({ start: 2, end: 3, fill: fn });
+    createArray({ start: 2, fill: fn, end: 3 });
     expect(fn.mock.calls).toEqual([[2, 0, 3]]);
   });
   test('forEach', () => {
@@ -86,7 +86,7 @@ describe('array', function () {
     expect(isDone).toBe(true);
 
     // ArrayLike
-    isDone = forEach({ 0: 1, 1: 2, length: 2 }, (_v, k) => (arr1[k] = k + k));
+    isDone = forEach({ length: 2, 0: 1, 1: 2 }, (_v, k) => (arr1[k] = k + k));
     expect(isEqual(arr1, [0, 2, 2])).toBe(true);
     expect(isDone).toBe(true);
 
@@ -209,12 +209,12 @@ describe('array', function () {
     const list: { id: number }[] = Array.from({ length: 100 }).map((_, i) => ({ id: i * 2 }));
 
     function find(target: number): {
-      times: number;
       index: ReturnType<typeof binaryFindIndex>;
+      times: number;
     } {
       // 查找次数
       let times = 0;
-      const index = binaryFindIndex(list, function ({ item, index, start, end }) {
+      const index = binaryFindIndex(list, function ({ index, start, item, end }) {
         times++;
         // console.log(index);
         // 判断index是否正确
@@ -281,9 +281,9 @@ describe('array', function () {
   test('binaryFind', () => {
     const list: { id: number }[] = [...Array(100).keys()].map((i) => ({ id: i * 2 }));
 
-    function find(target: number): { times: number; value: ReturnType<typeof binaryFind> } {
+    function find(target: number): { value: ReturnType<typeof binaryFind>; times: number } {
       let times = 0;
-      const value = binaryFind(list, ({ item, index }) => {
+      const value = binaryFind(list, ({ index, item }) => {
         times++;
         // console.log(index);
         // 判断index是否正确
@@ -315,23 +315,23 @@ describe('array', function () {
     // 正常查找
     let findTimes = 0;
     const arr = [
-      { id: 1, text: '1' },
-      { id: 2, text: '2' },
-      { id: 3, text: '3' },
-      { id: 4, text: '4' },
-      { id: 5, text: '5' },
-      { id: 6, text: '6' },
+      { text: '1', id: 1 },
+      { text: '2', id: 2 },
+      { text: '3', id: 3 },
+      { text: '4', id: 4 },
+      { text: '5', id: 5 },
+      { text: '6', id: 6 },
     ];
 
-    expect(binaryFind(arr, (o) => (findTimes++, 3 - o.item.id))).toEqual({ id: 3, text: '3' });
+    expect(binaryFind(arr, (o) => (findTimes++, 3 - o.item.id))).toEqual({ text: '3', id: 3 });
     expect(findTimes).toBe(3);
 
     findTimes = 0;
-    expect(binaryFind(arr, (o) => (findTimes++, 2 - o.item.id))).toEqual({ id: 2, text: '2' });
+    expect(binaryFind(arr, (o) => (findTimes++, 2 - o.item.id))).toEqual({ text: '2', id: 2 });
     expect(findTimes).toBe(2);
 
     findTimes = 0;
-    expect(binaryFind(arr, (o) => (findTimes++, 6 - o.item.id))).toEqual({ id: 6, text: '6' });
+    expect(binaryFind(arr, (o) => (findTimes++, 6 - o.item.id))).toEqual({ text: '6', id: 6 });
     expect(findTimes).toBe(2);
 
     findTimes = 0;
@@ -382,7 +382,7 @@ describe('array', function () {
 
     const a2: number[] = [];
     expect(
-      insertToArray(3, ({ item, insert }) => (a2.push(item), item < insert), arr7, {
+      insertToArray(3, ({ insert, item }) => (a2.push(item), item < insert), arr7, {
         reverse: true,
         after: true,
       }),
@@ -450,7 +450,7 @@ describe('array', function () {
     // 恢复
     arr = [1, 2, 3, 2];
     // 反向查找
-    expect(insertToArray(5, (o) => o.item === 2, arr, { after: false, reverse: true })).toBe(3);
+    expect(insertToArray(5, (o) => o.item === 2, arr, { reverse: true, after: false })).toBe(3);
     expect(arr).toEqual([1, 2, 3, 5, 2]);
 
     // 插入多个个 动态位置
@@ -504,7 +504,7 @@ describe('array', function () {
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 1)).toEqual([[0], [1], [2], [3], [4], [5], [6]]);
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 0)).toEqual([0, 1, 2, 3, 4, 5, 6]);
     // 不支持-1
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
     // @ts-expect-error
     expect(chunk([0, 1, 2, 3, 4, 5, 6], -1)).toEqual([0, 1, 2, 3, 4, 5, 6]);
     expect(chunk([0, 1, 2, 3, 4, 5, 6], 3)).toEqual([[0, 1, 2], [3, 4, 5], [6]]);
@@ -567,25 +567,25 @@ describe('array', function () {
     expect(
       groupBy(
         [
-          { type: 1, value: 111 },
-          { type: 2, value: 222 },
-          { type: 1, value: 222 },
-          { type: 2, value: 33344 },
-          { type: 1, value: 333 },
-          { type: 1, value: 444 },
+          { value: 111, type: 1 },
+          { value: 222, type: 2 },
+          { value: 222, type: 1 },
+          { value: 33344, type: 2 },
+          { value: 333, type: 1 },
+          { value: 444, type: 1 },
         ],
         'type',
       ),
     ).toEqual({
       1: [
-        { type: 1, value: 111 },
-        { type: 1, value: 222 },
-        { type: 1, value: 333 },
-        { type: 1, value: 444 },
+        { value: 111, type: 1 },
+        { value: 222, type: 1 },
+        { value: 333, type: 1 },
+        { value: 444, type: 1 },
       ],
       2: [
-        { type: 2, value: 222 },
-        { type: 2, value: 33344 },
+        { value: 222, type: 2 },
+        { value: 33344, type: 2 },
       ],
     });
     expect(groupBy([], '')).toEqual({});
@@ -625,7 +625,7 @@ describe('array', function () {
           { name: 'b', score: 90 },
           { name: 'c', score: 70 },
           { name: 'd', score: 10 },
-          { name: 'e', score: 100 },
+          { score: 100, name: 'e' },
         ],
         (item) => {
           const score = item.score;
@@ -637,13 +637,13 @@ describe('array', function () {
     ).toEqual({
       A: [
         { name: 'b', score: 90 },
-        { name: 'e', score: 100 },
+        { score: 100, name: 'e' },
       ],
-      B: [{ name: 'c', score: 70 }],
       C: [
         { name: 'a', score: 50 },
         { name: 'd', score: 10 },
       ],
+      B: [{ name: 'c', score: 70 }],
     });
 
     const b = groupBy([50, 90, 70, 10, 100], (score) => {
@@ -655,7 +655,7 @@ describe('array', function () {
 
     const c = groupBy(
       [50, 90, 70, 10, 100],
-      (score): 'A' | 'B' | void => {
+      (score): void | 'A' | 'B' => {
         if (score >= 90) return 'A';
         if (score >= 60) return 'B';
       },
@@ -674,8 +674,8 @@ describe('array', function () {
       }),
     ).toEqual({
       A: [90, 100],
-      B: [70],
       C: [50, 10],
+      B: [70],
     });
     expect(
       groupBy(
@@ -688,8 +688,8 @@ describe('array', function () {
       ),
     ).toEqual({
       A: [90, 100],
-      B: [70],
       C: [50, 10],
+      B: [70],
     });
 
     const list = [
@@ -839,7 +839,7 @@ describe('array', function () {
         res.push(v);
         if (i[0] === 0 && i[1] === 0) return false;
       },
-      { startIndexes: [1, 4], startDirect: 'bottom' },
+      { startDirect: 'bottom', startIndexes: [1, 4] },
     );
     expect(res).toEqual([10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 1]);
 

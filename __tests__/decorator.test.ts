@@ -4,15 +4,15 @@ import * as dc from '../src/decorator';
 describe('decorator', function () {
   test('Debounce', async () => {
     expect.assertions(3);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const Debounce = dc.Debounce;
 
     const now = Date.now();
 
     class Test {
+      value: string | number = '';
       times = 0;
       time = 0;
-      value: string | number = '';
 
       @Debounce(1000)
       test(value: string | number) {
@@ -39,15 +39,15 @@ describe('decorator', function () {
   });
   test('Throttle', async () => {
     expect.assertions(2);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const Throttle = dc.Throttle;
 
     // const now = Date.now();
 
     class Test {
+      value: string | number = '';
       times = 0;
       time = 0;
-      value: string | number = '';
 
       @Throttle(100)
       test(value: string | number) {
@@ -75,7 +75,7 @@ describe('decorator', function () {
 
   test('Polling', async () => {
     expect.assertions(1);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const Polling = dc.Polling;
 
     class Test {
@@ -103,7 +103,7 @@ describe('decorator', function () {
   });
   test('Polling 2', async () => {
     expect.assertions(2);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const Polling = dc.Polling;
 
     class Test {

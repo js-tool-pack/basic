@@ -53,9 +53,6 @@ interface CloneStrategies {
 }
 const cloneStrategies: CloneStrategies = (function () {
   const st = {
-    array(target: any) {
-      return new target.constructor();
-    },
     function(target: any) {
       // 复制的函数作用域不再是原函数的作用域
       // (如复制一个闭包函数，作用域会提升到script顶层，将不能访问原闭包函数外的变量)，
@@ -65,6 +62,9 @@ const cloneStrategies: CloneStrategies = (function () {
     },
     date(target: any) {
       return new target.constructor(target);
+    },
+    array(target: any) {
+      return new target.constructor();
     },
   };
   const strategies: CloneStrategies = {

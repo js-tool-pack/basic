@@ -1,11 +1,11 @@
-import { RGBA } from '../../src/color/RGBA';
 import { isRGBColor, isHEXColor } from '../../src/color/base';
 import { createArray, unique } from '../../src/array';
+import { RGBA } from '../../src/color/RGBA';
 
 describe('RGBA', function () {
   const rgb = new RGBA();
   const rgb2 = new RGBA(255, 0, 1);
-  const rgbList = createArray({ len: 200, fill: RGBA.random });
+  const rgbList = createArray({ fill: RGBA.random, len: 200 });
   test('RGBA.toString', () => {
     expect(rgb.toString()).toBe('rgba(0,0,0,1)');
     expect(rgb2.toString()).toBe('rgba(255,0,1,1)');

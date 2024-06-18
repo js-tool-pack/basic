@@ -28,7 +28,7 @@ import { dateAdd } from './dateAdd';
  */
 export function getEndOfWeek(
   date: Date,
-  { firstDay = 0, weekOffset = 0 }: Parameters<typeof getStartOfWeek>[1] = {},
+  { weekOffset = 0, firstDay = 0 }: Parameters<typeof getStartOfWeek>[1] = {},
 ): Date {
-  return dateAdd(getStartOfWeek(date, { firstDay, weekOffset: weekOffset + 1 }), -1, 'date');
+  return dateAdd(getStartOfWeek(date, { weekOffset: weekOffset + 1, firstDay }), -1, 'date');
 }

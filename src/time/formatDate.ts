@@ -59,32 +59,23 @@ export function formatDate(
   date: Date,
   formular = 'yyyy-MM-dd hh:mm:ss',
   options?: {
-    seasonNames?: string[];
     seasonRanges?: number[][];
+    seasonNames?: string[];
     weekNames?: string[];
   },
 ) {
   const opt = {
-    weekNames: ['日', '一', '二', '三', '四', '五', '六'],
-    seasonNames: ['春', '夏', '秋', '冬'],
     seasonRanges: [
       [3, 4, 5],
       [6, 7, 8],
       [9, 10, 11],
       [12, 1, 2],
     ],
+    weekNames: ['日', '一', '二', '三', '四', '五', '六'],
+    seasonNames: ['春', '夏', '秋', '冬'],
     ...options,
   };
   const o: Record<string, Function> = {
-    'M+': () => date.getMonth() + 1,
-    //月份
-    'd+': () => date.getDate(),
-    //日
-    'h+': () => date.getHours(),
-    //小时
-    'm+': () => date.getMinutes(),
-    //分
-    's+': () => date.getSeconds(),
     //秒
     q: () => {
       //季度
@@ -94,9 +85,18 @@ export function formatDate(
       const qIndex = opt.seasonRanges.findIndex((range) => range.includes(month));
       return opt.seasonNames[qIndex];
     },
-    'S+': () => date.getMilliseconds(),
     //毫秒
     w: () => opt.weekNames[date.getDay()], //周
+    'S+': () => date.getMilliseconds(),
+    'M+': () => date.getMonth() + 1,
+    //小时
+    'm+': () => date.getMinutes(),
+    //分
+    's+': () => date.getSeconds(),
+    //日
+    'h+': () => date.getHours(),
+    //月份
+    'd+': () => date.getDate(),
   };
 
   if (/(y+)/.test(formular)) {

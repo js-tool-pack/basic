@@ -1,5 +1,5 @@
-import { inRange } from '../array';
 import { getEndOfMonth } from './getEndOfMonth';
+import { inRange } from '../array';
 
 /**
  * 获取指定某年月份(month)第n(nth)个星期几(weekday)的Date

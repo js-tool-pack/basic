@@ -32,7 +32,7 @@ export function randomInt(min: number, max: number): number;
  * randomInt(5,10,7); // 生成长度为7的整数数组，每个成员范围为5-10之间
  */
 export function randomInt(min: number, max: number, len: number): number[];
-export function randomInt(min?: number, max?: number, len?: number): number | number[] {
+export function randomInt(min?: number, max?: number, len?: number): number[] | number {
   // randomInt()
   if (!arguments.length) return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
   let _min = min as number;
@@ -50,7 +50,7 @@ export function randomInt(min?: number, max?: number, len?: number): number | nu
     return Math.floor(Math.random() * dif) + _min;
   }
   return createArray({
-    len,
     fill: () => randomInt(_min, _max),
+    len,
   });
 }

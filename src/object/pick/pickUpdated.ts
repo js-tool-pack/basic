@@ -1,7 +1,7 @@
-import { hasOwn } from '../common';
-import { reduceObj } from '../iterate';
-import { isNaN } from '../../data-type';
 import { forEachRight } from '../../array';
+import { isNaN } from '../../data-type';
+import { reduceObj } from '../iterate';
+import { hasOwn } from '../common';
 
 /**
  * 根据与target对比，挑出与target同key不同value的key所组成的object
@@ -31,7 +31,7 @@ export function pickUpdated<T extends object>(
   return reduceObj(
     target,
     (result, _v, k) => {
-      forEachRight(objs, function (item: any): void | false {
+      forEachRight(objs, function (item: any): false | void {
         if (item && hasOwn(item, k)) {
           if (!compareFn(target[k], item[k])) {
             result[k] = item[k];

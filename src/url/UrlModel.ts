@@ -1,5 +1,5 @@
-import * as P from './parse';
 import { stringifyUrlQuery } from './common';
+import * as P from './parse';
 
 /**
  * 解析url
@@ -8,13 +8,13 @@ import { stringifyUrlQuery } from './common';
  * @Description:
  */
 export class UrlModel {
-  protocol = '';
+  query: Partial<{ [key: string]: string[] | string }> = {};
   port: number | string = '';
+  protocol = '';
   host = '';
   path = '';
   href = '';
   hash = '';
-  query: Partial<{ [key: string]: string[] | string }> = {};
 
   // queryStr: string = "";
 
@@ -34,10 +34,6 @@ export class UrlModel {
 
   toString(template = '{protocol}{host}{port}{pathname}{params}{hash}') {
     const match = {
-      '{protocol}': () => (this.protocol ? `${this.protocol}://` : ''),
-      '{host}': () => this.host || '',
-      '{port}': () => (this.port ? `:${this.port}` : ''),
-      '{pathname}': () => this.path || '',
       '{params}': () => {
         const query = stringifyUrlQuery(this.query);
         if (query) {
@@ -45,6 +41,10 @@ export class UrlModel {
         }
         return '';
       },
+      '{protocol}': () => (this.protocol ? `${this.protocol}://` : ''),
+      '{port}': () => (this.port ? `:${this.port}` : ''),
+      '{pathname}': () => this.path || '',
+      '{host}': () => this.host || '',
       '{hash}': () => this.hash || '',
     };
     for (const k in match) {

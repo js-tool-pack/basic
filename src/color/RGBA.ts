@@ -20,34 +20,11 @@ import { RGB } from './RGB';
  *
  */
 export class RGBA extends RGBSuper {
+  private _a!: number;
+
   constructor(r?: number, g?: number, b?: number, a = 1) {
     super(r, g, b);
     this.a = a;
-  }
-
-  private _a!: number;
-
-  /**
-   * 获取RGBA中的A
-   */
-  get a(): number {
-    return this._a;
-  }
-
-  /**
-   * 设置RGBA中的A
-   */
-  set a(value: number) {
-    const a = Math.max(0, Math.min(value, 1));
-    this._a = Number(a.toFixed(2));
-  }
-
-  /**
-   * 随机RGBA
-   */
-  static random(): RGBA {
-    const num = randomInt(0, 255, 3);
-    return new RGBA(num[0], num[1], num[2], randomInt());
   }
 
   /**
@@ -65,11 +42,11 @@ export class RGBA extends RGBSuper {
   }
 
   /**
-   * 转成RGB
+   * 随机RGBA
    */
-  toRGB(): RGB {
-    const { r, g, b } = this;
-    return new RGB(r, g, b);
+  static random(): RGBA {
+    const num = randomInt(0, 255, 3);
+    return new RGBA(num[0], num[1], num[2], randomInt());
   }
 
   /**
@@ -78,5 +55,28 @@ export class RGBA extends RGBSuper {
   toString() {
     const { r, g, b, a } = this;
     return `rgba(${r},${g},${b},${a})`;
+  }
+
+  /**
+   * 转成RGB
+   */
+  toRGB(): RGB {
+    const { r, g, b } = this;
+    return new RGB(r, g, b);
+  }
+
+  /**
+   * 设置RGBA中的A
+   */
+  set a(value: number) {
+    const a = Math.max(0, Math.min(value, 1));
+    this._a = Number(a.toFixed(2));
+  }
+
+  /**
+   * 获取RGBA中的A
+   */
+  get a(): number {
+    return this._a;
   }
 }

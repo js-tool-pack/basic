@@ -23,14 +23,14 @@
  *
  */
 export function createTimeCountUp(): {
-  (): number;
   pause(): void;
   play(): void;
+  (): number;
 } {
   const startTime = Date.now();
   const pause = {
-    total: 0,
     startTime: 0,
+    total: 0,
   };
   function closure(this: any) {
     const endTime = pause.startTime ? pause.startTime : Date.now();

@@ -1,4 +1,4 @@
-import { UrlHostReg, UrlProtocolReg } from '../regs';
+import { UrlProtocolReg, UrlHostReg } from '../regs';
 
 /**
  * 解析url path

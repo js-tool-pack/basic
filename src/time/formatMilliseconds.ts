@@ -18,9 +18,9 @@ export function formatMilliseconds(ms: number, format = 'd天hh时mm分ss秒') {
   const obj: {
     [k: string]: number;
   } = {
-    's+': seconds % 60,
-    'm+': ~~(seconds / 60) % 60,
     'h+': ~~(seconds / (60 * 60)) % 24,
+    'm+': ~~(seconds / 60) % 60,
+    's+': seconds % 60,
     // 'd+': ~~(seconds / (60 * 60 * 24))
   };
   // 有多少天就显示多少天,但不会补0

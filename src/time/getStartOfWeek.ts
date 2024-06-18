@@ -36,7 +36,7 @@ import { dateAdd } from './dateAdd';
  */
 export function getStartOfWeek(
   date: Date,
-  { firstDay = 0, weekOffset = 0 }: { firstDay?: WEEK_DAYS; weekOffset?: number } = {},
+  { weekOffset = 0, firstDay = 0 }: { firstDay?: WEEK_DAYS; weekOffset?: number } = {},
 ): Date {
   const _date = dateAdd(date, weekOffset, 'week');
   const day = _date.getDay();

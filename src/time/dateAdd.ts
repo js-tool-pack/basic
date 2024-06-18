@@ -1,15 +1,15 @@
-import { forEachObj } from '../object';
 import { isObject } from '../data-type';
+import { forEachObj } from '../object';
 
 type AddType =
-  | 'date'
-  | 'month'
-  | 'year'
-  | 'week'
-  | 'hours'
+  | 'milliseconds'
   | 'minutes'
   | 'seconds'
-  | 'milliseconds';
+  | 'month'
+  | 'hours'
+  | 'date'
+  | 'year'
+  | 'week';
 
 /**
  * @example
@@ -62,14 +62,14 @@ export function dateAdd(
   const result = new Date(date);
 
   const map: Record<AddType, (addValue: number) => void> = {
-    year: (addValue) => result.setFullYear(result.getFullYear() + addValue),
-    month: (addValue) => result.setMonth(result.getMonth() + addValue),
-    week: (addValue) => result.setDate(result.getDate() + addValue * 7),
-    date: (addValue) => result.setDate(result.getDate() + addValue),
-    hours: (addValue) => result.setHours(result.getHours() + addValue),
+    milliseconds: (addValue) => result.setMilliseconds(result.getMilliseconds() + addValue),
     minutes: (addValue) => result.setMinutes(result.getMinutes() + addValue),
     seconds: (addValue) => result.setSeconds(result.getSeconds() + addValue),
-    milliseconds: (addValue) => result.setMilliseconds(result.getMilliseconds() + addValue),
+    year: (addValue) => result.setFullYear(result.getFullYear() + addValue),
+    week: (addValue) => result.setDate(result.getDate() + addValue * 7),
+    month: (addValue) => result.setMonth(result.getMonth() + addValue),
+    hours: (addValue) => result.setHours(result.getHours() + addValue),
+    date: (addValue) => result.setDate(result.getDate() + addValue),
   };
 
   if (isObject(add)) {

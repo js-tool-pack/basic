@@ -21,14 +21,14 @@ import { typeOf } from '../../data-type';
  */
 export function createArray<T = number>({
   start = 0,
+  fill,
   end,
   len,
-  fill,
 }: {
+  fill?: ((item: number, index: number, end: number) => T) | T;
   start?: number;
   end?: number;
   len?: number;
-  fill?: T | ((item: number, index: number, end: number) => T);
 }): T[] {
   let _end: number = start;
   if (len && end) {

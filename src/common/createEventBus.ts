@@ -27,13 +27,6 @@ export function createEventBus<T = never>() {
   const listeners: Listener[] = [];
   return {
     /**
-     * 添加事件监听，接收数据
-     */
-    on(listener: Listener): Off {
-      listeners.push(listener);
-      return () => off(listener);
-    },
-    /**
      * 触发事件，传递数据
      */
     emit(payload: T): void {
@@ -43,6 +36,13 @@ export function createEventBus<T = never>() {
         if (!listeners.includes(listener)) return;
         listener(payload, () => off(listener));
       });
+    },
+    /**
+     * 添加事件监听，接收数据
+     */
+    on(listener: Listener): Off {
+      listeners.push(listener);
+      return () => off(listener);
     },
     /**
      * 清理所有事件监听

@@ -2,16 +2,15 @@ import * as cm from '../../src/object/common';
 import * as arr from '../../src/array';
 import { forEachNum } from '../../src';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function expectType<T>(_value: T) {}
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 export function expectError<T>(_value: T) {}
 
 describe('object', function () {
   test('deepMerge', () => {
     const deepMerge = cm.deepMerge;
     // 对象合并
-    const a = { one: 1, two: 2, three: 3 };
+    const a = { three: 3, one: 1, two: 2 };
     const b = { one: 11, four: 4, five: 5 };
     expect(deepMerge(a, b)).toEqual(Object.assign({}, a, b));
 
@@ -29,8 +28,7 @@ describe('object', function () {
 
     Fn.prototype.b = 200;
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     const d = new Fn();
     expect(deepMerge(a, d)).toEqual(Object.assign({}, a, d));
     // 不会合并继承属性
@@ -50,13 +48,13 @@ describe('object', function () {
 
   test('omit', () => {
     const omit = cm.omit;
-    expect(omit({ a: 12, b: true, c: 'c' }, ['a'])).toEqual({ b: true, c: 'c' });
-    expect(omit({ a: 12, b: true, c: 'c' }, ['a', 'b'])).toEqual({ c: 'c' });
+    expect(omit({ b: true, c: 'c', a: 12 }, ['a'])).toEqual({ b: true, c: 'c' });
+    expect(omit({ b: true, c: 'c', a: 12 }, ['a', 'b'])).toEqual({ c: 'c' });
     expect(omit({ c: 'c' }, ['c'])).toEqual({});
 
     const obj: { [k: string]: number } = {};
     forEachNum(10000, (index) => (obj[index] = index));
-    const keys = arr.createArray({ len: 500, fill: (v) => String(v) });
+    const keys = arr.createArray({ fill: (v) => String(v), len: 500 });
     // console.time('run');
     const result = omit(obj, keys);
     expect(Object.keys(result).length).toEqual(9500);
@@ -64,7 +62,7 @@ describe('object', function () {
   });
   test('defaults', () => {
     const defaults = cm.defaults;
-    const origin = { a: 12, b: undefined, c: 3, d: null, 0: undefined };
+    const origin = { b: undefined, 0: undefined, d: null, a: 12, c: 3 };
     // 0个参数
     expect(defaults({ ...origin })).toEqual(origin);
     expect(defaults({ ...origin }, null)).toEqual(origin);
@@ -133,25 +131,25 @@ describe('object', function () {
     expect(getInsKeys(obj3).sort()).toEqual(['a', 'b']);
   });
   const commonUpdate = (fn: Function) => {
-    expect(fn({ a: 12, b: undefined, c: 3 }, { a: 1 }, { b: 2 }, { d: 4 })).toEqual({
+    expect(fn({ b: undefined, a: 12, c: 3 }, { a: 1 }, { b: 2 }, { d: 4 })).toEqual({
       a: 1,
       b: 2,
       c: 3,
     });
-    expect(fn({ a: 12, b: undefined, c: 3 }, { a: 1 }, { b: 2 }, { c: undefined })).toEqual({
+    expect(fn({ b: undefined, a: 12, c: 3 }, { a: 1 }, { b: 2 }, { c: undefined })).toEqual({
+      c: undefined,
       a: 1,
       b: 2,
-      c: undefined,
     });
-    expect(fn({ a: 12, b: undefined, c: 3 }, { aa: 2, bb: 2, dd: 123 }, { c: undefined })).toEqual({
-      a: 12,
+    expect(fn({ b: undefined, a: 12, c: 3 }, { dd: 123, aa: 2, bb: 2 }, { c: undefined })).toEqual({
       b: undefined,
       c: undefined,
+      a: 12,
     });
 
-    expect(fn({ a: 12, b: undefined, c: 3 }, null as any, undefined as any)).toEqual({
-      a: 12,
+    expect(fn({ b: undefined, a: 12, c: 3 }, null as any, undefined as any)).toEqual({
       b: undefined,
+      a: 12,
       c: 3,
     });
 
@@ -194,20 +192,20 @@ describe('object', function () {
 
   test('renameObjKey', () => {
     const renameObjKey = cm.renameObjKey;
-    expect(renameObjKey({ a: 12, b: undefined, c: 3 }, { test: 'a', bb: 'b' })).toEqual({
+    expect(renameObjKey({ b: undefined, a: 12, c: 3 }, { test: 'a', bb: 'b' })).toEqual({
+      bb: undefined,
       test: 12,
-      bb: undefined,
       c: 3,
     });
-    expect(renameObjKey({ a: 12, b: undefined, c: 3 }, { test: 'aa' as any, bb: 'b' })).toEqual({
+    expect(renameObjKey({ b: undefined, a: 12, c: 3 }, { test: 'aa' as any, bb: 'b' })).toEqual({
+      bb: undefined,
       a: 12,
-      bb: undefined,
       c: 3,
     });
-    expect(renameObjKey({ a: 1, b: 2 }, { a: 'a', aa: 'a', aaa: 'a' })).toEqual({
-      a: 1,
-      aa: 1,
+    expect(renameObjKey({ a: 1, b: 2 }, { aaa: 'a', aa: 'a', a: 'a' })).toEqual({
       aaa: 1,
+      aa: 1,
+      a: 1,
       b: 2,
     });
   });
@@ -215,7 +213,7 @@ describe('object', function () {
   test('hasOwn', () => {
     const hasOwn = cm.hasOwn;
 
-    const obj = { a: 1, b: 2, '[object Object]': 1 } as const;
+    const obj = { '[object Object]': 1, a: 1, b: 2 } as const;
 
     expect(hasOwn(obj, 'a')).toBeTruthy();
     expect(hasOwn(obj, 'c')).toBeFalsy();
@@ -235,7 +233,7 @@ describe('object', function () {
 
     // 对象属性交换
     expect(swap({ a: 1, b: 2 }, 'a', 'b')).toEqual({ b: 1, a: 2 });
-    expect(swap({ a: 1, b: 2 }, 'a', 'c' as any)).toEqual({ c: 1, b: 2, a: undefined });
+    expect(swap({ a: 1, b: 2 }, 'a', 'c' as any)).toEqual({ a: undefined, c: 1, b: 2 });
 
     // 数组item交换
     expect(swap([1, 2], 1, 0)).toEqual([2, 1]);
@@ -246,11 +244,12 @@ describe('object', function () {
     const likeKeys = cm.likeKeys;
     expect(likeKeys([1, 2, 3, 4, 5, 6, 7], '0')).toEqual(['0']);
     expect(likeKeys([1, 2, 3, 4, 5, 6, 7, 1, 1, 1, 1, 1, 1], '0')).toEqual(['0', '10']);
+    // eslint-disable-next-line perfectionist/sort-objects
     expect(likeKeys({ test: 1, test2: 2, test3: 3 }, 'test')).toEqual(['test', 'test2', 'test3']);
     const map = new Map<string, number | string>([
+      ['hello', 'world'],
       ['aa', 1],
       ['bb', 2],
-      ['hello', 'world'],
     ]);
     expect(likeKeys(map, /a+|b+/)).toEqual(['aa', 'bb']);
   });

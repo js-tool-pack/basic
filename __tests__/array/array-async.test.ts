@@ -1,4 +1,4 @@
-import { sleep, forEachAsync, mapAsync, reduceAsync } from '../../src';
+import { forEachAsync, reduceAsync, mapAsync, sleep } from '../../src';
 
 describe('promise', function () {
   test('forEachAsync', async () => {
@@ -7,7 +7,7 @@ describe('promise', function () {
     await fn(arr1, async (_v, k) => (arr1[k] = k));
     expect(arr1).toEqual([0, 1, 2]);
     // ArrayLike
-    await fn({ 0: 1, 1: 2, length: 2 }, async (_v, k) => (arr1[k] = k + k));
+    await fn({ length: 2, 0: 1, 1: 2 }, async (_v, k) => (arr1[k] = k + k));
     expect(arr1).toEqual([0, 2, 2]);
     // const arr = thisArg || this;
     await fn.call(arr1, arr1, async (_v, k) => (arr1[k] = k + 2));

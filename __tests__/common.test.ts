@@ -1,5 +1,5 @@
+import { inRange, sleep, avg } from '../src';
 import * as cm from '../src/common';
-import { avg, inRange, sleep } from '../src';
 
 describe('common', function () {
   jest.useFakeTimers();
@@ -179,7 +179,7 @@ describe('common', function () {
   test('polling', async () => {
     let t = 0;
 
-    let { cancel, promise } = cm.polling((times) => {
+    let { promise, cancel } = cm.polling((times) => {
       t = times;
       if (times === 10) cancel();
     }, 10);
@@ -190,7 +190,7 @@ describe('common', function () {
     t = 0;
 
     jest.useRealTimers();
-    ({ cancel, promise } = cm.polling(
+    ({ promise, cancel } = cm.polling(
       (times) => {
         return new Promise<void>((res) => {
           t++;
@@ -230,7 +230,7 @@ describe('common', function () {
 
     // object
     expect(createEnum({ a: 'aa', b: 'bb' })).toEqual({ a: 'aa', b: 'bb', aa: 'a', bb: 'b' });
-    expect(createEnum({ a: 1, b: 2 })).toEqual({ a: 1, b: 2, 1: 'a', 2: 'b' });
+    expect(createEnum({ a: 1, b: 2 })).toEqual({ 1: 'a', 2: 'b', a: 1, b: 2 });
 
     // array
     expect(createEnum([0, 1])).toEqual({ '0': '0', '1': '1' });
@@ -369,7 +369,7 @@ describe('common', function () {
     const fn = jest.fn();
     const invFn = jest.fn();
     // invalidCB
-    const wrapFn = cm.throttle(fn, 100, { leading: false, invalidCB: invFn });
+    const wrapFn = cm.throttle(fn, 100, { invalidCB: invFn, leading: false });
     // 初始时时0次
     expect(fn.mock.calls.length).toBe(0);
     // 执行一次
@@ -447,7 +447,7 @@ describe('common', function () {
     };
 
     // 禁止Function
-    // eslint-disable-next-line no-global-assign
+
     Function = jest.fn(() => {
       throw new Error('');
     });
@@ -455,7 +455,6 @@ describe('common', function () {
     // globalThis
     expect(cm.getRoot()).toBe(globalThis);
 
-    // eslint-disable-next-line no-global-assign
     Function = origin.fn;
   });
 
@@ -476,33 +475,33 @@ describe('common', function () {
     expect(pcp('node test.js test.js -a=123')).toEqual({ default: 'test.js', a: '123' });
 
     expect(pcp('node test.js test.js -a=123 333 555 -b 666 888 -c=1 -b=999')).toEqual({
-      default: 'test.js',
       a: ['123', '333', '555'],
       b: ['666', '888', '999'],
+      default: 'test.js',
       c: '1',
     });
 
     expect(pcp('node test.js test.js -a=123=333=444=555')).toEqual({
-      default: 'test.js',
       a: '123=333=444=555',
+      default: 'test.js',
     });
 
     expect(pcp('node test.js test.js -a= ')).toEqual({ default: 'test.js', a: true });
 
     expect(pcp('node test.js test.js -a= -b=123')).toEqual({
       default: 'test.js',
-      a: true,
       b: '123',
+      a: true,
     });
 
     expect(pcp('node test.js test.js -a==123=333=444=555')).toEqual({
-      default: 'test.js',
       a: '=123=333=444=555',
+      default: 'test.js',
     });
 
     expect(pcp('node test.js test.js --a==123=333=444=555', '--', 'args')).toEqual({
-      args: 'test.js',
       a: '=123=333=444=555',
+      args: 'test.js',
     });
   });
 

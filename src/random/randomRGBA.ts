@@ -1,5 +1,5 @@
-import { randomInt } from './randomInt';
 import { randomFloat } from './randomFloat';
+import { randomInt } from './randomInt';
 
 /**
  * 随机RGBA颜色

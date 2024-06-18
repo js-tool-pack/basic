@@ -26,7 +26,7 @@
  */
 export function binaryFindIndex<T>(
   arr: T[],
-  handler: (options: { item: T; index: number; start: number; end: number; arr: T[] }) => number,
+  handler: (options: { index: number; start: number; end: number; arr: T[]; item: T }) => number,
 ): number {
   if (arr.length === 0) return -1;
   let start = 0;

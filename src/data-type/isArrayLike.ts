@@ -1,5 +1,5 @@
-import { typeOf } from './typeOf';
 import { isNumber } from './isNumber';
+import { typeOf } from './typeOf';
 
 /**
  * 类数组对象(包含数组、{0:1,1:2,length:2}、字符串)
@@ -31,6 +31,7 @@ export function isArrayLike<T>(target: any): target is ArrayLike<T> {
   // 否则，length为false
   const length = !!target && 'length' in target && target.length;
   // 如果target是function类型 或者是window对象 则返回false
+  // eslint-disable-next-line no-restricted-globals
   if (type === 'function' || target === window) {
     return false;
   }

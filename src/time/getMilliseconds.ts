@@ -23,15 +23,15 @@
  * @param [seconds=0]
  */
 export function getMilliseconds({
-  days = 0,
-  hours = 0,
   minutes = 0,
   seconds = 0,
+  hours = 0,
+  days = 0,
 }: {
-  days?: number;
-  hours?: number;
   minutes?: number;
   seconds?: number;
+  hours?: number;
+  days?: number;
 } = {}): number {
   const second = 1000;
   const minute = second * 60;

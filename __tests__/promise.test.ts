@@ -1,4 +1,4 @@
-import { sleep, inRange } from '../src';
+import { inRange, sleep } from '../src';
 import * as cm from '../src/promise';
 
 describe('promise', function () {

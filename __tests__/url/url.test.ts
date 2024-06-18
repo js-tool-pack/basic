@@ -2,6 +2,7 @@ import * as u from '../../src/url';
 
 describe('url.url', function () {
   test('stringifyUrlQuery', () => {
+    // eslint-disable-next-line perfectionist/sort-objects
     expect(u.stringifyUrlQuery({ a: 1, b: 2, c: [3, 33], d: { f: '5', g: '6' } })).toBe(
       'a=1&b=2&c[0]=3&c[1]=33&d[f]=5&d[g]=6',
     );
@@ -9,7 +10,9 @@ describe('url.url', function () {
       u.stringifyUrlQuery({
         a: 1,
         b: 2,
+        // eslint-disable-next-line perfectionist/sort-objects
         c: [3, 33],
+        // eslint-disable-next-line perfectionist/sort-objects
         d: { f: '5', g: '6', h: undefined },
         e: undefined,
       }),

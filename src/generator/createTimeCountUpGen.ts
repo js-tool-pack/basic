@@ -57,8 +57,8 @@
 export function createTimeCountUpGen(): Generator<number, void, boolean | void> {
   const startTime = Date.now();
   const pauseState = {
-    total: 0,
     startTime: 0,
+    total: 0,
   };
   function pause(): void {
     // 判断是否已经暂停了，避免二次暂停bug

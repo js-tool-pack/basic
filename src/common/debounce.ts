@@ -34,10 +34,10 @@ export function debounce<CB extends (...args: any[]) => any>(
   callback: CB,
   delay: number,
   leading = false,
-): CB & {
-  cancel(): void;
+): {
   flush(): ReturnType<CB>;
-} {
+  cancel(): void;
+} & CB {
   let lastThis: unknown;
   let lastArgs: any;
   let lastResult: unknown;

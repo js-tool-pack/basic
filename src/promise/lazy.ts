@@ -32,22 +32,22 @@ export function lazy() {
   }
   const obj = {
     /**
-     * @param {number} ms 等待毫秒数
-     */
-    wait(ms: number) {
-      then((done, value) => setTimeout(() => done(value), ms));
-      return obj;
-    },
-    /**
      * @param {((done: Function) => void) | (() => Promise<any>)} cb 回调返回一个值或返回一个promise 供下一个do回调调用
      */
-    do(cb: (done: Function, value: unknown) => void | Promise<any>) {
+    do(cb: (done: Function, value: unknown) => Promise<any> | void) {
       then((done, value) => {
         const res = cb(done, value);
         if (res && res.then) {
           res.then((val) => done(val));
         }
       });
+      return obj;
+    },
+    /**
+     * @param {number} ms 等待毫秒数
+     */
+    wait(ms: number) {
+      then((done, value) => setTimeout(() => done(value), ms));
       return obj;
     },
   };

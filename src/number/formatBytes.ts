@@ -40,10 +40,10 @@ export type BYTE_UNIT = 'YB' | 'ZB' | 'EB' | 'PB' | 'TB' | 'GB' | 'MB' | 'KB' | 
 export function formatBytes(
   bytes: number,
   {
-    unit,
-    fractionDigits = 2,
     exponential = false,
-  }: { unit?: BYTE_UNIT; fractionDigits?: number; exponential?: boolean } = {},
+    fractionDigits = 2,
+    unit,
+  }: { fractionDigits?: number; exponential?: boolean; unit?: BYTE_UNIT } = {},
 ): string {
   // 名称     -符号 -	二进制计量 -	十进制计量 -	字节数                               -	等于
   // KiloByte	  KB	  210       	103       	1,024	                             1,024 B
@@ -58,8 +58,8 @@ export function formatBytes(
   return (
     shortenNumber(bytes, {
       unit: unit ? (unit.replace('B', '') as any) : undefined,
-      kSize: 1024,
       fractionDigits,
+      kSize: 1024,
       exponential,
     }) + 'B'
   );

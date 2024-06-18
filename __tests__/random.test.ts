@@ -1,14 +1,14 @@
-import * as cm from '../src/random';
 import {
-  forEachNum,
-  omit,
   createArray,
-  unique,
   isArrayLike,
+  forEachNum,
   isHEXColor,
   isRGBColor,
   inRange,
+  unique,
+  omit,
 } from '../src';
+import * as cm from '../src/random';
 
 describe('random', function () {
   test('randomFloat', () => {
@@ -112,7 +112,7 @@ describe('random', function () {
     const arr6 = fn(0.2, 0.4, 300);
     expect(arr6.length).toBe(300);
     expect(arr6.every((i) => i === 0.2)).toBeTruthy();
-    const arr8 = createArray({ len: 200, fill: () => fn() });
+    const arr8 = createArray({ fill: () => fn(), len: 200 });
     expect(arr8.length).toBe(200);
     expect(arr8.every((i) => i >= 0 && i < Number.MAX_SAFE_INTEGER)).toBeTruthy();
 
@@ -130,7 +130,7 @@ describe('random', function () {
     });
 
     const arr2 = createArray({ len: 20 });
-    const results = createArray({ len: 1000, fill: () => fn(arr2) });
+    const results = createArray({ fill: () => fn(arr2), len: 1000 });
 
     expect(results.length).toBe(1000);
     arr2.forEach((it) => {
@@ -141,14 +141,14 @@ describe('random', function () {
 
   test('randomRGB', () => {
     const fn = cm.randomRGB;
-    const rgbList = createArray({ len: 100, fill: () => fn() });
+    const rgbList = createArray({ fill: () => fn(), len: 100 });
     rgbList.forEach((it) => {
       expect(isRGBColor(it)).toBeTruthy();
     });
   });
   test('randomRGBA', () => {
     const fn = cm.randomRGBA;
-    const rgbList = createArray({ len: 10000, fill: () => fn() });
+    const rgbList = createArray({ fill: () => fn(), len: 10000 });
     rgbList.forEach((it) => {
       const flag = isRGBColor(it);
       expect(flag).toBeTruthy();
@@ -190,7 +190,7 @@ describe('random', function () {
     expect(fn([])).toEqual([]);
     expect(() => fn(undefined as any)).toThrowError();
 
-    const arrLike = { 0: 1, 1: 'a', 2: true, 3: '3', 4: '4', 5: '5', length: 6 };
+    const arrLike = { length: 6, 2: true, 1: 'a', 3: '3', 4: '4', 5: '5', 0: 1 };
     const newArrLike = fn(arrLike);
     expect(isArrayLike(arrLike)).toBeTruthy();
     expect(arrLike.length).toBe(newArrLike.length);

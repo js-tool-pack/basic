@@ -19,7 +19,7 @@
  * @param [immediate=true] 是否马上执行第一次
  */
 export function polling(
-  callback: (times: number) => void | Promise<any>,
+  callback: (times: number) => Promise<any> | void,
   interval: number,
   immediate = true,
 ): {

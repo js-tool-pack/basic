@@ -1,5 +1,5 @@
-import { randomInt } from './randomInt';
 import { isArrayLike } from '../data-type';
+import { randomInt } from './randomInt';
 
 /**
  * 数组洗牌，不会改变原数组

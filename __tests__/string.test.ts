@@ -1,5 +1,5 @@
 import * as cm from '../src/string';
-const { formatNumber, strTemplate, removeStrByNum, smartRepeat, capitalize, camelCase } = cm;
+const { removeStrByNum, formatNumber, strTemplate, smartRepeat, capitalize, camelCase } = cm;
 
 describe('string', function () {
   test('formatNumber', () => {
@@ -159,7 +159,7 @@ describe('string', function () {
 
     it('start,end', () => {
       expect(hideString('helloworld')).toBe('**********');
-      expect(hideString('helloworld', { start: 0, replacement: '*' })).toBe('**********');
+      expect(hideString('helloworld', { replacement: '*', start: 0 })).toBe('**********');
 
       expect(hideString('helloworld', { start: 0, end: 0 })).toBe('helloworld');
 
@@ -181,7 +181,7 @@ describe('string', function () {
       expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: 1, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
       expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: -12, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
 
-      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: -12, end: -1, replacementLen: 1 })).toBe(
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { replacementLen: 1, start: -12, end: -1 })).toBe(
         '👨‍👨‍👧‍👦*👨‍👨‍👧‍👦',
       );
     });
@@ -201,23 +201,23 @@ describe('string', function () {
       expect(hideString('👨‍👨‍👧‍👦helloworld👨‍👨‍👧‍👦', { start: 1, len: 10 })).toBe('👨‍👨‍👧‍👦**********👨‍👨‍👧‍👦');
       expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: 1, len: 11 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
 
-      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { start: 1, len: 11, replacementLen: 1 })).toBe(
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { replacementLen: 1, start: 1, len: 11 })).toBe(
         '👨‍👨‍👧‍👦*👨‍👨‍👧‍👦',
       );
     });
     it('len,end', () => {
       expect(hideString('helloworld')).toBe('**********');
-      expect(hideString('helloworld', { len: 10, end: 10, replacement: '*' })).toBe('**********');
+      expect(hideString('helloworld', { replacement: '*', len: 10, end: 10 })).toBe('**********');
 
-      expect(hideString('helloworld', { len: 0, end: 10 })).toBe('helloworld');
+      expect(hideString('helloworld', { end: 10, len: 0 })).toBe('helloworld');
 
-      expect(hideString('helloworld', { len: 8, end: -1 })).toBe('h********d');
+      expect(hideString('helloworld', { end: -1, len: 8 })).toBe('h********d');
       expect(hideString('helloworld', { len: 8, end: 9 })).toBe('h********d');
 
       expect(hideString('👨‍👨‍👧‍👦helloworld👨‍👨‍👧‍👦', { len: 10, end: -1 })).toBe('👨‍👨‍👧‍👦**********👨‍👨‍👧‍👦');
       expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { len: 11, end: -1 })).toBe('👨‍👨‍👧‍👦***********👨‍👨‍👧‍👦');
 
-      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { len: 11, end: -1, replacementLen: 1 })).toBe('👨‍👨‍👧‍👦*👨‍👨‍👧‍👦');
+      expect(hideString('👨‍👨‍👧‍👦hello👨‍👨‍👧world👨‍👨‍👧‍👦', { replacementLen: 1, len: 11, end: -1 })).toBe('👨‍👨‍👧‍👦*👨‍👨‍👧‍👦');
     });
   });
   test('getClassNames', () => {
@@ -227,9 +227,9 @@ describe('string', function () {
     expect(getClassNames('a', 'b', undefined)).toBe('a b');
     expect(getClassNames('a', 'b', null)).toBe('a b');
     expect(getClassNames('a', 'b')).toBe('a b');
-    expect(getClassNames({ a: true, b: false, c: true })).toBe('a c');
-    expect(getClassNames('a', 'b', { a: true, b: false, c: true })).toBe('a c');
-    expect(getClassNames('  ', 'a', '   ', 'b', '     ', 'c', { a: true, b: '', c: true })).toBe(
+    expect(getClassNames({ b: false, a: true, c: true })).toBe('a c');
+    expect(getClassNames('a', 'b', { b: false, a: true, c: true })).toBe('a c');
+    expect(getClassNames('  ', 'a', '   ', 'b', '     ', 'c', { a: true, c: true, b: '' })).toBe(
       'a c',
     );
     expect(getClassNames({ a: true, b: '  ', c: '' })).toBe('a b');

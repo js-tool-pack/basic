@@ -40,10 +40,10 @@
 export function hideString(
   origin: string,
   options?: {
+    replacementLen?: number;
     replacement?: string;
     start?: number;
     end?: number;
-    replacementLen?: number;
   },
 ): string;
 /**
@@ -86,10 +86,10 @@ export function hideString(
 export function hideString(
   origin: string,
   options?: {
+    replacementLen?: number;
     replacement?: string;
     start?: number;
     len?: number;
-    replacementLen?: number;
   },
 ): string;
 /**
@@ -128,23 +128,23 @@ export function hideString(
 export function hideString(
   origin: string,
   options?: {
+    replacementLen?: number;
     replacement?: string;
     end?: number;
     len?: number;
-    replacementLen?: number;
   },
 ): string;
 export function hideString(
   origin: string,
   {
-    replacement = '*',
     replacementLen = -1,
+    replacement = '*',
     start,
     end,
     len,
   }: {
-    replacement?: string;
     replacementLen?: number;
+    replacement?: string;
     start?: number;
     end?: number;
     len?: number;

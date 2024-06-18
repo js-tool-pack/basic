@@ -19,7 +19,7 @@
  * arr; // [...[0, 1, 2].reverse(), ...[0, 1, 2, 3, 4, 5, 6].reverse(), 2, 1]
  *
  */
-export function forEachNumRight(len: number, callback: (index: number) => any | false) {
+export function forEachNumRight(len: number, callback: (index: number) => false | any) {
   for (let i = len - 1; i >= 0; i--) {
     if (callback(i) === false) break;
   }

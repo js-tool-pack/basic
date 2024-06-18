@@ -32,12 +32,12 @@
  */
 export function strToDate(
   date:
-    | `${number}-${number}-${number}`
-    | `${number}-${number}-${number} ${number}:${number}`
     | `${number}-${number}-${number} ${number}:${number}:${number}`
-    | `${number}/${number}/${number}`
+    | `${number}/${number}/${number} ${number}:${number}:${number}`
+    | `${number}-${number}-${number} ${number}:${number}`
     | `${number}/${number}/${number} ${number}:${number}`
-    | `${number}/${number}/${number} ${number}:${number}:${number}`,
+    | `${number}-${number}-${number}`
+    | `${number}/${number}/${number}`,
 ): Date | null {
   // 检测非数字、非/、非:、非-
   if (!date || /[^/\d: -]/.test(date)) return null; // 去除不符合规范的字符串
