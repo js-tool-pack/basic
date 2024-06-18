@@ -3,9 +3,9 @@ import { typeOf } from '../../data-type';
 // 根据路径还原整个object
 export function revertObjFromPath(pathArr: string[]): object {
   function getKV(path: string): {
-    key: string;
-    value: string;
     innerKey: string;
+    value: string;
+    key: string;
   } {
     const [k, value] = path.split('=').map((item) => decodeURIComponent(item)) as [string, string];
     let key = k;
@@ -17,14 +17,14 @@ export function revertObjFromPath(pathArr: string[]): object {
     }
     // key = key.replace(/\[[^\[\]]*]/g, "");
     return {
-      key,
-      value,
       innerKey,
+      value,
+      key,
     };
   }
   return pathArr.reduce(
     (result, path) => {
-      const { key, value, innerKey } = getKV(path);
+      const { innerKey, value, key } = getKV(path);
       const resultValue = result[key];
 
       // no-fallthrough
@@ -40,7 +40,7 @@ export function revertObjFromPath(pathArr: string[]): object {
           break;
         case 'string':
           result[key] = [resultValue];
-        // eslint-disable-next-line no-fallthrough
+
         case 'array':
           if (!innerKey) {
             result[key].push(value);

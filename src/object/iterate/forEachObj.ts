@@ -35,7 +35,7 @@ import { hasOwn } from '../common';
  */
 export function forEachObj<T extends object>(
   obj: T,
-  callbackFn: (value: T[keyof T], key: keyof T, obj: T) => void | false,
+  callbackFn: (value: T[keyof T], key: keyof T, obj: T) => false | void,
   elseCB?: () => any,
 ): boolean {
   for (const k in obj) {

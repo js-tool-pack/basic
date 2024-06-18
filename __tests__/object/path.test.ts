@@ -49,12 +49,12 @@ describe('object.path', function () {
       a: { b: { c: true } },
     });
     expect(fn({ a: { b: { c: 123 } } }, 'b' as any, true)).toEqual({
-      b: true,
       a: { b: { c: 123 } },
+      b: true,
     });
     expect(fn({ a: { b: { c: 123 } } }, 'b.c' as any, true)).toEqual({
-      b: { c: true },
       a: { b: { c: 123 } },
+      b: { c: true },
     });
     expect(fn({ a: 'hello' }, 'a[0]' as any, true)).toEqual({ a: { 0: true } });
     expect(fn({ a: 0 }, 'a[0][b][c]' as any, true)).toEqual({ a: { 0: { b: { c: true } } } });
@@ -107,12 +107,14 @@ describe('object.path', function () {
       ['[a][b][0]', 1],
       ['[a][b][1]', 2],
     ]);
+    // eslint-disable-next-line perfectionist/sort-objects
     expect(fn({ a: { b: [1, 2, { c: 3, cc: 5 }] } })).toEqual([
       ['[a][b][0]', 1],
       ['[a][b][1]', 2],
       ['[a][b][2][c]', 3],
       ['[a][b][2][cc]', 5],
     ]);
+    // eslint-disable-next-line perfectionist/sort-objects
     expect(fn({ a: { b: [1, 2, { c: 3, cc: 5 }] } }, 'obj')).toEqual([
       ['obj[a][b][0]', 1],
       ['obj[a][b][1]', 2],
@@ -130,7 +132,7 @@ describe('object.path', function () {
     expect(fn(['a.0=1', 'a.1=2'])).toEqual({ a: ['1', '2'] });
     expect(fn(['a.[0]=1', 'a.[1]=2'])).toEqual({ a: ['1', '2'] });
     expect(fn(['a.[b]=1', 'a.[c]=2'])).toEqual({ a: Object.assign([], { b: '1', c: '2' }) });
-    expect(fn(['a.[b]=1', 'a.[c]=2'])).not.toEqual({ a: Object.assign([], { b: 1, c: '2' }) });
+    expect(fn(['a.[b]=1', 'a.[c]=2'])).not.toEqual({ a: Object.assign([], { c: '2', b: 1 }) });
 
     expect(fn(['a[]=1', 'a[]=2'])).toEqual({ a: ['1', '2'] });
     // TODO 暂不支持多层路径

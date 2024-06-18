@@ -3,7 +3,7 @@
  *
  * @see stringToArrayBuffer
  */
-export function arrayBufferToString(ab: ArrayBuffer, uint: 8 | 16 = 16): string {
+export function arrayBufferToString(ab: ArrayBuffer, uint: 16 | 8 = 16): string {
   const ua = new (uint === 16 ? Uint16Array : Uint8Array)(ab);
   const len = ua.length;
   let result = '';

@@ -1,8 +1,8 @@
 import {
-  createTimeCountUpGen,
-  idGen,
   createTimeCountDownGen,
+  createTimeCountUpGen,
   randomItemGen,
+  idGen,
 } from '../src/generator';
 describe('generator', function () {
   jest.useFakeTimers();
@@ -54,7 +54,7 @@ describe('generator', function () {
       }
 
       expect(ids).toEqual([0, 1, 2]);
-      expect(gen.next()).toEqual({ done: true, value: undefined });
+      expect(gen.next()).toEqual({ value: undefined, done: true });
     });
 
     test('倒序生成', () => {
@@ -65,7 +65,7 @@ describe('generator', function () {
       }
 
       expect(ids).toEqual([0, 1, 2].reverse());
-      expect(gen.next()).toEqual({ done: true, value: undefined });
+      expect(gen.next()).toEqual({ value: undefined, done: true });
     });
     test('转成数组', () => {
       expect([...idGen(0, 1, 3)]).toEqual([0, 1, 2]);
@@ -104,7 +104,7 @@ describe('generator', function () {
 
     // 停止
     t.return();
-    expect(t.next()).toEqual({ done: true, value: undefined });
+    expect(t.next()).toEqual({ value: undefined, done: true });
 
     // return 不接收任何参数
     // @ts-expect-error
@@ -154,7 +154,7 @@ describe('generator', function () {
     const list = [1, 2, 3, 4, 5];
     const g = randomItemGen(list);
     const res = list.map(() => g.next().value);
-    expect(g.next()).toEqual({ done: true, value: undefined });
+    expect(g.next()).toEqual({ value: undefined, done: true });
     expect(list.every((it) => res.includes(it))).toBeTruthy();
     expect(res).not.toEqual(list);
     expect(res.sort()).toEqual(list);
@@ -163,6 +163,6 @@ describe('generator', function () {
     expectInRange(rand.next().value, [1, 3]); // 1|2|3
     expectInRange(rand.next().value, [1, 3]); // 1|2|3
     expectInRange(rand.next().value, [1, 3]); // 1|2|3
-    expect(rand.next()).toEqual({ done: true, value: undefined });
+    expect(rand.next()).toEqual({ value: undefined, done: true });
   });
 });

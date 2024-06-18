@@ -5,7 +5,7 @@ import { arrayBufferToString } from './arrayBufferToString';
  *
  * @see encodeObjectToArrayBuffer
  */
-export function decodeArrayBufferToObject<T>(buffer: ArrayBuffer): T | null {
+export function decodeArrayBufferToObject<T>(buffer: ArrayBuffer): null | T {
   // TextEncoder 在 node 环境下不支持
   // const u8a = new Uint8Array(buffer);
   // const str = new TextDecoder().decode(u8a);

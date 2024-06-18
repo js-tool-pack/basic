@@ -1,5 +1,5 @@
-import * as cd from '../src/coordinate';
 import type { Point } from '@tool-pack/types';
+import * as cd from '../src/coordinate';
 
 describe('coordinate', function () {
   test('isPointInPath', () => {

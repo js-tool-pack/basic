@@ -12,8 +12,8 @@ import type { Tuple } from '@tool-pack/types';
 export function chineseToNumber(
   value: string,
   options: {
-    units?: string[];
     numbers?: Tuple<string, 10>;
+    units?: string[];
   } = {},
 ) {
   const {

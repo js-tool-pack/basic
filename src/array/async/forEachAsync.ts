@@ -8,7 +8,7 @@
  */
 export async function forEachAsync<T>(
   arr: ArrayLike<T>,
-  cbAsync: (value: T, index: number, array: ArrayLike<T>) => Promise<any | false>,
+  cbAsync: (value: T, index: number, array: ArrayLike<T>) => Promise<false | any>,
 ): Promise<void> {
   // 不能直接把arr.length放进循环，否则在循环里新增的话length会变长,原生的不会变长
   const len = arr.length;

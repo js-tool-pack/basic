@@ -1,4 +1,4 @@
-import { cloneFunction, deepClone, deepCloneBfs } from '../src/clone';
+import { cloneFunction, deepCloneBfs, deepClone } from '../src/clone';
 import { hasOwn } from '../src/object';
 
 describe('clone', function () {
@@ -28,16 +28,16 @@ describe('clone', function () {
 
     // 复制对象方法
     const obj: any = {
-      a: 1,
-      b: 1,
-      c: 1,
+      fn3: function () {
+        return ++this.c;
+      },
       fn1() {
         return ++this.a;
       },
       fn2: () => ++obj.b,
-      fn3: function () {
-        return ++this.c;
-      },
+      a: 1,
+      b: 1,
+      c: 1,
     };
     obj.clone1 = cloneFunction(obj.fn1);
     expect(obj.fn1()).toBe(2);
@@ -78,7 +78,7 @@ describe('clone', function () {
     // copy !== arr
     expect(arr === newArr).toBe(false);
 
-    const obj = { a: [2, 3], c: 1, d: { f: 123 } };
+    const obj = { d: { f: 123 }, a: [2, 3], c: 1 };
     const newObj = deepClone(obj);
     // copy == obj
     expect(newObj).toEqual(obj);
@@ -118,8 +118,8 @@ describe('clone', function () {
     Foo.prototype.sayGoodBy = function () {
       console.log('Say Good By');
     };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+
+    // @ts-expect-error
     const myPro = new Foo();
     expect(hasOwn(myPro, 'name')).toBeTruthy(); //true
     expect(hasOwn(myPro, 'toString')).toBe(false); //false
@@ -161,7 +161,7 @@ describe('clone', function () {
     expect(o2.re.test('123')).toBe(true);
     expect(o2.re === re).toBe(false);
 
-    const o3: any = { a: 1, b: 2, c: 3, e: { a: 1 } };
+    const o3: any = { e: { a: 1 }, a: 1, b: 2, c: 3 };
     o3.d = o3;
     const c = deepClone(o3);
     expect(c).toEqual(o3);
@@ -177,7 +177,7 @@ describe('clone', function () {
     expect(nObj.c).toEqual(3);
     expect(nObj === obj10086).toBe(false);
 
-    const obj10000 = { a: 1, b: { c: '123' } };
+    const obj10000 = { b: { c: '123' }, a: 1 };
     const nObj2 = deepCloneBfs(obj10000);
     expect(nObj2).toEqual(obj10000);
 
@@ -188,7 +188,7 @@ describe('clone', function () {
     // copy !== arr
     expect(arr === newArr).toBe(false);
 
-    const obj = { a: [2, 3], c: 1, d: { f: 123 } };
+    const obj = { d: { f: 123 }, a: [2, 3], c: 1 };
     const newObj = deepCloneBfs(obj);
     // copy == obj
     expect(newObj).toEqual(obj);
@@ -208,15 +208,14 @@ describe('clone', function () {
 
     Ext.prototype.b = '2';
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     expect(deepCloneBfs(new Ext())).toEqual({ a: 1 });
 
-    const obj2 = { a: 1, b: [1, 2] };
-    expect(deepCloneBfs(obj2)).toEqual({ a: 1, b: [1, 2] });
+    const obj2 = { b: [1, 2], a: 1 };
+    expect(deepCloneBfs(obj2)).toEqual({ b: [1, 2], a: 1 });
     expect(obj2 !== deepCloneBfs(obj2)).toBeTruthy();
 
-    const obj3 = { a: null, b: undefined, c: NaN };
-    expect(deepCloneBfs(obj3)).toEqual({ a: null, b: undefined, c: NaN });
+    const obj3 = { b: undefined, a: null, c: NaN };
+    expect(deepCloneBfs(obj3)).toEqual({ b: undefined, a: null, c: NaN });
   });
 });

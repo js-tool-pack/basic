@@ -24,7 +24,7 @@ export function parseCmdParams(
   arr: string[],
   prefix = '-',
   defaultKey = 'default',
-): Map<string, string[] | string | boolean> {
+): Map<string, string[] | boolean | string> {
   const eqReg = /([^=]+)=([\s\S]+)?/;
   const isKeyReg = new RegExp(`^${prefix}`);
   const list = arr.slice();

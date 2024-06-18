@@ -29,7 +29,7 @@ export function debounceByPromise<T, CB extends (...args: any[]) => Promise<T>>(
   let rejectFn: Function;
   return function (this: any, ...args: any[]): Promise<T> {
     rejectFn && rejectFn();
-    // eslint-disable-next-line no-async-promise-executor
+
     return new Promise(async (res, rej) => {
       rejectFn = rej;
       const result = await callback.apply(this, args);

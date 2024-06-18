@@ -16,6 +16,6 @@ export function getReversedObj<const T extends object>(obj: T): ReverseObject<T>
       res[v] = k;
       return res;
     },
-    {} as Record<string, any>,
+    {} as any,
   );
 }

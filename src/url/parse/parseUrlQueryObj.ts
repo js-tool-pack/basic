@@ -16,7 +16,7 @@ import { revertObjFromPath } from '../../object';
  * @param {string} [url = location.href]
  */
 export function parseUrlQueryObj(url: string = location.href): {
-  [key: string]: string | string[];
+  [key: string]: string[] | string;
 } {
   const params = url.match(/[^&#?/]+=[^&#?/]+/g);
   if (!params) return {};

@@ -28,7 +28,7 @@ export function nextTick(): Promise<void>;
  * abort(); // abort
  */
 export function nextTick(then: () => unknown): () => void;
-export function nextTick(then?: () => unknown): (() => void) | Promise<void> {
+export function nextTick(then?: () => unknown): Promise<void> | (() => void) {
   const p = Promise.resolve();
   if (!then) return p;
 

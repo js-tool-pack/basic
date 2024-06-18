@@ -15,8 +15,8 @@ describe('object.iterate', function () {
       expect(times).toEqual(Object.keys(obj).length);
     };
 
-    testFn({ a: 1, b: '2', c: true });
-    testFn({ a: 1, b: '2', c: { test: 1231 } });
+    testFn({ c: true, b: '2', a: 1 });
+    testFn({ c: { test: 1231 }, b: '2', a: 1 });
     let times = 0;
     const done = forEachObj({ a: 1, b: 2, c: 3 }, () => {
       times++;
@@ -65,7 +65,7 @@ describe('object.iterate', function () {
   });
   test('reduceObj', () => {
     const reduceObj = cm.reduceObj;
-    const obj = { a: 1, b: 2, c: '3' };
+    const obj = { c: '3', a: 1, b: 2 };
     const result = reduceObj(obj, (r, v, k) => ((r[v] = k), r), {} as Record<string, any>);
     expect(result).toEqual({ 1: 'a', 2: 'b', 3: 'c' });
     expect(result === obj).toEqual(false);
@@ -97,7 +97,7 @@ describe('object.iterate', function () {
 
   test('objFilter', () => {
     const fn = cm.filterObj;
-    const obj = { a: '', b: 123, c: 0, d: undefined, e: false, f: NaN, g: null };
+    const obj = { d: undefined, e: false, g: null, b: 123, f: NaN, a: '', c: 0 };
     expect(fn(obj)).toEqual({ b: 123 });
     expect(fn(obj, (v) => v !== undefined)).toEqual(omit(obj, ['d']));
   });

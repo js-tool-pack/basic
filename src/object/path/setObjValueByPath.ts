@@ -1,13 +1,13 @@
 import type {
-  DotTrim,
   RemoveStrStart,
-  TransferPath,
   TransferPathOf,
+  TransferPath,
   TypeOfPath,
+  DotTrim,
 } from '@tool-pack/types';
-import { hasOwn } from '../common';
-import { isBroadlyObj } from '../../data-type';
 import { translateObjPath } from './translateObjPath';
+import { isBroadlyObj } from '../../data-type';
+import { hasOwn } from '../common';
 
 /**
  * 通过object路径设置值 如果路径中不存在则会自动创建对应的对象

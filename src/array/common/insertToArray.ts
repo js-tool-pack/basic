@@ -1,7 +1,7 @@
 import type { InsertToArrayToCBOptions } from './types';
 import { findIndexRight } from './findIndexRight';
-import { castArray } from './castArray';
 import { isFunction } from '../../data-type';
+import { castArray } from './castArray';
 import { findIndex } from './findIndex';
 
 /**
@@ -122,13 +122,13 @@ export function insertToArray<T>(
   array: T[],
   param?: {
     /**
-     * 插入位置前后，true为后
-     */
-    after?: boolean;
-    /**
      * 从前还是从后查起，true为前
      */
     reverse?: boolean;
+    /**
+     * 插入位置前后，true为后
+     */
+    after?: boolean;
   },
 ): number;
 /**
@@ -167,13 +167,13 @@ export function insertToArray<T>(
   array: T[],
   param?: {
     /**
-     * 插入位置前后，true为后
-     */
-    after?: boolean;
-    /**
      * 从前还是从后查起，true为前
      */
     reverse?: boolean;
+    /**
+     * 插入位置前后，true为后
+     */
+    after?: boolean;
   },
 ): number;
 /**
@@ -188,18 +188,18 @@ export function insertToArray<T>(
  */
 export function insertToArray(
   insert: unknown,
-  to: number | Function,
+  to: Function | number,
   array: unknown[],
-  { after = false, reverse = false } = {},
+  { reverse = false, after = false } = {},
 ): number {
   const inserts = castArray(insert) as unknown[];
   let index = to as number;
   if (isFunction(to)) {
     index = (reverse ? findIndexRight : findIndex)(array, (v, k, a) => {
       const _options = {
-        item: v,
         index: k,
         array: a,
+        item: v,
       };
       const options = Array.isArray(insert)
         ? ({

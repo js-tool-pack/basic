@@ -1,9 +1,9 @@
 import {
-  parseBase64,
   arrayBufferToBase64,
   base64ToArrayBuffer,
   stringToArrayBuffer,
   arrayBufferToString,
+  parseBase64,
 } from '../src';
 
 describe('Base64', () => {

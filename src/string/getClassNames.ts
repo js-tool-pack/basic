@@ -26,7 +26,7 @@ import { forEachObj } from '../object';
  * @param classes 支持字符串和对象类型
  */
 export function getClassNames(
-  ...classes: Array<string | undefined | null | Record<string, unknown>>
+  ...classes: Array<Record<string, unknown> | undefined | string | null>
 ): string {
   const classNames: Record<string, boolean> = {};
   const handleObjClasses = (obj: Record<string, unknown>): void => {

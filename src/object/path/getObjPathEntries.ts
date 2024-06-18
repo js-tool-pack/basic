@@ -1,5 +1,5 @@
-import { reduceObj } from '../iterate';
 import { isBroadlyObj } from '../../data-type';
+import { reduceObj } from '../iterate';
 
 /**
  * 获取object的路径数组

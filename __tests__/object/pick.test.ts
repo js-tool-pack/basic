@@ -11,7 +11,7 @@ describe('object.pick', function () {
 
   const testPickByKeys = (fn: typeof cm.pickByKeys) => {
     return () => {
-      const obj = { a: 1, b: '2', c: ['12313', 111], d: false, e: { a: 1 }, f: undefined };
+      const obj = { c: ['12313', 111], f: undefined, e: { a: 1 }, d: false, b: '2', a: 1 };
       expect(fn(obj, [])).toEqual({});
       expect(fn(obj, ['a'])).toEqual({ a: 1 });
       expect(fn(obj, ['b'])).toEqual({ b: obj.b });
@@ -31,10 +31,9 @@ describe('object.pick', function () {
           }
           return 'test';
         }),
-      ).toEqual({ a: 2, b: 'test' });
+      ).toEqual({ b: 'test', a: 2 });
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error
       expect(fn(new TestExtends(), ['a', 'c'])).toEqual({ a: 1, c: 3 });
 
       const a = { a: 1 };
@@ -50,7 +49,7 @@ describe('object.pick', function () {
   });
   const testPickRename = (fn: typeof cm.pickRename) => {
     return () => {
-      const obj = { a: 1, b: '2', c: ['12313', 111], d: false, e: { a: 1 }, f: undefined };
+      const obj = { c: ['12313', 111], f: undefined, e: { a: 1 }, d: false, b: '2', a: 1 };
       expect(fn(obj, {})).toEqual({});
       expect(fn(obj, { A: 'a' })).toEqual({ A: 1 });
       expect(fn(obj, { B: 'b' })).toEqual({ B: obj.b });
@@ -70,10 +69,9 @@ describe('object.pick', function () {
           }
           return 'test';
         }),
-      ).toEqual({ A: 2, B: 'test' });
+      ).toEqual({ B: 'test', A: 2 });
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error
       expect(fn(new TestExtends(), { aa: 'a', cc: 'c' })).toEqual({ aa: 1, cc: 3 });
     };
   };
@@ -85,7 +83,7 @@ describe('object.pick', function () {
     const fn = cm.pick;
     // pickByKeys
     testPickByKeys(fn)();
-    let obj = { a: 1, b: '2', c: ['12313', 111], d: false, e: { a: 1 }, f: undefined };
+    let obj = { c: ['12313', 111], f: undefined, e: { a: 1 }, d: false, b: '2', a: 1 };
     expect(
       fn(obj, ['a', 'b'], (_v, k) => {
         if (k === 'a') {
@@ -93,11 +91,11 @@ describe('object.pick', function () {
         }
         return 'test';
       }),
-    ).toEqual({ a: 2, b: 'test' });
+    ).toEqual({ b: 'test', a: 2 });
 
     // pickRename
     testPickRename(fn)();
-    obj = { a: 1, b: '2', c: ['12313', 111], d: false, e: { a: 1 }, f: undefined };
+    obj = { c: ['12313', 111], f: undefined, e: { a: 1 }, d: false, b: '2', a: 1 };
     expect(
       fn(obj, { A: 'a', B: 'b' }, (_v, k) => {
         if (k === 'a') {
@@ -105,7 +103,7 @@ describe('object.pick', function () {
         }
         return 'test';
       }),
-    ).toEqual({ A: 2, B: 'test' });
+    ).toEqual({ B: 'test', A: 2 });
     const nObj = fn(obj, { A: 'a', B: 'a' }, () => {
       return 2;
     });
@@ -113,7 +111,7 @@ describe('object.pick', function () {
   });
   test('pickUpdated', () => {
     const fn = cm.pickUpdated;
-    const obj1 = { a: 12, b: undefined, c: 3 };
+    const obj1 = { b: undefined, a: 12, c: 3 };
     expect(fn(obj1, [{ a: 1 }, { b: 2 }, { d: 3 }])).toEqual({ a: 1, b: 2 });
     expect(fn(obj1, [{ a: 1 }, { a: 2 }, { a: 5 }])).toEqual({ a: 5 });
     expect(fn(obj1, [{ a: 1 }, { a: 2 }, { a: 12 }])).toEqual({});
@@ -152,7 +150,7 @@ describe('object.pick', function () {
       pickDiff(a, [b, { a: { id: 1 } }, { b: { id: 11 } }], (v1, v2) => {
         return v1 && v1.id === v2.id;
       }),
-    ).toEqual({ a: { id: 1 }, b: { id: 11 } });
+    ).toEqual({ b: { id: 11 }, a: { id: 1 } });
   });
   test('pickExternal', () => {
     const { pickExternal } = cm;

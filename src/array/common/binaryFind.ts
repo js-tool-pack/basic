@@ -37,8 +37,8 @@ import { binaryFindIndex } from './binaryFindIndex';
  */
 export function binaryFind<T>(
   arr: T[],
-  handler: (options: { item: T; index: number; start: number; end: number; arr: T[] }) => number,
-): T | null {
+  handler: (options: { index: number; start: number; end: number; arr: T[]; item: T }) => number,
+): null | T {
   const index = binaryFindIndex(arr, handler);
   if (index === -1) return null;
   return arr[index as keyof typeof arr] as T;

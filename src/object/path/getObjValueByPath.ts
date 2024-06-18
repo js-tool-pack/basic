@@ -1,9 +1,9 @@
 import type {
-  DotTrim,
   RemoveStrStart,
-  TransferPath,
   TransferPathOf,
+  TransferPath,
   TypeOfPath,
+  DotTrim,
 } from '@tool-pack/types';
 import { translateObjPath } from './translateObjPath';
 import { isBroadlyObj } from '../../data-type';

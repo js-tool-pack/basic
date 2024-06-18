@@ -14,7 +14,7 @@
  * });
  * arr; // [0, 1, 2, 0, 1, 2, 3, 4, 5, 6, 0, 1]
  */
-export function forEachNum(len: number, callback: (index: number) => any | false) {
+export function forEachNum(len: number, callback: (index: number) => false | any) {
   for (let i = 0; i < len; i++) {
     if (callback(i) !== false) continue;
     break;

@@ -1,5 +1,5 @@
-import { typeOf } from './typeOf';
 import { objectIsEqual } from './objectIsEqual';
+import { typeOf } from './typeOf';
 
 /**
  * 判断两个变量是否相等,值比较，如果是对象则递归判断

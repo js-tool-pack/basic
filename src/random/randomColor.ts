@@ -1,7 +1,7 @@
+import { randomRGBA } from './randomRGBA';
 import { isNumber } from '../data-type';
 import { randomHEX } from './randomHEX';
 import { randomRGB } from './randomRGB';
-import { randomRGBA } from './randomRGBA';
 import { createArray } from '../array';
 
 /**
@@ -31,7 +31,7 @@ export function randomColor(): string;
  * randomColor('RGBA');
  *
  */
-export function randomColor(type: 'HEX' | 'RGB' | 'RGBA'): string;
+export function randomColor(type: 'RGBA' | 'HEX' | 'RGB'): string;
 /**
  * 生成HEX颜色数组
  */
@@ -39,7 +39,7 @@ export function randomColor(len: number): string[];
 /**
  * 生成 'HEX' | 'RGB' | 'RGBA' 颜色数组
  */
-export function randomColor(type: 'HEX' | 'RGB' | 'RGBA', len: number): string[];
+export function randomColor(type: 'RGBA' | 'HEX' | 'RGB', len: number): string[];
 export function randomColor(type?: string | number, len?: number): string[] | string {
   if (isNumber(type)) {
     len = type;
@@ -51,15 +51,15 @@ export function randomColor(type?: string | number, len?: number): string[] | st
   type = type.toUpperCase();
   if (len === undefined) {
     const map = {
+      RGBA: randomRGBA,
       HEX: randomHEX,
       RGB: randomRGB,
-      RGBA: randomRGBA,
     };
     return (map[type as keyof typeof map] || map.HEX)();
   } else {
     return createArray({
+      fill: () => randomColor(type as 'RGBA' | 'HEX' | 'RGB'),
       len,
-      fill: () => randomColor(type as 'HEX' | 'RGB' | 'RGBA'),
     });
   }
 }

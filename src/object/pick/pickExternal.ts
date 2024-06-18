@@ -1,5 +1,5 @@
-import { hasOwn } from '../common';
 import { pickDiff } from './pickDiff';
+import { hasOwn } from '../common';
 
 /**
  * 从其他对象中挑出与原对象中不存在的键值对所组成的新对象

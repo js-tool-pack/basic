@@ -27,12 +27,12 @@ export const getTimePeriodConst = (function () {
     millisecond,
     second,
     minute,
-    hour,
-    day,
-    week,
-    month,
     season,
+    month,
+    hour,
+    week,
     year,
+    day,
   } as const;
   return function () {
     return timeConst;

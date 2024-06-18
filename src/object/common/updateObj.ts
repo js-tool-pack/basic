@@ -1,5 +1,5 @@
-import { forEachObj } from '../iterate';
 import { _updateObj } from './_updateObj';
+import { forEachObj } from '../iterate';
 
 /**
  * 使用其他对象去更新目标对象

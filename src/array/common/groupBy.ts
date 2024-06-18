@@ -54,7 +54,7 @@ export function groupBy<
   const T extends Record<string, any>,
   K extends keyof T,
   D extends string = '*',
->(arr: ArrayLike<T>, key: K, defaultKey?: D): Partial<Record<D | T[K], T[]>>;
+>(arr: ArrayLike<T>, key: K, defaultKey?: D): Partial<Record<T[K] | D, T[]>>;
 
 /**
  * 数组分组
@@ -110,7 +110,7 @@ export function groupBy<
 
 export function groupBy(
   arr: ArrayLike<unknown>,
-  key: string | Function,
+  key: Function | string,
   defaultKey: number | string = '*',
 ): Record<string, unknown[]> {
   const getItemKey = isFunction(key) ? key : (item: Record<string, any>) => item[key];

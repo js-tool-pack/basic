@@ -40,7 +40,7 @@
  */
 export function forEachRight<T>(
   arr: ArrayLike<T>,
-  callbackFn: (value: T, index: number, array: ArrayLike<T>) => any | false,
+  callbackFn: (value: T, index: number, array: ArrayLike<T>) => false | any,
   elseCB?: () => void,
 ): boolean {
   for (let i = arr.length - 1; i > -1; i--) {

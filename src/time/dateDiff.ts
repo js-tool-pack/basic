@@ -24,10 +24,6 @@ export function dateDiff(start: Date, end: Date, format = 'y年d天hh时mm分ss�
   const obj: {
     [k: string]: number;
   } = {
-    'S+': targetTime % 1000,
-    's+': seconds % 60,
-    'm+': ~~(seconds / 60) % 60,
-    'h+': ~~(seconds / (60 * 60)) % 24,
     'd+': (function (): number {
       const day = ~~(seconds / (60 * 60 * 24));
       // 如果要显示年，则把天余年，否则全部显示天
@@ -36,6 +32,10 @@ export function dateDiff(start: Date, end: Date, format = 'y年d天hh时mm分ss�
     })(),
     // "M+": 0,
     'y+': ~~(seconds / (60 * 60 * 24 * 365)),
+    'h+': ~~(seconds / (60 * 60)) % 24,
+    'm+': ~~(seconds / 60) % 60,
+    'S+': targetTime % 1000,
+    's+': seconds % 60,
   };
   for (const k in obj) {
     const reg = new RegExp('(' + k + ')');

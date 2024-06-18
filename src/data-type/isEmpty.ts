@@ -1,5 +1,5 @@
-import { typeOf } from './typeOf';
 import { isEmptyObject } from './isEmptyObject';
+import { typeOf } from './typeOf';
 
 /**
  * 判断是否是空值 undefined, null, "", [], {} ,NaN都为true
@@ -17,7 +17,7 @@ import { isEmptyObject } from './isEmptyObject';
  * isEmpty({ a: function () {}})); // false;
  */
 export function isEmpty(target: any): boolean {
-  if ([undefined, null, '', NaN].includes(target)) return true;
+  if ([undefined, null, NaN, ''].includes(target)) return true;
   switch (typeOf(target)) {
     case 'array':
       return !target.length;

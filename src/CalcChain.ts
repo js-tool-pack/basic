@@ -1,4 +1,4 @@
-import { plus, minus, times, divide, strip } from './number';
+import { divide, minus, times, strip, plus } from './number';
 
 /**
  * 链式计算
@@ -25,6 +25,14 @@ import { plus, minus, times, divide, strip } from './number';
 export class CalcChain {
   private _value!: number;
 
+  public divide = this['/'];
+
+  public minus = this['-'];
+
+  public times = this['*'];
+
+  public plus = this['+'];
+
   constructor(private readonly initNumber: number) {
     this.setValue(initNumber);
   }
@@ -34,38 +42,16 @@ export class CalcChain {
     return new CalcChain(num);
   }
 
+  private setValue(value: number) {
+    this._value = value;
+  }
+
   // 加
   public ['+'](...nums: number[]): CalcChain {
     // this.calc((a, b, pow) => (a * pow + b * pow) / pow, num, others);
     this.setValue(plus(this._value, ...nums));
     return this;
   }
-
-  public plus = this['+'];
-
-  // 减
-  public ['-'](...nums: number[]): CalcChain {
-    this.setValue(minus(this._value, ...nums));
-    return this;
-  }
-
-  public minus = this['-'];
-
-  // 乘
-  public ['*'](...nums: number[]): CalcChain {
-    this.setValue(times(this._value, ...nums));
-    return this;
-  }
-
-  public times = this['*'];
-
-  // 除
-  public ['/'](...nums: number[]): CalcChain {
-    this.setValue(divide(this._value, ...nums));
-    return this;
-  }
-
-  public divide = this['/'];
 
   // 100 - 20 * 2; <==>  Calc.create(20)["*"](2).before(100, "-")
   public by(num: number, calcLabel: '+' | '-' | '*' | '/') {
@@ -75,18 +61,22 @@ export class CalcChain {
     return this;
   }
 
-  private setValue(value: number) {
-    this._value = value;
+  // 除
+  public ['/'](...nums: number[]): CalcChain {
+    this.setValue(divide(this._value, ...nums));
+    return this;
   }
 
-  // 获取当前值
-  public get value(): number {
-    return strip(this._value);
+  // 减
+  public ['-'](...nums: number[]): CalcChain {
+    this.setValue(minus(this._value, ...nums));
+    return this;
   }
 
-  // 设置当前值
-  public set value(num) {
-    this.setValue(num);
+  // 乘
+  public ['*'](...nums: number[]): CalcChain {
+    this.setValue(times(this._value, ...nums));
+    return this;
   }
 
   // 重置为初始值
@@ -97,5 +87,15 @@ export class CalcChain {
 
   valueOf(): number {
     return this._value;
+  }
+
+  // 获取当前值
+  public get value(): number {
+    return strip(this._value);
+  }
+
+  // 设置当前值
+  public set value(num) {
+    this.setValue(num);
   }
 }

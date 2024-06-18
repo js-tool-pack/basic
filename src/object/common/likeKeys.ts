@@ -18,7 +18,7 @@
  * ]);
  * likeKeys(map, /a+|b+/); // ['aa', 'bb']
  */
-export function likeKeys(target: object | Map<string, any>, key: string | RegExp): string[] {
+export function likeKeys(target: Map<string, any> | object, key: string | RegExp): string[] {
   const reg = new RegExp(key);
   if ('undefined' !== typeof Map && target instanceof Map) {
     // keys = [...obj.keys()]; // babel编译成es5会编译成[].concat，无法使用

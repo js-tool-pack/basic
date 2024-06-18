@@ -1,4 +1,4 @@
-import type { DotTrim, RemoveStrStart, TransferPath } from '@tool-pack/types';
+import type { RemoveStrStart, TransferPath, DotTrim } from '@tool-pack/types';
 
 /**
  * 对象属性路径转换： obj[a] => obj.a

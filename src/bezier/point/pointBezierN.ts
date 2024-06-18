@@ -1,5 +1,5 @@
-import type { Point } from '@tool-pack/types';
 import { getYangHuiTriangleOne } from '../../array';
+import type { Point } from '@tool-pack/types';
 import { strip } from '../../number';
 
 /**

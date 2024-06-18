@@ -67,9 +67,13 @@ export function shortenNumber(
   value: number,
   options: {
     /**
-     * 1k 的大小；默认为 1000
+     * 小数位；默认2
      */
-    kSize?: number;
+    fractionDigits?: number;
+    /**
+     * 使用科学计数法
+     */
+    exponential?: boolean;
     /**
      * 数字长度大于多少才进单位；默认为 3
      */
@@ -79,16 +83,12 @@ export function shortenNumber(
      */
     unit?: NUMBER_UNIT;
     /**
-     * 小数位；默认2
+     * 1k 的大小；默认为 1000
      */
-    fractionDigits?: number;
-    /**
-     * 使用科学计数法
-     */
-    exponential?: boolean;
+    kSize?: number;
   } = {},
 ): string {
-  const { kSize = 1000, maxLength = 3, unit, fractionDigits = 2, exponential = false } = options;
+  const { exponential = false, fractionDigits = 2, maxLength = 3, kSize = 1000, unit } = options;
 
   const k = kSize;
   const m = k ** 2;
@@ -135,8 +135,8 @@ export function shortenNumber(
   const handler: Handler = unit
     ? handleUnit
     : maxLength > 3
-    ? handleMaxLimitRange()
-    : handleRange();
+      ? handleMaxLimitRange()
+      : handleRange();
 
   const [range, _unit] = rangeMap.find(handler)!;
   const result = Number((value / (range || 1)).toFixed(fractionDigits));

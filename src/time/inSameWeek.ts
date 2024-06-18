@@ -35,12 +35,12 @@
  * @param options.now 日期 默认为当天
  */
 export function inSameWeek({
-  date,
   weekStart = 'Mon',
   now = new Date(),
+  date,
 }: {
-  date: Date;
   weekStart?: 'Mon' | 'Sun';
+  date: Date;
   now?: Date;
 }): boolean {
   const timeStamp = date.getTime();

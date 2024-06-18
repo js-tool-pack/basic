@@ -99,32 +99,32 @@ import { formatDate } from './formatDate';
 export function howLongAgo(
   date: Date,
   {
-    now = new Date(),
     defaultFormat = 'yyyy-MM-dd hh:mm:ss',
+    now = new Date(),
     def = '${time}',
     templates,
     filter,
   }: {
-    defaultFormat?: string;
-    def?: string;
-    filter?: (result: string, diff: number) => string;
-    now?: Date;
     templates?: Partial<
       Record<keyof Omit<ReturnType<typeof getTimePeriodConst>, 'millisecond'> | 'now', string>
     >;
+    filter?: (result: string, diff: number) => string;
+    defaultFormat?: string;
+    def?: string;
+    now?: Date;
   } = {},
 ): string {
   const searchValue = '${ago}';
   const _templates: Required<typeof templates> = {
-    now: '刚刚',
-    year: `${searchValue}年前`,
+    minute: `${searchValue}分钟前`,
     season: `${searchValue}季前`,
+    second: `${searchValue}秒前`,
     month: `${searchValue}月前`,
+    hour: `${searchValue}小时前`,
+    year: `${searchValue}年前`,
     week: `${searchValue}周前`,
     day: `${searchValue}天前`,
-    hour: `${searchValue}小时前`,
-    minute: `${searchValue}分钟前`,
-    second: `${searchValue}秒前`,
+    now: '刚刚',
     ...templates,
   };
   const timePeriodConst = getTimePeriodConst();

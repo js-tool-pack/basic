@@ -1,10 +1,11 @@
 import { inRange } from './inRange';
 
+// eslint-disable-next-line no-restricted-syntax
 const enum Direct {
-  top = 'top',
   bottom = 'bottom',
-  left = 'left',
   right = 'right',
+  left = 'left',
+  top = 'top',
 }
 
 /**
@@ -81,15 +82,15 @@ export function forEachAround<T extends Array<any[]>>(
     value: T extends Array<(infer R)[]> ? R : unknown,
     indexes: [col: number, row: number],
     array: T,
-  ) => any | false,
+  ) => false | any,
   {
     reverse = false,
     startIndexes,
     startDirect,
   }: {
-    reverse?: boolean;
     startIndexes?: [col: number, row: number];
-    startDirect?: 'top' | 'bottom' | 'left' | 'right';
+    startDirect?: keyof typeof Direct;
+    reverse?: boolean;
   } = {},
 ) {
   let direct = (startDirect as Direct) ?? (reverse ? Direct.bottom : Direct.right);
@@ -102,10 +103,10 @@ export function forEachAround<T extends Array<any[]>>(
     let x = 0;
     let y = 0;
     const matches: Record<Direct, () => void> = {
+      [Direct.bottom]: () => y++,
       [Direct.right]: () => x++,
       [Direct.left]: () => x--,
       [Direct.top]: () => y--,
-      [Direct.bottom]: () => y++,
     };
     matches[direct]();
     const _indexes: typeof indexes = [indexes[0] + y, indexes[1] + x];
@@ -115,10 +116,10 @@ export function forEachAround<T extends Array<any[]>>(
   }
   function getNewDirect(): Direct | null {
     const matches: Record<Direct, () => Direct> = {
+      [Direct.bottom]: () => (reverse ? Direct.right : Direct.left),
       [Direct.right]: () => (reverse ? Direct.top : Direct.bottom),
       [Direct.left]: () => (reverse ? Direct.bottom : Direct.top),
       [Direct.top]: () => (reverse ? Direct.left : Direct.right),
-      [Direct.bottom]: () => (reverse ? Direct.right : Direct.left),
     };
     const _d = matches[direct]();
     return getNextIndexes(_d) && _d;
@@ -126,10 +127,10 @@ export function forEachAround<T extends Array<any[]>>(
   function updateRanges(): void {
     const [colRange, rowRange] = ranges;
     const matches: Record<Direct, () => void> = {
+      [Direct.bottom]: () => (reverse ? rowRange[0]++ : rowRange[1]--),
       [Direct.right]: () => (reverse ? colRange[1]-- : colRange[0]++),
       [Direct.left]: () => (reverse ? colRange[0]++ : colRange[1]--),
       [Direct.top]: () => (reverse ? rowRange[1]-- : rowRange[0]++),
-      [Direct.bottom]: () => (reverse ? rowRange[0]++ : rowRange[1]--),
     };
     matches[direct]();
   }

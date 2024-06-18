@@ -79,9 +79,9 @@ export function throttle<CB extends (...args: any[]) => any>(
   callback: CB,
   interval: number,
   options: {
-    leading?: boolean;
-    trailing?: boolean;
     invalidCB?: (timeCountDown: number) => void;
+    trailing?: boolean;
+    leading?: boolean;
   } = {},
 ): CB {
   const _options: Required<Parameters<typeof throttle>[2]> = {

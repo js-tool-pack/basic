@@ -22,7 +22,7 @@ import type { Point } from '@tool-pack/types';
 export function getAngle(
   origin: Point,
   target: Point,
-  direct: 'top' | 'left' | 'right' | 'bottom' = 'top',
+  direct: 'bottom' | 'right' | 'left' | 'top' = 'top',
 ): number {
   const [x1, y1] = origin;
   const [x2, y2] = target;
@@ -46,10 +46,10 @@ export function getAngle(
 
   return (
     {
-      top: 180 - theta,
-      left: 270 - theta,
       bottom: 360 - theta,
       right: 450 - theta,
+      left: 270 - theta,
+      top: 180 - theta,
     }[direct] % 360
   );
 }

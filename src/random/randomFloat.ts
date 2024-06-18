@@ -37,7 +37,7 @@ export function randomFloat(min: number, max: number, len: number): number[];
 /**
  * 生成随机浮点数
  */
-export function randomFloat(min?: number, max?: number, len?: number): number | number[] {
+export function randomFloat(min?: number, max?: number, len?: number): number[] | number {
   // randomFloat()
   if (!arguments.length) return Math.random();
   let _min = min as number;
@@ -55,7 +55,7 @@ export function randomFloat(min?: number, max?: number, len?: number): number | 
     return Math.random() * dif + _min;
   }
   return createArray({
-    len,
     fill: () => randomFloat(_min, _max),
+    len,
   });
 }

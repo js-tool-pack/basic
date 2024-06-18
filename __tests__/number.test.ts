@@ -1,20 +1,20 @@
+import type { Tuple } from '@tool-pack/types';
 import * as Num from '../src/number';
-import { Tuple } from '@tool-pack/types';
 const {
-  strip,
   getNumberLenAfterDot,
-  getCommonPow,
   toNonExponential,
-  getSafeNum,
-  plus,
-  minus,
-  times,
-  divide,
-  numToFixed,
-  forEachNum,
   forEachNumRight,
   numberToChinese,
   chineseToNumber,
+  getCommonPow,
+  getSafeNum,
+  numToFixed,
+  forEachNum,
+  divide,
+  strip,
+  minus,
+  times,
+  plus,
 } = Num;
 describe('number', function () {
   test('strip', () => {
@@ -30,12 +30,11 @@ describe('number', function () {
     expect(0.09999999999999998).toBe(0.09999999999999998);
     expect(strip(0.09999999999999998)).toBe(0.1);
 
-    // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
     expect(strip(20000000000.222222222)).not.toBe(20000000000.222222222);
-    // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
+
     expect(20000000000.222222222).toBe(20000000000.222222222);
     // 不够精准，js无法表示那么长的数据,或许改考虑用bigint
-    // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
+
     expect((20000000000.222222222).toString()).toBe('20000000000.22222');
   });
   test('getNumberLenAfterDot', () => {
@@ -159,7 +158,7 @@ describe('number', function () {
     expect(arr).toEqual([0, 1, 2]);
     forEachNum(7, (index) => arr.push(index));
     expect(arr.length).toEqual(10);
-    forEachNum(3, (index): void | false => {
+    forEachNum(3, (index): false | void => {
       arr.push(index);
       if (index === 1) return false;
     });
@@ -171,7 +170,7 @@ describe('number', function () {
     expect(arr).toEqual([0, 1, 2].reverse());
     forEachNumRight(7, (index) => arr.push(index));
     expect(arr.length).toEqual(10);
-    forEachNumRight(3, (index): void | false => {
+    forEachNumRight(3, (index): false | void => {
       arr.push(index);
       if (index === 1) return false;
     });
@@ -244,10 +243,10 @@ describe('number', function () {
     expect(formatBytes(1024 * 512, { unit: 'MB' })).toBe('0.5MB');
     expect(formatBytes(1024 * 512, { unit: 'GB' })).toBe('0GB');
     // 指定小数位
-    expect(formatBytes(1024 * 512, { unit: 'GB', fractionDigits: 5 })).toBe('0.00049GB');
-    expect(formatBytes(1, { unit: 'GB', fractionDigits: 9 })).toBe('0.000000001GB');
+    expect(formatBytes(1024 * 512, { fractionDigits: 5, unit: 'GB' })).toBe('0.00049GB');
+    expect(formatBytes(1, { fractionDigits: 9, unit: 'GB' })).toBe('0.000000001GB');
     // 使用科学计数法
-    expect(formatBytes(1, { unit: 'GB', fractionDigits: 9, exponential: true })).toBe('1e-9GB');
+    expect(formatBytes(1, { fractionDigits: 9, exponential: true, unit: 'GB' })).toBe('1e-9GB');
   });
   test('shortenNumber', () => {
     const fn = Num.shortenNumber;
@@ -272,10 +271,10 @@ describe('number', function () {
     expect(fn(k * 0.5 * k, { unit: 'M' })).toBe('0.5M');
     expect(fn(k * 0.5 * k, { unit: 'G' })).toBe('0G');
     // 指定小数位
-    expect(fn(k * 0.49 * k, { unit: 'G', fractionDigits: 5 })).toBe('0.00049G');
-    expect(fn(1, { unit: 'G', fractionDigits: 9 })).toBe('0.000000001G');
+    expect(fn(k * 0.49 * k, { fractionDigits: 5, unit: 'G' })).toBe('0.00049G');
+    expect(fn(1, { fractionDigits: 9, unit: 'G' })).toBe('0.000000001G');
     // 使用科学计数法
-    expect(fn(1, { unit: 'G', fractionDigits: 9, exponential: true })).toBe('1e-9G');
+    expect(fn(1, { fractionDigits: 9, exponential: true, unit: 'G' })).toBe('1e-9G');
 
     // 超过 5 位才进位
     expect(fn(-1, { maxLength: 5 })).toBe('-1');
@@ -296,7 +295,7 @@ describe('number', function () {
     expect(fn(1_000_000_000_000_000_000_000_000, { maxLength: 5 })).toBe('1000Z');
     expect(fn(1_000_000_000_000_000_000_000_000_000, { maxLength: 5 })).toBe('1000Y');
     // 最大单位为 Y
-    expect(fn(1_000_000_000_000_000_000_000_000_000_000, { maxLength: 5, exponential: true })).toBe(
+    expect(fn(1_000_000_000_000_000_000_000_000_000_000, { exponential: true, maxLength: 5 })).toBe(
       '1e+6Y',
     );
 

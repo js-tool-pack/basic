@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /**
  * 获取全局对象
  *

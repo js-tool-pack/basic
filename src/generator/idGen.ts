@@ -84,7 +84,7 @@ export function* idGen(
   init = 0,
   step = 1,
   end = Number.MAX_SAFE_INTEGER,
-): Generator<number, void, void | number> {
+): Generator<number, void, number | void> {
   let id = init;
   const handle = init < end ? () => id < end : () => id > end;
   while (handle()) {

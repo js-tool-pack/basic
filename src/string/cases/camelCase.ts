@@ -1,5 +1,5 @@
-import { capitalize } from '../capitalize';
 import { splitByCases } from './splitByCases';
+import { capitalize } from '../capitalize';
 
 /**
  * 其他变量命名风格转小驼峰

@@ -1,5 +1,5 @@
+import { useCubicBezier3, pointBezier3, pointBezier2, pointBezierN } from '../src/bezier';
 import { createArray } from '../src';
-import { pointBezier3, useCubicBezier3, pointBezier2, pointBezierN } from '../src/bezier';
 
 describe('bezier', function () {
   test('useCubicBezier3', () => {
@@ -7,8 +7,8 @@ describe('bezier', function () {
 
     const c1 = useCubicBezier3(0, 600, 'ease-in-out');
     let list = createArray({
-      len: len + 1,
       fill: (i) => c1(i / len),
+      len: len + 1,
     });
 
     expect(list).toEqual([
@@ -19,8 +19,8 @@ describe('bezier', function () {
 
     const c2 = useCubicBezier3(0, 600);
     list = createArray({
-      len: len + 1,
       fill: (i) => c2(i / len),
+      len: len + 1,
     });
 
     expect(list).toEqual([
@@ -33,8 +33,8 @@ describe('bezier', function () {
     // 反向生成，没有太好的方法检验是否准确
     const c3 = useCubicBezier3(600, 0, 'ease-in-out');
     const list2 = createArray({
-      len: len + 1,
       fill: (i) => c3(i / len),
+      len: len + 1,
     });
 
     expect(list2).toEqual([
@@ -58,9 +58,9 @@ describe('bezier', function () {
   ];
   test('pointBezier2', () => {
     const bezierList = createArray({
+      fill: (i) => pointBezier2(i / 10, [1, 1], [10, 10], [10, 10]),
       start: 0,
       end: 11,
-      fill: (i) => pointBezier2(i / 10, [1, 1], [10, 10], [10, 10]),
     });
 
     expect(bezierList).toEqual(b2Res);
@@ -80,9 +80,9 @@ describe('bezier', function () {
   ];
   test('pointBezier3', () => {
     const bezierList = createArray({
+      fill: (i) => pointBezier3(i / 10, [1, 1], [2, 2], [8, 8], [10, 10]),
       start: 0,
       end: 11,
-      fill: (i) => pointBezier3(i / 10, [1, 1], [2, 2], [8, 8], [10, 10]),
     });
 
     expect(bezierList).toEqual(b3Res);
@@ -90,27 +90,27 @@ describe('bezier', function () {
   test('pointBezierN', () => {
     // 2阶
     const bezierList2 = createArray({
+      fill: (i) => pointBezierN(i / 10, [1, 1], [10, 10], [10, 10]),
       start: 0,
       end: 11,
-      fill: (i) => pointBezierN(i / 10, [1, 1], [10, 10], [10, 10]),
     });
 
     expect(bezierList2).toEqual(b2Res);
 
     // 3阶
     const bezierList3 = createArray({
+      fill: (i) => pointBezierN(i / 10, [1, 1], [2, 2], [8, 8], [10, 10]),
       start: 0,
       end: 11,
-      fill: (i) => pointBezierN(i / 10, [1, 1], [2, 2], [8, 8], [10, 10]),
     });
 
     expect(bezierList3).toEqual(b3Res);
 
     // 4阶
     const bezierList5 = createArray({
+      fill: (i) => pointBezierN(i / 10, [1, 1], [2, 2], [5, 5], [8, 8], [10, 10]),
       start: 0,
       end: 11,
-      fill: (i) => pointBezierN(i / 10, [1, 1], [2, 2], [5, 5], [8, 8], [10, 10]),
     });
 
     expect(bezierList5).toEqual([

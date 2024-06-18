@@ -1,6 +1,6 @@
 import type { OmitFirstParameters } from '@tool-pack/types';
-import { polling } from '../common';
 import { decoratorfy } from './decoratorfy';
+import { polling } from '../common';
 
 // Throttle(1, () => 0);
 /**

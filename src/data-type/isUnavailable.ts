@@ -7,5 +7,5 @@
  * @param value
  */
 export function isUnavailable(value: unknown): boolean {
-  return [null, undefined, NaN].includes(value as any);
+  return [undefined, null, NaN].includes(value as any);
 }
