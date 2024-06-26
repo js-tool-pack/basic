@@ -1,6 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "htmlLang": "zh-CN",
+  "lang": "zh",
   "includeVersion": true,
   "plugin": ["@mxssfd/typedoc-theme"],
   "theme": "my-theme",
