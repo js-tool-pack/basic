@@ -11,3 +11,4 @@ export * from './parseCmdParams';
 export * from './loadingElse';
 export * from './emptyFn';
 export * from './createEventBus';
+export * from './DynamicEnum';

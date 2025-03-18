@@ -615,4 +615,48 @@ describe('common', function () {
       expect(listener).not.toBeCalled();
     });
   });
+  describe('DynamicEnum', () => {
+    test('basic', () => {
+      const map = new Map<number, number>([
+        [1, 11],
+        [2, 22],
+      ]);
+      const de = new cm.DynamicEnum(map);
+      de.set(1, 111);
+      expect(map.get(1)).toBe(111);
+      expect(de.get(1)).toBe(111);
+      expect(de.size).toBe(2);
+      expect(map.size).toBe(2);
+
+      de.setKeyByValue(111, 11);
+      expect(map.get(1)).toBeUndefined();
+      expect(de.get(1)).toBeUndefined();
+      expect(map.get(11)).toBe(111);
+      expect(de.getKeyByValue(111)).toBe(11);
+
+      de.set(3, 33);
+      expect(map.get(3)).toBe(33);
+      expect(de.get(3)).toBe(33);
+      expect(map.size).toBe(3);
+      de.delete(3);
+      expect(map.get(3)).toBeUndefined();
+      expect(de.get(3)).toBeUndefined();
+      expect(map.size).toBe(2);
+
+      de.deleteByValue(111);
+      expect(map.get(11)).toBeUndefined();
+      expect(de.get(11)).toBeUndefined();
+      expect(de.getKeyByValue(111)).toBeUndefined();
+      expect(map.size).toBe(1);
+
+      de.clear();
+      expect(map.size).toBe(0);
+    });
+    test('createByObj', () => {
+      const de = cm.DynamicEnum.createByObj({ a: 1, b: 2, c: 3 });
+      expect(de.size).toBe(3);
+      expect(de.get('a')).toBe(1);
+      expect(de.getKeyByValue(3)).toBe('c');
+    });
+  });
 });
