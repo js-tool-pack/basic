@@ -1,3 +1,9 @@
+## [0.9.3](https://github.com/js-tool-pack/basic/compare/v0.9.1...v0.9.3) (2025-03-18)
+
+### Features
+
+- **common:** 新增 DynamicEnum ([5f1800b](https://github.com/js-tool-pack/basic/commit/5f1800bcae2c658ab883e440af0b515661ed0d91))
+
 ## [0.9.2](https://github.com/js-tool-pack/basic/compare/v0.9.1...v0.9.2) (2025-03-18)
 
 ### Features
