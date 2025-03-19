@@ -652,6 +652,24 @@ describe('common', function () {
       de.clear();
       expect(map.size).toBe(0);
     });
+    test('setOrSwap', () => {
+      const map = new Map<number, number>([
+        [1, 11],
+        [2, 22],
+      ]);
+      const de = new cm.DynamicEnum(map);
+      expect(map.get(1)).toBe(11);
+      expect(map.get(2)).toBe(22);
+
+      de.setOrSwap(1, 22);
+      expect(map.get(1)).toBe(22);
+      expect(map.get(2)).toBe(11);
+
+      de.setOrSwap(3, 33);
+      expect(map.get(1)).toBe(22);
+      expect(map.get(2)).toBe(11);
+      expect(map.get(3)).toBe(33);
+    });
     test('createByObj', () => {
       const de = cm.DynamicEnum.createByObj({ a: 1, b: 2, c: 3 });
       expect(de.size).toBe(3);
