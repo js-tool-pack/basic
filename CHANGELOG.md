@@ -1,3 +1,10 @@
+## [0.9.5](https://github.com/js-tool-pack/basic/compare/v0.9.3...v0.9.5) (2025-03-19)
+
+### Features
+
+- 为 DynamicEnum 添加 setOrSwap 方法 ([456e6d4](https://github.com/js-tool-pack/basic/commit/456e6d48dcaa1ed95799b5939831aaf8c1b1025a))
+- 为 DynamicEnum 添加泛型推断 ([6ed6aca](https://github.com/js-tool-pack/basic/commit/6ed6aca58d99036ab1fdfc7e0f2755e82b116b89))
+
 ## [0.9.3](https://github.com/js-tool-pack/basic/compare/v0.9.1...v0.9.3) (2025-03-18)
 
 ### Features
