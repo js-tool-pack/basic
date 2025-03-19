@@ -33,6 +33,14 @@ export class DynamicEnum {
     this.originMap.set(key, value);
     this.updateValueKeyMap();
   }
+  setOrSwap(key: unknown, value: unknown): void {
+    const originValue = this.originMap.get(key);
+    const originKey = this.getKeyByValue(value);
+    if (originKey !== undefined) {
+      this.originMap.set(originKey, originValue);
+    }
+    this.set(key, value);
+  }
   setKeyByValue(value: unknown, key: unknown) {
     const originKey = this.valueKeyMap.get(value);
     if (originKey === undefined) return;
