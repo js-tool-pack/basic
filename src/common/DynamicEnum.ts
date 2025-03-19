@@ -3,26 +3,26 @@ import { forEachObj } from '../object';
 /**
  * DynamicEnum 意思是动态的枚举，也可以把他叫做 MapProxy
  */
-export class DynamicEnum {
-  private valueKeyMap: Map<unknown, unknown> = new Map();
-  constructor(private originMap: Map<unknown, unknown>) {
+export class DynamicEnum<K, V> {
+  private valueKeyMap: Map<V, K> = new Map();
+  constructor(private originMap: Map<K, V>) {
     this.updateValueKeyMap();
   }
-  static createByObj(obj: object): DynamicEnum {
-    const map = new Map();
+  static createByObj(obj: object): DynamicEnum<string, any> {
+    const map = new Map<string, any>();
     forEachObj(obj, (v, k): void => {
       map.set(k, v);
     });
     return new DynamicEnum(map);
   }
   private updateValueKeyMap(): void {
-    const map = new Map<unknown, unknown>();
+    const map = new Map<V, K>();
     this.originMap.forEach((value, key) => {
       map.set(value, key);
     });
     this.valueKeyMap = map;
   }
-  set(key: unknown, value: unknown): void {
+  set(key: K, value: V): void {
     if (!this.originMap.has(key)) {
       this.originMap.set(key, value);
       this.valueKeyMap.set(value, key);
@@ -33,42 +33,42 @@ export class DynamicEnum {
     this.originMap.set(key, value);
     this.updateValueKeyMap();
   }
-  setOrSwap(key: unknown, value: unknown): void {
+  setOrSwap(key: K, value: V): void {
     const originValue = this.originMap.get(key);
     const originKey = this.getKeyByValue(value);
-    if (originKey !== undefined) {
+    if (originKey !== undefined && originValue !== undefined) {
       this.originMap.set(originKey, originValue);
     }
     this.set(key, value);
   }
-  setKeyByValue(value: unknown, key: unknown) {
+  setKeyByValue(value: V, key: K): void {
     const originKey = this.valueKeyMap.get(value);
     if (originKey === undefined) return;
     this.originMap.delete(originKey);
     this.originMap.set(key, value);
     this.updateValueKeyMap();
   }
-  deleteByValue(value: unknown): boolean {
+  deleteByValue(value: V): boolean {
     const key = this.getKeyByValue(value);
     if (!key) return false;
     return this.delete(key);
   }
-  forEach(callbackFn: (value: unknown, key: unknown, map: Map<unknown, unknown>) => void): void {
-    this.originMap.forEach(callbackFn);
-  }
-  delete(key: unknown): boolean {
+  delete(key: K): boolean {
     const res = this.originMap.delete(key);
     res && this.updateValueKeyMap();
     return res;
   }
-  getKeyByValue(value: unknown): unknown {
+  forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void {
+    this.originMap.forEach(callbackFn);
+  }
+  getKeyByValue(value: V): undefined | K {
     return this.valueKeyMap.get(value);
   }
   clear(): void {
     this.originMap.clear();
     this.valueKeyMap.clear();
   }
-  get(key: unknown): unknown {
+  get(key: K): undefined | V {
     return this.originMap.get(key);
   }
   get size(): number {
