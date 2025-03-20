@@ -48,6 +48,11 @@ export class DynamicEnum<K, V> {
     this.originMap.set(key, value);
     this.updateValueKeyMap();
   }
+  map<T>(callbackFn: (value: V, key: K, map: Map<K, V>) => T): T[] {
+    const result: T[] = [];
+    this.originMap.forEach((value, key, map) => result.push(callbackFn(value, key, map)));
+    return result;
+  }
   deleteByValue(value: V): boolean {
     const key = this.getKeyByValue(value);
     if (!key) return false;
