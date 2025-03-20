@@ -1,3 +1,9 @@
+## [0.9.6](https://github.com/js-tool-pack/basic/compare/v0.9.5...v0.9.6) (2025-03-20)
+
+### Features
+
+- 为 DynamicEnum 添加 map 方法 ([d9c7151](https://github.com/js-tool-pack/basic/commit/d9c715113ab758eb7ae301e4fde7c34e62ca3226))
+
 ## [0.9.5](https://github.com/js-tool-pack/basic/compare/v0.9.3...v0.9.5) (2025-03-19)
 
 ### Features
