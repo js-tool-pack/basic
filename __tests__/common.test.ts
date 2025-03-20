@@ -670,6 +670,14 @@ describe('common', function () {
       expect(map.get(2)).toBe(11);
       expect(map.get(3)).toBe(33);
     });
+    test('map', () => {
+      const map = new Map<number, number>([
+        [1, 11],
+        [2, 22],
+      ]);
+      const de = new cm.DynamicEnum(map);
+      expect(de.map((v, k) => k + v)).toEqual([12, 24]);
+    });
     test('createByObj', () => {
       const de = cm.DynamicEnum.createByObj({ a: 1, b: 2, c: 3 });
       expect(de.size).toBe(3);
