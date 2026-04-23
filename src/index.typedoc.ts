@@ -36,9 +36,9 @@ export * as Time from './time';
  */
 export * as Clone from './clone';
 /**
- * 计算链工具函数
+ * 各种工具类
  */
-export * as CalcChain from './CalcChain';
+export * as Classes from './class';
 /**
  * 坐标系相关的工具函数
  */

@@ -1,4 +1,4 @@
-import { divide, minus, times, strip, plus } from './number';
+import { divide, minus, times, strip, plus } from '../number';
 
 /**
  * 链式计算

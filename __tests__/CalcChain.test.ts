@@ -1,4 +1,4 @@
-import { CalcChain } from '../src/CalcChain';
+import { CalcChain } from '../src';
 
 describe('Calc', function () {
   test('Calc', () => {
