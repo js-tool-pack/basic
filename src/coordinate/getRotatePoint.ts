@@ -1,5 +1,5 @@
 import type { Point } from '@tool-pack/types';
-import { CalcChain } from '../CalcChain';
+import { CalcChain } from '../class';
 
 /**
  * 根据半径与角度获取对应坐标点

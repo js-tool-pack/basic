@@ -2,7 +2,7 @@ import * as cm from '../../src/object/common';
 import * as arr from '../../src/array';
 import { forEachNum } from '../../src';
 
-function expectType<T>(_value: T) {}
+export function expectType<T>(_value: T) {}
 
 export function expectError<T>(_value: T) {}
 
